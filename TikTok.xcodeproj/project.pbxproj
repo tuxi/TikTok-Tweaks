@@ -1,0 +1,1300 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D0FF2E6623E40B3300683773 /* MDConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0FF2E6523E40B3300683773 /* MDConfig.plist */; };
+		D0FF2E7023E40B3300683773 /* libTikTokDylib.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0FF2E6F23E40B3300683773 /* libTikTokDylib.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		D0FF2E7523E40B3300683773 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FF2E7423E40B3300683773 /* JavaScriptCore.framework */; };
+		D0FF2E7723E40B3300683773 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FF2E7623E40B3300683773 /* Foundation.framework */; };
+		D0FF2E7923E40B3300683773 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FF2E7823E40B3300683773 /* UIKit.framework */; };
+		D0FF2E7E23E40B3300683773 /* TikTokDylib.mm in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2E7D23E40B3300683773 /* TikTokDylib.mm */; };
+		D0FF2E8123E40B3300683773 /* MDConfigManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2E8023E40B3300683773 /* MDConfigManager.h */; };
+		D0FF2E8323E40B3300683773 /* MDConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2E8223E40B3300683773 /* MDConfigManager.m */; };
+		D0FF2E8523E40B3300683773 /* MDCycriptManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2E8423E40B3300683773 /* MDCycriptManager.h */; };
+		D0FF2E8723E40B3300683773 /* MDCycriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2E8623E40B3300683773 /* MDCycriptManager.m */; };
+		D0FF2E8923E40B3300683773 /* MDMethodTrace.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2E8823E40B3300683773 /* MDMethodTrace.h */; };
+		D0FF2E8B23E40B3300683773 /* MDMethodTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2E8A23E40B3300683773 /* MDMethodTrace.m */; };
+		D0FF2E8E23E40B3300683773 /* a1a2-selectortramps-arm.s in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2E8D23E40B3300683773 /* a1a2-selectortramps-arm.s */; };
+		D0FF2E9023E40B3300683773 /* a1a2-selectortramps-arm64.s in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2E8F23E40B3300683773 /* a1a2-selectortramps-arm64.s */; };
+		D0FF2E9223E40B3300683773 /* a1a2-selectortramps-i386.s in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2E9123E40B3300683773 /* a1a2-selectortramps-i386.s */; };
+		D0FF2E9423E40B3300683773 /* a1a2-selectortramps-x86_64.s in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2E9323E40B3300683773 /* a1a2-selectortramps-x86_64.s */; };
+		D0FF2E9623E40B3300683773 /* a2a3-selectortramps-arm.s in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2E9523E40B3300683773 /* a2a3-selectortramps-arm.s */; };
+		D0FF2E9823E40B3300683773 /* a2a3-selectortramps-i386.s in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2E9723E40B3300683773 /* a2a3-selectortramps-i386.s */; };
+		D0FF2E9A23E40B3300683773 /* a2a3-selectortramps-x86_64.s in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2E9923E40B3300683773 /* a2a3-selectortramps-x86_64.s */; };
+		D0FF2E9C23E40B3300683773 /* OCMethodTrace.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2E9B23E40B3300683773 /* OCMethodTrace.h */; };
+		D0FF2E9E23E40B3300683773 /* OCMethodTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2E9D23E40B3300683773 /* OCMethodTrace.m */; };
+		D0FF2EA023E40B3300683773 /* OCSelectorTrampolines.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2E9F23E40B3300683773 /* OCSelectorTrampolines.h */; };
+		D0FF2EA223E40B3300683773 /* OCSelectorTrampolines.mm in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EA123E40B3300683773 /* OCSelectorTrampolines.mm */; };
+		D0FF2EA623E40B3300683773 /* LLDBTools.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EA523E40B3300683773 /* LLDBTools.h */; };
+		D0FF2EA823E40B3300683773 /* LLDBTools.mm in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EA723E40B3300683773 /* LLDBTools.mm */; };
+		D0FF2EAD23E40B3300683773 /* AntiAntiDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EAC23E40B3300683773 /* AntiAntiDebug.m */; };
+		D0FF2EB023E40B3300683773 /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EAF23E40B3300683773 /* fishhook.c */; };
+		D0FF2EB223E40B3300683773 /* fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EB123E40B3300683773 /* fishhook.h */; };
+		D0FF2EB423E40B3300683773 /* TikTokDylib.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EB323E40B3300683773 /* TikTokDylib.h */; };
+		D0FF2EB623E40B3300683773 /* TikTokDylib.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EB523E40B3300683773 /* TikTokDylib.m */; };
+		D0FF2F2E23E40D4400683773 /* UIControl+XYExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EC023E40D4300683773 /* UIControl+XYExtensions.m */; };
+		D0FF2F2F23E40D4400683773 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EC123E40D4300683773 /* MBProgressHUD.m */; };
+		D0FF2F3023E40D4400683773 /* UIAlertView+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EC223E40D4300683773 /* UIAlertView+Blocks.h */; };
+		D0FF2F3123E40D4400683773 /* NSRunLoop+XYExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EC323E40D4300683773 /* NSRunLoop+XYExtensions.m */; };
+		D0FF2F3223E40D4400683773 /* MBProgressHUD+XYHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EC423E40D4300683773 /* MBProgressHUD+XYHUD.h */; };
+		D0FF2F3423E40D4400683773 /* UINavigationController+XYExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EC623E40D4300683773 /* UINavigationController+XYExtensions.m */; };
+		D0FF2F3523E40D4400683773 /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EC723E40D4300683773 /* MBProgressHUD.h */; };
+		D0FF2F3623E40D4400683773 /* UIControl+XYExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EC823E40D4300683773 /* UIControl+XYExtensions.h */; };
+		D0FF2F3823E40D4400683773 /* MBProgressHUD+XYHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2ECA23E40D4300683773 /* MBProgressHUD+XYHUD.m */; };
+		D0FF2F3923E40D4400683773 /* NSRunLoop+XYExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2ECB23E40D4300683773 /* NSRunLoop+XYExtensions.h */; };
+		D0FF2F3A23E40D4400683773 /* UIApplication+XYSimulatedTouchPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2ECD23E40D4300683773 /* UIApplication+XYSimulatedTouchPrivate.h */; };
+		D0FF2F3B23E40D4400683773 /* UITouch+XYSimulatedTouchExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2ECE23E40D4300683773 /* UITouch+XYSimulatedTouchExtensions.h */; };
+		D0FF2F3C23E40D4400683773 /* IOHIDEvent+KIF.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2ED123E40D4300683773 /* IOHIDEvent+KIF.h */; };
+		D0FF2F3D23E40D4400683773 /* KIFUIObject.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2ED223E40D4300683773 /* KIFUIObject.h */; };
+		D0FF2F3E23E40D4400683773 /* KIFTypist.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2ED323E40D4300683773 /* KIFTypist.h */; };
+		D0FF2F3F23E40D4400683773 /* UIAutomationHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2ED423E40D4300683773 /* UIAutomationHelper.h */; };
+		D0FF2F4023E40D4400683773 /* KIFTextInputTraitsOverrides.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2ED523E40D4300683773 /* KIFTextInputTraitsOverrides.m */; };
+		D0FF2F4123E40D4400683773 /* KIFTestActor.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2ED623E40D4300683773 /* KIFTestActor.h */; };
+		D0FF2F4223E40D4400683773 /* IOHIDEvent+KIF.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2ED723E40D4300683773 /* IOHIDEvent+KIF.m */; };
+		D0FF2F4323E40D4400683773 /* KIFTestActor_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2ED823E40D4300683773 /* KIFTestActor_Private.h */; };
+		D0FF2F4423E40D4400683773 /* KIFUITestActor-ConditionalTests.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EDA23E40D4300683773 /* KIFUITestActor-ConditionalTests.h */; };
+		D0FF2F4523E40D4400683773 /* KIFSystemTestActor.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EDB23E40D4300683773 /* KIFSystemTestActor.m */; };
+		D0FF2F4623E40D4400683773 /* KIFUIViewTestActor.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EDC23E40D4300683773 /* KIFUIViewTestActor.m */; };
+		D0FF2F4723E40D4400683773 /* KIFUITestActor.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EDD23E40D4300683773 /* KIFUITestActor.m */; };
+		D0FF2F4823E40D4400683773 /* KIFUITestActor_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EDE23E40D4300683773 /* KIFUITestActor_Private.h */; };
+		D0FF2F4923E40D4400683773 /* KIFUITestActor-ConditionalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EDF23E40D4300683773 /* KIFUITestActor-ConditionalTests.m */; };
+		D0FF2F4A23E40D4400683773 /* KIFSystemTestActor.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EE023E40D4300683773 /* KIFSystemTestActor.h */; };
+		D0FF2F4B23E40D4400683773 /* KIFUIViewTestActor.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EE123E40D4300683773 /* KIFUIViewTestActor.h */; };
+		D0FF2F4C23E40D4400683773 /* KIFUITestActor.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EE223E40D4300683773 /* KIFUITestActor.h */; };
+		D0FF2F4D23E40D4400683773 /* KIFUIObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EE323E40D4300683773 /* KIFUIObject.m */; };
+		D0FF2F4E23E40D4400683773 /* KIF.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EE423E40D4300683773 /* KIF.h */; };
+		D0FF2F4F23E40D4400683773 /* KIFTextInputTraitsOverrides.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EE523E40D4300683773 /* KIFTextInputTraitsOverrides.h */; };
+		D0FF2F5023E40D4400683773 /* UIAutomationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EE623E40D4300683773 /* UIAutomationHelper.m */; };
+		D0FF2F5123E40D4400683773 /* KIFTypist.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EE723E40D4300683773 /* KIFTypist.m */; };
+		D0FF2F5223E40D4400683773 /* KIFTestActor.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EE823E40D4300683773 /* KIFTestActor.m */; };
+		D0FF2F5323E40D4400683773 /* UIAccessibilityElement-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EEA23E40D4300683773 /* UIAccessibilityElement-KIFAdditions.m */; };
+		D0FF2F5423E40D4400683773 /* UIScreen+KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EEB23E40D4300683773 /* UIScreen+KIFAdditions.m */; };
+		D0FF2F5523E40D4400683773 /* NSException-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EEC23E40D4300683773 /* NSException-KIFAdditions.m */; };
+		D0FF2F5623E40D4400683773 /* NSString+KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EED23E40D4300683773 /* NSString+KIFAdditions.m */; };
+		D0FF2F5723E40D4400683773 /* UIApplication-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EEE23E40D4300683773 /* UIApplication-KIFAdditions.h */; };
+		D0FF2F5823E40D4400683773 /* CGGeometry-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EEF23E40D4300683773 /* CGGeometry-KIFAdditions.m */; };
+		D0FF2F5923E40D4400683773 /* UIWindow-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EF023E40D4300683773 /* UIWindow-KIFAdditions.m */; };
+		D0FF2F5A23E40D4400683773 /* UIScrollView-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EF123E40D4300683773 /* UIScrollView-KIFAdditions.m */; };
+		D0FF2F5B23E40D4400683773 /* UIView-Debugging.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EF223E40D4300683773 /* UIView-Debugging.m */; };
+		D0FF2F5C23E40D4400683773 /* UITouch-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EF323E40D4300683773 /* UITouch-KIFAdditions.m */; };
+		D0FF2F5D23E40D4400683773 /* UITableView-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EF423E40D4300683773 /* UITableView-KIFAdditions.h */; };
+		D0FF2F5E23E40D4400683773 /* CAAnimation+KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EF523E40D4300683773 /* CAAnimation+KIFAdditions.m */; };
+		D0FF2F5F23E40D4400683773 /* NSFileManager-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EF623E40D4300683773 /* NSFileManager-KIFAdditions.h */; };
+		D0FF2F6023E40D4400683773 /* UIView-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EF723E40D4300683773 /* UIView-KIFAdditions.h */; };
+		D0FF2F6123E40D4400683773 /* NSError-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EF823E40D4300683773 /* NSError-KIFAdditions.h */; };
+		D0FF2F6223E40D4400683773 /* UIEvent+KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EF923E40D4300683773 /* UIEvent+KIFAdditions.h */; };
+		D0FF2F6323E40D4400683773 /* CALayer-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EFA23E40D4300683773 /* CALayer-KIFAdditions.h */; };
+		D0FF2F6423E40D4400683773 /* NSPredicate+KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EFB23E40D4300683773 /* NSPredicate+KIFAdditions.h */; };
+		D0FF2F6523E40D4400683773 /* UIScrollView-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EFC23E40D4300683773 /* UIScrollView-KIFAdditions.h */; };
+		D0FF2F6623E40D4400683773 /* UIWindow-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EFD23E40D4300683773 /* UIWindow-KIFAdditions.h */; };
+		D0FF2F6723E40D4400683773 /* CGGeometry-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2EFE23E40D4300683773 /* CGGeometry-KIFAdditions.h */; };
+		D0FF2F6823E40D4400683773 /* UIApplication-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2EFF23E40D4300683773 /* UIApplication-KIFAdditions.m */; };
+		D0FF2F6923E40D4400683773 /* NSString+KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F0023E40D4300683773 /* NSString+KIFAdditions.h */; };
+		D0FF2F6A23E40D4400683773 /* NSException-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F0123E40D4300683773 /* NSException-KIFAdditions.h */; };
+		D0FF2F6B23E40D4400683773 /* UIScreen+KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F0223E40D4300683773 /* UIScreen+KIFAdditions.h */; };
+		D0FF2F6C23E40D4400683773 /* UIAccessibilityElement-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F0323E40D4300683773 /* UIAccessibilityElement-KIFAdditions.h */; };
+		D0FF2F6D23E40D4400683773 /* UIView-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2F0423E40D4300683773 /* UIView-KIFAdditions.m */; };
+		D0FF2F6E23E40D4400683773 /* NSFileManager-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2F0523E40D4300683773 /* NSFileManager-KIFAdditions.m */; };
+		D0FF2F6F23E40D4400683773 /* CAAnimation+KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F0623E40D4300683773 /* CAAnimation+KIFAdditions.h */; };
+		D0FF2F7023E40D4400683773 /* UITouch-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F0723E40D4300683773 /* UITouch-KIFAdditions.h */; };
+		D0FF2F7123E40D4400683773 /* UITableView-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2F0823E40D4300683773 /* UITableView-KIFAdditions.m */; };
+		D0FF2F7223E40D4400683773 /* UIView-Debugging.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F0923E40D4300683773 /* UIView-Debugging.h */; };
+		D0FF2F7323E40D4400683773 /* UIEvent+KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2F0A23E40D4300683773 /* UIEvent+KIFAdditions.m */; };
+		D0FF2F7423E40D4400683773 /* NSError-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2F0B23E40D4300683773 /* NSError-KIFAdditions.m */; };
+		D0FF2F7523E40D4400683773 /* LoadableCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F0C23E40D4300683773 /* LoadableCategory.h */; };
+		D0FF2F7623E40D4400683773 /* NSPredicate+KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2F0D23E40D4300683773 /* NSPredicate+KIFAdditions.m */; };
+		D0FF2F7723E40D4400683773 /* CALayer-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2F0E23E40D4300683773 /* CALayer-KIFAdditions.m */; };
+		D0FF2F7823E40D4400683773 /* XYSimulatedTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2F0F23E40D4300683773 /* XYSimulatedTouch.m */; };
+		D0FF2F7923E40D4400683773 /* FixCategoryBug.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F1023E40D4300683773 /* FixCategoryBug.h */; };
+		D0FF2F7A23E40D4400683773 /* UIApplication+XYSimulatedTouchPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2F1123E40D4300683773 /* UIApplication+XYSimulatedTouchPrivate.m */; };
+		D0FF2F7B23E40D4400683773 /* UITouch+XYSimulatedTouchExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2F1223E40D4300683773 /* UITouch+XYSimulatedTouchExtensions.m */; };
+		D0FF2F7C23E40D4400683773 /* XYSimulatedTouch.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F1323E40D4300683773 /* XYSimulatedTouch.h */; };
+		D0FF2F7D23E40D4400683773 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2F1423E40D4300683773 /* UIAlertView+Blocks.m */; };
+		D0FF2F7E23E40D4400683773 /* UINavigationController+XYExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F1523E40D4300683773 /* UINavigationController+XYExtensions.h */; };
+		D0FF2F7F23E40D4400683773 /* AWEProfileHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F1923E40D4400683773 /* AWEProfileHeaderView.h */; };
+		D0FF2F8023E40D4400683773 /* AWEProfileHeaderViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F1A23E40D4400683773 /* AWEProfileHeaderViewController.h */; };
+		D0FF2F8123E40D4400683773 /* AWEVideoModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F1B23E40D4400683773 /* AWEVideoModel.h */; };
+		D0FF2F8223E40D4400683773 /* AWEMusicDetailViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F1C23E40D4400683773 /* AWEMusicDetailViewController.h */; };
+		D0FF2F8323E40D4400683773 /* AWECommentPanelBaseCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F1D23E40D4400683773 /* AWECommentPanelBaseCell.h */; };
+		D0FF2F8423E40D4400683773 /* AWECompanyProfileHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F1E23E40D4400683773 /* AWECompanyProfileHeaderView.h */; };
+		D0FF2F8523E40D4400683773 /* AWEFeedTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F1F23E40D4400683773 /* AWEFeedTableViewController.h */; };
+		D0FF2F8623E40D4400683773 /* AWEAwemeBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F2023E40D4400683773 /* AWEAwemeBaseViewController.h */; };
+		D0FF2F8723E40D4400683773 /* AWEFeedViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F2123E40D4400683773 /* AWEFeedViewCell.h */; };
+		D0FF2F8823E40D4400683773 /* AwemeApiHeaders.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F2223E40D4400683773 /* AwemeApiHeaders.h */; };
+		D0FF2F8923E40D4400683773 /* AWEFeedCellViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F2323E40D4400683773 /* AWEFeedCellViewController.h */; };
+		D0FF2F8A23E40D4400683773 /* AWEGrowingTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F2423E40D4400683773 /* AWEGrowingTextView.h */; };
+		D0FF2F8B23E40D4400683773 /* AWEUserModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F2523E40D4400683773 /* AWEUserModel.h */; };
+		D0FF2F8C23E40D4400683773 /* AWEUserRelationView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F2623E40D4400683773 /* AWEUserRelationView.h */; };
+		D0FF2F8D23E40D4400683773 /* AWEProfileHeaderExtraViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F2723E40D4400683773 /* AWEProfileHeaderExtraViewController.h */; };
+		D0FF2F8E23E40D4400683773 /* AWEUserDetailViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F2823E40D4400683773 /* AWEUserDetailViewController.h */; };
+		D0FF2F8F23E40D4400683773 /* AWEAwemePlayInteractionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F2923E40D4400683773 /* AWEAwemePlayInteractionViewController.h */; };
+		D0FF2F9023E40D4400683773 /* AWEAwemeModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F2A23E40D4400683773 /* AWEAwemeModel.h */; };
+		D0FF2F9123E40D4400683773 /* AWECommentListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F2B23E40D4400683773 /* AWECommentListViewController.h */; };
+		D0FF2F9223E40D4400683773 /* AWECommentPanelCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F2C23E40D4400683773 /* AWECommentPanelCell.h */; };
+		D0FF2F9323E40D4400683773 /* AWECommentListInputView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F2D23E40D4400683773 /* AWECommentListInputView.h */; };
+		D0FF2F9A23E40D7500683773 /* RadomComments.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F9423E40D7500683773 /* RadomComments.h */; };
+		D0FF2F9B23E40D7500683773 /* XYConfigSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F9523E40D7500683773 /* XYConfigSettingsViewController.h */; };
+		D0FF2F9C23E40D7500683773 /* XYAwemeManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FF2F9623E40D7500683773 /* XYAwemeManager.h */; };
+		D0FF2F9D23E40D7500683773 /* RadomComments.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2F9723E40D7500683773 /* RadomComments.m */; };
+		D0FF2F9E23E40D7500683773 /* XYAwemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2F9823E40D7500683773 /* XYAwemeManager.m */; };
+		D0FF2F9F23E40D7500683773 /* XYConfigSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2F9923E40D7500683773 /* XYConfigSettingsViewController.m */; };
+		D0FF2FA123E40DEF00683773 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FF2FA023E40DEF00683773 /* IOKit.framework */; };
+		D0FF2FA223E4131600683773 /* countryCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0FF2F1723E40D4300683773 /* countryCode.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D0FF2E7123E40B3300683773 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0FF2E5323E40B3300683773 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D0FF2E6E23E40B3300683773;
+			remoteInfo = TikTokDylib;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D0FF2E5B23E40B3300683773 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D0FF2E7023E40B3300683773 /* libTikTokDylib.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		D0FF2E5E23E40B3300683773 /* TikTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0FF2E6123E40B3300683773 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		D0FF2E6323E40B3300683773 /* quick-resign.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "quick-resign.sh"; sourceTree = "<group>"; };
+		D0FF2E6523E40B3300683773 /* MDConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = MDConfig.plist; sourceTree = "<group>"; };
+		D0FF2E6823E40B3300683773 /* put ipa or app here */ = {isa = PBXFileReference; lastKnownFileType = text; path = "put ipa or app here"; sourceTree = "<group>"; };
+		D0FF2E6923E40B3300683773 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0FF2E6F23E40B3300683773 /* libTikTokDylib.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libTikTokDylib.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0FF2E7423E40B3300683773 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		D0FF2E7623E40B3300683773 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D0FF2E7823E40B3300683773 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D0FF2E7C23E40B3300683773 /* TikTokDylib.xm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = TikTokDylib.xm; sourceTree = "<group>"; };
+		D0FF2E7D23E40B3300683773 /* TikTokDylib.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = TikTokDylib.mm; sourceTree = "<group>"; };
+		D0FF2E8023E40B3300683773 /* MDConfigManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDConfigManager.h; sourceTree = "<group>"; };
+		D0FF2E8223E40B3300683773 /* MDConfigManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDConfigManager.m; sourceTree = "<group>"; };
+		D0FF2E8423E40B3300683773 /* MDCycriptManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDCycriptManager.h; sourceTree = "<group>"; };
+		D0FF2E8623E40B3300683773 /* MDCycriptManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDCycriptManager.m; sourceTree = "<group>"; };
+		D0FF2E8823E40B3300683773 /* MDMethodTrace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDMethodTrace.h; sourceTree = "<group>"; };
+		D0FF2E8A23E40B3300683773 /* MDMethodTrace.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDMethodTrace.m; sourceTree = "<group>"; };
+		D0FF2E8D23E40B3300683773 /* a1a2-selectortramps-arm.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = "a1a2-selectortramps-arm.s"; sourceTree = "<group>"; };
+		D0FF2E8F23E40B3300683773 /* a1a2-selectortramps-arm64.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = "a1a2-selectortramps-arm64.s"; sourceTree = "<group>"; };
+		D0FF2E9123E40B3300683773 /* a1a2-selectortramps-i386.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = "a1a2-selectortramps-i386.s"; sourceTree = "<group>"; };
+		D0FF2E9323E40B3300683773 /* a1a2-selectortramps-x86_64.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = "a1a2-selectortramps-x86_64.s"; sourceTree = "<group>"; };
+		D0FF2E9523E40B3300683773 /* a2a3-selectortramps-arm.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = "a2a3-selectortramps-arm.s"; sourceTree = "<group>"; };
+		D0FF2E9723E40B3300683773 /* a2a3-selectortramps-i386.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = "a2a3-selectortramps-i386.s"; sourceTree = "<group>"; };
+		D0FF2E9923E40B3300683773 /* a2a3-selectortramps-x86_64.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = "a2a3-selectortramps-x86_64.s"; sourceTree = "<group>"; };
+		D0FF2E9B23E40B3300683773 /* OCMethodTrace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMethodTrace.h; sourceTree = "<group>"; };
+		D0FF2E9D23E40B3300683773 /* OCMethodTrace.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCMethodTrace.m; sourceTree = "<group>"; };
+		D0FF2E9F23E40B3300683773 /* OCSelectorTrampolines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCSelectorTrampolines.h; sourceTree = "<group>"; };
+		D0FF2EA123E40B3300683773 /* OCSelectorTrampolines.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OCSelectorTrampolines.mm; sourceTree = "<group>"; };
+		D0FF2EA323E40B3300683773 /* selectortramps.mac */ = {isa = PBXFileReference; lastKnownFileType = text; path = selectortramps.mac; sourceTree = "<group>"; };
+		D0FF2EA523E40B3300683773 /* LLDBTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLDBTools.h; sourceTree = "<group>"; };
+		D0FF2EA723E40B3300683773 /* LLDBTools.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = LLDBTools.mm; sourceTree = "<group>"; };
+		D0FF2EAA23E40B3300683773 /* TikTokDylib-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TikTokDylib-Prefix.pch"; path = "../TikTokDylib-Prefix.pch"; sourceTree = "<group>"; };
+		D0FF2EAC23E40B3300683773 /* AntiAntiDebug.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AntiAntiDebug.m; sourceTree = "<group>"; };
+		D0FF2EAF23E40B3300683773 /* fishhook.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
+		D0FF2EB123E40B3300683773 /* fishhook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
+		D0FF2EB323E40B3300683773 /* TikTokDylib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TikTokDylib.h; sourceTree = "<group>"; };
+		D0FF2EB523E40B3300683773 /* TikTokDylib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TikTokDylib.m; sourceTree = "<group>"; };
+		D0FF2EC023E40D4300683773 /* UIControl+XYExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+XYExtensions.m"; sourceTree = "<group>"; };
+		D0FF2EC123E40D4300683773 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		D0FF2EC223E40D4300683773 /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
+		D0FF2EC323E40D4300683773 /* NSRunLoop+XYExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRunLoop+XYExtensions.m"; sourceTree = "<group>"; };
+		D0FF2EC423E40D4300683773 /* MBProgressHUD+XYHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+XYHUD.h"; sourceTree = "<group>"; };
+		D0FF2EC623E40D4300683773 /* UINavigationController+XYExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+XYExtensions.m"; sourceTree = "<group>"; };
+		D0FF2EC723E40D4300683773 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		D0FF2EC823E40D4300683773 /* UIControl+XYExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+XYExtensions.h"; sourceTree = "<group>"; };
+		D0FF2ECA23E40D4300683773 /* MBProgressHUD+XYHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+XYHUD.m"; sourceTree = "<group>"; };
+		D0FF2ECB23E40D4300683773 /* NSRunLoop+XYExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRunLoop+XYExtensions.h"; sourceTree = "<group>"; };
+		D0FF2ECD23E40D4300683773 /* UIApplication+XYSimulatedTouchPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+XYSimulatedTouchPrivate.h"; sourceTree = "<group>"; };
+		D0FF2ECE23E40D4300683773 /* UITouch+XYSimulatedTouchExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITouch+XYSimulatedTouchExtensions.h"; sourceTree = "<group>"; };
+		D0FF2ED123E40D4300683773 /* IOHIDEvent+KIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IOHIDEvent+KIF.h"; sourceTree = "<group>"; };
+		D0FF2ED223E40D4300683773 /* KIFUIObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIFUIObject.h; sourceTree = "<group>"; };
+		D0FF2ED323E40D4300683773 /* KIFTypist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIFTypist.h; sourceTree = "<group>"; };
+		D0FF2ED423E40D4300683773 /* UIAutomationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIAutomationHelper.h; sourceTree = "<group>"; };
+		D0FF2ED523E40D4300683773 /* KIFTextInputTraitsOverrides.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIFTextInputTraitsOverrides.m; sourceTree = "<group>"; };
+		D0FF2ED623E40D4300683773 /* KIFTestActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIFTestActor.h; sourceTree = "<group>"; };
+		D0FF2ED723E40D4300683773 /* IOHIDEvent+KIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IOHIDEvent+KIF.m"; sourceTree = "<group>"; };
+		D0FF2ED823E40D4300683773 /* KIFTestActor_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIFTestActor_Private.h; sourceTree = "<group>"; };
+		D0FF2EDA23E40D4300683773 /* KIFUITestActor-ConditionalTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFUITestActor-ConditionalTests.h"; sourceTree = "<group>"; };
+		D0FF2EDB23E40D4300683773 /* KIFSystemTestActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIFSystemTestActor.m; sourceTree = "<group>"; };
+		D0FF2EDC23E40D4300683773 /* KIFUIViewTestActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIFUIViewTestActor.m; sourceTree = "<group>"; };
+		D0FF2EDD23E40D4300683773 /* KIFUITestActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIFUITestActor.m; sourceTree = "<group>"; };
+		D0FF2EDE23E40D4300683773 /* KIFUITestActor_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIFUITestActor_Private.h; sourceTree = "<group>"; };
+		D0FF2EDF23E40D4300683773 /* KIFUITestActor-ConditionalTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFUITestActor-ConditionalTests.m"; sourceTree = "<group>"; };
+		D0FF2EE023E40D4300683773 /* KIFSystemTestActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIFSystemTestActor.h; sourceTree = "<group>"; };
+		D0FF2EE123E40D4300683773 /* KIFUIViewTestActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIFUIViewTestActor.h; sourceTree = "<group>"; };
+		D0FF2EE223E40D4300683773 /* KIFUITestActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIFUITestActor.h; sourceTree = "<group>"; };
+		D0FF2EE323E40D4300683773 /* KIFUIObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIFUIObject.m; sourceTree = "<group>"; };
+		D0FF2EE423E40D4300683773 /* KIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIF.h; sourceTree = "<group>"; };
+		D0FF2EE523E40D4300683773 /* KIFTextInputTraitsOverrides.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIFTextInputTraitsOverrides.h; sourceTree = "<group>"; };
+		D0FF2EE623E40D4300683773 /* UIAutomationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIAutomationHelper.m; sourceTree = "<group>"; };
+		D0FF2EE723E40D4300683773 /* KIFTypist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIFTypist.m; sourceTree = "<group>"; };
+		D0FF2EE823E40D4300683773 /* KIFTestActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIFTestActor.m; sourceTree = "<group>"; };
+		D0FF2EEA23E40D4300683773 /* UIAccessibilityElement-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAccessibilityElement-KIFAdditions.m"; sourceTree = "<group>"; };
+		D0FF2EEB23E40D4300683773 /* UIScreen+KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+KIFAdditions.m"; sourceTree = "<group>"; };
+		D0FF2EEC23E40D4300683773 /* NSException-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSException-KIFAdditions.m"; sourceTree = "<group>"; };
+		D0FF2EED23E40D4300683773 /* NSString+KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+KIFAdditions.m"; sourceTree = "<group>"; };
+		D0FF2EEE23E40D4300683773 /* UIApplication-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication-KIFAdditions.h"; sourceTree = "<group>"; };
+		D0FF2EEF23E40D4300683773 /* CGGeometry-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CGGeometry-KIFAdditions.m"; sourceTree = "<group>"; };
+		D0FF2EF023E40D4300683773 /* UIWindow-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow-KIFAdditions.m"; sourceTree = "<group>"; };
+		D0FF2EF123E40D4300683773 /* UIScrollView-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView-KIFAdditions.m"; sourceTree = "<group>"; };
+		D0FF2EF223E40D4300683773 /* UIView-Debugging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView-Debugging.m"; sourceTree = "<group>"; };
+		D0FF2EF323E40D4300683773 /* UITouch-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITouch-KIFAdditions.m"; sourceTree = "<group>"; };
+		D0FF2EF423E40D4300683773 /* UITableView-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView-KIFAdditions.h"; sourceTree = "<group>"; };
+		D0FF2EF523E40D4300683773 /* CAAnimation+KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+KIFAdditions.m"; sourceTree = "<group>"; };
+		D0FF2EF623E40D4300683773 /* NSFileManager-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager-KIFAdditions.h"; sourceTree = "<group>"; };
+		D0FF2EF723E40D4300683773 /* UIView-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView-KIFAdditions.h"; sourceTree = "<group>"; };
+		D0FF2EF823E40D4300683773 /* NSError-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError-KIFAdditions.h"; sourceTree = "<group>"; };
+		D0FF2EF923E40D4300683773 /* UIEvent+KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIEvent+KIFAdditions.h"; sourceTree = "<group>"; };
+		D0FF2EFA23E40D4300683773 /* CALayer-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer-KIFAdditions.h"; sourceTree = "<group>"; };
+		D0FF2EFB23E40D4300683773 /* NSPredicate+KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPredicate+KIFAdditions.h"; sourceTree = "<group>"; };
+		D0FF2EFC23E40D4300683773 /* UIScrollView-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView-KIFAdditions.h"; sourceTree = "<group>"; };
+		D0FF2EFD23E40D4300683773 /* UIWindow-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow-KIFAdditions.h"; sourceTree = "<group>"; };
+		D0FF2EFE23E40D4300683773 /* CGGeometry-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry-KIFAdditions.h"; sourceTree = "<group>"; };
+		D0FF2EFF23E40D4300683773 /* UIApplication-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication-KIFAdditions.m"; sourceTree = "<group>"; };
+		D0FF2F0023E40D4300683773 /* NSString+KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+KIFAdditions.h"; sourceTree = "<group>"; };
+		D0FF2F0123E40D4300683773 /* NSException-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSException-KIFAdditions.h"; sourceTree = "<group>"; };
+		D0FF2F0223E40D4300683773 /* UIScreen+KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+KIFAdditions.h"; sourceTree = "<group>"; };
+		D0FF2F0323E40D4300683773 /* UIAccessibilityElement-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAccessibilityElement-KIFAdditions.h"; sourceTree = "<group>"; };
+		D0FF2F0423E40D4300683773 /* UIView-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView-KIFAdditions.m"; sourceTree = "<group>"; };
+		D0FF2F0523E40D4300683773 /* NSFileManager-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager-KIFAdditions.m"; sourceTree = "<group>"; };
+		D0FF2F0623E40D4300683773 /* CAAnimation+KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+KIFAdditions.h"; sourceTree = "<group>"; };
+		D0FF2F0723E40D4300683773 /* UITouch-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITouch-KIFAdditions.h"; sourceTree = "<group>"; };
+		D0FF2F0823E40D4300683773 /* UITableView-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView-KIFAdditions.m"; sourceTree = "<group>"; };
+		D0FF2F0923E40D4300683773 /* UIView-Debugging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView-Debugging.h"; sourceTree = "<group>"; };
+		D0FF2F0A23E40D4300683773 /* UIEvent+KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIEvent+KIFAdditions.m"; sourceTree = "<group>"; };
+		D0FF2F0B23E40D4300683773 /* NSError-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError-KIFAdditions.m"; sourceTree = "<group>"; };
+		D0FF2F0C23E40D4300683773 /* LoadableCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadableCategory.h; sourceTree = "<group>"; };
+		D0FF2F0D23E40D4300683773 /* NSPredicate+KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPredicate+KIFAdditions.m"; sourceTree = "<group>"; };
+		D0FF2F0E23E40D4300683773 /* CALayer-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer-KIFAdditions.m"; sourceTree = "<group>"; };
+		D0FF2F0F23E40D4300683773 /* XYSimulatedTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYSimulatedTouch.m; sourceTree = "<group>"; };
+		D0FF2F1023E40D4300683773 /* FixCategoryBug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FixCategoryBug.h; sourceTree = "<group>"; };
+		D0FF2F1123E40D4300683773 /* UIApplication+XYSimulatedTouchPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+XYSimulatedTouchPrivate.m"; sourceTree = "<group>"; };
+		D0FF2F1223E40D4300683773 /* UITouch+XYSimulatedTouchExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITouch+XYSimulatedTouchExtensions.m"; sourceTree = "<group>"; };
+		D0FF2F1323E40D4300683773 /* XYSimulatedTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYSimulatedTouch.h; sourceTree = "<group>"; };
+		D0FF2F1423E40D4300683773 /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
+		D0FF2F1523E40D4300683773 /* UINavigationController+XYExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+XYExtensions.h"; sourceTree = "<group>"; };
+		D0FF2F1723E40D4300683773 /* countryCode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = countryCode.plist; sourceTree = "<group>"; };
+		D0FF2F1923E40D4400683773 /* AWEProfileHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEProfileHeaderView.h; sourceTree = "<group>"; };
+		D0FF2F1A23E40D4400683773 /* AWEProfileHeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEProfileHeaderViewController.h; sourceTree = "<group>"; };
+		D0FF2F1B23E40D4400683773 /* AWEVideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEVideoModel.h; sourceTree = "<group>"; };
+		D0FF2F1C23E40D4400683773 /* AWEMusicDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEMusicDetailViewController.h; sourceTree = "<group>"; };
+		D0FF2F1D23E40D4400683773 /* AWECommentPanelBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWECommentPanelBaseCell.h; sourceTree = "<group>"; };
+		D0FF2F1E23E40D4400683773 /* AWECompanyProfileHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWECompanyProfileHeaderView.h; sourceTree = "<group>"; };
+		D0FF2F1F23E40D4400683773 /* AWEFeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEFeedTableViewController.h; sourceTree = "<group>"; };
+		D0FF2F2023E40D4400683773 /* AWEAwemeBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEAwemeBaseViewController.h; sourceTree = "<group>"; };
+		D0FF2F2123E40D4400683773 /* AWEFeedViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEFeedViewCell.h; sourceTree = "<group>"; };
+		D0FF2F2223E40D4400683773 /* AwemeApiHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwemeApiHeaders.h; sourceTree = "<group>"; };
+		D0FF2F2323E40D4400683773 /* AWEFeedCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEFeedCellViewController.h; sourceTree = "<group>"; };
+		D0FF2F2423E40D4400683773 /* AWEGrowingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEGrowingTextView.h; sourceTree = "<group>"; };
+		D0FF2F2523E40D4400683773 /* AWEUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEUserModel.h; sourceTree = "<group>"; };
+		D0FF2F2623E40D4400683773 /* AWEUserRelationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEUserRelationView.h; sourceTree = "<group>"; };
+		D0FF2F2723E40D4400683773 /* AWEProfileHeaderExtraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEProfileHeaderExtraViewController.h; sourceTree = "<group>"; };
+		D0FF2F2823E40D4400683773 /* AWEUserDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEUserDetailViewController.h; sourceTree = "<group>"; };
+		D0FF2F2923E40D4400683773 /* AWEAwemePlayInteractionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEAwemePlayInteractionViewController.h; sourceTree = "<group>"; };
+		D0FF2F2A23E40D4400683773 /* AWEAwemeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEAwemeModel.h; sourceTree = "<group>"; };
+		D0FF2F2B23E40D4400683773 /* AWECommentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWECommentListViewController.h; sourceTree = "<group>"; };
+		D0FF2F2C23E40D4400683773 /* AWECommentPanelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWECommentPanelCell.h; sourceTree = "<group>"; };
+		D0FF2F2D23E40D4400683773 /* AWECommentListInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWECommentListInputView.h; sourceTree = "<group>"; };
+		D0FF2F9423E40D7500683773 /* RadomComments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadomComments.h; sourceTree = "<group>"; };
+		D0FF2F9523E40D7500683773 /* XYConfigSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYConfigSettingsViewController.h; sourceTree = "<group>"; };
+		D0FF2F9623E40D7500683773 /* XYAwemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYAwemeManager.h; sourceTree = "<group>"; };
+		D0FF2F9723E40D7500683773 /* RadomComments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadomComments.m; sourceTree = "<group>"; };
+		D0FF2F9823E40D7500683773 /* XYAwemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYAwemeManager.m; sourceTree = "<group>"; };
+		D0FF2F9923E40D7500683773 /* XYConfigSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYConfigSettingsViewController.m; sourceTree = "<group>"; };
+		D0FF2FA023E40DEF00683773 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D0FF2E5823E40B3300683773 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0FF2E6C23E40B3300683773 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0FF2E7523E40B3300683773 /* JavaScriptCore.framework in Frameworks */,
+				D0FF2E7923E40B3300683773 /* UIKit.framework in Frameworks */,
+				D0FF2E7723E40B3300683773 /* Foundation.framework in Frameworks */,
+				D0FF2FA123E40DEF00683773 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D0FF2E5223E40B3300683773 = {
+			isa = PBXGroup;
+			children = (
+				D0FF2E6023E40B3300683773 /* TikTok */,
+				D0FF2E7A23E40B3300683773 /* TikTokDylib */,
+				D0FF2E7323E40B3300683773 /* Frameworks */,
+				D0FF2E5F23E40B3300683773 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D0FF2E5F23E40B3300683773 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D0FF2E5E23E40B3300683773 /* TikTok.app */,
+				D0FF2E6F23E40B3300683773 /* libTikTokDylib.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D0FF2E6023E40B3300683773 /* TikTok */ = {
+			isa = PBXGroup;
+			children = (
+				D0FF2E6123E40B3300683773 /* icon.png */,
+				D0FF2E6923E40B3300683773 /* Info.plist */,
+				D0FF2E6223E40B3300683773 /* Scripts */,
+				D0FF2E6423E40B3300683773 /* Config */,
+				D0FF2E6723E40B3300683773 /* TargetApp */,
+			);
+			path = TikTok;
+			sourceTree = "<group>";
+		};
+		D0FF2E6223E40B3300683773 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				D0FF2E6323E40B3300683773 /* quick-resign.sh */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
+		D0FF2E6423E40B3300683773 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				D0FF2E6523E40B3300683773 /* MDConfig.plist */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		D0FF2E6723E40B3300683773 /* TargetApp */ = {
+			isa = PBXGroup;
+			children = (
+				D0FF2E6823E40B3300683773 /* put ipa or app here */,
+			);
+			path = TargetApp;
+			sourceTree = "<group>";
+		};
+		D0FF2E7323E40B3300683773 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D0FF2FA023E40DEF00683773 /* IOKit.framework */,
+				D0FF2E7423E40B3300683773 /* JavaScriptCore.framework */,
+				D0FF2E7623E40B3300683773 /* Foundation.framework */,
+				D0FF2E7823E40B3300683773 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D0FF2E7A23E40B3300683773 /* TikTokDylib */ = {
+			isa = PBXGroup;
+			children = (
+				D0FF2F1823E40D4400683773 /* AwemeHeaders */,
+				D0FF2EBF23E40D4300683773 /* Common */,
+				D0FF2F1623E40D4300683773 /* Resource */,
+				D0FF2EB323E40B3300683773 /* TikTokDylib.h */,
+				D0FF2EB523E40B3300683773 /* TikTokDylib.m */,
+				D0FF2E7B23E40B3300683773 /* Logos */,
+				D0FF2E7F23E40B3300683773 /* Config */,
+				D0FF2E8C23E40B3300683773 /* Trace */,
+				D0FF2EA423E40B3300683773 /* Tools */,
+				D0FF2EAB23E40B3300683773 /* AntiAntiDebug */,
+				D0FF2EAE23E40B3300683773 /* fishhook */,
+				D0FF2EA923E40B3300683773 /* Supporting Files */,
+			);
+			path = TikTokDylib;
+			sourceTree = "<group>";
+		};
+		D0FF2E7B23E40B3300683773 /* Logos */ = {
+			isa = PBXGroup;
+			children = (
+				D0FF2F9423E40D7500683773 /* RadomComments.h */,
+				D0FF2F9723E40D7500683773 /* RadomComments.m */,
+				D0FF2F9623E40D7500683773 /* XYAwemeManager.h */,
+				D0FF2F9823E40D7500683773 /* XYAwemeManager.m */,
+				D0FF2F9523E40D7500683773 /* XYConfigSettingsViewController.h */,
+				D0FF2F9923E40D7500683773 /* XYConfigSettingsViewController.m */,
+				D0FF2E7C23E40B3300683773 /* TikTokDylib.xm */,
+				D0FF2E7D23E40B3300683773 /* TikTokDylib.mm */,
+			);
+			path = Logos;
+			sourceTree = "<group>";
+		};
+		D0FF2E7F23E40B3300683773 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				D0FF2E8023E40B3300683773 /* MDConfigManager.h */,
+				D0FF2E8223E40B3300683773 /* MDConfigManager.m */,
+				D0FF2E8423E40B3300683773 /* MDCycriptManager.h */,
+				D0FF2E8623E40B3300683773 /* MDCycriptManager.m */,
+				D0FF2E8823E40B3300683773 /* MDMethodTrace.h */,
+				D0FF2E8A23E40B3300683773 /* MDMethodTrace.m */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		D0FF2E8C23E40B3300683773 /* Trace */ = {
+			isa = PBXGroup;
+			children = (
+				D0FF2E8D23E40B3300683773 /* a1a2-selectortramps-arm.s */,
+				D0FF2E8F23E40B3300683773 /* a1a2-selectortramps-arm64.s */,
+				D0FF2E9123E40B3300683773 /* a1a2-selectortramps-i386.s */,
+				D0FF2E9323E40B3300683773 /* a1a2-selectortramps-x86_64.s */,
+				D0FF2E9523E40B3300683773 /* a2a3-selectortramps-arm.s */,
+				D0FF2E9723E40B3300683773 /* a2a3-selectortramps-i386.s */,
+				D0FF2E9923E40B3300683773 /* a2a3-selectortramps-x86_64.s */,
+				D0FF2E9B23E40B3300683773 /* OCMethodTrace.h */,
+				D0FF2E9D23E40B3300683773 /* OCMethodTrace.m */,
+				D0FF2E9F23E40B3300683773 /* OCSelectorTrampolines.h */,
+				D0FF2EA123E40B3300683773 /* OCSelectorTrampolines.mm */,
+				D0FF2EA323E40B3300683773 /* selectortramps.mac */,
+			);
+			path = Trace;
+			sourceTree = "<group>";
+		};
+		D0FF2EA423E40B3300683773 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				D0FF2EA523E40B3300683773 /* LLDBTools.h */,
+				D0FF2EA723E40B3300683773 /* LLDBTools.mm */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		D0FF2EA923E40B3300683773 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D0FF2EAA23E40B3300683773 /* TikTokDylib-Prefix.pch */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D0FF2EAB23E40B3300683773 /* AntiAntiDebug */ = {
+			isa = PBXGroup;
+			children = (
+				D0FF2EAC23E40B3300683773 /* AntiAntiDebug.m */,
+			);
+			path = AntiAntiDebug;
+			sourceTree = "<group>";
+		};
+		D0FF2EAE23E40B3300683773 /* fishhook */ = {
+			isa = PBXGroup;
+			children = (
+				D0FF2EAF23E40B3300683773 /* fishhook.c */,
+				D0FF2EB123E40B3300683773 /* fishhook.h */,
+			);
+			path = fishhook;
+			sourceTree = "<group>";
+		};
+		D0FF2EBF23E40D4300683773 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D0FF2EC023E40D4300683773 /* UIControl+XYExtensions.m */,
+				D0FF2EC123E40D4300683773 /* MBProgressHUD.m */,
+				D0FF2EC223E40D4300683773 /* UIAlertView+Blocks.h */,
+				D0FF2EC323E40D4300683773 /* NSRunLoop+XYExtensions.m */,
+				D0FF2EC423E40D4300683773 /* MBProgressHUD+XYHUD.h */,
+				D0FF2EC623E40D4300683773 /* UINavigationController+XYExtensions.m */,
+				D0FF2EC723E40D4300683773 /* MBProgressHUD.h */,
+				D0FF2EC823E40D4300683773 /* UIControl+XYExtensions.h */,
+				D0FF2ECA23E40D4300683773 /* MBProgressHUD+XYHUD.m */,
+				D0FF2ECB23E40D4300683773 /* NSRunLoop+XYExtensions.h */,
+				D0FF2ECC23E40D4300683773 /* SimulatedTouch */,
+				D0FF2F1423E40D4300683773 /* UIAlertView+Blocks.m */,
+				D0FF2F1523E40D4300683773 /* UINavigationController+XYExtensions.h */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D0FF2ECC23E40D4300683773 /* SimulatedTouch */ = {
+			isa = PBXGroup;
+			children = (
+				D0FF2ECD23E40D4300683773 /* UIApplication+XYSimulatedTouchPrivate.h */,
+				D0FF2ECE23E40D4300683773 /* UITouch+XYSimulatedTouchExtensions.h */,
+				D0FF2ECF23E40D4300683773 /* KIF */,
+				D0FF2F0F23E40D4300683773 /* XYSimulatedTouch.m */,
+				D0FF2F1023E40D4300683773 /* FixCategoryBug.h */,
+				D0FF2F1123E40D4300683773 /* UIApplication+XYSimulatedTouchPrivate.m */,
+				D0FF2F1223E40D4300683773 /* UITouch+XYSimulatedTouchExtensions.m */,
+				D0FF2F1323E40D4300683773 /* XYSimulatedTouch.h */,
+			);
+			path = SimulatedTouch;
+			sourceTree = "<group>";
+		};
+		D0FF2ECF23E40D4300683773 /* KIF */ = {
+			isa = PBXGroup;
+			children = (
+				D0FF2ED023E40D4300683773 /* Classes */,
+				D0FF2EE923E40D4300683773 /* Additions */,
+			);
+			path = KIF;
+			sourceTree = "<group>";
+		};
+		D0FF2ED023E40D4300683773 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D0FF2ED123E40D4300683773 /* IOHIDEvent+KIF.h */,
+				D0FF2ED223E40D4300683773 /* KIFUIObject.h */,
+				D0FF2ED323E40D4300683773 /* KIFTypist.h */,
+				D0FF2ED423E40D4300683773 /* UIAutomationHelper.h */,
+				D0FF2ED523E40D4300683773 /* KIFTextInputTraitsOverrides.m */,
+				D0FF2ED623E40D4300683773 /* KIFTestActor.h */,
+				D0FF2ED723E40D4300683773 /* IOHIDEvent+KIF.m */,
+				D0FF2ED823E40D4300683773 /* KIFTestActor_Private.h */,
+				D0FF2ED923E40D4300683773 /* Actors */,
+				D0FF2EE323E40D4300683773 /* KIFUIObject.m */,
+				D0FF2EE423E40D4300683773 /* KIF.h */,
+				D0FF2EE523E40D4300683773 /* KIFTextInputTraitsOverrides.h */,
+				D0FF2EE623E40D4300683773 /* UIAutomationHelper.m */,
+				D0FF2EE723E40D4300683773 /* KIFTypist.m */,
+				D0FF2EE823E40D4300683773 /* KIFTestActor.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		D0FF2ED923E40D4300683773 /* Actors */ = {
+			isa = PBXGroup;
+			children = (
+				D0FF2EDA23E40D4300683773 /* KIFUITestActor-ConditionalTests.h */,
+				D0FF2EDB23E40D4300683773 /* KIFSystemTestActor.m */,
+				D0FF2EDC23E40D4300683773 /* KIFUIViewTestActor.m */,
+				D0FF2EDD23E40D4300683773 /* KIFUITestActor.m */,
+				D0FF2EDE23E40D4300683773 /* KIFUITestActor_Private.h */,
+				D0FF2EDF23E40D4300683773 /* KIFUITestActor-ConditionalTests.m */,
+				D0FF2EE023E40D4300683773 /* KIFSystemTestActor.h */,
+				D0FF2EE123E40D4300683773 /* KIFUIViewTestActor.h */,
+				D0FF2EE223E40D4300683773 /* KIFUITestActor.h */,
+			);
+			path = Actors;
+			sourceTree = "<group>";
+		};
+		D0FF2EE923E40D4300683773 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				D0FF2EEA23E40D4300683773 /* UIAccessibilityElement-KIFAdditions.m */,
+				D0FF2EEB23E40D4300683773 /* UIScreen+KIFAdditions.m */,
+				D0FF2EEC23E40D4300683773 /* NSException-KIFAdditions.m */,
+				D0FF2EED23E40D4300683773 /* NSString+KIFAdditions.m */,
+				D0FF2EEE23E40D4300683773 /* UIApplication-KIFAdditions.h */,
+				D0FF2EEF23E40D4300683773 /* CGGeometry-KIFAdditions.m */,
+				D0FF2EF023E40D4300683773 /* UIWindow-KIFAdditions.m */,
+				D0FF2EF123E40D4300683773 /* UIScrollView-KIFAdditions.m */,
+				D0FF2EF223E40D4300683773 /* UIView-Debugging.m */,
+				D0FF2EF323E40D4300683773 /* UITouch-KIFAdditions.m */,
+				D0FF2EF423E40D4300683773 /* UITableView-KIFAdditions.h */,
+				D0FF2EF523E40D4300683773 /* CAAnimation+KIFAdditions.m */,
+				D0FF2EF623E40D4300683773 /* NSFileManager-KIFAdditions.h */,
+				D0FF2EF723E40D4300683773 /* UIView-KIFAdditions.h */,
+				D0FF2EF823E40D4300683773 /* NSError-KIFAdditions.h */,
+				D0FF2EF923E40D4300683773 /* UIEvent+KIFAdditions.h */,
+				D0FF2EFA23E40D4300683773 /* CALayer-KIFAdditions.h */,
+				D0FF2EFB23E40D4300683773 /* NSPredicate+KIFAdditions.h */,
+				D0FF2EFC23E40D4300683773 /* UIScrollView-KIFAdditions.h */,
+				D0FF2EFD23E40D4300683773 /* UIWindow-KIFAdditions.h */,
+				D0FF2EFE23E40D4300683773 /* CGGeometry-KIFAdditions.h */,
+				D0FF2EFF23E40D4300683773 /* UIApplication-KIFAdditions.m */,
+				D0FF2F0023E40D4300683773 /* NSString+KIFAdditions.h */,
+				D0FF2F0123E40D4300683773 /* NSException-KIFAdditions.h */,
+				D0FF2F0223E40D4300683773 /* UIScreen+KIFAdditions.h */,
+				D0FF2F0323E40D4300683773 /* UIAccessibilityElement-KIFAdditions.h */,
+				D0FF2F0423E40D4300683773 /* UIView-KIFAdditions.m */,
+				D0FF2F0523E40D4300683773 /* NSFileManager-KIFAdditions.m */,
+				D0FF2F0623E40D4300683773 /* CAAnimation+KIFAdditions.h */,
+				D0FF2F0723E40D4300683773 /* UITouch-KIFAdditions.h */,
+				D0FF2F0823E40D4300683773 /* UITableView-KIFAdditions.m */,
+				D0FF2F0923E40D4300683773 /* UIView-Debugging.h */,
+				D0FF2F0A23E40D4300683773 /* UIEvent+KIFAdditions.m */,
+				D0FF2F0B23E40D4300683773 /* NSError-KIFAdditions.m */,
+				D0FF2F0C23E40D4300683773 /* LoadableCategory.h */,
+				D0FF2F0D23E40D4300683773 /* NSPredicate+KIFAdditions.m */,
+				D0FF2F0E23E40D4300683773 /* CALayer-KIFAdditions.m */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
+		D0FF2F1623E40D4300683773 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				D0FF2F1723E40D4300683773 /* countryCode.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		D0FF2F1823E40D4400683773 /* AwemeHeaders */ = {
+			isa = PBXGroup;
+			children = (
+				D0FF2F1923E40D4400683773 /* AWEProfileHeaderView.h */,
+				D0FF2F1A23E40D4400683773 /* AWEProfileHeaderViewController.h */,
+				D0FF2F1B23E40D4400683773 /* AWEVideoModel.h */,
+				D0FF2F1C23E40D4400683773 /* AWEMusicDetailViewController.h */,
+				D0FF2F1D23E40D4400683773 /* AWECommentPanelBaseCell.h */,
+				D0FF2F1E23E40D4400683773 /* AWECompanyProfileHeaderView.h */,
+				D0FF2F1F23E40D4400683773 /* AWEFeedTableViewController.h */,
+				D0FF2F2023E40D4400683773 /* AWEAwemeBaseViewController.h */,
+				D0FF2F2123E40D4400683773 /* AWEFeedViewCell.h */,
+				D0FF2F2223E40D4400683773 /* AwemeApiHeaders.h */,
+				D0FF2F2323E40D4400683773 /* AWEFeedCellViewController.h */,
+				D0FF2F2423E40D4400683773 /* AWEGrowingTextView.h */,
+				D0FF2F2523E40D4400683773 /* AWEUserModel.h */,
+				D0FF2F2623E40D4400683773 /* AWEUserRelationView.h */,
+				D0FF2F2723E40D4400683773 /* AWEProfileHeaderExtraViewController.h */,
+				D0FF2F2823E40D4400683773 /* AWEUserDetailViewController.h */,
+				D0FF2F2923E40D4400683773 /* AWEAwemePlayInteractionViewController.h */,
+				D0FF2F2A23E40D4400683773 /* AWEAwemeModel.h */,
+				D0FF2F2B23E40D4400683773 /* AWECommentListViewController.h */,
+				D0FF2F2C23E40D4400683773 /* AWECommentPanelCell.h */,
+				D0FF2F2D23E40D4400683773 /* AWECommentListInputView.h */,
+			);
+			path = AwemeHeaders;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D0FF2E6D23E40B3300683773 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0FF2F9B23E40D7500683773 /* XYConfigSettingsViewController.h in Headers */,
+				D0FF2F8523E40D4400683773 /* AWEFeedTableViewController.h in Headers */,
+				D0FF2F4423E40D4400683773 /* KIFUITestActor-ConditionalTests.h in Headers */,
+				D0FF2F8A23E40D4400683773 /* AWEGrowingTextView.h in Headers */,
+				D0FF2F4823E40D4400683773 /* KIFUITestActor_Private.h in Headers */,
+				D0FF2E8523E40B3300683773 /* MDCycriptManager.h in Headers */,
+				D0FF2F6723E40D4400683773 /* CGGeometry-KIFAdditions.h in Headers */,
+				D0FF2F3F23E40D4400683773 /* UIAutomationHelper.h in Headers */,
+				D0FF2F5723E40D4400683773 /* UIApplication-KIFAdditions.h in Headers */,
+				D0FF2F6423E40D4400683773 /* NSPredicate+KIFAdditions.h in Headers */,
+				D0FF2F3A23E40D4400683773 /* UIApplication+XYSimulatedTouchPrivate.h in Headers */,
+				D0FF2F3B23E40D4400683773 /* UITouch+XYSimulatedTouchExtensions.h in Headers */,
+				D0FF2E8923E40B3300683773 /* MDMethodTrace.h in Headers */,
+				D0FF2F9023E40D4400683773 /* AWEAwemeModel.h in Headers */,
+				D0FF2F9A23E40D7500683773 /* RadomComments.h in Headers */,
+				D0FF2F8723E40D4400683773 /* AWEFeedViewCell.h in Headers */,
+				D0FF2F7523E40D4400683773 /* LoadableCategory.h in Headers */,
+				D0FF2F3623E40D4400683773 /* UIControl+XYExtensions.h in Headers */,
+				D0FF2F4C23E40D4400683773 /* KIFUITestActor.h in Headers */,
+				D0FF2F8B23E40D4400683773 /* AWEUserModel.h in Headers */,
+				D0FF2F8F23E40D4400683773 /* AWEAwemePlayInteractionViewController.h in Headers */,
+				D0FF2F3E23E40D4400683773 /* KIFTypist.h in Headers */,
+				D0FF2EB223E40B3300683773 /* fishhook.h in Headers */,
+				D0FF2F9323E40D4400683773 /* AWECommentListInputView.h in Headers */,
+				D0FF2F3223E40D4400683773 /* MBProgressHUD+XYHUD.h in Headers */,
+				D0FF2F6A23E40D4400683773 /* NSException-KIFAdditions.h in Headers */,
+				D0FF2F6C23E40D4400683773 /* UIAccessibilityElement-KIFAdditions.h in Headers */,
+				D0FF2F4F23E40D4400683773 /* KIFTextInputTraitsOverrides.h in Headers */,
+				D0FF2F6023E40D4400683773 /* UIView-KIFAdditions.h in Headers */,
+				D0FF2F4E23E40D4400683773 /* KIF.h in Headers */,
+				D0FF2F7023E40D4400683773 /* UITouch-KIFAdditions.h in Headers */,
+				D0FF2F8D23E40D4400683773 /* AWEProfileHeaderExtraViewController.h in Headers */,
+				D0FF2EA623E40B3300683773 /* LLDBTools.h in Headers */,
+				D0FF2F8123E40D4400683773 /* AWEVideoModel.h in Headers */,
+				D0FF2F8E23E40D4400683773 /* AWEUserDetailViewController.h in Headers */,
+				D0FF2E8123E40B3300683773 /* MDConfigManager.h in Headers */,
+				D0FF2F8023E40D4400683773 /* AWEProfileHeaderViewController.h in Headers */,
+				D0FF2F8C23E40D4400683773 /* AWEUserRelationView.h in Headers */,
+				D0FF2F3023E40D4400683773 /* UIAlertView+Blocks.h in Headers */,
+				D0FF2F7C23E40D4400683773 /* XYSimulatedTouch.h in Headers */,
+				D0FF2EB423E40B3300683773 /* TikTokDylib.h in Headers */,
+				D0FF2F6123E40D4400683773 /* NSError-KIFAdditions.h in Headers */,
+				D0FF2F5F23E40D4400683773 /* NSFileManager-KIFAdditions.h in Headers */,
+				D0FF2F6F23E40D4400683773 /* CAAnimation+KIFAdditions.h in Headers */,
+				D0FF2F6323E40D4400683773 /* CALayer-KIFAdditions.h in Headers */,
+				D0FF2F3C23E40D4400683773 /* IOHIDEvent+KIF.h in Headers */,
+				D0FF2F6B23E40D4400683773 /* UIScreen+KIFAdditions.h in Headers */,
+				D0FF2F3923E40D4400683773 /* NSRunLoop+XYExtensions.h in Headers */,
+				D0FF2F9223E40D4400683773 /* AWECommentPanelCell.h in Headers */,
+				D0FF2F8923E40D4400683773 /* AWEFeedCellViewController.h in Headers */,
+				D0FF2F6523E40D4400683773 /* UIScrollView-KIFAdditions.h in Headers */,
+				D0FF2F7223E40D4400683773 /* UIView-Debugging.h in Headers */,
+				D0FF2F6223E40D4400683773 /* UIEvent+KIFAdditions.h in Headers */,
+				D0FF2F3D23E40D4400683773 /* KIFUIObject.h in Headers */,
+				D0FF2EA023E40B3300683773 /* OCSelectorTrampolines.h in Headers */,
+				D0FF2F8423E40D4400683773 /* AWECompanyProfileHeaderView.h in Headers */,
+				D0FF2F8323E40D4400683773 /* AWECommentPanelBaseCell.h in Headers */,
+				D0FF2F5D23E40D4400683773 /* UITableView-KIFAdditions.h in Headers */,
+				D0FF2F3523E40D4400683773 /* MBProgressHUD.h in Headers */,
+				D0FF2E9C23E40B3300683773 /* OCMethodTrace.h in Headers */,
+				D0FF2F6623E40D4400683773 /* UIWindow-KIFAdditions.h in Headers */,
+				D0FF2F7E23E40D4400683773 /* UINavigationController+XYExtensions.h in Headers */,
+				D0FF2F9123E40D4400683773 /* AWECommentListViewController.h in Headers */,
+				D0FF2F4B23E40D4400683773 /* KIFUIViewTestActor.h in Headers */,
+				D0FF2F7F23E40D4400683773 /* AWEProfileHeaderView.h in Headers */,
+				D0FF2F9C23E40D7500683773 /* XYAwemeManager.h in Headers */,
+				D0FF2F6923E40D4400683773 /* NSString+KIFAdditions.h in Headers */,
+				D0FF2F7923E40D4400683773 /* FixCategoryBug.h in Headers */,
+				D0FF2F4A23E40D4400683773 /* KIFSystemTestActor.h in Headers */,
+				D0FF2F4123E40D4400683773 /* KIFTestActor.h in Headers */,
+				D0FF2F4323E40D4400683773 /* KIFTestActor_Private.h in Headers */,
+				D0FF2F8623E40D4400683773 /* AWEAwemeBaseViewController.h in Headers */,
+				D0FF2F8823E40D4400683773 /* AwemeApiHeaders.h in Headers */,
+				D0FF2F8223E40D4400683773 /* AWEMusicDetailViewController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D0FF2E5D23E40B3300683773 /* TikTok */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0FF2EBC23E40B3300683773 /* Build configuration list for PBXNativeTarget "TikTok" */;
+			buildPhases = (
+				D0FF2E5723E40B3300683773 /* Sources */,
+				D0FF2E5823E40B3300683773 /* Frameworks */,
+				D0FF2E5923E40B3300683773 /* ShellScript */,
+				D0FF2E5A23E40B3300683773 /* Resources */,
+				D0FF2E5B23E40B3300683773 /* CopyFiles */,
+				D0FF2E5C23E40B3300683773 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D0FF2E7223E40B3300683773 /* PBXTargetDependency */,
+			);
+			name = TikTok;
+			productName = TikTok;
+			productReference = D0FF2E5E23E40B3300683773 /* TikTok.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D0FF2E6E23E40B3300683773 /* TikTokDylib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0FF2EB923E40B3300683773 /* Build configuration list for PBXNativeTarget "TikTokDylib" */;
+			buildPhases = (
+				D0FF2E6A23E40B3300683773 /* ShellScript */,
+				D0FF2E6B23E40B3300683773 /* Sources */,
+				D0FF2E6C23E40B3300683773 /* Frameworks */,
+				D0FF2E6D23E40B3300683773 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TikTokDylib;
+			productName = TikTokDylib;
+			productReference = D0FF2E6F23E40B3300683773 /* libTikTokDylib.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D0FF2E5323E40B3300683773 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = enba;
+				TargetAttributes = {
+					D0FF2E5D23E40B3300683773 = {
+						CreatedOnToolsVersion = 11.3;
+					};
+					D0FF2E6E23E40B3300683773 = {
+						CreatedOnToolsVersion = 11.3;
+					};
+				};
+			};
+			buildConfigurationList = D0FF2E5623E40B3300683773 /* Build configuration list for PBXProject "TikTok" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D0FF2E5223E40B3300683773;
+			productRefGroup = D0FF2E5F23E40B3300683773 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D0FF2E5D23E40B3300683773 /* TikTok */,
+				D0FF2E6E23E40B3300683773 /* TikTokDylib */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D0FF2E5A23E40B3300683773 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0FF2FA223E4131600683773 /* countryCode.plist in Resources */,
+				D0FF2E6623E40B3300683773 /* MDConfig.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D0FF2E5923E40B3300683773 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = /opt/MonkeyDev/Tools/pack.sh;
+		};
+		D0FF2E5C23E40B3300683773 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/MonkeyDev/Tools/pack.sh codesign";
+		};
+		D0FF2E6A23E40B3300683773 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/MonkeyDev/bin/md --xcbp-logos";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D0FF2E5723E40B3300683773 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0FF2E6B23E40B3300683773 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0FF2F5823E40D4400683773 /* CGGeometry-KIFAdditions.m in Sources */,
+				D0FF2F2E23E40D4400683773 /* UIControl+XYExtensions.m in Sources */,
+				D0FF2F5623E40D4400683773 /* NSString+KIFAdditions.m in Sources */,
+				D0FF2F4023E40D4400683773 /* KIFTextInputTraitsOverrides.m in Sources */,
+				D0FF2F5A23E40D4400683773 /* UIScrollView-KIFAdditions.m in Sources */,
+				D0FF2E8723E40B3300683773 /* MDCycriptManager.m in Sources */,
+				D0FF2E9023E40B3300683773 /* a1a2-selectortramps-arm64.s in Sources */,
+				D0FF2F4723E40D4400683773 /* KIFUITestActor.m in Sources */,
+				D0FF2E8E23E40B3300683773 /* a1a2-selectortramps-arm.s in Sources */,
+				D0FF2F5223E40D4400683773 /* KIFTestActor.m in Sources */,
+				D0FF2F3823E40D4400683773 /* MBProgressHUD+XYHUD.m in Sources */,
+				D0FF2F6823E40D4400683773 /* UIApplication-KIFAdditions.m in Sources */,
+				D0FF2F6D23E40D4400683773 /* UIView-KIFAdditions.m in Sources */,
+				D0FF2F7123E40D4400683773 /* UITableView-KIFAdditions.m in Sources */,
+				D0FF2E9423E40B3300683773 /* a1a2-selectortramps-x86_64.s in Sources */,
+				D0FF2F3423E40D4400683773 /* UINavigationController+XYExtensions.m in Sources */,
+				D0FF2F5E23E40D4400683773 /* CAAnimation+KIFAdditions.m in Sources */,
+				D0FF2F7D23E40D4400683773 /* UIAlertView+Blocks.m in Sources */,
+				D0FF2E9E23E40B3300683773 /* OCMethodTrace.m in Sources */,
+				D0FF2F9D23E40D7500683773 /* RadomComments.m in Sources */,
+				D0FF2F7723E40D4400683773 /* CALayer-KIFAdditions.m in Sources */,
+				D0FF2E8323E40B3300683773 /* MDConfigManager.m in Sources */,
+				D0FF2F9F23E40D7500683773 /* XYConfigSettingsViewController.m in Sources */,
+				D0FF2F5323E40D4400683773 /* UIAccessibilityElement-KIFAdditions.m in Sources */,
+				D0FF2F3123E40D4400683773 /* NSRunLoop+XYExtensions.m in Sources */,
+				D0FF2F7323E40D4400683773 /* UIEvent+KIFAdditions.m in Sources */,
+				D0FF2F2F23E40D4400683773 /* MBProgressHUD.m in Sources */,
+				D0FF2F5123E40D4400683773 /* KIFTypist.m in Sources */,
+				D0FF2EB023E40B3300683773 /* fishhook.c in Sources */,
+				D0FF2F5C23E40D4400683773 /* UITouch-KIFAdditions.m in Sources */,
+				D0FF2EAD23E40B3300683773 /* AntiAntiDebug.m in Sources */,
+				D0FF2F7A23E40D4400683773 /* UIApplication+XYSimulatedTouchPrivate.m in Sources */,
+				D0FF2F4223E40D4400683773 /* IOHIDEvent+KIF.m in Sources */,
+				D0FF2EB623E40B3300683773 /* TikTokDylib.m in Sources */,
+				D0FF2F6E23E40D4400683773 /* NSFileManager-KIFAdditions.m in Sources */,
+				D0FF2F9E23E40D7500683773 /* XYAwemeManager.m in Sources */,
+				D0FF2F5923E40D4400683773 /* UIWindow-KIFAdditions.m in Sources */,
+				D0FF2F4D23E40D4400683773 /* KIFUIObject.m in Sources */,
+				D0FF2F7823E40D4400683773 /* XYSimulatedTouch.m in Sources */,
+				D0FF2F4923E40D4400683773 /* KIFUITestActor-ConditionalTests.m in Sources */,
+				D0FF2F4623E40D4400683773 /* KIFUIViewTestActor.m in Sources */,
+				D0FF2F5523E40D4400683773 /* NSException-KIFAdditions.m in Sources */,
+				D0FF2EA223E40B3300683773 /* OCSelectorTrampolines.mm in Sources */,
+				D0FF2E9223E40B3300683773 /* a1a2-selectortramps-i386.s in Sources */,
+				D0FF2E9823E40B3300683773 /* a2a3-selectortramps-i386.s in Sources */,
+				D0FF2F5B23E40D4400683773 /* UIView-Debugging.m in Sources */,
+				D0FF2F7423E40D4400683773 /* NSError-KIFAdditions.m in Sources */,
+				D0FF2E9623E40B3300683773 /* a2a3-selectortramps-arm.s in Sources */,
+				D0FF2E7E23E40B3300683773 /* TikTokDylib.mm in Sources */,
+				D0FF2F5423E40D4400683773 /* UIScreen+KIFAdditions.m in Sources */,
+				D0FF2F4523E40D4400683773 /* KIFSystemTestActor.m in Sources */,
+				D0FF2EA823E40B3300683773 /* LLDBTools.mm in Sources */,
+				D0FF2F7623E40D4400683773 /* NSPredicate+KIFAdditions.m in Sources */,
+				D0FF2F7B23E40D4400683773 /* UITouch+XYSimulatedTouchExtensions.m in Sources */,
+				D0FF2F5023E40D4400683773 /* UIAutomationHelper.m in Sources */,
+				D0FF2E9A23E40B3300683773 /* a2a3-selectortramps-x86_64.s in Sources */,
+				D0FF2E8B23E40B3300683773 /* MDMethodTrace.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D0FF2E7223E40B3300683773 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D0FF2E6E23E40B3300683773 /* TikTokDylib */;
+			targetProxy = D0FF2E7123E40B3300683773 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		D0FF2EB723E40B3300683773 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D0FF2EB823E40B3300683773 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D0FF2EBA23E40B3300683773 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NKW67GFDHM;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/Frameworks/**",
+					"$(MonkeyDevPath)/Librarys/**",
+					"$(MonkeyDevTheosPath)/vendor/lib",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TikTokDylib/TikTokDylib-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/include",
+					"$(MonkeyDevTheosPath)/vendor/include/**",
+				);
+				INSTALL_PATH = "@executable_path/Frameworks/libTikTokDylib.dylib";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/Frameworks",
+					"$(MonkeyDevTheosPath)/vendor/lib/**",
+				);
+				MonkeyDevPath = /opt/MonkeyDev;
+				MonkeyDevTheosPath = /opt/theos;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-DTHEOS_INSTANCE_NAME=\"\\\"TikTokDylib\\\"\"",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-weak_library",
+					"/usr/lib/libc++.dylib",
+					"-weak_library",
+					"/usr/lib/libstdc++.dylib",
+					"-weak_library",
+					"$(MonkeyDevPath)/Frameworks/libsubstrate.dylib",
+					"-lcycript",
+					"-framework",
+					RevealServer,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		D0FF2EBB23E40B3300683773 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = NKW67GFDHM;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/Frameworks/**",
+					"$(MonkeyDevPath)/Librarys/**",
+					"$(MonkeyDevTheosPath)/vendor/lib",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TikTokDylib/TikTokDylib-Prefix.pch";
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/include",
+					"$(MonkeyDevTheosPath)/vendor/include/**",
+				);
+				INSTALL_PATH = "@executable_path/Frameworks/libTikTokDylib.dylib";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/Frameworks",
+					"$(MonkeyDevTheosPath)/vendor/lib/**",
+				);
+				MonkeyDevPath = /opt/MonkeyDev;
+				MonkeyDevTheosPath = /opt/theos;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-DTHEOS_INSTANCE_NAME=\"\\\"TikTokDylib\\\"\"",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-weak_library",
+					"/usr/lib/libc++.dylib",
+					"-weak_library",
+					"/usr/lib/libstdc++.dylib",
+					"-weak_library",
+					"$(MonkeyDevPath)/Frameworks/libsubstrate.dylib",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D0FF2EBD23E40B3300683773 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NKW67GFDHM;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = TikTok/Info.plist;
+				MONKEYDEV_ADD_SUBSTRATE = YES;
+				MONKEYDEV_CLASS_DUMP = YES;
+				MONKEYDEV_DEFAULT_BUNDLEID = YES;
+				MONKEYDEV_INSERT_DYLIB = YES;
+				MONKEYDEV_RESTORE_SYMBOL = NO;
+				MONKEYDEV_TARGET_APP = Optional;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-Objc",
+					"-framework",
+					"\"IOKit\"",
+				);
+				PODS_CONFIGURATION_BUILD_DIR = "$BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				PODS_ROOT = "${SRCROOT}/Pods";
+				PRODUCT_BUNDLE_IDENTIFIER = com.enba.TikTok;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D0FF2EBE23E40B3300683773 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NKW67GFDHM;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = TikTok/Info.plist;
+				MONKEYDEV_ADD_SUBSTRATE = YES;
+				MONKEYDEV_CLASS_DUMP = YES;
+				MONKEYDEV_DEFAULT_BUNDLEID = YES;
+				MONKEYDEV_INSERT_DYLIB = YES;
+				MONKEYDEV_RESTORE_SYMBOL = NO;
+				MONKEYDEV_TARGET_APP = Optional;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-Objc",
+					"-framework",
+					"\"IOKit\"",
+				);
+				PODS_CONFIGURATION_BUILD_DIR = "$BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				PODS_ROOT = "${SRCROOT}/Pods";
+				PRODUCT_BUNDLE_IDENTIFIER = com.enba.TikTok;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D0FF2E5623E40B3300683773 /* Build configuration list for PBXProject "TikTok" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0FF2EB723E40B3300683773 /* Debug */,
+				D0FF2EB823E40B3300683773 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0FF2EB923E40B3300683773 /* Build configuration list for PBXNativeTarget "TikTokDylib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0FF2EBA23E40B3300683773 /* Debug */,
+				D0FF2EBB23E40B3300683773 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0FF2EBC23E40B3300683773 /* Build configuration list for PBXNativeTarget "TikTok" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0FF2EBD23E40B3300683773 /* Debug */,
+				D0FF2EBE23E40B3300683773 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D0FF2E5323E40B3300683773 /* Project object */;
+}
