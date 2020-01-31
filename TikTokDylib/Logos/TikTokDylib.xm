@@ -62,7 +62,7 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
     
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(xy_automaticPlayNext) object:nil];
     
-    if ((self.autoScrollCount + 1) % 50 == 0) {
+    if ((self.autoScrollCount + 1) % 80 == 0) {
         [self.view xy_hideHUD];
         [self.view xy_showMessage:@"滑动视频多久啦\n去微信看看吧!"];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -78,9 +78,9 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
     CGFloat delay = MAX(arc4random_uniform(36), 15);
     CGFloat delayTime = 3.0;
     NSString *message = [NSString stringWithFormat:@"自动播放已开启\n可在设置中以关闭\n当前播放第%ld个", self.autoScrollCount ];
-    if (self.autoScrollCount > 60) {
+    if (self.autoScrollCount > 100) {
         delay = MAX(arc4random_uniform(80), 50);
-        message = [NSString stringWithFormat:@"超过60次自动化速度将会被降低\n当前播放第%ld个", self.autoScrollCount];
+        message = [NSString stringWithFormat:@"超过100次自动化速度将会被降低\n当前播放第%ld个", self.autoScrollCount];
     }
     if ((self.autoScrollCount + 1) % 30 == 0) {
         // 每30 次 就延长一下时间
