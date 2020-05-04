@@ -736,6 +736,57 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
 }
 %end
 
+%hook AWEAwemeModel
+
+- (BOOL)preventDownload {
+    BOOL flag = %orig;
+    return flag;
+}
+
+- (BOOL)allowDownloadWithoutWatermark {
+    BOOL flag = %orig;
+    return true;
+}
+
+%end
+
+%hook AWEShareBasePanelController
+- (void)notifyExtensionsWithSelector:(SEL)arg1 {
+    %orig;
+}
+- (void)addExtension:(id)arg1 {
+    %orig;
+}
+%end
+
+%hook AWEShareCollectionView
+- (void)sendEvents:(unsigned long long)arg1 toItemAtIndexPath:(id)arg2 {
+    %orig; // arg1==8
+}
+%end
+
+%hook AWELongVideoControlModel
+
+- (long long)preventDownloadType {
+    bool preventDownloadType = %orig;
+    // 与禁止下载视频的有关的hook
+    if ([XYAwemeManager manager].isRemovePreventDownload == YES) {
+        preventDownloadType = 0;
+    }
+    return preventDownloadType;
+}
+
+- (bool)allowDownload {
+    bool allowDownload = %orig;
+    // 与禁止下载视频的有关的hook
+    if ([XYAwemeManager manager].isRemovePreventDownload == YES) {
+        allowDownload = YES;
+    }
+    return allowDownload;
+}
+
+%end
+
 /// 和水印相关的两个方法
 
 %hook AWEShareServiceUtils
@@ -757,6 +808,31 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
     }
     %orig(data, arg3, arg4, arg5, arg6);
 }
+
++ (void)composeWithFileURL:(id)arg1 awemeModel:(id)arg2 options:(long long)arg3 watermarkTaskType:(unsigned long long)arg4 shouldMuteVideo:(_Bool)arg5 needSaveToAlbum:(_Bool)arg6 removeLocalFile:(_Bool)arg7 edgeData:(id)arg8 {
+    %orig;
+}
+
++ (void)downloadVideoWithURLGoup:(id)arg1 seed:(long long)arg2 destinationURL:(id)arg3 progress:(id)arg4 completionHandler:(id)arg5 {
+    %orig;
+}
++ (void)downloadVideoWithURLGoup:(id)arg1 destinationURL:(id)arg2 progress:(id)arg3 completionHandler:(id)arg4 {
+    %orig;
+}
+
++ (void)trackWatermarkShareDownloadEventWithShareType:(long long)arg1 downloadURLs:(id)arg2 hasWatermark:(_Bool)arg3 hasEndWatermark:(_Bool)arg4 {
+    %orig;
+}
+
+%end
+
+%hook AWEVideoModel
+
+- (id)downloadURL {
+    id obj = %orig;
+    return obj;
+}
+
 %end
 
 %hook AWEDynamicWaterMarkExporter
@@ -768,6 +844,21 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
     }
     return %orig;
 }
+
++ (id)endingWaterMarkLogoImage {
+    id obj = %orig;
+    return obj;
+}
+
+- (AWEAwemeModel *)model {
+    id obj = %orig;
+    return obj;
+}
+
++ (void)addWaterMarkWithUrl:(id)arg1 composeOptions:(long long)arg2 model:(id)arg3 shouldMuteVideo:(_Bool)arg4 needSaveToAlbum:(_Bool)arg5 userName:(id)arg6 videoOutputSize:(struct CGSize)arg7 edgeData:(id)arg8 canDirectAddVideoheader:(_Bool)arg9 progress:(CDUnknownBlockType)arg10 complete:(CDUnknownBlockType)arg11 onlyForCrop:(_Bool)arg12 watermarkTaskType:(unsigned long long)arg13 removeSourceFile:(_Bool)arg14 {
+    %orig;
+}
+
 %end
 
 //%hook AWEDynamicWaterMarkExporter
@@ -816,6 +907,30 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
     %orig;
 }
 
+%end
+
+%hook AVMDLDataLoader
+- (_Bool)_supportPoxy:(NSString *)url {
+    // 此url 的视频可以直接下载
+    NSLog(@"AVMDLDataLoader, url: %@", url);
+    [UIPasteboard generalPasteboard].string = url;
+    bool ret = %orig;
+    return ret;
+}
+- (id)getCacheFileInfo:(id)arg1 filePath:(id)arg2 {
+    id ret = %orig;
+    return ret;
+}
+- (id)getCacheFileInfo:(id)arg1 {
+    id ret = %orig;
+    return ret;
+}
+- (void)stop {
+    %orig;
+}
+- (void)start:(id *)arg1 {
+    %orig;
+}
 %end
 
 %hook AWEDiscoverFeedEntranceView

@@ -20,6 +20,37 @@
 
 #define kMENU_TITLE @"配置"
 
+static void SwapInstanceMethods(Class cls, SEL original, SEL replacement) {
+    Method originalMethod = class_getInstanceMethod(cls, original);
+    IMP originalImplementation = method_getImplementation(originalMethod);
+    const char *originalArgTypes = method_getTypeEncoding(originalMethod);
+
+    Method replacementMethod = class_getInstanceMethod(cls, replacement);
+    IMP replacementImplementation = method_getImplementation(replacementMethod);
+    const char *replacementArgTypes = method_getTypeEncoding(replacementMethod);
+
+    if (class_addMethod(cls, original, replacementImplementation, replacementArgTypes)) {
+        class_replaceMethod(cls, replacement, originalImplementation, originalArgTypes);
+    } else {
+        method_exchangeImplementations(originalMethod, replacementMethod);
+    }
+}
+
+
+@implementation UIApplication (XYSwizzle)
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        SwapInstanceMethods([UIApplication class], @selector(sendEvent:), @selector(swizzle_sendEvent:));
+    });
+}
+
+- (void)swizzle_sendEvent:(UIEvent *)event {
+    [self swizzle_sendEvent:event];
+}
+
+@end
+
 CHConstructor{
     
     [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
