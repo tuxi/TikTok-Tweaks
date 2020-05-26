@@ -1214,7 +1214,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NKW67GFDHM;
+				DEVELOPMENT_TEAM = 33TS6KJYJJ;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = TikTok/Info.plist;
 				MONKEYDEV_ADD_SUBSTRATE = YES;
@@ -1241,7 +1241,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NKW67GFDHM;
+				DEVELOPMENT_TEAM = 33TS6KJYJJ;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = TikTok/Info.plist;
 				MONKEYDEV_ADD_SUBSTRATE = YES;
