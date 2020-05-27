@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XYConfigSettingsViewController : UIViewController
 
+@property (nonatomic, copy, nullable) void (^ goUserProfileBlock)(NSString *userId);
+
 @end
 
 NS_ASSUME_NONNULL_END
