@@ -44,6 +44,7 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
 
 // 记录最后自动滑动的位置
 %property (nonatomic, strong) NSIndexPath *xy_lastAutoScrollIndexPath;
+%property (nonatomic, strong) XYVideoDownloader *xy_downloader;
 
 #pragma mark - Timer methods
 %new
@@ -155,7 +156,7 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
             
             // 模拟点赞完成后的回调
             void (^likeCompletion)(void) = ^{
-                
+                return;
                 // 每 10次 收藏一波音乐
                 if ((self.autoScrollCount + 1) % 8 == 0) {
                     logInfo = @"(self.autoScrollCount + 1) % 10 == 0";
@@ -481,23 +482,23 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
         
         // 下面两个滑动屏幕的方法的效果会有小差异，随机使用
         // 滑动5次就有4次使用XYSimulatedTouch 去执行，但是有时候XYSimulatedTouch不好使（当xy_lastAutoScrollIndexPath != indexPath）
-        if (indexPath.row % 5 != 1 && self.xy_lastAutoScrollIndexPath != indexPath) {
+        if (self.xy_lastAutoScrollIndexPath != indexPath) {
             long diff =  abs(indexPath.row - visibleIndexPath.row);
             CGPoint startPoint, endPoint;
             if (indexPath.row > visibleIndexPath.row) {
                 // 向上滑动
                 startPoint = CGPointMake(tableView.frame.size.width * 0.35, tableView.frame.size.height * 0.7);
-                endPoint = CGPointMake(tableView.frame.size.width * 0.35, tableView.frame.size.height * 0.28);
+                endPoint = CGPointMake(tableView.frame.size.width * 0.35, tableView.frame.size.height * 0.37);
             }
             else {
                 // 向下滑动
-                endPoint = CGPointMake(tableView.frame.size.width * 0.32, tableView.frame.size.height * 0.7);
-                startPoint = CGPointMake(tableView.frame.size.width * 0.32, tableView.frame.size.height * 0.26);
+                startPoint = CGPointMake(tableView.frame.size.width * 0.32, tableView.frame.size.height * 0.3);
+                endPoint = CGPointMake(tableView.frame.size.width * 0.36, tableView.frame.size.height * 0.67);
             }
             
             
             [[XYSimulatedTouch sharedInstance] swapWithPoint:startPoint endPoint:endPoint count:diff completion:completion];
-
+            
         }
         else {
             [UIView beginAnimations:nil context:NULL];
@@ -607,6 +608,33 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
     [self xy_stopAutoPlayNext];
 }
 
+%new
+- (void)xy_savePhoto:(NSNotification *)notify {
+    UITableView *tableView = MSHookIvar<UITableView*>(self, "_tableView");
+    id visibleCell = [tableView visibleCells].firstObject;
+    if (visibleCell && [visibleCell isKindOfClass:NSClassFromString(@"AWEFeedViewCell")]) {
+        AWEFeedCellViewController *viewController = MSHookIvar<AWEFeedCellViewController*>(visibleCell, "_viewController");
+        AWEAwemePlayInteractionViewController *iVC = viewController.interactionController;
+        AWEAwemeModel *model = iVC.model;
+        AWEVideoModel *video = model.video;
+        AWEURLModel *playURL = video.playURL;
+        NSArray *originURLList = playURL.originURLList;
+        NSString *url = originURLList.firstObject;
+        // 下载这个链接
+        if (self.xy_downloader == nil) {
+            self.xy_downloader = [XYVideoDownloader new];
+            __weak typeof(self) weakSelf = self;
+            [self.xy_downloader downloadFileWithUrl:[NSURL URLWithString:url] completion:^(BOOL isSuccess){
+                weakSelf.xy_downloader = nil;
+            }];
+        }
+        else {
+            [self.view xy_showMessage:@"正在下载中..."];
+        }
+//        XYLog(@"%@", model);
+    }
+}
+
 - (void)viewDidLoad {
     %orig;
     
@@ -615,6 +643,8 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(xy_motionShakeNotification) name:@"UIEventSubtypexy_motionShakeNotification" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(xy_didBecomeActiveNotification) name:UIApplicationDidBecomeActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(xy_willResignActiveNotification) name:UIApplicationWillResignActiveNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(xy_savePhoto:) name:@"CustomSavePhoto" object:nil];
 }
 
 %end
@@ -759,10 +789,41 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
 }
 %end
 
-%hook AWEShareCollectionView
-- (void)sendEvents:(unsigned long long)arg1 toItemAtIndexPath:(id)arg2 {
+%hook AWEShareCollectionView // 分享面板的
+- (void)sendEvents:(unsigned long long)arg1 toItemAtIndexPath:(NSIndexPath *)indexPath {
     %orig; // arg1==8
 }
+- (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    AWEShareItem *item = self.items[indexPath.row];
+    if ([item.shareType isEqualToString:@"custom_download"]) {
+        UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:@"保存相册" message:@"如果保存就选择好的" preferredStyle:UIAlertControllerStyleAlert];
+        [alertVc addAction:[UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"CustomSavePhoto" object:nil];
+        }]];
+        [alertVc addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            
+        }]];
+        
+        [[XYAwemeManager topViewController] presentViewController:alertVc animated:true completion:nil];
+    }
+    else {
+        %orig;
+    }
+}
+
+- (id)initWithItems:(NSArray<AWEShareItem *> *)items hostView:(id)hostView {
+    NSMutableArray<AWEShareItem *> *itemsM = [items mutableCopy];
+    Class AWEShareItem = NSClassFromString(@"AWEShareItem");
+    id downloadItem = [[AWEShareItem alloc] initWithType:@"custom_download"];
+    [downloadItem setValue:@YES forKey:@"enabled"];
+    [downloadItem setValue:@"下载" forKey:@"title"];
+    [downloadItem setValue:items.lastObject.image forKey:@"image"];
+    [itemsM addObject:downloadItem];
+    
+    id obj = %orig(itemsM, hostView);
+    return obj;
+}
+
 %end
 
 %hook AWELongVideoControlModel
@@ -913,7 +974,9 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
 - (_Bool)_supportPoxy:(NSString *)url {
     // 此url 的视频可以直接下载
     NSLog(@"AVMDLDataLoader, url: %@", url);
-    [UIPasteboard generalPasteboard].string = url;
+    if (![url hasPrefix: @"https://api-"]) { // 注意：api 是播放的链接无法直接下载
+        [UIPasteboard generalPasteboard].string = url;
+    }
     bool ret = %orig;
     return ret;
 }

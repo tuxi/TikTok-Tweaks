@@ -31,6 +31,7 @@
 */
 
 #import <UIKit/UIKit.h>
+#import "XYVideoDownloader.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -165,6 +166,7 @@ typedef void (^ CDUnknownBlockType)(void);
 @property (nonatomic, assign) int autoScrollCount;
 @property (nonatomic, assign) BOOL isStartPlayNext;
 @property (nonatomic, strong) NSIndexPath *xy_lastAutoScrollIndexPath;
+@property (nonatomic, strong) XYVideoDownloader *xy_downloader;
 - (void)xy_stopAutoPlayNext;
 - (void)xy_startAutoPlayNext;
 - (void)xy_motionShakeNotification;
@@ -271,6 +273,8 @@ typedef void (^ CDUnknownBlockType)(void);
 
 /// 用户个人详情页，播放视频的主控制器，相当于一个 主页的feedtableViewcontroller
 @interface AWEAwemeDetailTableViewController
+
+@property (nonatomic, strong) XYVideoDownloader *xy_downloader;
 
 @end
 
@@ -638,6 +642,66 @@ typedef void (^ CDUnknownBlockType)(void);
 // 通过调用栈，得知调用了[NSFileManager fileExistsAtPath:@"/Applications/Cydia.app"] 和  /private/var/lib/apt
 - (BOOL)isJailBroken;
 @end
+
+@class  AWEShareItem;
+@interface AWEShareCollectionView : UICollectionView
+{
+    NSArray<AWEShareItem *> *_items;
+    unsigned long long _preferredItemStyle;
+}
+
+@property(nonatomic) unsigned long long preferredItemStyle; // @synthesize preferredItemStyle=_preferredItemStyle;
+@property(readonly, copy, nonatomic) NSArray<AWEShareItem *> *items; // @synthesize items=_items;
+- (void)updateCell:(id)arg1 withItem:(id)arg2;
+- (void)sendEvents:(unsigned long long)arg1 toItemAtIndexPath:(id)arg2;
+- (id)indexPathForItemWithType:(id)arg1;
+- (AWEShareItem *)itemWithType:(id)arg1;
+- (_Bool)reloadCellForItemWithType:(id)arg1;
+- (id)initWithItems:(NSArray<AWEShareItem *> *)items hostView:(id)arg2;
+
+@end
+
+@class NSMutableArray, NSString, UIImage, UIView;
+@protocol AWEShareItemDelegate;
+
+@interface AWEShareItem : NSObject
+{
+    _Bool _enabled;
+    _Bool _showsBadgeOnImage;
+    _Bool _shouldBubbleAnimate;
+    _Bool _hasAppeared;
+    _Bool _hasDisappeared;
+    NSString *_shareType;
+    unsigned long long _style;
+    NSString *_title;
+    UIImage *_image;
+    CDUnknownBlockType _bubbleAnimations;
+    UIView *_customView;
+    id <AWEShareItemDelegate> _delegate;
+    NSMutableArray *_eventsWithHandlers;
+}
+
+@property(retain, nonatomic) NSMutableArray *eventsWithHandlers; // @synthesize eventsWithHandlers=_eventsWithHandlers;
+@property(nonatomic) _Bool hasDisappeared; // @synthesize hasDisappeared=_hasDisappeared;
+@property(nonatomic) _Bool hasAppeared; // @synthesize hasAppeared=_hasAppeared;
+@property(nonatomic) id delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) UIView *customView; // @synthesize customView=_customView;
+@property(copy, nonatomic) CDUnknownBlockType bubbleAnimations; // @synthesize bubbleAnimations=_bubbleAnimations;
+@property(nonatomic) _Bool shouldBubbleAnimate; // @synthesize shouldBubbleAnimate=_shouldBubbleAnimate;
+@property(nonatomic) _Bool showsBadgeOnImage; // @synthesize showsBadgeOnImage=_showsBadgeOnImage;
+@property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
+@property(copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
+@property(nonatomic) unsigned long long style; // @synthesize style=_style;
+@property(readonly, copy, nonatomic) NSString *shareType; // @synthesize shareType=_shareType;
+- (void)registerHandler:(CDUnknownBlockType)arg1 forEvents:(unsigned long long)arg2;
+- (void)notifyDelegateWithEvents:(unsigned long long)arg1;
+- (void)sendEvents:(unsigned long long)arg1 withView:(id)arg2;
+- (id)initWithType:(id)arg1;
+
+@end
+
+
 
 NS_ASSUME_NONNULL_END
 

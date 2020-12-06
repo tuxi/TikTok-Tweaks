@@ -86,7 +86,7 @@
 - (BOOL)isAutoPlayNext {
     NSNumber *isAutoPlay = [[NSUserDefaults standardUserDefaults] valueForKey:kAutoPlayNextKey];
     if (isAutoPlay == nil) {
-        return YES;
+        return NO;
     }
     return isAutoPlay.boolValue;
 }
@@ -196,5 +196,9 @@
     }
     
     return NO;
+}
+
++ (UIViewController *)topViewController {
+    return [NSClassFromString(@"AWEUIResponder") topViewController];
 }
 @end

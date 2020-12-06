@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0F858B2257CB42800DEE4CC /* XYVideoDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F858B0257CB42800DEE4CC /* XYVideoDownloader.m */; };
+		D0F858B3257CB42800DEE4CC /* XYVideoDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0F858B1257CB42800DEE4CC /* XYVideoDownloader.h */; };
 		D0FF2E6623E40B3300683773 /* MDConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0FF2E6523E40B3300683773 /* MDConfig.plist */; };
 		D0FF2E7023E40B3300683773 /* libTikTokDylib.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0FF2E6F23E40B3300683773 /* libTikTokDylib.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D0FF2E7523E40B3300683773 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FF2E7423E40B3300683773 /* JavaScriptCore.framework */; };
@@ -171,6 +173,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D0F858B0257CB42800DEE4CC /* XYVideoDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYVideoDownloader.m; sourceTree = "<group>"; };
+		D0F858B1257CB42800DEE4CC /* XYVideoDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYVideoDownloader.h; sourceTree = "<group>"; };
 		D0FF2E5E23E40B3300683773 /* TikTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0FF2E6123E40B3300683773 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		D0FF2E6323E40B3300683773 /* quick-resign.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "quick-resign.sh"; sourceTree = "<group>"; };
@@ -510,6 +514,8 @@
 		D0FF2EBF23E40D4300683773 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D0F858B1257CB42800DEE4CC /* XYVideoDownloader.h */,
+				D0F858B0257CB42800DEE4CC /* XYVideoDownloader.m */,
 				D0FF2EC023E40D4300683773 /* UIControl+XYExtensions.m */,
 				D0FF2EC123E40D4300683773 /* MBProgressHUD.m */,
 				D0FF2EC223E40D4300683773 /* UIAlertView+Blocks.h */,
@@ -686,6 +692,7 @@
 				D0FF2F3F23E40D4400683773 /* UIAutomationHelper.h in Headers */,
 				D0FF2F5723E40D4400683773 /* UIApplication-KIFAdditions.h in Headers */,
 				D0FF2F6423E40D4400683773 /* NSPredicate+KIFAdditions.h in Headers */,
+				D0F858B3257CB42800DEE4CC /* XYVideoDownloader.h in Headers */,
 				D0FF2F3A23E40D4400683773 /* UIApplication+XYSimulatedTouchPrivate.h in Headers */,
 				D0FF2F3B23E40D4400683773 /* UITouch+XYSimulatedTouchExtensions.h in Headers */,
 				D0FF2E8923E40B3300683773 /* MDMethodTrace.h in Headers */,
@@ -966,6 +973,7 @@
 				D0FF2F5023E40D4400683773 /* UIAutomationHelper.m in Sources */,
 				D0FF2E9A23E40B3300683773 /* a2a3-selectortramps-x86_64.s in Sources */,
 				D0FF2E8B23E40B3300683773 /* MDMethodTrace.m in Sources */,
+				D0F858B2257CB42800DEE4CC /* XYVideoDownloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
