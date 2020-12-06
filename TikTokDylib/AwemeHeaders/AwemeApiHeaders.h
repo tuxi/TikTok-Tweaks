@@ -32,12 +32,16 @@
 
 #import <UIKit/UIKit.h>
 #import "XYVideoDownloader.h"
+#import "AwemeApiHeaders1.h"
+#import "AMEMessageHeaders.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^ CDUnknownBlockType)(void);
+//typedef void (^ CDUnknownBlockType)(void);
+typedef id CDUnknownBlockType;
+@class XYVideoDownloader;
 
-@class AWEAwemePlayInteractionViewController, AWEAwemePlayInteractionPresenter, AWESearchViewController;
+@class AWEAwemePlayInteractionViewController, AWEAwemePlayInteractionPresenter, AWESearchViewController, AWEAwemeShareViewController, AWECommentListInputView, AWECommentListManager, AWESlidingTabbarView, AWESlidingTabButton, AWEUserProfileSlidingViewController, AWEUserFavoriteViewController, AWEUserDynamicViewController, AWELikeWorkViewController, AWEPostWorkViewController, AWEAwemeBaseViewController, AWESettingBaseViewModel, AWESettingItemModel;
 
 @interface AWEUserModel
 // 关注状态 0 未关注 1 已关注
@@ -126,6 +130,10 @@ typedef void (^ CDUnknownBlockType)(void);
 @property (nonatomic) _Bool userDigged;
 // 是否是用户喜欢的
 @property (nonatomic) _Bool userFavorited;
+// 视频标题，基本没有 nil
+@property (copy, nonatomic) NSString *title;
+// 视频描述内容
+@property(copy, nonatomic) NSString *descriptionString;
 // 是否是没有账号的广告
 - (BOOL)isNoAccountAd;
 // 是否是直播
@@ -157,32 +165,14 @@ typedef void (^ CDUnknownBlockType)(void);
 @end
 
 
-
 @interface AWEFeedTableViewController: UIViewController
 
 // 下面方法为自定义的新方法
 @property (nonatomic, assign) BOOL viewIsDisappear;
-// 自动滚动的数量
-@property (nonatomic, assign) int autoScrollCount;
-@property (nonatomic, assign) BOOL isStartPlayNext;
-@property (nonatomic, strong) NSIndexPath *xy_lastAutoScrollIndexPath;
 @property (nonatomic, strong) XYVideoDownloader *xy_downloader;
-- (void)xy_stopAutoPlayNext;
-- (void)xy_startAutoPlayNext;
-- (void)xy_motionShakeNotification;
-- (void)xy_didBecomeActiveNotification;
-- (void)xy_willResignActiveNotification;
-- (void)xy_toggleAutoPlayNext;
-// 打开用户详情页，并关注用户
-- (void)xy_followCurrentUserWithInteractionViewController:(AWEAwemePlayInteractionViewController *)interactionViewController block:(void (^)(void))block;
-// 滚到到某个视频
-- (void)xy_scrollToIndexPath:(NSIndexPath *)indexPath completion:(void (^)(void))completion;
-// 点赞当前播放的视频
-- (void)xy_likeWithInteractionViewController:(AWEAwemePlayInteractionViewController *)iVC block:(void (^_Nullable)(void))block;
-// 收藏当前视频的音乐
-- (void)xy_collectionMusicWithInteractionViewController:(AWEAwemePlayInteractionViewController *)iVC block:(void (^)(void))block;
-// 随机滚动搜索页, 注意抖音搜索 每天都有上限，所以要控制使用，防止被禁
-- (void)xy_swapSearchViewControllerWithBlock:(void (^)(void))block;
+
+// 获取当前显示的分享控制面板
+- (nullable AWEAwemeShareViewController *)xy_getShareViewController;
 
 // 系统属性和方法
 @property (nonatomic, strong) UIView *view;
@@ -209,10 +199,38 @@ typedef void (^ CDUnknownBlockType)(void);
 - (BOOL)becomeFirstResponder;
 @end
 
-@interface AWECommentListInputView
+@protocol AWECommentListInputViewDelegate <NSObject>
+- (_Bool)commentInputViewShouldBeginEditing:(AWECommentListInputView *)arg1;
+- (void)commentInputView:(AWECommentListInputView *)arg1 didChangeHeightWithDiff:(double)arg2;
+// 评论inputView 点击键盘确定 响应的事件
+- (_Bool)commentInputViewShouldReturn:(AWECommentListInputView *)arg1;
 
-@property(retain, nonatomic) AWEGrowingTextView *textView;
+@optional
+- (void)commentInputViewDidHide:(AWECommentListInputView *)arg1;
+- (void)commentInputViewWillHideAdditionalAnimation:(AWECommentListInputView *)arg1 keyboardSize:(struct CGSize)arg2;
+- (void)commentInputViewWillHide:(AWECommentListInputView *)arg1 keyboardSize:(struct CGSize)arg2;
+- (void)commentInputViewDidChangeFrame:(AWECommentListInputView *)arg1;
+- (void)commentInputViewWillChangeFrameAdditionalAnimation:(AWECommentListInputView *)arg1;
+- (void)commentInputViewWillChangeFrame:(AWECommentListInputView *)arg1 keyboardSize:(struct CGSize)arg2;
+- (void)commentInputViewDidShow:(AWECommentListInputView *)arg1;
+- (void)commentInputViewWillShowAdditionalAnimation:(AWECommentListInputView *)arg1 keyboardSize:(struct CGSize)arg2;
+- (void)commentInputViewWillShow:(AWECommentListInputView *)arg1 keyboardSize:(struct CGSize)arg2;
+- (_Bool)commentInputViewShouldRemoveFromSuperAfterHide:(AWECommentListInputView *)arg1;
+- (_Bool)commentInputViewShouldChangeFrameBySuperview:(AWECommentListInputView *)arg1;
+- (void)growingTextViewDidChange:(AWEGrowingTextView *)arg1;
+- (void)growingTextViewDidEndEditing:(AWEGrowingTextView *)arg1;
+- (void)growingTextViewDidBeginEditing:(AWEGrowingTextView *)arg1;
+- (void)commentInputViewEmoticonButtonClicked:(UIButton *)arg1;
+- (_Bool)commentInputViewAtButtonAndEmoticonButtonEnable:(AWECommentListInputView *)arg1;
+@end
 
+
+@interface AWECommentListInputView: UIView
+
+@property (retain, nonatomic) AWEGrowingTextView *textView;
+@property (nonatomic, strong) AWEAwemeModel *model;
+// inputView 的 代理，当转发视频时，delegate 为 AWECreateRepostController 类型的
+@property (nonatomic, weak) id<AWECommentListInputViewDelegate> delegate;
 @end
 
 @interface AWECommentPanelBaseCell
@@ -227,6 +245,8 @@ typedef void (^ CDUnknownBlockType)(void);
 @property (nonatomic, strong) UITableView *tableView;
 // 评论弹框的输入框
 @property (nonatomic, strong) AWECommentListInputView *commentInputView;
+// 评论列表的数据源
+@property (nonatomic, strong) AWECommentListManager *listManager;
 - (void)sendCommentContent:(NSString *)content inputView:(AWECommentListInputView *)inputView isRetry:(BOOL)isRetry;
 // 点击键盘发送按钮回调的方法
 - (BOOL)commentInputViewShouldReturn:(AWECommentListInputView *)inputView;
@@ -247,20 +267,19 @@ typedef void (^ CDUnknownBlockType)(void);
 @property(retain, nonatomic) AWEAwemePlayInteractionPresenter *presenter;
 // 执行点击评论按钮的方法，弹出评论弹框
 - (void)performCommentAction;
-// 执行点赞的方法，如果已点赞则取消点赞，会取消赞 郁闷 tiktok 没有这个 方法
+// 执行点赞的方法，如果已点赞则取消点赞，会取消赞
 - (void)performLikeAction;
 // 双击 视频view时调用, 由AWEFeedCellViewController 的 tapGesture 触发, 调用此方法可以触发点赞，且不会取消赞
 - (void)onVideoPlayerViewDoubleClicked:(UITapGestureRecognizer *)tapGes;
-
 
 @end
 
 // AWEFeedCellViewController 继承自AWEAwemeBaseViewController
 // 注意：首页的关注和推荐是两个不同的实例控制器，但是他们都是AWEFeedCellViewController，所以切换首页的关注和推荐时，播放次数也是不一样的
-@interface AWEFeedCellViewController 
+@interface AWEFeedCellViewController //: AWEAwemeBaseViewController
+// UITapGestureRecognizer 的事件 target 是 AWEFeedCellViewController
 @property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 @property (nonatomic, strong) AWEAwemePlayInteractionViewController *interactionController;
-// UITapGestureRecognizer 的事件 target 是 AWEFeedCellViewController
 - (void)_onVideoPlayerViewClicked:(UITapGestureRecognizer *)tapGes;
 @end
 
@@ -271,11 +290,30 @@ typedef void (^ CDUnknownBlockType)(void);
 
 @end
 
-/// 用户个人详情页，播放视频的主控制器，相当于一个 主页的feedtableViewcontroller
-@interface AWEAwemeDetailTableViewController
+/// 用户个人详情页，播放视频的主控制器，相当于一个 主页的 AWEFeedTableViewController
+@interface AWEAwemeDetailTableViewController: UIViewController
 
+
+// AWEAwemeDetailTableViewCell
+@property(retain, nonatomic) UITableView *tableView;
+- (AWEAwemeModel *)currentDisplayingAweme;
+
+@property (nonatomic, assign) BOOL viewIsDisappear;
 @property (nonatomic, strong) XYVideoDownloader *xy_downloader;
+@end
 
+
+@interface AWEAwemeDetailCellViewController //: AWEAwemeBaseViewController
+// UITapGestureRecognizer 的事件 target 是 AWEFeedCellViewController
+@property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
+@property (nonatomic, strong) AWEAwemePlayInteractionViewController *interactionController;
+- (void)_onVideoPlayerViewClicked:(UITapGestureRecognizer *)tapGes;
+@end
+
+
+// 从用户主页作品播放一个作品后 的cell
+@interface AWEAwemeDetailTableViewCell
+@property(retain, nonatomic) AWEAwemeDetailCellViewController *viewController;
 @end
 
 @protocol AWEFeedTableViewCellViewControllerProtocol <NSObject>
@@ -343,9 +381,23 @@ typedef void (^ CDUnknownBlockType)(void);
 @property (nonatomic, strong) AWEProfileHeaderView *profileHeaderView;
 @end
 
-@interface AWEUserDetailViewController <AWEUserDetailViewControllerProtocol>
+/// 用户主页控制器
+@interface AWEUserDetailViewController: UIViewController <AWEUserDetailViewControllerProtocol>
 
+// 头部视图的控制器
 @property (nonatomic, strong) AWEProfileHeaderViewController *profileHeaderVC;
+// segment view
+@property(retain, nonatomic) AWESlidingTabbarView *tabView;
+// 子控制器的容器控制器
+@property(retain, nonatomic) AWEUserProfileSlidingViewController *slidingVC;
+// 收藏控制器
+@property(retain, nonatomic) AWEUserFavoriteViewController *favoriteVC;
+// 动态控制器
+@property(retain, nonatomic) AWEUserDynamicViewController *dynamicVC;
+// 喜欢控制器
+@property(retain, nonatomic) AWELikeWorkViewController *likeVC;
+// 发布的作品控制器
+@property(retain, nonatomic) AWEPostWorkViewController *postVC;
 // 点击返回按钮调用
 - (void)backBtnClicked:(nullable id)arg1;
 @end
@@ -368,6 +420,15 @@ typedef void (^ CDUnknownBlockType)(void);
 - (void)onUnFollowViewClicked:(UITapGestureRecognizer *)arg1;
 // 关注 按钮的点击手势
 - (void)onFollowViewClicked:(UITapGestureRecognizer *)arg1;
+
+// 点击音乐按钮的事件
+- (void)onMusicButtonClicked:(id)arg1;
+// 点击分享按钮的事件
+- (void)onShareButtonClicked:(id)arg1;
+// 点击评论按钮的事件
+- (void)onCommentButtonClicked:(id)arg1;
+// 点击喜欢按钮的事件
+- (void)onLikeButtonClicked:(id)arg1;
 @end
 
 @interface AWESettingsViewModel
@@ -433,10 +494,12 @@ typedef void (^ CDUnknownBlockType)(void);
 
 @end
 
+
+
 @interface AWESettingSectionModel
 
 @property(copy, nonatomic) NSString *sectionFooterTitle;
-@property(retain, nonatomic) NSArray *itemArray;
+@property(retain, nonatomic) NSArray<AWESettingItemModel *> *itemArray;
 @property(nonatomic) double sectionHeaderHeight;
 @property(copy, nonatomic) NSString *sectionHeaderTitle;
 @property(nonatomic) long long type; 
@@ -460,6 +523,8 @@ typedef void (^ CDUnknownBlockType)(void);
 @property(copy, nonatomic) NSString *subTitle;
 @property(copy, nonatomic) NSString *title;
 @property(nonatomic) long long type;
+@property(retain, nonatomic) NSString *identifier;
+@property(nonatomic) _Bool isSelect; 
 
 @end
 
@@ -484,10 +549,12 @@ typedef void (^ CDUnknownBlockType)(void);
 
 @interface AWESlidingTabbarView
 @property(retain, nonatomic) NSMutableArray *buttonArray;
-- (void)tabButtonClicked:(id)arg1;
+- (void)tabButtonClicked:(AWESlidingTabButton *)arg1;
 @end
 
 @interface AWESlidingViewController
+// AWEPostWorkViewController 为 作品控制器
+@property(retain, nonatomic) NSMutableArray *viewControllers;
 - (void)scrollToIndex:(long long)arg1 animated:(_Bool)arg2;
 @end
 
@@ -601,6 +668,7 @@ typedef void (^ CDUnknownBlockType)(void);
 @property(copy, nonatomic) NSString *enterFrom; // @synthesize enterFrom=_enterFrom;
 - (void)loginWithPlatform:(unsigned long long)arg1;
 - (void)oneLogin;
+// 其他登陆事件，这个我用到了，抖音底部的登陆按钮，使用其他账号登陆
 - (void)otherLoginAction;
 - (void)closeAction;
 - (id)initWithRouterModel:(DYRouterModel *)arg1;
@@ -698,6 +766,418 @@ typedef void (^ CDUnknownBlockType)(void);
 - (void)notifyDelegateWithEvents:(unsigned long long)arg1;
 - (void)sendEvents:(unsigned long long)arg1 withView:(id)arg2;
 - (id)initWithType:(id)arg1;
+
+@end
+
+/// 抖音的分享面板 中的cell 也是转发所在的cell， 属于自定义的view 并非cell
+@interface AWEShareIconAndTitleCell
+@property(nonatomic, strong) UILabel *titleLabel;
+@property(retain, nonatomic) UIImageView *iconImageView;
+// 分享类型
+@property(nonatomic, assign) long long shareType;
+// 点击cell的tap 事件
+- (void)tapGestureRecognized;
+@end
+/// 抖音的分享面板
+/**
+ 显示分享面板
+ AWEAwemeShareViewController *shareVC = [AWEAwemeShareViewController new];
+ [shareVC showOnWindow:[[UIApplication sharedApplication].delegate window] enableMask:NO  completion:nil];
+ 
+ 隐藏分享面板
+ [shareVC dismiss];
+ */
+@interface AWEAwemeShareViewController: UIViewController
+// 将分享面板 显示到某个window 上；
+- (void)showOnWindow:(id)arg1 enableMask:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+// 移除分享面板
+- (void)dismiss;
+
+- (_Bool)mus_shareDownloadDisabledForType:(long long)arg1;
+- (void)_updateFirstLineView;
+- (void)_updateSecondLineView;
+// 分享面板 第一行的scrollView
+// 通过其subviews 可以看到，第一个subview 为 转发 （AWEShareIconAndTitleCell）
+@property(retain, nonatomic) UIScrollView *firstLineView;
+// 分享面板 第二行的scrollView
+@property(retain, nonatomic) UIScrollView *secondLineView;
+@property(retain, nonatomic) NSMutableArray *secondLineShareChannels;
+@property(retain, nonatomic) NSMutableArray *firstLineShareChannels;
+@end
+
+// 评论的model
+@interface AWECommentModel : NSObject
+@property(copy, nonatomic) NSString *labelInfo; // @synthesize labelInfo=_labelInfo;
+@property(nonatomic) _Bool isSubComment; // @synthesize isSubComment=_isSubComment;
+@property(copy, nonatomic) NSNumber *subCommentCount;
+@property(retain, nonatomic) AWEAwemeModel *model; // @synthesize model=_model;
+@property(copy, nonatomic) NSString *adLinkText; // @synthesize adLinkText=_adLinkText;
+@property(nonatomic) _Bool isVideoTitle;
+@property(nonatomic) _Bool isAdComment;
+@property(copy, nonatomic) NSArray *textExtras; // @synthesize textExtras=_textExtras;
+@property(copy, nonatomic) NSArray *replyComments; // @synthesize replyComments=_replyComments;
+@property(nonatomic) _Bool userDigged; // @synthesize userDigged=_userDigged;
+@property(copy, nonatomic) NSString *tagText; // @synthesize tagText=_tagText;
+@property(copy, nonatomic) NSString *replySubCommentAutherName;
+@property(nonatomic) _Bool likedByCreator;
+// 评论内容
+@property(copy, nonatomic) NSString *content;
+@property(nonatomic) long long adLinkType;
+@property(readonly, nonatomic) AWECommentModel *quotedComment;
+@property(readonly, nonatomic) AWECommentModel *mainComment;
+@property(nonatomic) long long postState;
+// 作者
+@property (nonatomic, strong) AWEUserModel *author;
+@end
+
+/// 评论列表的数据源
+@interface AWECommentListManager : NSObject
+
+@property(nonatomic) _Bool isRequesting;
+@property(nonatomic) _Bool showEmptyCommentList;
+@property(nonatomic) long long commentCount;
+@property(nonatomic) _Bool hasMore;
+@property(retain, nonatomic) NSMutableDictionary *subCommentInfoDict;
+@property(retain, nonatomic) NSMutableArray<AWECommentModel *> *dataList;
+- (_Bool)useV2API;
+- (_Bool)commentExistsInArray:(id)arg1 comment:(id)arg2;
+- (id)removeDuplicatedCommentsWithArray:(id)arg1;
+- (void)likeButtonTappedWithCommentID:(id)arg1 isLike:(_Bool)arg2 referString:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)refreshWithCompletion:(CDUnknownBlockType)arg1;
+- (void)refreshCommentsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)refreshCommentsWithDiggID:(id)arg1 insertIDs:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)fetchReplyListWithCommentID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)initWithAwemeId:(id)arg1;
+- (long long)rowWithSubCommentIndex:(long long)arg1;
+- (long long)subCommentIndexWithIndexPath:(id)arg1;
+- (long long)removeCommentAtIndexPath:(id)arg1;
+- (_Bool)insertComment:(id)arg1 atIndexPath:(id)arg2;
+- (_Bool)isEmpty;
+- (AWECommentModel *)commentAtIndexPath:(id)arg1;
+
+@end
+
+@interface AWEUserProfileSlidingViewController : AWESlidingViewController
+
+@end
+
+/// 用户主页的 作品控制器
+@interface AWEPostWorkViewController
+@property(copy, nonatomic) NSString *userID;
+@property(nonatomic) _Bool isCurrentUser;
+@property(retain, nonatomic) UICollectionView *collectionView;
+- (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
+- (long long)numberOfSectionsInCollectionView:(id)arg1;
+@end
+
+/// 管理用户心跳的 与登陆有关
+@interface BDDiamondAfterHeatManager: NSObject
++ (BDDiamondAfterHeatManager *)sharedInstance;
+// 登陆完成后的事件
+- (void)userLoginAction;
+
+// 用户退出完成后调用
+- (void)userLogoutAction;
+// 用户改变后清理
+- (void)clearHeatCacheData;
+ // 当前登陆的用户id，未登陆时是空字符串或者nil
+- (NSString *)currentLoginUID;
+@end
+
+@interface AWETabbarControllerConfig : NSObject
+
++ (AWETabbarControllerConfig *)sharedInstance;
+// AWEUserHomeViewController
+@property(retain, nonatomic) UIViewController<AWEUserHomeViewControllerProtocol> *userHomeController;
+@property(retain, nonatomic) UIViewController *messageController;
+@property(retain, nonatomic) AWEFeedRootViewController *feedController;
+@property(retain, nonatomic) UIViewController *concernController;
+@property(retain, nonatomic) UIViewController *discoverController;
+@property(retain, nonatomic) AWEChannelTabViewController *channelController;
+
+//下面是tabbar 的 buttons
+@property(retain, nonatomic) AWETabbarGeneralButton *familiarButton; // @synthesize familiarButton=_familiarButton;
+@property(retain, nonatomic) AWETabbarGeneralButton *nearbyButton; // @synthesize nearbyButton=_nearbyButton;
+@property(retain, nonatomic) AWETabbarGeneralButton *homepageButton; // @synthesize homepageButton=_homepageButton;
+@property(retain, nonatomic) AWETabbarGeneralButton *messageButton; // @synthesize messageButton=_messageButton;
+@property(retain, nonatomic) AWETabBarPlusButton *plusButton; // @synthesize plusButton=_plusButton;
+@property(retain, nonatomic) AWETabbarGeneralButton *channelButton; // @synthesize channelButton=_channelButton;
+@property(retain, nonatomic) AWETabbarGeneralButton *friendButton; // @synthesize friendButton=_friendButton;
+@property(retain, nonatomic) AWETabbarGeneralButton *concernButton; // @synthesize concernButton=_concernButton;
+@property(retain, nonatomic) AWETabbarGeneralButton *discoverButton; // @synthesize discoverButton=_discoverButton;
+@property(retain, nonatomic) AWETabbarGeneralButton *feedButton;
+@end
+
+// 弹出登陆控制器所在的window 当弹出时，此window 为 keyWindow
+@interface AWELoginWindow : UIWindow
+
+@end
+
+@interface AWELoginSettingsResponse
++ (id)dataArrayJSONTransformer;
++ (id)JSONKeyPathsByPropertyKey;
+@property(retain, nonatomic) NSArray *dataArray; // @synthesize dataArray=_dataArray;
+
+@end
+
+@interface AWELoginWindowManager : NSObject
++ (AWELoginWindowManager *)sharedManager;
+@property(nonatomic, weak) UIWindow *lastWindow;
+@property(retain, nonatomic) AWELoginSettingsResponse *settingsRsp;
+//@property(retain, nonatomic) AWELoginViewControllerTransitioningDelegate *transitionDelegate;
+@property(retain, nonatomic) UIViewController *loginLoadingViewController;
+@property(copy, nonatomic) id dismissCompletionBlock;
+@property(nonatomic) _Bool isThirdpartyLoginButtonClicked;
+@property(retain, nonatomic) AWELoginWindow *loginWindow;
+- (void)requestSettings;
+- (id)loginSettingsModelArray;
+- (void)dismiss;
+- (void)didFinishLogin;
+- (void)showLoginViewControllerWithParamsDict:(id)arg1;
+- (void)makeKeyAndVisible;
+@property(readonly, nonatomic) UIViewController *rootViewController;
+@property(readonly, nonatomic) UIWindow *visibleWindow;
+
+@end
+
+@interface AWELongVideoControlModel : NSObject
+{
+    _Bool _allowDownload;
+    _Bool _showProgressBar;
+    _Bool _canDragProgressBar;
+    _Bool _allowDuet;
+    _Bool _allowReact;
+    _Bool _allowDynamicWallPaper;
+    long long _shareType;
+    long long _preventDownloadType;
+    long long _timerStatusOver;
+    NSNumber *_timerStatusNumber;
+}
+
++ (id)JSONKeyPathsByPropertyKey;
+@property(retain, nonatomic) NSNumber *timerStatusNumber; // @synthesize timerStatusNumber=_timerStatusNumber;
+@property(nonatomic) long long timerStatusOver; // @synthesize timerStatusOver=_timerStatusOver;
+// 是否限制下载
+@property(nonatomic) long long preventDownloadType; // @synthesize preventDownloadType=_preventDownloadType;
+@property(nonatomic) _Bool allowDynamicWallPaper; // @synthesize allowDynamicWallPaper=_allowDynamicWallPaper;
+@property(nonatomic) _Bool allowReact; // @synthesize allowReact=_allowReact;
+@property(nonatomic) _Bool allowDuet; // @synthesize allowDuet=_allowDuet;
+@property(nonatomic) _Bool canDragProgressBar; // @synthesize canDragProgressBar=_canDragProgressBar;
+@property(nonatomic) _Bool showProgressBar; // @synthesize showProgressBar=_showProgressBar;
+@property(nonatomic) long long shareType; // @synthesize shareType=_shareType;
+// 是否允许下载视频
+@property(nonatomic) _Bool allowDownload; // @synthesize allowDownload=_allowDownload;
+
+@end
+
+//@interface AWEShareChannel : NSObject //<AWEShareChannelAppearance, AWEShareChannelAction>
+//{
+//    long long _type;
+//    unsigned long long _option;
+//    id _shareActionBlock;
+//    NSString *_title;
+//    NSDictionary *_channelImages;
+//    UIImage *_smallImage;
+//    NSString *_label;
+//}
+//
+//@property(copy, nonatomic) NSString *label; // @synthesize label=_label;
+//@property(retain, nonatomic) UIImage *smallImage; // @synthesize smallImage=_smallImage;
+//@property(copy, nonatomic) NSDictionary *channelImages; // @synthesize channelImages=_channelImages;
+//@property(copy, nonatomic) NSString *title; // @synthesize title=_title;
+//@property(copy, nonatomic) id shareActionBlock; // @synthesize shareActionBlock=_shareActionBlock;
+//@property(nonatomic) unsigned long long option; // @synthesize option=_option;
+//@property(nonatomic) long long type; // @synthesize type=_type;
+//
+//- (_Bool)shareWithContext:(id)arg1;
+//- (id)imageForStyleOption:(unsigned long long)arg1;
+//- (id)initWithType:(long long)arg1 option:(unsigned long long)arg2;
+//- (id)init;
+//
+//
+//@end
+
+@interface AWEStorage : NSObject
+{
+}
+
++ (void)startMigrationIfNeeded;
++ (unsigned long long)cachedCount;
++ (unsigned long long)cachedSize;
++ (_Bool)removeAllObjectsWithError:(id *)arg1;
++ (void)removeAllObjects;
++ (id)universalStorage;
++ (id)storageWithDomain:(id)arg1;
++ (void)updateImpConfig:(unsigned long long)arg1;
++ (Class)_impClass;
++ (id)yamStorage;
++ (id)commerceStorage;
++ (id)eCommerceCalendarStorage;
++ (id)eCommerceStorage;
++ (id)feedCountStorage;
++ (id)foundationStorage;
++ (id)recentUsedIMStickerKeyForUserID:(id)arg1;
++ (id)closedFansBarKeyForUserID:(id)arg1;
++ (id)IMStorage;
++ (id)liveStorage;
++ (id)mainStorage;
++ (id)owlStorage;
++ (id)nearbyStorage;
++ (id)IMTransferStorage;
++ (id)noticeStorage;
++ (id)poiStorage;
++ (id)dya_accountStorage;
++ (id)p_passportStorage;
++ (id)searchStorage;
++ (id)studioStorage;
++ (id)ironManStorage;
++ (id)passportStorage;
++ (id)webViewStorage;
+- (id)valueForKey:(id)arg1;
+- (void)setValue:(id)arg1 forKey:(id)arg2;
+- (_Bool)setData:(id)arg1 forKey:(id)arg2 err:(id *)arg3;
+- (void)setData:(id)arg1 forKey:(id)arg2;
+- (id)dataForKey:(id)arg1;
+- (_Bool)setDictionary:(id)arg1 forKey:(id)arg2 err:(id *)arg3;
+- (void)setDictionary:(id)arg1 forKey:(id)arg2;
+- (id)dictionaryForKey:(id)arg1;
+- (_Bool)setArray:(id)arg1 forKey:(id)arg2 err:(id *)arg3;
+- (void)setArray:(id)arg1 forKey:(id)arg2;
+- (id)arrayForKey:(id)arg1;
+- (_Bool)setString:(id)arg1 forKey:(id)arg2 err:(id *)arg3;
+- (void)setString:(id)arg1 forKey:(id)arg2;
+- (id)stringForKey:(id)arg1;
+- (_Bool)setURL:(id)arg1 forKey:(id)arg2 err:(id *)arg3;
+- (void)setURL:(id)arg1 forKey:(id)arg2;
+- (id)URLForKey:(id)arg1;
+- (_Bool)setBool:(_Bool)arg1 forKey:(id)arg2 err:(id *)arg3;
+- (void)setBool:(_Bool)arg1 forKey:(id)arg2;
+- (_Bool)boolForKey:(id)arg1;
+- (_Bool)setDouble:(double)arg1 forKey:(id)arg2 err:(id *)arg3;
+- (void)setDouble:(double)arg1 forKey:(id)arg2;
+- (double)doubleForKey:(id)arg1;
+- (_Bool)setFloat:(float)arg1 forKey:(id)arg2 err:(id *)arg3;
+- (void)setFloat:(float)arg1 forKey:(id)arg2;
+- (float)floatForKey:(id)arg1;
+- (_Bool)setInteger:(long long)arg1 forKey:(id)arg2 err:(id *)arg3;
+- (void)setInteger:(long long)arg1 forKey:(id)arg2;
+- (long long)integerForKey:(id)arg1;
+- (_Bool)removeAllObjectsWithError:(id *)arg1;
+- (void)removeAllObjects;
+- (_Bool)removeObjectForKey:(id)arg1 err:(id *)arg2;
+- (void)removeObjectForKey:(id)arg1;
+- (_Bool)setObject:(id)arg1 forKey:(id)arg2 err:(id *)arg3;
+- (void)setObject:(id)arg1 forKey:(id)arg2;
+- (id)objectForKey:(id)arg1;
+- (id)initWithDomain:(id)arg1;
+- (id)init;
+- (id)rootInit;
+- (id)im_lastShareToUserId;
+- (void)im_setLastShareToUserId:(id)arg1;
+- (void)im_clearUserFlag:(long long)arg1;
+- (void)im_setUserFlag:(long long)arg1;
+- (_Bool)im_isUserFlagOn:(long long)arg1;
+- (long long)im_userFlag;
+- (id)im_userFlagKeyForUserID:(id)arg1;
+- (void)im_setHotsoonUserHideTip:(id)arg1;
+- (id)im_hotsoonUserHideTip;
+- (void)im_setLastDateCreateGroupTipsShowNeedForceReset:(_Bool)arg1;
+- (id)im_lastDateCreateGroupTipsShow;
+- (void)im_setActiveUserTranspondPageTipAlertShowCount:(long long)arg1;
+- (long long)im_activeUserTranspondPageTipAlertShowCount;
+- (void)im_setActiveUserConversationFakeSystemTipsInfo:(id)arg1;
+- (id)im_activeUserConversationFakeSystemTipsInfo;
+- (void)im_setCreateGroupTipsV2Info:(id)arg1;
+- (id)im_createGroupTipsV2Info;
+- (void)im_setIsDisableChatNoticeCellDeleted;
+- (_Bool)im_isDisableChatNoticeCellDeleted;
+- (void)im_setDisableChatConfig:(id)arg1;
+- (id)im_disableChatConfig;
+- (void)im_setUserLastDuoshanInteractiveTimeInterval;
+- (double)im_userLastDuoshanInteractiveTimeInterval;
+- (void)im_setPlanBLastDateXShowAlert;
+- (id)im_planBLastDateXAlertShow;
+- (void)im_setPlanBContactXAlertShow;
+- (_Bool)im_planBContactXAlertShow;
+- (void)im_setPlanBProfileDetailXAlertShow;
+- (_Bool)im_planBProfileDetailXAlertShow;
+- (void)im_setPlanBProfileXAlertShow;
+- (_Bool)im_planBProfileXAlertShow;
+- (void)im_setPlanBAlertShowFlag:(long long)arg1;
+- (long long)im_planBAlertShowFlag;
+- (void)im_setShowBlockAlert;
+- (_Bool)im_showBlockAlert;
+- (void)im_setShowUnfollowAlert;
+- (_Bool)im_showUnfollowAlert;
+- (void)im_setShowDeleteMsgAlert;
+- (_Bool)im_showDeleteMsgAlert;
+- (void)im_setXAccountActive;
+- (_Bool)im_XAccountActive;
+- (void)im_setNewXBannerNotInstallUserShowDay:(long long)arg1;
+- (long long)im_newXBannerNotInstallUserShowDay;
+- (void)im_setNewXBannerIsInstallUserShowDay:(long long)arg1;
+- (long long)im_newXBannerIsInstallUserShowDay;
+- (id)im_AWEIMNewDuoshanBannerModel;
+- (void)im_setAWEIMNewDuoshanBannerModel:(id)arg1;
+- (void)im_setIsDuoshanNewBannerStyle:(_Bool)arg1;
+- (_Bool)im_isDuoshanNewBannerStyle;
+- (long long)im_bannerStyle;
+- (void)im_setBannerStyleList:(id)arg1;
+- (id)im_bannerStyleList;
+- (void)im_setUserLastShowPrivateTipsTimeInterval;
+- (double)im_userLastShowPrivateTipsTimeInterval;
+- (void)im_setUserXFlag:(long long)arg1;
+- (long long)im_userXFlag;
+- (id)im_userXFlagForUserID:(id)arg1;
+- (void)im_setProjectXNumberChatUnreadMessageCount:(long long)arg1;
+- (long long)im_projectXNumberChatUnreadMessageCount;
+- (void)im_setProjectXYellowDotChatUnreadMessageCount:(long long)arg1;
+- (long long)im_projectXYellowDotChatUnreadMessageCount;
+- (void)im_setDidFetchedRecentConversationCoreInfoForUserID:(id)arg1;
+- (_Bool)im_didFetchedRecentConversationCoreInfoForUserID:(id)arg1;
+- (id)im_didFetchedRecentConversationCoreInfoKeyForUserID:(id)arg1;
+- (void)im_setFollowListBusinessVersion:(long long)arg1;
+- (long long)im_followListBusinessVersion;
+- (id)im_innerPushConversationArray;
+- (void)im_setAWEIMInnerPushConversationArray:(id)arg1;
+- (_Bool)im_alreadyShowGroupChatInviteFollowerToast;
+- (_Bool)im_alreadyShowGroupChatInviteToast;
+- (void)im_setAWEIMUserIgnoreSearchGiphyTimes:(long long)arg1;
+- (long long)im_AWEIMUserIgnoreSearchGiphyTimes;
+- (id)im_userIgnoreSearchGiphyTimesForUserID:(id)arg1;
+- (id)im_AWEIMF2ButtonText;
+- (void)im_setAWEIMF2ButtonText:(id)arg1;
+- (id)im_AWEIMF2Text;
+- (void)im_setAWEIMF2Text:(id)arg1;
+- (id)im_AWEIMF2Title;
+- (void)im_setAWEIMF2Title:(id)arg1;
+- (id)im_AWEIMF2Schema;
+- (void)im_setAWEIMF2Schema:(id)arg1;
+- (id)im_AWEIMF2IconConfig;
+- (void)im_setAWEIMF2IconConfig:(id)arg1;
+- (id)im_AWEIMACSchema;
+- (void)im_setAWEIMACSchema:(id)arg1;
+- (id)im_AWEIMACIconConfig;
+- (void)im_setAWEIMACIconConfig:(id)arg1;
+- (id)im_lastAWEIMGreetingEmoticonModelArray;
+- (void)im_setAWEIMGreetingEmoticonModelDataWithModels:(id)arg1;
+- (_Bool)im_showedMutiselectToast;
+- (void)im_setGiphyTabbarLastAccessStyleGiphyStyle:(_Bool)arg1;
+- (_Bool)im_giphyTabbarLastAccessStyleIsGiphy;
+- (void)im_setAmonymousID:(id)arg1;
+- (id)im_anonymousID;
+- (void)setClosedFansBarUserIDSetForUserID:(id)arg1 userIDSet:(id)arg2;
+- (id)closedFansBarUserIDSetForUserID:(id)arg1;
+- (unsigned long long)notice_getMaximumCountOfLivePushAtColdLanuch;
+- (unsigned long long)live_userKeepIgnoreTimesInToday;
+- (id)stringWithToday;
+- (void)notice_decreaseMaximumCountOfLivePushAtColdLanuch;
+- (void)notice_resetMaximumCountOfLivePushAtColdLanuch;
+- (unsigned long long)notice_livePushDisplayIntervalInSec;
+- (void)notice_userIgnoreLivePush;
+- (_Bool)notice_isAdVideoPlaying;
+- (void)notice_setAdVideoPlaying:(_Bool)arg1;
 
 @end
 

@@ -1,0 +1,16 @@
+//
+// TikTokDylib-Prefix.pch
+// TikTok
+//
+// Created by xiaoyuan on 2020/5/27.
+// Copyright © 2020 enba. All rights reserved.
+//
+
+#ifndef TikTokDylib_Prefix_pch
+#define TikTokDylib_Prefix_pch
+
+#import "TikTokDylib-Swift.h"
+
+
+
+#endif /* TikTokDylib_Prefix_pch */

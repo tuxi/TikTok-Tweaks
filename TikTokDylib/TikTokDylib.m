@@ -18,38 +18,7 @@
 #import "XYAwemeManager.h"
 #import "XYSimulatedTouch.h"
 
-#define kMENU_TITLE @"配置"
-
-static void SwapInstanceMethods(Class cls, SEL original, SEL replacement) {
-    Method originalMethod = class_getInstanceMethod(cls, original);
-    IMP originalImplementation = method_getImplementation(originalMethod);
-    const char *originalArgTypes = method_getTypeEncoding(originalMethod);
-
-    Method replacementMethod = class_getInstanceMethod(cls, replacement);
-    IMP replacementImplementation = method_getImplementation(replacementMethod);
-    const char *replacementArgTypes = method_getTypeEncoding(replacementMethod);
-
-    if (class_addMethod(cls, original, replacementImplementation, replacementArgTypes)) {
-        class_replaceMethod(cls, replacement, originalImplementation, originalArgTypes);
-    } else {
-        method_exchangeImplementations(originalMethod, replacementMethod);
-    }
-}
-
-
-@implementation UIApplication (XYSwizzle)
-+ (void)load {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        SwapInstanceMethods([UIApplication class], @selector(sendEvent:), @selector(swizzle_sendEvent:));
-    });
-}
-
-- (void)swizzle_sendEvent:(UIEvent *)event {
-    [self swizzle_sendEvent:event];
-}
-
-@end
+#define kMENU_TITLE @"规则"
 
 CHConstructor{
     
@@ -57,7 +26,6 @@ CHConstructor{
         
 #ifndef __OPTIMIZE__
         CYListenServer(6666);
-
         MDCycriptManager* manager = [MDCycriptManager sharedInstance];
         [manager loadCycript:NO];
 
@@ -130,6 +98,15 @@ CHMethod0(NSArray *, AWESettingsViewModel, sectionDataArray) {
         hookItem.cellTappedBlock = ^(void) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 XYConfigSettingsViewController *settingVc = [[XYConfigSettingsViewController alloc] init];
+                settingVc.goUserProfileBlock = ^(NSString * _Nonnull userId) {
+                    XYAwemeManager.manager.executedUserId = userId;
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                        [XYAwemeManager topViewController]
+                        [XYAwemeManager playVideoWithUserId:userId videoIndex:0 preloadedUser:nil completion:^(AWEUserDetailViewController * _Nonnull detailVC) {
+                            
+                        }];
+                    });
+                };
                 UIViewController *tabbarVc = UIApplication.sharedApplication.keyWindow.rootViewController;
                 UINavigationController *hookNavi = [[UINavigationController alloc] initWithRootViewController:settingVc];
                 [tabbarVc presentViewController:hookNavi animated:YES completion:nil];
@@ -167,11 +144,11 @@ CHMethod1(void, AWEAwemeModel, setVideo, AWEVideoModel *, arg1) {
     // 与禁止下载视频的有关的hook
     if ([XYAwemeManager manager].isRemovePreventDownload == YES) {
         // 移除该视频的禁止下载时，将 downloadURL 重制为 originURLList，防止无下载源
+        NSLog(@"arg1.playURL.originURLList: %@", arg1.playURL.originURLList);
         arg1.downloadURL.originURLList = arg1.playURL.originURLList;
     }
     CHSuper1(AWEAwemeModel, setVideo, arg1);
 }
-
 
 
 CHConstructor {
@@ -207,4 +184,5 @@ CHConstructor{
     CHHook1(AWEVideoPlayerController, playerItemDidReachEnd);
     
 }
+
 

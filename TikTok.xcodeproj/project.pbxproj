@@ -7,8 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D0F858B2257CB42800DEE4CC /* XYVideoDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F858B0257CB42800DEE4CC /* XYVideoDownloader.m */; };
-		D0F858B3257CB42800DEE4CC /* XYVideoDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0F858B1257CB42800DEE4CC /* XYVideoDownloader.h */; };
+		07A21606247E4A9C00FF9BC1 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A21601247E4A9B00FF9BC1 /* Alert.swift */; };
+		07A21607247E4A9C00FF9BC1 /* UIAlertController+XYExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A21602247E4A9C00FF9BC1 /* UIAlertController+XYExtensions.h */; };
+		07A21608247E4A9C00FF9BC1 /* UIAlertController+XYExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A21603247E4A9C00FF9BC1 /* UIAlertController+XYExtensions.m */; };
+		07A21609247E4A9C00FF9BC1 /* UIDebuggingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A21604247E4A9C00FF9BC1 /* UIDebuggingTool.m */; };
+		07A2160A247E4A9C00FF9BC1 /* UIDebuggingTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A21605247E4A9C00FF9BC1 /* UIDebuggingTool.h */; };
+		07A21612247E4AD400FF9BC1 /* BridgingHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A2160B247E4AD300FF9BC1 /* BridgingHelper.h */; };
+		07A21613247E4AD400FF9BC1 /* XYVideoDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A2160C247E4AD300FF9BC1 /* XYVideoDownloader.h */; };
+		07A21615247E4AD400FF9BC1 /* XYVideoDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A2160E247E4AD400FF9BC1 /* XYVideoDownloader.m */; };
+		07A21616247E4AD400FF9BC1 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A2160F247E4AD400FF9BC1 /* CommentsViewController.swift */; };
+		07A21617247E4AD400FF9BC1 /* BridgingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A21610247E4AD400FF9BC1 /* BridgingHelper.m */; };
+		07A21618247E4AD400FF9BC1 /* CommentManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A21611247E4AD400FF9BC1 /* CommentManger.swift */; };
+		07A2161D247E4B4D00FF9BC1 /* icon_discovery_favi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07A2161B247E4B3D00FF9BC1 /* icon_discovery_favi@2x.png */; };
+		07A2161E247E4B4F00FF9BC1 /* icon_discovery_favi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07A2161A247E4B3D00FF9BC1 /* icon_discovery_favi@3x.png */; };
+		07A2161F247E4B5200FF9BC1 /* iconPersonalSettingArrow_18x18_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07A21619247E4B3D00FF9BC1 /* iconPersonalSettingArrow_18x18_@2x.png */; };
+		07A21621247E517900FF9BC1 /* TikTokDylib-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 07A21620247E50EF00FF9BC1 /* TikTokDylib-Prefix.pch */; };
+		07A2162A247E520D00FF9BC1 /* AwemeApiHeaders1.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A21622247E520C00FF9BC1 /* AwemeApiHeaders1.h */; };
+		07A2162B247E520D00FF9BC1 /* AMEMessageHeaders.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A21623247E520C00FF9BC1 /* AMEMessageHeaders.h */; };
+		07A2162C247E520D00FF9BC1 /* AWEAwemeDetailBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A21624247E520C00FF9BC1 /* AWEAwemeDetailBaseViewController.h */; };
+		07A2162D247E520D00FF9BC1 /* HTSLiveAudienceViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A21625247E520C00FF9BC1 /* HTSLiveAudienceViewController.h */; };
+		07A2162E247E520D00FF9BC1 /* AWEProfilePreloadManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A21626247E520C00FF9BC1 /* AWEProfilePreloadManager.h */; };
+		07A2162F247E520D00FF9BC1 /* AWEAwemePlayInteractionPresenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A21627247E520D00FF9BC1 /* AWEAwemePlayInteractionPresenter.h */; };
+		07A21630247E520D00FF9BC1 /* AWEAwemeDetailTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A21628247E520D00FF9BC1 /* AWEAwemeDetailTableViewController.h */; };
+		07A21631247E520D00FF9BC1 /* AWEAwemeDetailCellViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A21629247E520D00FF9BC1 /* AWEAwemeDetailCellViewController.h */; };
+		07A2163B247E52F200FF9BC1 /* FLEX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A21638247E52E400FF9BC1 /* FLEX.framework */; };
+		07A2163C247E52F200FF9BC1 /* FLEX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07A21638247E52E400FF9BC1 /* FLEX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07A2163F247E52FA00FF9BC1 /* FLEX.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07A21638247E52E400FF9BC1 /* FLEX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0FF2E6623E40B3300683773 /* MDConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0FF2E6523E40B3300683773 /* MDConfig.plist */; };
 		D0FF2E7023E40B3300683773 /* libTikTokDylib.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0FF2E6F23E40B3300683773 /* libTikTokDylib.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D0FF2E7523E40B3300683773 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FF2E7423E40B3300683773 /* JavaScriptCore.framework */; };
@@ -150,6 +174,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		07A21637247E52E400FF9BC1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07A21632247E52E400FF9BC1 /* FLEX.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3A4C941F1B5B20570088C3F2;
+			remoteInfo = FLEX;
+		};
+		07A21639247E52E400FF9BC1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07A21632247E52E400FF9BC1 /* FLEX.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1C27A8B61F0E5A0300F0D02D;
+			remoteInfo = FLEXTests;
+		};
 		D0FF2E7123E40B3300683773 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D0FF2E5323E40B3300683773 /* Project object */;
@@ -160,6 +198,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		07A2163D247E52F200FF9BC1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				07A2163C247E52F200FF9BC1 /* FLEX.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D0FF2E5B23E40B3300683773 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -167,14 +216,39 @@
 			dstSubfolderSpec = 10;
 			files = (
 				D0FF2E7023E40B3300683773 /* libTikTokDylib.dylib in CopyFiles */,
+				07A2163F247E52FA00FF9BC1 /* FLEX.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D0F858B0257CB42800DEE4CC /* XYVideoDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYVideoDownloader.m; sourceTree = "<group>"; };
-		D0F858B1257CB42800DEE4CC /* XYVideoDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYVideoDownloader.h; sourceTree = "<group>"; };
+		07A21600247E4A9B00FF9BC1 /* TikTokDylib-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TikTokDylib-Bridging-Header.h"; sourceTree = "<group>"; };
+		07A21601247E4A9B00FF9BC1 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		07A21602247E4A9C00FF9BC1 /* UIAlertController+XYExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+XYExtensions.h"; sourceTree = "<group>"; };
+		07A21603247E4A9C00FF9BC1 /* UIAlertController+XYExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+XYExtensions.m"; sourceTree = "<group>"; };
+		07A21604247E4A9C00FF9BC1 /* UIDebuggingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDebuggingTool.m; sourceTree = "<group>"; };
+		07A21605247E4A9C00FF9BC1 /* UIDebuggingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDebuggingTool.h; sourceTree = "<group>"; };
+		07A2160B247E4AD300FF9BC1 /* BridgingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHelper.h; sourceTree = "<group>"; };
+		07A2160C247E4AD300FF9BC1 /* XYVideoDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYVideoDownloader.h; sourceTree = "<group>"; };
+		07A2160E247E4AD400FF9BC1 /* XYVideoDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYVideoDownloader.m; sourceTree = "<group>"; };
+		07A2160F247E4AD400FF9BC1 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		07A21610247E4AD400FF9BC1 /* BridgingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgingHelper.m; sourceTree = "<group>"; };
+		07A21611247E4AD400FF9BC1 /* CommentManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentManger.swift; sourceTree = "<group>"; };
+		07A21619247E4B3D00FF9BC1 /* iconPersonalSettingArrow_18x18_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconPersonalSettingArrow_18x18_@2x.png"; sourceTree = "<group>"; };
+		07A2161A247E4B3D00FF9BC1 /* icon_discovery_favi@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_discovery_favi@3x.png"; sourceTree = "<group>"; };
+		07A2161B247E4B3D00FF9BC1 /* icon_discovery_favi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_discovery_favi@2x.png"; sourceTree = "<group>"; };
+		07A2161C247E4B3D00FF9BC1 /* 123753s1g5wb1c6xs10f6w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 123753s1g5wb1c6xs10f6w.png; sourceTree = "<group>"; };
+		07A21620247E50EF00FF9BC1 /* TikTokDylib-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TikTokDylib-Prefix.pch"; path = "TikTokDylib/Resource/TikTokDylib-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		07A21622247E520C00FF9BC1 /* AwemeApiHeaders1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwemeApiHeaders1.h; sourceTree = "<group>"; };
+		07A21623247E520C00FF9BC1 /* AMEMessageHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMEMessageHeaders.h; sourceTree = "<group>"; };
+		07A21624247E520C00FF9BC1 /* AWEAwemeDetailBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEAwemeDetailBaseViewController.h; sourceTree = "<group>"; };
+		07A21625247E520C00FF9BC1 /* HTSLiveAudienceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSLiveAudienceViewController.h; sourceTree = "<group>"; };
+		07A21626247E520C00FF9BC1 /* AWEProfilePreloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEProfilePreloadManager.h; sourceTree = "<group>"; };
+		07A21627247E520D00FF9BC1 /* AWEAwemePlayInteractionPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEAwemePlayInteractionPresenter.h; sourceTree = "<group>"; };
+		07A21628247E520D00FF9BC1 /* AWEAwemeDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEAwemeDetailTableViewController.h; sourceTree = "<group>"; };
+		07A21629247E520D00FF9BC1 /* AWEAwemeDetailCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEAwemeDetailCellViewController.h; sourceTree = "<group>"; };
+		07A21632247E52E400FF9BC1 /* FLEX.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FLEX.xcodeproj; path = FLEX/FLEX.xcodeproj; sourceTree = "<group>"; };
 		D0FF2E5E23E40B3300683773 /* TikTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0FF2E6123E40B3300683773 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		D0FF2E6323E40B3300683773 /* quick-resign.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "quick-resign.sh"; sourceTree = "<group>"; };
@@ -207,7 +281,6 @@
 		D0FF2EA323E40B3300683773 /* selectortramps.mac */ = {isa = PBXFileReference; lastKnownFileType = text; path = selectortramps.mac; sourceTree = "<group>"; };
 		D0FF2EA523E40B3300683773 /* LLDBTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLDBTools.h; sourceTree = "<group>"; };
 		D0FF2EA723E40B3300683773 /* LLDBTools.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = LLDBTools.mm; sourceTree = "<group>"; };
-		D0FF2EAA23E40B3300683773 /* TikTokDylib-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TikTokDylib-Prefix.pch"; path = "../TikTokDylib-Prefix.pch"; sourceTree = "<group>"; };
 		D0FF2EAC23E40B3300683773 /* AntiAntiDebug.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AntiAntiDebug.m; sourceTree = "<group>"; };
 		D0FF2EAF23E40B3300683773 /* fishhook.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
 		D0FF2EB123E40B3300683773 /* fishhook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
@@ -339,15 +412,26 @@
 				D0FF2E7923E40B3300683773 /* UIKit.framework in Frameworks */,
 				D0FF2E7723E40B3300683773 /* Foundation.framework in Frameworks */,
 				D0FF2FA123E40DEF00683773 /* IOKit.framework in Frameworks */,
+				07A2163B247E52F200FF9BC1 /* FLEX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07A21633247E52E400FF9BC1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				07A21638247E52E400FF9BC1 /* FLEX.framework */,
+				07A2163A247E52E400FF9BC1 /* FLEXTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D0FF2E5223E40B3300683773 = {
 			isa = PBXGroup;
 			children = (
+				07A21632247E52E400FF9BC1 /* FLEX.xcodeproj */,
 				D0FF2E6023E40B3300683773 /* TikTok */,
 				D0FF2E7A23E40B3300683773 /* TikTokDylib */,
 				D0FF2E7323E40B3300683773 /* Frameworks */,
@@ -414,6 +498,7 @@
 		D0FF2E7A23E40B3300683773 /* TikTokDylib */ = {
 			isa = PBXGroup;
 			children = (
+				07A21620247E50EF00FF9BC1 /* TikTokDylib-Prefix.pch */,
 				D0FF2F1823E40D4400683773 /* AwemeHeaders */,
 				D0FF2EBF23E40D4300683773 /* Common */,
 				D0FF2F1623E40D4300683773 /* Resource */,
@@ -433,6 +518,12 @@
 		D0FF2E7B23E40B3300683773 /* Logos */ = {
 			isa = PBXGroup;
 			children = (
+				07A2160B247E4AD300FF9BC1 /* BridgingHelper.h */,
+				07A21610247E4AD400FF9BC1 /* BridgingHelper.m */,
+				07A21611247E4AD400FF9BC1 /* CommentManger.swift */,
+				07A2160F247E4AD400FF9BC1 /* CommentsViewController.swift */,
+				07A2160C247E4AD300FF9BC1 /* XYVideoDownloader.h */,
+				07A2160E247E4AD400FF9BC1 /* XYVideoDownloader.m */,
 				D0FF2F9423E40D7500683773 /* RadomComments.h */,
 				D0FF2F9723E40D7500683773 /* RadomComments.m */,
 				D0FF2F9623E40D7500683773 /* XYAwemeManager.h */,
@@ -489,7 +580,6 @@
 		D0FF2EA923E40B3300683773 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D0FF2EAA23E40B3300683773 /* TikTokDylib-Prefix.pch */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -514,8 +604,11 @@
 		D0FF2EBF23E40D4300683773 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				D0F858B1257CB42800DEE4CC /* XYVideoDownloader.h */,
-				D0F858B0257CB42800DEE4CC /* XYVideoDownloader.m */,
+				07A21601247E4A9B00FF9BC1 /* Alert.swift */,
+				07A21602247E4A9C00FF9BC1 /* UIAlertController+XYExtensions.h */,
+				07A21603247E4A9C00FF9BC1 /* UIAlertController+XYExtensions.m */,
+				07A21605247E4A9C00FF9BC1 /* UIDebuggingTool.h */,
+				07A21604247E4A9C00FF9BC1 /* UIDebuggingTool.m */,
 				D0FF2EC023E40D4300683773 /* UIControl+XYExtensions.m */,
 				D0FF2EC123E40D4300683773 /* MBProgressHUD.m */,
 				D0FF2EC223E40D4300683773 /* UIAlertView+Blocks.h */,
@@ -529,6 +622,7 @@
 				D0FF2ECC23E40D4300683773 /* SimulatedTouch */,
 				D0FF2F1423E40D4300683773 /* UIAlertView+Blocks.m */,
 				D0FF2F1523E40D4300683773 /* UINavigationController+XYExtensions.h */,
+				07A21600247E4A9B00FF9BC1 /* TikTokDylib-Bridging-Header.h */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -642,6 +736,10 @@
 		D0FF2F1623E40D4300683773 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				07A2161C247E4B3D00FF9BC1 /* 123753s1g5wb1c6xs10f6w.png */,
+				07A2161B247E4B3D00FF9BC1 /* icon_discovery_favi@2x.png */,
+				07A2161A247E4B3D00FF9BC1 /* icon_discovery_favi@3x.png */,
+				07A21619247E4B3D00FF9BC1 /* iconPersonalSettingArrow_18x18_@2x.png */,
 				D0FF2F1723E40D4300683773 /* countryCode.plist */,
 			);
 			path = Resource;
@@ -650,6 +748,14 @@
 		D0FF2F1823E40D4400683773 /* AwemeHeaders */ = {
 			isa = PBXGroup;
 			children = (
+				07A21623247E520C00FF9BC1 /* AMEMessageHeaders.h */,
+				07A21624247E520C00FF9BC1 /* AWEAwemeDetailBaseViewController.h */,
+				07A21629247E520D00FF9BC1 /* AWEAwemeDetailCellViewController.h */,
+				07A21628247E520D00FF9BC1 /* AWEAwemeDetailTableViewController.h */,
+				07A21627247E520D00FF9BC1 /* AWEAwemePlayInteractionPresenter.h */,
+				07A21622247E520C00FF9BC1 /* AwemeApiHeaders1.h */,
+				07A21626247E520C00FF9BC1 /* AWEProfilePreloadManager.h */,
+				07A21625247E520C00FF9BC1 /* HTSLiveAudienceViewController.h */,
 				D0FF2F1923E40D4400683773 /* AWEProfileHeaderView.h */,
 				D0FF2F1A23E40D4400683773 /* AWEProfileHeaderViewController.h */,
 				D0FF2F1B23E40D4400683773 /* AWEVideoModel.h */,
@@ -692,12 +798,14 @@
 				D0FF2F3F23E40D4400683773 /* UIAutomationHelper.h in Headers */,
 				D0FF2F5723E40D4400683773 /* UIApplication-KIFAdditions.h in Headers */,
 				D0FF2F6423E40D4400683773 /* NSPredicate+KIFAdditions.h in Headers */,
-				D0F858B3257CB42800DEE4CC /* XYVideoDownloader.h in Headers */,
+				07A21612247E4AD400FF9BC1 /* BridgingHelper.h in Headers */,
+				07A21607247E4A9C00FF9BC1 /* UIAlertController+XYExtensions.h in Headers */,
 				D0FF2F3A23E40D4400683773 /* UIApplication+XYSimulatedTouchPrivate.h in Headers */,
 				D0FF2F3B23E40D4400683773 /* UITouch+XYSimulatedTouchExtensions.h in Headers */,
 				D0FF2E8923E40B3300683773 /* MDMethodTrace.h in Headers */,
 				D0FF2F9023E40D4400683773 /* AWEAwemeModel.h in Headers */,
 				D0FF2F9A23E40D7500683773 /* RadomComments.h in Headers */,
+				07A21630247E520D00FF9BC1 /* AWEAwemeDetailTableViewController.h in Headers */,
 				D0FF2F8723E40D4400683773 /* AWEFeedViewCell.h in Headers */,
 				D0FF2F7523E40D4400683773 /* LoadableCategory.h in Headers */,
 				D0FF2F3623E40D4400683773 /* UIControl+XYExtensions.h in Headers */,
@@ -709,6 +817,7 @@
 				D0FF2F9323E40D4400683773 /* AWECommentListInputView.h in Headers */,
 				D0FF2F3223E40D4400683773 /* MBProgressHUD+XYHUD.h in Headers */,
 				D0FF2F6A23E40D4400683773 /* NSException-KIFAdditions.h in Headers */,
+				07A2160A247E4A9C00FF9BC1 /* UIDebuggingTool.h in Headers */,
 				D0FF2F6C23E40D4400683773 /* UIAccessibilityElement-KIFAdditions.h in Headers */,
 				D0FF2F4F23E40D4400683773 /* KIFTextInputTraitsOverrides.h in Headers */,
 				D0FF2F6023E40D4400683773 /* UIView-KIFAdditions.h in Headers */,
@@ -722,14 +831,17 @@
 				D0FF2F8023E40D4400683773 /* AWEProfileHeaderViewController.h in Headers */,
 				D0FF2F8C23E40D4400683773 /* AWEUserRelationView.h in Headers */,
 				D0FF2F3023E40D4400683773 /* UIAlertView+Blocks.h in Headers */,
+				07A2162F247E520D00FF9BC1 /* AWEAwemePlayInteractionPresenter.h in Headers */,
 				D0FF2F7C23E40D4400683773 /* XYSimulatedTouch.h in Headers */,
 				D0FF2EB423E40B3300683773 /* TikTokDylib.h in Headers */,
 				D0FF2F6123E40D4400683773 /* NSError-KIFAdditions.h in Headers */,
 				D0FF2F5F23E40D4400683773 /* NSFileManager-KIFAdditions.h in Headers */,
 				D0FF2F6F23E40D4400683773 /* CAAnimation+KIFAdditions.h in Headers */,
 				D0FF2F6323E40D4400683773 /* CALayer-KIFAdditions.h in Headers */,
+				07A2162D247E520D00FF9BC1 /* HTSLiveAudienceViewController.h in Headers */,
 				D0FF2F3C23E40D4400683773 /* IOHIDEvent+KIF.h in Headers */,
 				D0FF2F6B23E40D4400683773 /* UIScreen+KIFAdditions.h in Headers */,
+				07A2162B247E520D00FF9BC1 /* AMEMessageHeaders.h in Headers */,
 				D0FF2F3923E40D4400683773 /* NSRunLoop+XYExtensions.h in Headers */,
 				D0FF2F9223E40D4400683773 /* AWECommentPanelCell.h in Headers */,
 				D0FF2F8923E40D4400683773 /* AWEFeedCellViewController.h in Headers */,
@@ -737,10 +849,12 @@
 				D0FF2F7223E40D4400683773 /* UIView-Debugging.h in Headers */,
 				D0FF2F6223E40D4400683773 /* UIEvent+KIFAdditions.h in Headers */,
 				D0FF2F3D23E40D4400683773 /* KIFUIObject.h in Headers */,
+				07A21621247E517900FF9BC1 /* TikTokDylib-Prefix.pch in Headers */,
 				D0FF2EA023E40B3300683773 /* OCSelectorTrampolines.h in Headers */,
 				D0FF2F8423E40D4400683773 /* AWECompanyProfileHeaderView.h in Headers */,
 				D0FF2F8323E40D4400683773 /* AWECommentPanelBaseCell.h in Headers */,
 				D0FF2F5D23E40D4400683773 /* UITableView-KIFAdditions.h in Headers */,
+				07A2162A247E520D00FF9BC1 /* AwemeApiHeaders1.h in Headers */,
 				D0FF2F3523E40D4400683773 /* MBProgressHUD.h in Headers */,
 				D0FF2E9C23E40B3300683773 /* OCMethodTrace.h in Headers */,
 				D0FF2F6623E40D4400683773 /* UIWindow-KIFAdditions.h in Headers */,
@@ -748,12 +862,16 @@
 				D0FF2F9123E40D4400683773 /* AWECommentListViewController.h in Headers */,
 				D0FF2F4B23E40D4400683773 /* KIFUIViewTestActor.h in Headers */,
 				D0FF2F7F23E40D4400683773 /* AWEProfileHeaderView.h in Headers */,
+				07A2162C247E520D00FF9BC1 /* AWEAwemeDetailBaseViewController.h in Headers */,
 				D0FF2F9C23E40D7500683773 /* XYAwemeManager.h in Headers */,
 				D0FF2F6923E40D4400683773 /* NSString+KIFAdditions.h in Headers */,
+				07A21613247E4AD400FF9BC1 /* XYVideoDownloader.h in Headers */,
 				D0FF2F7923E40D4400683773 /* FixCategoryBug.h in Headers */,
 				D0FF2F4A23E40D4400683773 /* KIFSystemTestActor.h in Headers */,
 				D0FF2F4123E40D4400683773 /* KIFTestActor.h in Headers */,
 				D0FF2F4323E40D4400683773 /* KIFTestActor_Private.h in Headers */,
+				07A21631247E520D00FF9BC1 /* AWEAwemeDetailCellViewController.h in Headers */,
+				07A2162E247E520D00FF9BC1 /* AWEProfilePreloadManager.h in Headers */,
 				D0FF2F8623E40D4400683773 /* AWEAwemeBaseViewController.h in Headers */,
 				D0FF2F8823E40D4400683773 /* AwemeApiHeaders.h in Headers */,
 				D0FF2F8223E40D4400683773 /* AWEMusicDetailViewController.h in Headers */,
@@ -792,6 +910,7 @@
 				D0FF2E6B23E40B3300683773 /* Sources */,
 				D0FF2E6C23E40B3300683773 /* Frameworks */,
 				D0FF2E6D23E40B3300683773 /* Headers */,
+				07A2163D247E52F200FF9BC1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -816,6 +935,7 @@
 					};
 					D0FF2E6E23E40B3300683773 = {
 						CreatedOnToolsVersion = 11.3;
+						LastSwiftMigration = 1140;
 					};
 				};
 			};
@@ -830,6 +950,12 @@
 			mainGroup = D0FF2E5223E40B3300683773;
 			productRefGroup = D0FF2E5F23E40B3300683773 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 07A21633247E52E400FF9BC1 /* Products */;
+					ProjectRef = 07A21632247E52E400FF9BC1 /* FLEX.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D0FF2E5D23E40B3300683773 /* TikTok */,
@@ -838,12 +964,32 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		07A21638247E52E400FF9BC1 /* FLEX.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FLEX.framework;
+			remoteRef = 07A21637247E52E400FF9BC1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		07A2163A247E52E400FF9BC1 /* FLEXTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = FLEXTests.xctest;
+			remoteRef = 07A21639247E52E400FF9BC1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		D0FF2E5A23E40B3300683773 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07A2161F247E4B5200FF9BC1 /* iconPersonalSettingArrow_18x18_@2x.png in Resources */,
 				D0FF2FA223E4131600683773 /* countryCode.plist in Resources */,
+				07A2161E247E4B4F00FF9BC1 /* icon_discovery_favi@3x.png in Resources */,
+				07A2161D247E4B4D00FF9BC1 /* icon_discovery_favi@2x.png in Resources */,
 				D0FF2E6623E40B3300683773 /* MDConfig.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -900,7 +1046,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/opt/MonkeyDev/bin/md --xcbp-logos";
+			shellScript = "/opt/MonkeyDev/bin/md --xcbp-logos\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -922,6 +1068,7 @@
 				D0FF2F4023E40D4400683773 /* KIFTextInputTraitsOverrides.m in Sources */,
 				D0FF2F5A23E40D4400683773 /* UIScrollView-KIFAdditions.m in Sources */,
 				D0FF2E8723E40B3300683773 /* MDCycriptManager.m in Sources */,
+				07A21618247E4AD400FF9BC1 /* CommentManger.swift in Sources */,
 				D0FF2E9023E40B3300683773 /* a1a2-selectortramps-arm64.s in Sources */,
 				D0FF2F4723E40D4400683773 /* KIFUITestActor.m in Sources */,
 				D0FF2E8E23E40B3300683773 /* a1a2-selectortramps-arm.s in Sources */,
@@ -944,6 +1091,7 @@
 				D0FF2F7323E40D4400683773 /* UIEvent+KIFAdditions.m in Sources */,
 				D0FF2F2F23E40D4400683773 /* MBProgressHUD.m in Sources */,
 				D0FF2F5123E40D4400683773 /* KIFTypist.m in Sources */,
+				07A21609247E4A9C00FF9BC1 /* UIDebuggingTool.m in Sources */,
 				D0FF2EB023E40B3300683773 /* fishhook.c in Sources */,
 				D0FF2F5C23E40D4400683773 /* UITouch-KIFAdditions.m in Sources */,
 				D0FF2EAD23E40B3300683773 /* AntiAntiDebug.m in Sources */,
@@ -958,22 +1106,26 @@
 				D0FF2F4923E40D4400683773 /* KIFUITestActor-ConditionalTests.m in Sources */,
 				D0FF2F4623E40D4400683773 /* KIFUIViewTestActor.m in Sources */,
 				D0FF2F5523E40D4400683773 /* NSException-KIFAdditions.m in Sources */,
+				07A21616247E4AD400FF9BC1 /* CommentsViewController.swift in Sources */,
 				D0FF2EA223E40B3300683773 /* OCSelectorTrampolines.mm in Sources */,
 				D0FF2E9223E40B3300683773 /* a1a2-selectortramps-i386.s in Sources */,
 				D0FF2E9823E40B3300683773 /* a2a3-selectortramps-i386.s in Sources */,
 				D0FF2F5B23E40D4400683773 /* UIView-Debugging.m in Sources */,
+				07A21617247E4AD400FF9BC1 /* BridgingHelper.m in Sources */,
 				D0FF2F7423E40D4400683773 /* NSError-KIFAdditions.m in Sources */,
+				07A21608247E4A9C00FF9BC1 /* UIAlertController+XYExtensions.m in Sources */,
 				D0FF2E9623E40B3300683773 /* a2a3-selectortramps-arm.s in Sources */,
 				D0FF2E7E23E40B3300683773 /* TikTokDylib.mm in Sources */,
 				D0FF2F5423E40D4400683773 /* UIScreen+KIFAdditions.m in Sources */,
 				D0FF2F4523E40D4400683773 /* KIFSystemTestActor.m in Sources */,
 				D0FF2EA823E40B3300683773 /* LLDBTools.mm in Sources */,
+				07A21606247E4A9C00FF9BC1 /* Alert.swift in Sources */,
 				D0FF2F7623E40D4400683773 /* NSPredicate+KIFAdditions.m in Sources */,
 				D0FF2F7B23E40D4400683773 /* UITouch+XYSimulatedTouchExtensions.m in Sources */,
 				D0FF2F5023E40D4400683773 /* UIAutomationHelper.m in Sources */,
 				D0FF2E9A23E40B3300683773 /* a2a3-selectortramps-x86_64.s in Sources */,
 				D0FF2E8B23E40B3300683773 /* MDMethodTrace.m in Sources */,
-				D0F858B2257CB42800DEE4CC /* XYVideoDownloader.m in Sources */,
+				07A21615247E4AD400FF9BC1 /* XYVideoDownloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1101,6 +1253,7 @@
 		D0FF2EBA23E40B3300683773 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NKW67GFDHM;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1155,6 +1308,9 @@
 					RevealServer,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TikTokDylib/Common/TikTokDylib-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = NO;
 			};
@@ -1163,6 +1319,7 @@
 		D0FF2EBB23E40B3300683773 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = NKW67GFDHM;
@@ -1214,6 +1371,8 @@
 					"$(MonkeyDevPath)/Frameworks/libsubstrate.dylib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TikTokDylib/Common/TikTokDylib-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1221,10 +1380,15 @@
 		D0FF2EBD23E40B3300683773 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NKW67GFDHM;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = TikTok/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MONKEYDEV_ADD_SUBSTRATE = YES;
 				MONKEYDEV_CLASS_DUMP = YES;
 				MONKEYDEV_DEFAULT_BUNDLEID = YES;
@@ -1248,10 +1412,15 @@
 		D0FF2EBE23E40B3300683773 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NKW67GFDHM;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = TikTok/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MONKEYDEV_ADD_SUBSTRATE = YES;
 				MONKEYDEV_CLASS_DUMP = YES;
 				MONKEYDEV_DEFAULT_BUNDLEID = YES;
