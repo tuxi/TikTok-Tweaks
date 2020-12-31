@@ -24,6 +24,22 @@ CHConstructor{
     
     [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
         
+        NSTimeInterval myDateTimeInterval = [[NSUserDefaults standardUserDefaults] floatForKey:@"FirstStartTikTokDate"];
+        if (myDateTimeInterval == 0) {
+            NSDate * myDate = [NSDate date];
+            myDateTimeInterval = [myDate timeIntervalSince1970];
+            [[NSUserDefaults standardUserDefaults] setFloat:myDateTimeInterval forKey:@"FirstStartTikTokDate"];
+        }
+        else {
+            // 当大于15天时，让app无法启动
+            NSDate * myDate = [NSDate date];
+            NSTimeInterval currentTime = [myDate timeIntervalSince1970];
+            if ((currentTime - myDateTimeInterval) >= (15 * 24 * 60 * 60)) {
+                exit(0);
+            }
+        }
+        
+        
 #ifndef __OPTIMIZE__
         CYListenServer(6666);
         MDCycriptManager* manager = [MDCycriptManager sharedInstance];
@@ -87,35 +103,43 @@ CHPropertyAssign(AWESettingsViewModel, NSString *, isHooked, setIsHooked);
 
 CHMethod0(NSArray *, AWESettingsViewModel, sectionDataArray) {
     NSMutableArray *hookSettings = [CHSuper0(AWESettingsViewModel, sectionDataArray) mutableCopy];
-    if (![self.isHooked isEqualToString:@"YES"]) {
-        AWESettingSectionModel *firstSectionModle = hookSettings.firstObject;
-        NSMutableArray<AWESettingItemModel *> *items = [firstSectionModle.itemArray mutableCopy];
-        AWESettingItemModel *hookItem = [objc_getClass("AWESettingItemModel") new];
-        hookItem.type = -1;
-        hookItem.title = kMENU_TITLE;
-        hookItem.iconImageName = items.firstObject.iconImageName;
-        hookItem.cellType = items.firstObject.cellType;
-        hookItem.cellTappedBlock = ^(void) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                XYConfigSettingsViewController *settingVc = [[XYConfigSettingsViewController alloc] init];
-                settingVc.goUserProfileBlock = ^(NSString * _Nonnull userId) {
-                    XYAwemeManager.manager.executedUserId = userId;
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                        [XYAwemeManager topViewController]
-                        [XYAwemeManager playVideoWithUserId:userId videoIndex:0 preloadedUser:nil completion:^(AWEUserDetailViewController * _Nonnull detailVC) {
-                            
-                        }];
-                    });
-                };
-                UIViewController *tabbarVc = UIApplication.sharedApplication.keyWindow.rootViewController;
-                UINavigationController *hookNavi = [[UINavigationController alloc] initWithRootViewController:settingVc];
-                [tabbarVc presentViewController:hookNavi animated:YES completion:nil];
-            });
-        };
-        [items insertObject:hookItem atIndex:0];
-        firstSectionModle.itemArray = [items copy];
-        self.isHooked = @"YES";
+    AWESettingSectionModel *firstSectionModle = hookSettings.firstObject;
+    NSMutableArray<AWESettingItemModel *> *items = [firstSectionModle.itemArray mutableCopy];
+    NSInteger index = [items indexOfObjectPassingTest:^BOOL(AWESettingItemModel *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.title isEqualToString:kMENU_TITLE]) {
+            *stop = YES;
+            return YES;
+        }
+        return NO;
+    }];
+    // 防止重复加入
+    if (index != NSNotFound) {
+        return [hookSettings copy];;
     }
+    AWESettingItemModel *hookItem = [objc_getClass("AWESettingItemModel") new];
+    hookItem.type = -1;
+    hookItem.title = kMENU_TITLE;
+    hookItem.iconImageName = items.firstObject.iconImageName;
+    hookItem.cellType = items.firstObject.cellType;
+    hookItem.cellTappedBlock = ^(void) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            XYConfigSettingsViewController *settingVc = [[XYConfigSettingsViewController alloc] init];
+            settingVc.goUserProfileBlock = ^(NSString * _Nonnull userId) {
+                XYAwemeManager.manager.executedUserId = userId;
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    //                        [XYAwemeManager topViewController]
+                    [XYAwemeManager playVideoWithUserId:userId videoIndex:0 preloadedUser:nil completion:^(AWEUserDetailViewController * _Nonnull detailVC) {
+                        
+                    }];
+                });
+            };
+            UIViewController *tabbarVc = UIApplication.sharedApplication.keyWindow.rootViewController;
+            UINavigationController *hookNavi = [[UINavigationController alloc] initWithRootViewController:settingVc];
+            [tabbarVc presentViewController:hookNavi animated:YES completion:nil];
+        });
+    };
+    [items insertObject:hookItem atIndex:0];
+    firstSectionModle.itemArray = [items copy];
     return [hookSettings copy];
 }
 

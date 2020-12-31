@@ -210,7 +210,7 @@
     
     XYConfigSettingsSection *sec2 = [[XYConfigSettingsSection alloc] initWithTitle:@"切换 运营商国家/地区" items:areaItems];
     
-    self.items = @[sec1, sec2];
+    self.items = @[sec2];
 }
 
 - (void)setupUI {

@@ -1181,7 +1181,341 @@ typedef id CDUnknownBlockType;
 
 @end
 
+/*-------------------直播相关-----------------------*/
+@interface AWELiveStreamURLModel : AWEBaseApiModel
+{
+    long long _sid;
+    NSString *_rtmpPullURL;
+    NSString *_rtmpPushURL;
+    unsigned long long _provider;
+    NSDictionary *_flvPullUrl;
+    NSArray *_candidateResolution;
+    NSString *_defaultResolution;
+}
 
++ (id)providerJSONTransformer;
++ (id)JSONKeyPathsByPropertyKey;
+@property(copy, nonatomic) NSString *defaultResolution; // @synthesize defaultResolution=_defaultResolution;
+@property(copy, nonatomic) NSArray *candidateResolution; // @synthesize candidateResolution=_candidateResolution;
+@property(copy, nonatomic) NSDictionary *flvPullUrl; // @synthesize flvPullUrl=_flvPullUrl;
+@property(nonatomic) unsigned long long provider; // @synthesize provider=_provider;
+@property(copy, nonatomic) NSString *rtmpPushURL; // @synthesize rtmpPushURL=_rtmpPushURL;
+@property(copy, nonatomic) NSString *rtmpPullURL; // @synthesize rtmpPullURL=_rtmpPullURL;
+@property(nonatomic) long long sid; // @synthesize sid=_sid;
+- (id)streamUrlWithName:(id)arg1;
+- (id)originPullURL;
+
+@end
+
+@interface AWEShareModel : AWEBaseApiModel
+{
+    _Bool _isPersist;
+    NSString *_shareUrl;
+    AWEURLModel *_shareQRCodeURL;
+    AWEURLModel *_shareImageURL;
+    NSString *_shareWeiboDesc;
+    NSString *_shareLinkDesc;
+    NSString *_shareTitle;
+    NSString *_shareDesc;
+    NSString *_manageGoodsURL;
+    NSString *_manageFXGURL;
+    NSString *_shareSignatureDesc;
+    NSString *_shareSignatureUrl;
+}
+
++ (id)shareImageURLJSONTransformer;
++ (id)shareQRCodeURLJSONTransformer;
++ (id)JSONKeyPathsByPropertyKey;
+@property(retain, nonatomic) NSString *shareSignatureUrl; // @synthesize shareSignatureUrl=_shareSignatureUrl;
+@property(retain, nonatomic) NSString *shareSignatureDesc; // @synthesize shareSignatureDesc=_shareSignatureDesc;
+@property(retain, nonatomic) NSString *manageFXGURL; // @synthesize manageFXGURL=_manageFXGURL;
+@property(retain, nonatomic) NSString *manageGoodsURL; // @synthesize manageGoodsURL=_manageGoodsURL;
+@property(retain, nonatomic) NSString *shareDesc; // @synthesize shareDesc=_shareDesc;
+@property(retain, nonatomic) NSString *shareTitle; // @synthesize shareTitle=_shareTitle;
+@property(retain, nonatomic) NSString *shareLinkDesc; // @synthesize shareLinkDesc=_shareLinkDesc;
+@property(retain, nonatomic) NSString *shareWeiboDesc; // @synthesize shareWeiboDesc=_shareWeiboDesc;
+@property(retain, nonatomic) AWEURLModel *shareImageURL; // @synthesize shareImageURL=_shareImageURL;
+@property(retain, nonatomic) AWEURLModel *shareQRCodeURL; // @synthesize shareQRCodeURL=_shareQRCodeURL;
+@property(nonatomic) _Bool isPersist; // @synthesize isPersist=_isPersist;
+@property(retain, nonatomic) NSString *shareUrl; // @synthesize shareUrl=_shareUrl;
+
+@end
+
+@interface AWELiveRoomConfigModel : AWEBaseApiModel
+{
+    long long _canBeLandscape;
+    long long _enableEmoji;
+    long long _enableShare;
+    long long _enableSendComment;
+    long long _enableSendGift;
+    long long _enableSendGiftGuide;
+    long long _enableSendShortcutGift;
+    long long _enableSendBarrage;
+    long long _enableFansClub;
+    long long _enableHourlyList;
+}
+
++ (id)JSONKeyPathsByPropertyKey;
+@property(nonatomic) long long enableHourlyList; // @synthesize enableHourlyList=_enableHourlyList;
+@property(nonatomic) long long enableFansClub; // @synthesize enableFansClub=_enableFansClub;
+@property(nonatomic) long long enableSendBarrage; // @synthesize enableSendBarrage=_enableSendBarrage;
+@property(nonatomic) long long enableSendShortcutGift; // @synthesize enableSendShortcutGift=_enableSendShortcutGift;
+@property(nonatomic) long long enableSendGiftGuide; // @synthesize enableSendGiftGuide=_enableSendGiftGuide;
+@property(nonatomic) long long enableSendGift; // @synthesize enableSendGift=_enableSendGift;
+@property(nonatomic) long long enableSendComment; // @synthesize enableSendComment=_enableSendComment;
+@property(nonatomic) long long enableShare; // @synthesize enableShare=_enableShare;
+@property(nonatomic) long long enableEmoji; // @synthesize enableEmoji=_enableEmoji;
+@property(nonatomic) long long canBeLandscape; // @synthesize canBeLandscape=_canBeLandscape;
+- (_Bool)enableHourlyList:(_Bool)arg1;
+- (_Bool)enableFansClub:(_Bool)arg1;
+- (_Bool)enableSendBarrage:(_Bool)arg1;
+- (_Bool)enableSendShortcutGift:(_Bool)arg1;
+- (_Bool)enableSendGiftGuide:(_Bool)arg1;
+- (_Bool)enableSendGift:(_Bool)arg1;
+- (_Bool)enableSendComment:(_Bool)arg1;
+- (_Bool)enableShare:(_Bool)arg1;
+- (_Bool)enableEmoji:(_Bool)arg1;
+
+@end
+
+@interface AWELiveRoomSourceCountModel : AWEBaseApiModel
+{
+    long long _follow;
+    long long _liveSquare;
+    long long _recommend;
+}
+
++ (id)JSONKeyPathsByPropertyKey;
+@property(nonatomic) long long recommend; // @synthesize recommend=_recommend;
+@property(nonatomic) long long liveSquare; // @synthesize liveSquare=_liveSquare;
+@property(nonatomic) long long follow; // @synthesize follow=_follow;
+
+@end
+
+@interface AWELiveChallengeModel : AWEBaseApiModel
+{
+    _Bool _isCommerce;
+    NSString *_challengeID;
+    NSString *_challengeName;
+}
+
++ (id)parseChallengeModelFromJson:(id)arg1;
++ (id)JSONKeyPathsByPropertyKey;
+@property(nonatomic) _Bool isCommerce; // @synthesize isCommerce=_isCommerce;
+@property(copy, nonatomic) NSString *challengeName; // @synthesize challengeName=_challengeName;
+@property(copy, nonatomic) NSString *challengeID; // @synthesize challengeID=_challengeID;
+
+@end
+
+@interface AWELiveMultiInteractListModel : NSObject
+{
+    NSArray *_users;
+}
+
++ (id)usersJSONTransformer;
++ (id)JSONKeyPathsByPropertyKey;
+@property(copy, nonatomic) NSArray *users; // @synthesize users=_users;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+
+@end
+
+@interface AWELiveNearbyTV : NSObject
+{
+    _Bool _isIdle;
+    NSString *_desc;
+}
+
++ (id)JSONKeyPathsByPropertyKey;
+@property(copy, nonatomic) NSString *desc; // @synthesize desc=_desc;
+@property(nonatomic) _Bool isIdle; // @synthesize isIdle=_isIdle;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+
+@end
+
+@interface AWELiveRoomModel : AWEBaseApiModel
+{
+    _Bool _inSandBox;
+    _Bool _isCommerceLive;
+    _Bool _isAudioLive;
+    _Bool _screenshotRoom;
+    _Bool _thirdPartyRoom;
+    _Bool _isOfficalRoom;
+    NSNumber *_roomID;
+    long long _status;
+    AWEUserModel *_owner;
+    NSString *_title;
+    long long _userCount;
+    long long _newFansCount;
+    long long _createTime;
+    long long _finishTime;
+    NSNumber *_streamID;
+    AWELiveStreamURLModel *_streamURL;
+    AWELiveStreamURLModel *_backupStreamURL;
+    AWEShareModel *_shareInfo;
+    long long _diggCount;
+    long long _totalUserCount;
+    long long _coins;
+    AWEURLModel *_dynamicCoverURL;
+    AWEURLModel *_roomCoverURL;
+    NSString *_roomTypeTag;
+    AWELiveRoomConfigModel *_config;
+    AWELiveRoomSourceCountModel *_sourceCount;
+    long long _liveMode;
+    AWEURLModel *_liveFeedCellWebpCover;
+    AWELiveChallengeModel *_challengeModel;
+    long long _cellIndexOfChannel;
+    NSString *_enterFrom;
+    NSString *_groupID;
+    NSString *_secondStageTagString;
+    NSNumber *_interactiveEnabled;
+    AWELiveMultiInteractListModel *_interactList;
+    AWELiveNearbyTV *_nearbyTV;
+    NSString *_videoFeedTag;
+    NSString *_distance;
+    NSString *_ownerUserID;
+    NSNumber *_roomLayout;
+    long long _recommendCardType;
+}
+
++ (id)videoFeedTagJSONTransformer;
++ (id)sourceCountJSONTransformer;
++ (id)configJSONTransformer;
++ (id)roomCoverURLJSONTransformer;
++ (id)dynamicCoverURLJSONTransformer;
++ (id)shareInfoJSONTransformer;
++ (id)ownerJSONTransformer;
++ (id)backupStreamURLJSONTransformer;
++ (id)streamURLJSONTransformer;
++ (id)liveFeedCellWebpCoverJSONTransformer;
++ (id)JSONKeyPathsByPropertyKey;
++ (id)instanceFromLiveRoom:(id)arg1;
+@property(nonatomic) long long recommendCardType; // @synthesize recommendCardType=_recommendCardType;
+@property(retain, nonatomic) NSNumber *roomLayout; // @synthesize roomLayout=_roomLayout;
+@property(retain, nonatomic) NSString *ownerUserID; // @synthesize ownerUserID=_ownerUserID;
+@property(nonatomic) _Bool isOfficalRoom; // @synthesize isOfficalRoom=_isOfficalRoom;
+@property(nonatomic) _Bool thirdPartyRoom; // @synthesize thirdPartyRoom=_thirdPartyRoom;
+@property(nonatomic) _Bool screenshotRoom; // @synthesize screenshotRoom=_screenshotRoom;
+@property(copy, nonatomic) NSString *distance; // @synthesize distance=_distance;
+@property(copy, nonatomic) NSString *videoFeedTag; // @synthesize videoFeedTag=_videoFeedTag;
+@property(retain, nonatomic) AWELiveNearbyTV *nearbyTV; // @synthesize nearbyTV=_nearbyTV;
+@property(retain, nonatomic) AWELiveMultiInteractListModel *interactList; // @synthesize interactList=_interactList;
+@property(retain, nonatomic) NSNumber *interactiveEnabled; // @synthesize interactiveEnabled=_interactiveEnabled;
+@property(nonatomic) _Bool isAudioLive; // @synthesize isAudioLive=_isAudioLive;
+@property(retain, nonatomic) NSString *secondStageTagString; // @synthesize secondStageTagString=_secondStageTagString;
+@property(retain, nonatomic) NSString *groupID; // @synthesize groupID=_groupID;
+@property(retain, nonatomic) NSString *enterFrom; // @synthesize enterFrom=_enterFrom;
+@property(nonatomic) long long cellIndexOfChannel; // @synthesize cellIndexOfChannel=_cellIndexOfChannel;
+@property(retain, nonatomic) AWELiveChallengeModel *challengeModel; // @synthesize challengeModel=_challengeModel;
+@property(nonatomic) _Bool isCommerceLive; // @synthesize isCommerceLive=_isCommerceLive;
+@property(retain, nonatomic) AWEURLModel *liveFeedCellWebpCover; // @synthesize liveFeedCellWebpCover=_liveFeedCellWebpCover;
+@property(nonatomic) long long liveMode; // @synthesize liveMode=_liveMode;
+@property(retain, nonatomic) AWELiveRoomSourceCountModel *sourceCount; // @synthesize sourceCount=_sourceCount;
+@property(retain, nonatomic) AWELiveRoomConfigModel *config; // @synthesize config=_config;
+@property(readonly, nonatomic) NSString *roomTypeTag; // @synthesize roomTypeTag=_roomTypeTag;
+@property(retain, nonatomic) AWEURLModel *roomCoverURL; // @synthesize roomCoverURL=_roomCoverURL;
+@property(retain, nonatomic) AWEURLModel *dynamicCoverURL; // @synthesize dynamicCoverURL=_dynamicCoverURL;
+@property(nonatomic) _Bool inSandBox; // @synthesize inSandBox=_inSandBox;
+@property(nonatomic) long long coins; // @synthesize coins=_coins;
+@property(nonatomic) long long totalUserCount; // @synthesize totalUserCount=_totalUserCount;
+@property(nonatomic) long long diggCount; // @synthesize diggCount=_diggCount;
+@property(retain, nonatomic) AWEShareModel *shareInfo; // @synthesize shareInfo=_shareInfo;
+@property(retain, nonatomic) AWELiveStreamURLModel *backupStreamURL; // @synthesize backupStreamURL=_backupStreamURL;
+@property(retain, nonatomic) AWELiveStreamURLModel *streamURL; // @synthesize streamURL=_streamURL;
+@property(retain, nonatomic) NSNumber *streamID; // @synthesize streamID=_streamID;
+@property(nonatomic) long long finishTime; // @synthesize finishTime=_finishTime;
+@property(nonatomic) long long createTime; // @synthesize createTime=_createTime;
+@property(nonatomic) long long newFansCount; // @synthesize newFansCount=_newFansCount;
+@property(nonatomic) long long userCount; // @synthesize userCount=_userCount;
+@property(copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property(retain, nonatomic) AWEUserModel *owner; // @synthesize owner=_owner;
+@property(nonatomic) long long status; // @synthesize status=_status;
+@property(retain, nonatomic) NSNumber *roomID; // @synthesize roomID=_roomID;
+- (id)initWithRoomID:(id)arg1;
+
+@end
+
+@class ACCRecordViewControllerInputData;
+
+@interface ACCViewController : UIViewController {
+    _Bool _routerAnimated;
+    id _inputData;
+//    id <ACCServiceAssembler> _serviveAssembler;
+//    ACCComponentManager *_componentManager;
+//    ACCViewModelFactory *_viewModelFactory;
+//    ACCViewModelContainer *_modelContainer;
+//    ACCComponentsFactory *_componentFactory;
+//    id <ACCRouterCoordinatorProtocol> _routerCoordinator;
+//    id <ACCBusinessConfiguration> _business;
+}
+
+//@property(retain, nonatomic) id <ACCBusinessConfiguration> business; // @synthesize business=_business;
+//@property(retain, nonatomic) id <ACCRouterCoordinatorProtocol> routerCoordinator; // @synthesize routerCoordinator=_routerCoordinator;
+//@property(retain, nonatomic) ACCComponentsFactory *componentFactory; // @synthesize componentFactory=_componentFactory;
+//@property(retain, nonatomic) ACCViewModelContainer *modelContainer; // @synthesize modelContainer=_modelContainer;
+//@property(retain, nonatomic) ACCViewModelFactory *viewModelFactory; // @synthesize viewModelFactory=_viewModelFactory;
+//@property(retain, nonatomic) ACCComponentManager *componentManager; // @synthesize componentManager=_componentManager;
+//@property(retain, nonatomic) id <ACCServiceAssembler> serviveAssembler; // @synthesize serviveAssembler=_serviveAssembler;
+@property(retain, nonatomic) id inputData; // @synthesize inputData=_inputData;
+@property(nonatomic) _Bool routerAnimated; // @synthesize routerAnimated=_routerAnimated;
+- (void)controllerTaskFinished;
+- (void)close;
+- (id)viewModelContainer;
+- (id)root;
+- (void)popSelf;
+- (id)handleTargetViewControllerInputData;
+- (void)beforeLoadLazyComponent;
+- (void)beforeLoadEagerComponent;
+- (_Bool)prefersStatusBarHidden;
+- (long long)preferredStatusBarStyle;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidLoad;
+- (id)initWithBusinessConfiguration:(id)arg1;
+
+@end
+
+
+@interface AWERecorderViewController : ACCViewController
+{
+}
+
+- (void)resetShowFunctionToast:(_Bool)arg1;
+- (void)checkIfNeverGoLive;
+- (void)popSelf;
+- (id)handleTargetViewControllerInputData;
+- (void)beforeLoadLazyComponent;
+- (void)beforeLoadEagerComponent;
+- (long long)preferredStatusBarStyle;
+- (_Bool)prefersStatusBarHidden;
+- (id)currentSticker;
+- (id)awesst_additionalTrackerParams;
+- (id)awesst_enterFrom;
+- (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidLoad;
+- (id)initWithBusinessConfiguration:(id)arg1;
+- (void)dealloc;
+
+// Remaining properties
+@property(readonly, nonatomic) ACCRecordViewControllerInputData *inputData; // @dynamic inputData;
+
+@end
+
+/*-------------------直播相关-----------------------*/
 
 NS_ASSUME_NONNULL_END
 
