@@ -398,6 +398,30 @@
 	<true/>
 	<key>UIStatusBarHidden</key>
 	<true/>
+	<key>UISupportedDevices</key>
+	<array>
+		<string>iPhone12,5</string>
+		<string>iPhone12,3</string>
+		<string>iPhone12,1</string>
+		<string>iPhone11,8</string>
+		<string>iPhone11,6</string>
+		<string>iPhone11,4</string>
+		<string>iPhone11,2</string>
+		<string>iPhone10,6</string>
+		<string>iPhone10,5</string>
+		<string>iPhone10,4</string>
+		<string>iPhone10,3</string>
+		<string>iPhone10,1</string>
+		<string>iPhone10,4</string>
+		<string>iPhone6,1</string>
+		<string>iPhone6,2</string>
+		<string>iPhone7,2</string>
+		<string>iPhone8,1</string>
+		<string>iPhone8,4</string>
+		<string>iPhone9,1</string>
+		<string>iPhone9,3</string>
+		<string>iPod7,1</string>
+	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
