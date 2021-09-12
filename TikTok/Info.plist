@@ -2,12 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>AAWEBootChecker</key>
-	<string>TikTokKidsBootChecker</string>
-	<key>API_HOST</key>
-	<string>api-va.tiktokv.com</string>
-	<key>APP_GROUP_NAME</key>
-	<string>group.com.zhiliaoapp.shared</string>
 	<key>APP_STORE_APP_ID</key>
 	<string>835599320</string>
 	<key>AccountKitClientToken</key>
@@ -16,12 +10,10 @@
 	<integer>1</integer>
 	<key>AppName</key>
 	<string>musical_ly</string>
-	<key>BDJSBGeckoExtraChannels</key>
-	<string>_jsb_auth.webcast</string>
 	<key>BuildMachineOSBuild</key>
-	<string>19F101</string>
+	<string>17F77</string>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>zh_CN</string>
 	<key>CFBundleDisplayName</key>
 	<string>TikTok</string>
 	<key>CFBundleExecutable</key>
@@ -36,7 +28,6 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>AppIcon_TikTok20x20</string>
 				<string>AppIcon_TikTok29x29</string>
 				<string>AppIcon_TikTok40x40</string>
 				<string>AppIcon_TikTok60x60</string>
@@ -51,7 +42,6 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>AppIcon_TikTok20x20</string>
 				<string>AppIcon_TikTok29x29</string>
 				<string>AppIcon_TikTok40x40</string>
 				<string>AppIcon_TikTok60x60</string>
@@ -71,7 +61,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>17.9.1</string>
+	<string>8.4.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
@@ -80,16 +70,6 @@
 	</array>
 	<key>CFBundleURLTypes</key>
 	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>Helo</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>helodad736bdd1af7bd7e3edfc29eb8d6e11</string>
-			</array>
-		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
@@ -165,87 +145,35 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>musically</string>
+			<string>musical.ly</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>musically</string>
 			</array>
 		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>opensdk_sso</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>tiktokopensdk</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>tiktokopenshare</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>tiktoksharesdk</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>KakaoTalk</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>kakao61f447fe9723aa9c0b67a52eeb998e77</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>tiktok</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>tiktok</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>com.zhiliaoapp.musically</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>snssdk1180</string>
-			</array>
-		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>179102</string>
+	<string>84004</string>
 	<key>CHANNEL_NAME</key>
 	<string>App Store</string>
 	<key>CodePushDeploymentKey</key>
 	<string>uByLHmAcarJ10xB6sX2d5sQ2CWopaf01fe8e-4e69-45c9-a3f5-0bfdf3747ea8</string>
-	<key>DTAppStoreToolsBuild</key>
-	<string>12B45a</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>18A390</string>
+	<string>15E217</string>
 	<key>DTPlatformName</key>
 	<string>iphoneos</string>
 	<key>DTPlatformVersion</key>
-	<string>14.0</string>
+	<string>11.3</string>
 	<key>DTSDKBuild</key>
-	<string>18A390</string>
+	<string>15E217</string>
 	<key>DTSDKName</key>
-	<string>iphoneos14.0</string>
+	<string>iphoneos11.3</string>
 	<key>DTXcode</key>
-	<string>1200</string>
+	<string>0930</string>
 	<key>DTXcodeBuild</key>
-	<string>12A7209</string>
+	<string>9E145</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -262,36 +190,54 @@
 	</dict>
 	<key>FacebookAppID</key>
 	<string>597615686992125</string>
-	<key>FacebookAutoLogAppEventsEnabled</key>
-	<false/>
 	<key>FacebookDisplayName</key>
-	<string>TikTok</string>
-	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-1436854326312437~6210612644</string>
-	<key>GoogleMapAPIKey</key>
-	<string>AIzaSyBsTSs9GSyJnCE9o3lDVvMT50ao07i8Cfk</string>
-	<key>HTSAppModeProvider</key>
-	<string>TikTokKidsAppModeProvide</string>
-	<key>HTSServiceInterceptor</key>
-	<string>TikTokKidsServiceInterceptor</string>
+	<string>Tik Tok</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
-	<key>InstagramNewClientKey</key>
-	<string>1075382489491723</string>
-	<key>InstagramNewRedirectURL</key>
-	<string>https://api.tiktokv.com/passport/auth/wap_login_success/</string>
+	<key>InstagramClientKey</key>
+	<string>cc81bf08f7424bed825d666ce4a2a9fe</string>
+	<key>InstagramRedirectURL</key>
+	<string>https://api2.musical.ly/passport/auth/wap_login_success/</string>
 	<key>KAKAO_APP_KEY</key>
-	<string>61f447fe9723aa9c0b67a52eeb998e77</string>
+	<string>462f5e1bc6e5e64e36f3a2b30908e2a9</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>capcut</string>
-		<string>lark</string>
-		<string>viber</string>
+		<string>wechat</string>
+		<string>mtmv</string>
+		<string>weixin</string>
+		<string>sinaweibohd</string>
+		<string>sinaweibo</string>
+		<string>sinaweibosso</string>
+		<string>weibosdk</string>
+		<string>weibosdk2.5</string>
+		<string>mqqapi</string>
+		<string>mqq</string>
+		<string>mqqOpensdkSSoLogin</string>
+		<string>mqqconnect</string>
+		<string>mqqopensdkdataline</string>
+		<string>mqqopensdkgrouptribeshare</string>
+		<string>mqqopensdkfriend</string>
+		<string>mqqopensdkapi</string>
+		<string>mqqopensdkapiV2</string>
+		<string>mqqopensdkapiV3</string>
+		<string>mqzoneopensdk</string>
+		<string>wtloginmqq</string>
+		<string>wtloginmqq2</string>
+		<string>mqqwpa</string>
+		<string>mqzone</string>
+		<string>mqzonev2</string>
+		<string>mqzoneshare</string>
+		<string>wtloginqzone</string>
+		<string>mqzonewx</string>
+		<string>mqzoneopensdkapiV2</string>
+		<string>mqzoneopensdkapi19</string>
+		<string>mqzoneopensdkapi</string>
+		<string>mqzoneopensdk</string>
 		<string>fbapi</string>
 		<string>fb-messenger-api</string>
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
-		<string>kakao61f447fe9723aa9c0b67a52eeb998e77</string>
+		<string>kakao462f5e1bc6e5e64e36f3a2b30908e2a9</string>
 		<string>kakaokompassauth</string>
 		<string>storykompassauth</string>
 		<string>kakaolink</string>
@@ -307,8 +253,15 @@
 		<string>fb-messenger-platform-20150305</string>
 		<string>fb-messenger-platform-20150218</string>
 		<string>fb-messenger-platform-20150128</string>
+		<string>bbmi</string>
 		<string>zalo</string>
+		<string>musically</string>
+		<string>likevideo</string>
+		<string>com.xkeam.muvik</string>
 		<string>snapchat</string>
+		<string>kwai</string>
+		<string>mixch</string>
+		<string>com.hdv.vivavideofree2015</string>
 		<string>twitter</string>
 		<string>twitterauth</string>
 		<string>bandapp</string>
@@ -321,49 +274,43 @@
 		<string>fb-messenger-share-api</string>
 		<string>fb-messenger</string>
 		<string>itms-beta</string>
-		<string>heloiossso</string>
-		<string>comgooglemaps</string>
-		<string>resso</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>LineSDKConfig</key>
 	<dict>
 		<key>ChannelID</key>
-		<string>1653759053</string>
+		<string>1511960329</string>
 	</dict>
 	<key>MinimumOSVersion</key>
-	<string>9.3</string>
+	<string>9.0</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
 	<key>NSAppleMusicUsageDescription</key>
-	<string>To select sound from your library, allow us to access your Apple Music.</string>
+	<string> 用于选取手机内的本地音乐</string>
 	<key>NSCameraUsageDescription</key>
-	<string>You'll be able to record video.</string>
+	<string> 用于拍照设为个人头像，及拍摄短视频时访问相机</string>
 	<key>NSContactsUsageDescription</key>
-	<string>Sync your contacts to easily find people you know on TikTok. Your contacts will only be used to help you connect with friends.</string>
+	<string> 用于获知通讯录联系人中使用该应用的用户名单</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string> 用于推荐“附近”用户的视频</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string> 用于推荐“附近”用户的视频</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string> 用于推荐“附近”用户的视频</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>To record audio, allow us to access your Microphone.</string>
+	<string> 用于拍摄短视频时访问麦克风收录视频声音</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>To upload from or download to your device, allow access to your photos in your phone settings.</string>
+	<string> 用于从相册选取照片设置个人头像、上传发布视频，以及保存作品至本地</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>To upload from or download to your device, allow access to your photos in your phone settings.</string>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>Your data will be used to personalize and improve your experience, including the ads you see.</string>
+	<string> 用于从相册选取照片设置个人头像、上传发布视频，以及保存作品至本地</string>
 	<key>SCSDKClientId</key>
 	<string>be57ee08-231d-4622-9cad-4e0792363934</string>
 	<key>SCSDKRedirectUrl</key>
-	<string>snssdk1233://snapchat</string>
-	<key>SKAdNetworkItems</key>
-	<array>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>mj797d8u6f.skadnetwork</string>
-		</dict>
-	</array>
+	<string>snappybirddemo://</string>
 	<key>SSAppID</key>
 	<string>1233</string>
 	<key>TwitterInfo</key>
@@ -379,10 +326,6 @@
 		<string>Proxima-Nova-Semibold.otf</string>
 		<string>Proxima-Nova-Regular.otf</string>
 	</array>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>remote-notification</string>
-	</array>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
@@ -395,7 +338,7 @@
 		<string>armv7</string>
 	</array>
 	<key>UIRequiresFullScreen</key>
-	<true/>
+	<false/>
 	<key>UIStatusBarHidden</key>
 	<true/>
 	<key>UISupportedDevices</key>
@@ -429,6 +372,9 @@
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>

@@ -31,8 +31,8 @@
 		07A21630247E520D00FF9BC1 /* AWEAwemeDetailTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A21628247E520D00FF9BC1 /* AWEAwemeDetailTableViewController.h */; };
 		07A21631247E520D00FF9BC1 /* AWEAwemeDetailCellViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 07A21629247E520D00FF9BC1 /* AWEAwemeDetailCellViewController.h */; };
 		07A2163B247E52F200FF9BC1 /* FLEX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A21638247E52E400FF9BC1 /* FLEX.framework */; };
-		07A2163C247E52F200FF9BC1 /* FLEX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07A21638247E52E400FF9BC1 /* FLEX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		07A2163F247E52FA00FF9BC1 /* FLEX.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07A21638247E52E400FF9BC1 /* FLEX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D06FCBAA26EE2E7100B5A4E0 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07FAE5526EE2B6C00A7E043 /* IOKit.framework */; };
 		D0FF2E6623E40B3300683773 /* MDConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0FF2E6523E40B3300683773 /* MDConfig.plist */; };
 		D0FF2E7023E40B3300683773 /* libTikTokDylib.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0FF2E6F23E40B3300683773 /* libTikTokDylib.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D0FF2E7523E40B3300683773 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FF2E7423E40B3300683773 /* JavaScriptCore.framework */; };
@@ -169,7 +169,6 @@
 		D0FF2F9D23E40D7500683773 /* RadomComments.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2F9723E40D7500683773 /* RadomComments.m */; };
 		D0FF2F9E23E40D7500683773 /* XYAwemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2F9823E40D7500683773 /* XYAwemeManager.m */; };
 		D0FF2F9F23E40D7500683773 /* XYConfigSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2F9923E40D7500683773 /* XYConfigSettingsViewController.m */; };
-		D0FF2FA123E40DEF00683773 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FF2FA023E40DEF00683773 /* IOKit.framework */; };
 		D0FF2FA223E4131600683773 /* countryCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0FF2F1723E40D4300683773 /* countryCode.plist */; };
 /* End PBXBuildFile section */
 
@@ -198,20 +197,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		07A2163D247E52F200FF9BC1 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				07A2163C247E52F200FF9BC1 /* FLEX.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D0FF2E5B23E40B3300683773 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
@@ -249,6 +237,7 @@
 		07A21628247E520D00FF9BC1 /* AWEAwemeDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEAwemeDetailTableViewController.h; sourceTree = "<group>"; };
 		07A21629247E520D00FF9BC1 /* AWEAwemeDetailCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWEAwemeDetailCellViewController.h; sourceTree = "<group>"; };
 		07A21632247E52E400FF9BC1 /* FLEX.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FLEX.xcodeproj; path = FLEX/FLEX.xcodeproj; sourceTree = "<group>"; };
+		D07FAE5526EE2B6C00A7E043 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = ../../../../../../opt/MonkeyDev/Frameworks/IOKit.framework; sourceTree = "<group>"; };
 		D0FF2E5E23E40B3300683773 /* TikTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0FF2E6123E40B3300683773 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		D0FF2E6323E40B3300683773 /* quick-resign.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "quick-resign.sh"; sourceTree = "<group>"; };
@@ -393,7 +382,6 @@
 		D0FF2F9723E40D7500683773 /* RadomComments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadomComments.m; sourceTree = "<group>"; };
 		D0FF2F9823E40D7500683773 /* XYAwemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYAwemeManager.m; sourceTree = "<group>"; };
 		D0FF2F9923E40D7500683773 /* XYConfigSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYConfigSettingsViewController.m; sourceTree = "<group>"; };
-		D0FF2FA023E40DEF00683773 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -411,7 +399,7 @@
 				D0FF2E7523E40B3300683773 /* JavaScriptCore.framework in Frameworks */,
 				D0FF2E7923E40B3300683773 /* UIKit.framework in Frameworks */,
 				D0FF2E7723E40B3300683773 /* Foundation.framework in Frameworks */,
-				D0FF2FA123E40DEF00683773 /* IOKit.framework in Frameworks */,
+				D06FCBAA26EE2E7100B5A4E0 /* IOKit.framework in Frameworks */,
 				07A2163B247E52F200FF9BC1 /* FLEX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,7 +475,7 @@
 		D0FF2E7323E40B3300683773 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D0FF2FA023E40DEF00683773 /* IOKit.framework */,
+				D07FAE5526EE2B6C00A7E043 /* IOKit.framework */,
 				D0FF2E7423E40B3300683773 /* JavaScriptCore.framework */,
 				D0FF2E7623E40B3300683773 /* Foundation.framework */,
 				D0FF2E7823E40B3300683773 /* UIKit.framework */,
@@ -910,7 +898,6 @@
 				D0FF2E6B23E40B3300683773 /* Sources */,
 				D0FF2E6C23E40B3300683773 /* Frameworks */,
 				D0FF2E6D23E40B3300683773 /* Headers */,
-				07A2163D247E52F200FF9BC1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1012,7 +999,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = /opt/MonkeyDev/Tools/pack.sh;
+			shellScript = "/opt/MonkeyDev/Tools/pack.sh\n";
 		};
 		D0FF2E5C23E40B3300683773 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1029,7 +1016,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/opt/MonkeyDev/Tools/pack.sh codesign";
+			shellScript = "/opt/MonkeyDev/Tools/pack.sh codesign\n";
 		};
 		D0FF2E6A23E40B3300683773 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1255,7 +1242,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NKW67GFDHM;
+				DEVELOPMENT_TEAM = 6STY5JW7BU;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				ENABLE_BITCODE = NO;
@@ -1266,6 +1253,7 @@
 					"$(MonkeyDevPath)/Frameworks/**",
 					"$(MonkeyDevPath)/Librarys/**",
 					"$(MonkeyDevTheosPath)/vendor/lib",
+					/opt/MonkeyDev/Frameworks,
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1300,7 +1288,7 @@
 					"-weak_library",
 					"/usr/lib/libc++.dylib",
 					"-weak_library",
-					"/usr/lib/libstdc++.dylib",
+					"/usr/lib/libc++.dylib",
 					"-weak_library",
 					"$(MonkeyDevPath)/Frameworks/libsubstrate.dylib",
 					"-lcycript",
@@ -1322,7 +1310,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = NKW67GFDHM;
+				DEVELOPMENT_TEAM = 6STY5JW7BU;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				ENABLE_BITCODE = NO;
@@ -1333,6 +1321,7 @@
 					"$(MonkeyDevPath)/Frameworks/**",
 					"$(MonkeyDevPath)/Librarys/**",
 					"$(MonkeyDevTheosPath)/vendor/lib",
+					/opt/MonkeyDev/Frameworks,
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1366,7 +1355,7 @@
 					"-weak_library",
 					"/usr/lib/libc++.dylib",
 					"-weak_library",
-					"/usr/lib/libstdc++.dylib",
+					"/usr/lib/libc++.dylib",
 					"-weak_library",
 					"$(MonkeyDevPath)/Frameworks/libsubstrate.dylib",
 				);
@@ -1382,7 +1371,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 33TS6KJYJJ;
+				DEVELOPMENT_TEAM = 6STY5JW7BU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = TikTok/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -24,20 +24,20 @@ CHConstructor{
     
     [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
         
-        NSTimeInterval myDateTimeInterval = [[NSUserDefaults standardUserDefaults] floatForKey:@"FirstStartTikTokDate"];
-        if (myDateTimeInterval == 0) {
-            NSDate * myDate = [NSDate date];
-            myDateTimeInterval = [myDate timeIntervalSince1970];
-            [[NSUserDefaults standardUserDefaults] setFloat:myDateTimeInterval forKey:@"FirstStartTikTokDate"];
-        }
-        else {
-            // 当大于15天时，让app无法启动
-            NSDate * myDate = [NSDate date];
-            NSTimeInterval currentTime = [myDate timeIntervalSince1970];
-            if ((currentTime - myDateTimeInterval) >= (15 * 24 * 60 * 60)) {
-                exit(0);
-            }
-        }
+//        NSTimeInterval myDateTimeInterval = [[NSUserDefaults standardUserDefaults] floatForKey:@"FirstStartTikTokDate"];
+//        if (myDateTimeInterval == 0) {
+//            NSDate * myDate = [NSDate date];
+//            myDateTimeInterval = [myDate timeIntervalSince1970];
+//            [[NSUserDefaults standardUserDefaults] setFloat:myDateTimeInterval forKey:@"FirstStartTikTokDate"];
+//        }
+//        else {
+//            // 当大于15天时，让app无法启动
+//            NSDate * myDate = [NSDate date];
+//            NSTimeInterval currentTime = [myDate timeIntervalSince1970];
+//            if ((currentTime - myDateTimeInterval) >= (15 * 24 * 60 * 60)) {
+//                exit(0);
+//            }
+//        }
         
         
 #ifndef __OPTIMIZE__
