@@ -11,6 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XYVideoDownloader : NSObject
+
++ (XYVideoDownloader *)sharedInstance;
  
 @property (nonatomic,strong) NSURLSession *session;
 - (void)downloadFileWithUrl:(NSURL *)url completion:(void (^)(BOOL isSuccess))completion;

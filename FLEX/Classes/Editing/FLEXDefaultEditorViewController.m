@@ -3,7 +3,7 @@
 //  Flipboard
 //
 //  Created by Ryan Olson on 5/23/14.
-//  Copyright (c) 2014 Flipboard. All rights reserved.
+//  Copyright (c) 2020 FLEX Team. All rights reserved.
 //
 
 #import "FLEXDefaultEditorViewController.h"
@@ -15,29 +15,27 @@
 @interface FLEXDefaultEditorViewController ()
 
 @property (nonatomic, readonly) NSUserDefaults *defaults;
-@property (nonatomic) NSString *key;
+@property (nonatomic, readonly) NSString *key;
 
 @end
 
 @implementation FLEXDefaultEditorViewController
 
-- (id)initWithDefaults:(NSUserDefaults *)defaults key:(NSString *)key
-{
-    self = [super initWithTarget:defaults];
-    if (self) {
-        self.key = key;
-        self.title = @"Edit Default";
-    }
-    return self;
++ (instancetype)target:(NSUserDefaults *)defaults key:(NSString *)key commitHandler:(void(^_Nullable)())onCommit {
+    FLEXDefaultEditorViewController *editor = [self target:defaults data:key commitHandler:onCommit];
+    editor.title = @"Edit Default";
+    return editor;
 }
 
-- (NSUserDefaults *)defaults
-{
-    return [self.target isKindOfClass:[NSUserDefaults class]] ? self.target : nil;
+- (NSUserDefaults *)defaults {
+    return [_target isKindOfClass:[NSUserDefaults class]] ? _target : nil;
 }
 
-- (void)viewDidLoad
-{
+- (NSString *)key {
+    return _data;
+}
+
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.fieldEditorView.fieldDescription = self.key;
@@ -52,10 +50,7 @@
     self.fieldEditorView.argumentInputViews = @[inputView];
 }
 
-- (void)actionButtonPressed:(id)sender
-{
-    [super actionButtonPressed:sender];
-    
+- (void)actionButtonPressed:(id)sender {
     id value = self.firstInputView.inputValue;
     if (value) {
         [self.defaults setObject:value forKey:self.key];
@@ -63,19 +58,19 @@
         [self.defaults removeObjectForKey:self.key];
     }
     [self.defaults synchronize];
-
-    self.firstInputView.inputValue = [self.defaults objectForKey:self.key];
+    
+    // Dismiss keyboard and handle committed changes
+    [super actionButtonPressed:sender];
+    
+    // Go back after setting, but not for switches.
+    if (sender) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        self.firstInputView.inputValue = [self.defaults objectForKey:self.key];
+    }
 }
 
-- (void)getterButtonPressed:(id)sender
-{
-    [super getterButtonPressed:sender];
-    id returnedObject = [self.defaults objectForKey:self.key];
-    [self exploreObjectOrPopViewController:returnedObject];
-}
-
-+ (BOOL)canEditDefaultWithValue:(id)currentValue
-{
++ (BOOL)canEditDefaultWithValue:(id)currentValue {
     return [FLEXArgumentInputViewFactory
         canEditFieldWithTypeEncoding:FLEXEncodeObject(currentValue)
         currentValue:currentValue

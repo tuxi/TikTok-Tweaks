@@ -9,7 +9,6 @@
 #import "XYVideoDownloader.h"
 #import "MBProgressHUD.h"
 #import "MBProgressHUD+XYHUD.h"
-#import "XYAwemeManager.h"
 
 @interface XYVideoDownloader () <NSURLSessionDownloadDelegate>
 
@@ -21,6 +20,16 @@
 @end
 
 @implementation XYVideoDownloader
+
++ (XYVideoDownloader *)sharedInstance {
+    static dispatch_once_t onceToken;
+    static XYVideoDownloader * _instance;
+    dispatch_once(&onceToken, ^{
+        _instance = [XYVideoDownloader new];
+    });
+    return  _instance;
+}
+
 ///初始化session
 - (NSURLSession *)session {
     if(_session == nil)
@@ -31,54 +40,19 @@
     return _session;
 }
 
-- (MBProgressHUD *)hud {
-    if (!_hud) {
-        UIViewController *controller = [XYAwemeManager topViewController];
-        _hud = [MBProgressHUD showHUDAddedTo:controller.view animated:YES];
-        _hud.bezelView.backgroundColor = [UIColor.blackColor colorWithAlphaComponent:0.65];
-        _hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
-    }
-    return _hud;
-}
- 
 
 ///通过url下载
 - (void)downloadFileWithUrl:(NSURL *)url completion:(nonnull void (^)(BOOL isSuccess))completion {
     self.url = url;
     self.completionHandler = completion;
+    UIWindow *window = UIApplication.sharedApplication.delegate.window;
+//        UIViewController *controller = [XYVideoDownloader topViewController];
+    _hud = [MBProgressHUD showHUDAddedTo:window animated:YES];
+    _hud.bezelView.backgroundColor = [UIColor.blackColor colorWithAlphaComponent:0.65];
+    _hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:1.0 timeoutInterval:10.0];
 
     [[self.session downloadTaskWithRequest:request] resume];
-    
-//   NSURLSessionDownloadTask *task = [self.session downloadTaskWithRequest:request completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//        if (error == nil) {
-//            ///[self.hud setLabelText:[NSString stringWithFormat:@"下载成功"]];
-//            NSFileManager *fileManger = [NSFileManager defaultManager];
-//            ///沙盒Documents路径
-//            NSString *documents = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-//            //拼接文件绝对路径
-//            NSString *path = [documents stringByAppendingPathComponent:response.suggestedFilename];
-//            //视频存放到这个位置
-//            [fileManger moveItemAtURL:location toURL:[NSURL fileURLWithPath:path] error:nil];
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                ///保存到相册
-//                UISaveVideoAtPathToSavedPhotosAlbum(path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
-//                self.hud.label.text = @"正在保存到相册！";
-//            });
-//
-//        }
-//        else {
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                self.hud.label.text = @"视频下载失败！";
-//                if (self.completionHandler) {
-//                    self.completionHandler(NO);
-//                }
-//            });
-//        }
-//    }];
-    
-    ///开始下载任务
-//    [task resume];
     
 }
  
@@ -103,8 +77,6 @@
     if (@available(iOS 10.0, *)) {
         UIImpactFeedbackGenerator *feedBackGenertor = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
         [feedBackGenertor impactOccurred];
-    } else {
-        // Fallback on earlier versions
     }
 }
 
@@ -124,7 +96,11 @@
     NSString *documents = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     //拼接文件绝对路径
     NSString *path = [documents stringByAppendingPathComponent:downloadTask.response.suggestedFilename];
-    //视频存放到这个位置
+    if (@available(iOS 10.0, *)) {
+        //视频存放到这个位置
+    } else {
+        // Fallback on earlier versions
+    }
     [fileManger moveItemAtURL:location toURL:[NSURL fileURLWithPath:path] error:nil];
     dispatch_async(dispatch_get_main_queue(), ^{
         ///保存到相册
@@ -145,4 +121,8 @@
     }
 }
 
+
++ (UIViewController *)topViewController {
+    return [NSClassFromString(@"AWEUIResponder") topViewController];
+}
 @end

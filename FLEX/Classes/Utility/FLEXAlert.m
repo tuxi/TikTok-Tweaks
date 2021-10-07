@@ -3,10 +3,11 @@
 //  FLEX
 //
 //  Created by Tanner Bennett on 8/20/19.
-//  Copyright © 2019 Flipboard. All rights reserved.
+//  Copyright © 2020 FLEX Team. All rights reserved.
 //
 
 #import "FLEXAlert.h"
+#import "FLEXMacros.h"
 
 @interface FLEXAlert ()
 @property (nonatomic, readonly) UIAlertController *_controller;
@@ -62,17 +63,42 @@ NSAssert(!self._action, @"Cannot mutate action after retreiving underlying UIAle
     return alert._controller;
 }
 
-+ (void)make:(FLEXAlertBuilder)block withStyle:(UIAlertControllerStyle)style showFrom:(UIViewController *)viewController {
++ (void)make:(FLEXAlertBuilder)block
+   withStyle:(UIAlertControllerStyle)style
+    showFrom:(UIViewController *)viewController
+      source:(id)viewOrBarItem {
     UIAlertController *alert = [self make:block withStyle:style];
+    if ([viewOrBarItem isKindOfClass:[UIBarButtonItem class]]) {
+        alert.popoverPresentationController.barButtonItem = viewOrBarItem;
+    } else if ([viewOrBarItem isKindOfClass:[UIView class]]) {
+        alert.popoverPresentationController.sourceView = viewOrBarItem;
+        alert.popoverPresentationController.sourceRect = [viewOrBarItem bounds];
+    } else if (viewOrBarItem) {
+        NSParameterAssert(
+            [viewOrBarItem isKindOfClass:[UIBarButtonItem class]] ||
+            [viewOrBarItem isKindOfClass:[UIView class]] ||
+            !viewOrBarItem
+        );
+    }
     [viewController presentViewController:alert animated:YES completion:nil];
 }
 
-+ (void)makeAlert:(FLEXAlertBuilder)block showFrom:(UIViewController *)viewController {
-    [self make:block withStyle:UIAlertControllerStyleAlert showFrom:viewController];
++ (void)makeAlert:(FLEXAlertBuilder)block showFrom:(UIViewController *)controller {
+    [self make:block withStyle:UIAlertControllerStyleAlert showFrom:controller source:nil];
 }
 
-+ (void)makeSheet:(FLEXAlertBuilder)block showFrom:(UIViewController *)viewController {
-    [self make:block withStyle:UIAlertControllerStyleActionSheet showFrom:viewController];
++ (void)makeSheet:(FLEXAlertBuilder)block showFrom:(UIViewController *)controller {
+    [self make:block withStyle:UIAlertControllerStyleActionSheet showFrom:controller source:nil];
+}
+
+/// Construct and display an action sheet-style alert
++ (void)makeSheet:(FLEXAlertBuilder)block
+         showFrom:(UIViewController *)controller
+           source:(id)viewOrBarItem {
+    [self make:block
+     withStyle:UIAlertControllerStyleActionSheet
+      showFrom:controller
+        source:viewOrBarItem];
 }
 
 + (UIAlertController *)makeAlert:(FLEXAlertBuilder)block {
@@ -88,7 +114,7 @@ NSAssert(!self._action, @"Cannot mutate action after retreiving underlying UIAle
 - (FLEXAlertStringProperty)title {
     return ^FLEXAlert *(NSString *title) {
         if (self._controller.title) {
-            self._controller.title = [self._controller.title stringByAppendingString:title];
+            self._controller.title = [self._controller.title stringByAppendingString:title ?: @""];
         } else {
             self._controller.title = title;
         }
@@ -99,7 +125,7 @@ NSAssert(!self._action, @"Cannot mutate action after retreiving underlying UIAle
 - (FLEXAlertStringProperty)message {
     return ^FLEXAlert *(NSString *message) {
         if (self._controller.message) {
-            self._controller.message = [self._controller.message stringByAppendingString:message];
+            self._controller.message = [self._controller.message stringByAppendingString:message ?: @""];
         } else {
             self._controller.message = message;
         }
@@ -141,7 +167,7 @@ NSAssert(!self._action, @"Cannot mutate action after retreiving underlying UIAle
     return ^FLEXAlertAction *(NSString *title) {
         FLEXAlertActionMutationAssertion();
         if (self._title) {
-            self._title = [self._title stringByAppendingString:title];
+            self._title = [self._title stringByAppendingString:title ?: @""];
         } else {
             self._title = title;
         }
@@ -178,10 +204,9 @@ NSAssert(!self._action, @"Cannot mutate action after retreiving underlying UIAle
         FLEXAlertActionMutationAssertion();
 
         // Get weak reference to the alert to avoid block <--> alert retain cycle
-        __weak __typeof(self._controller) weakController = self._controller;
-        self._handler = ^(UIAlertAction *action) {
+        UIAlertController *controller = self._controller; weakify(controller)
+        self._handler = ^(UIAlertAction *action) { strongify(controller)
             // Strongify that reference and pass the text field strings to the handler
-            __strong __typeof(weakController) controller = weakController;
             NSArray *strings = [controller.textFields valueForKeyPath:@"text"];
             handler(strings);
         };
