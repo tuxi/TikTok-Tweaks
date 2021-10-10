@@ -11,6 +11,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "AwemeTTHttpTask.h"
+#import "TikTokSettingsHeaders.h"
 
 @class AWEFeedCellViewController;
 
@@ -95,7 +96,5 @@
 @property(retain, nonatomic) AWEShareContext *shareContext;
 - (void)dismissAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 @end
-
-
 
 #endif /* TikTokHeaders_h */

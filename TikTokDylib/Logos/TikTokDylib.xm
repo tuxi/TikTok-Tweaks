@@ -8,10 +8,51 @@
 
 #include "TikTokHeaders.h"
 #import "XYVideoDownloader.h"
+#import "XYConfigSettingsViewController.h"
+#import "TikTokDylib-Swift.h"
 
-BOOL shouldPlayAds = YES;
-BOOL autoPlayNextVideo = YES;
-BOOL showProgressBar = NO;
+%group Settings
+%hook TTKSettingsViewController
+
+- (void)viewDidLoad {
+    %orig;
+    [self xy_addSettingsBtn];
+}
+
+%new
+- (void)xy_goSettings {
+    XYConfigSettingsViewController *settingVc = [[XYConfigSettingsViewController alloc] init];
+    UIViewController *tabbarVc = UIApplication.sharedApplication.keyWindow.rootViewController;
+    UINavigationController *hookNavi = [[UINavigationController alloc] initWithRootViewController:settingVc];
+    [tabbarVc presentViewController:hookNavi animated:YES completion:nil];
+}
+%new
+- (void)xy_addSettingsBtn {
+    
+    NSUInteger index = [self.view.subviews indexOfObjectPassingTest:^BOOL(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:NSClassFromString(@"AWENavigationBar")]) {
+            *stop = YES;
+            return YES;
+        }
+        return NO;
+    }];
+    
+    if (index != NSNotFound) {
+        UIButton *settingsBtn = [UIButton new];
+        [settingsBtn setTitle:@"设置规则" forState:UIControlStateNormal];
+        [settingsBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        settingsBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+        [settingsBtn addTarget:self action:@selector(xy_goSettings) forControlEvents:UIControlEventTouchUpInside];
+        AWENavigationBar *bar = self.view.subviews[index];
+        [bar.contentView addSubview:settingsBtn];
+        settingsBtn.translatesAutoresizingMaskIntoConstraints = NO;
+        [settingsBtn.centerYAnchor constraintEqualToAnchor:bar.contentView.centerYAnchor].active = YES;
+        [settingsBtn.trailingAnchor constraintEqualToAnchor:bar.contentView.trailingAnchor constant:-20].active = YES;
+    }
+}
+
+%end
+%end
 
 %group DownloadBypass
 /// 分享面板
@@ -107,41 +148,25 @@ BOOL showProgressBar = NO;
 %hook AWEAwemeModel
 - (id)initWithDictionary:(id)arg1 error:(id *)arg2 {
     id orig = %orig;
-    return shouldPlayAds && self.isAds ? nil : orig;
+    return XYPreferenceManager.shared.shouldPlayAds && self.isAds ? nil : orig;
 }
 
 - (id)init {
     id orig = %orig;
-    return shouldPlayAds && self.isAds ? nil : orig;
+    return XYPreferenceManager.shared.shouldPlayAds && self.isAds ? nil : orig;
 }
 
 - (BOOL)progressBarDraggable {
-    return showProgressBar || %orig;
+    return XYPreferenceManager.shared.showProgressBar || %orig;
 }
 - (BOOL)progressBarVisible {
-    return showProgressBar || %orig;
-}
-%end
-
-%hook CTCarrier
-// Thanks chenxk-j for this
-// https://github.com/chenxk-j/hookTikTok/blob/master/hooktiktok/hooktiktok.xm#L23
-- (NSString *)mobileCountryCode {
-    return @"440";
-}
-
-- (NSString *)isoCountryCode {
-    return @"JP";
-}
-
-- (NSString *)mobileNetworkCode {
-    return @"01";
+    return XYPreferenceManager.shared.showProgressBar || %orig;
 }
 %end
 
 %hook AWEPlayVideoPlayerController
 - (void)playerWillLoopPlaying:(id)arg1 {
-    if (autoPlayNextVideo) {
+    if (XYPreferenceManager.shared.isAutoPlayNextVideoWhenPlayEnded) {
         if ([self.container.parentViewController isKindOfClass:%c(AWEFeedTableViewController)]) {
             // 播放完成后 自动滚动到下一个视频
             [((AWEFeedTableViewController *)self.container.parentViewController) scrollToNextVideo];
@@ -298,7 +323,7 @@ static AWEFeedContainerViewController *__weak sharedInstance;
 %end
 
 %ctor {
-    
+    %init(Settings);
     %init(DownloadBypass);
     %init(SSLPinningBypass);
     %init(CoreLogic);

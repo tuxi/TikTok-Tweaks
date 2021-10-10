@@ -39,15 +39,24 @@
 		D0A2A9AE270F05F10001352D /* FLEX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A2A9AB270F05DC0001352D /* FLEX.framework */; platformFilter = ios; };
 		D0A2A9AF270F05F10001352D /* FLEX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0A2A9AB270F05DC0001352D /* FLEX.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0A2A9B1270F05FC0001352D /* FLEX.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0A2A9AB270F05DC0001352D /* FLEX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D0A2A9B5270F062D0001352D /* UIDebuggingTool.h in Headers */ = {isa = PBXBuildFile; fileRef = D0A2A9B3270F062D0001352D /* UIDebuggingTool.h */; };
-		D0A2A9B6270F062D0001352D /* UIDebuggingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A2A9B4270F062D0001352D /* UIDebuggingTool.m */; };
 		D0A2A9B9270F07F10001352D /* AwemeTTHttpTask.h in Headers */ = {isa = PBXBuildFile; fileRef = D0A2A9B8270F07F10001352D /* AwemeTTHttpTask.h */; };
-		D0A2A9BC270F0D740001352D /* XYVideoDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A2A9BA270F0D740001352D /* XYVideoDownloader.m */; };
-		D0A2A9BD270F0D740001352D /* XYVideoDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0A2A9BB270F0D740001352D /* XYVideoDownloader.h */; };
-		D0A2A9C2270F0DAE0001352D /* MBProgressHUD+XYHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = D0A2A9BE270F0DAD0001352D /* MBProgressHUD+XYHUD.h */; };
-		D0A2A9C3270F0DAE0001352D /* MBProgressHUD+XYHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A2A9BF270F0DAD0001352D /* MBProgressHUD+XYHUD.m */; };
-		D0A2A9C4270F0DAE0001352D /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = D0A2A9C0270F0DAD0001352D /* MBProgressHUD.h */; };
-		D0A2A9C5270F0DAE0001352D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A2A9C1270F0DAE0001352D /* MBProgressHUD.m */; };
+		D0B6BFA2271286BD00AD795B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B6BF9A271286BD00AD795B /* MBProgressHUD.m */; };
+		D0B6BFA3271286BD00AD795B /* MBProgressHUD+XYHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = D0B6BF9B271286BD00AD795B /* MBProgressHUD+XYHUD.h */; };
+		D0B6BFA4271286BD00AD795B /* UIDebuggingTool.h in Headers */ = {isa = PBXBuildFile; fileRef = D0B6BF9C271286BD00AD795B /* UIDebuggingTool.h */; };
+		D0B6BFA5271286BD00AD795B /* XYVideoDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B6BF9D271286BD00AD795B /* XYVideoDownloader.m */; };
+		D0B6BFA6271286BD00AD795B /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = D0B6BF9E271286BD00AD795B /* MBProgressHUD.h */; };
+		D0B6BFA7271286BD00AD795B /* UIDebuggingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B6BF9F271286BD00AD795B /* UIDebuggingTool.m */; };
+		D0B6BFA8271286BD00AD795B /* MBProgressHUD+XYHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B6BFA0271286BD00AD795B /* MBProgressHUD+XYHUD.m */; };
+		D0B6BFA9271286BD00AD795B /* XYVideoDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0B6BFA1271286BD00AD795B /* XYVideoDownloader.h */; };
+		D0B6BFAC271287DB00AD795B /* XYConfigSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0B6BFAA271287DB00AD795B /* XYConfigSettingsViewController.h */; };
+		D0B6BFAD271287DB00AD795B /* XYConfigSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B6BFAB271287DB00AD795B /* XYConfigSettingsViewController.m */; };
+		D0B6BFB0271288AE00AD795B /* XYPreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6BFAF271288AE00AD795B /* XYPreferenceManager.swift */; };
+		D0B6BFB9271290A400AD795B /* iconPersonalSettingArrow_18x18_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B6BFB3271290A400AD795B /* iconPersonalSettingArrow_18x18_@2x.png */; };
+		D0B6BFBA271290A400AD795B /* icon_discovery_favi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B6BFB4271290A400AD795B /* icon_discovery_favi@2x.png */; };
+		D0B6BFBB271290A400AD795B /* icon_discovery_favi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B6BFB5271290A400AD795B /* icon_discovery_favi@3x.png */; };
+		D0B6BFBC271290A400AD795B /* countryCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0B6BFB7271290A400AD795B /* countryCode.plist */; };
+		D0B6BFC02712A18200AD795B /* Carrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6BFBF2712A18200AD795B /* Carrier.swift */; };
+		D0B6BFC22712AF7C00AD795B /* TikTokSettingsHeaders.h in Sources */ = {isa = PBXBuildFile; fileRef = D0B6BFC12712AF7C00AD795B /* TikTokSettingsHeaders.h */; };
 		D0FCBBF427076CA200B3129F /* TikTokHeaders.h in Headers */ = {isa = PBXBuildFile; fileRef = D0FCBBF32707696100B3129F /* TikTokHeaders.h */; };
 		D0FCBC622707EE7F00B3129F /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07B52812706C871009ABD87 /* JavaScriptCore.framework */; };
 /* End PBXBuildFile section */
@@ -141,15 +150,25 @@
 		D07B52C02706C871009ABD87 /* TikTokDylib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TikTokDylib.h; sourceTree = "<group>"; };
 		D07B52C22706C871009ABD87 /* TikTokDylib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TikTokDylib.m; sourceTree = "<group>"; };
 		D0A2A9A5270F05DC0001352D /* FLEX.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FLEX.xcodeproj; path = FLEX/FLEX.xcodeproj; sourceTree = "<group>"; };
-		D0A2A9B3270F062D0001352D /* UIDebuggingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDebuggingTool.h; sourceTree = "<group>"; };
-		D0A2A9B4270F062D0001352D /* UIDebuggingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDebuggingTool.m; sourceTree = "<group>"; };
 		D0A2A9B8270F07F10001352D /* AwemeTTHttpTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwemeTTHttpTask.h; sourceTree = "<group>"; };
-		D0A2A9BA270F0D740001352D /* XYVideoDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYVideoDownloader.m; sourceTree = "<group>"; };
-		D0A2A9BB270F0D740001352D /* XYVideoDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYVideoDownloader.h; sourceTree = "<group>"; };
-		D0A2A9BE270F0DAD0001352D /* MBProgressHUD+XYHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+XYHUD.h"; sourceTree = "<group>"; };
-		D0A2A9BF270F0DAD0001352D /* MBProgressHUD+XYHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+XYHUD.m"; sourceTree = "<group>"; };
-		D0A2A9C0270F0DAD0001352D /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		D0A2A9C1270F0DAE0001352D /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		D0B6BF9A271286BD00AD795B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		D0B6BF9B271286BD00AD795B /* MBProgressHUD+XYHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+XYHUD.h"; sourceTree = "<group>"; };
+		D0B6BF9C271286BD00AD795B /* UIDebuggingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDebuggingTool.h; sourceTree = "<group>"; };
+		D0B6BF9D271286BD00AD795B /* XYVideoDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYVideoDownloader.m; sourceTree = "<group>"; };
+		D0B6BF9E271286BD00AD795B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		D0B6BF9F271286BD00AD795B /* UIDebuggingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDebuggingTool.m; sourceTree = "<group>"; };
+		D0B6BFA0271286BD00AD795B /* MBProgressHUD+XYHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+XYHUD.m"; sourceTree = "<group>"; };
+		D0B6BFA1271286BD00AD795B /* XYVideoDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYVideoDownloader.h; sourceTree = "<group>"; };
+		D0B6BFAA271287DB00AD795B /* XYConfigSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYConfigSettingsViewController.h; sourceTree = "<group>"; };
+		D0B6BFAB271287DB00AD795B /* XYConfigSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYConfigSettingsViewController.m; sourceTree = "<group>"; };
+		D0B6BFAE271288AE00AD795B /* TikTokDylib-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TikTokDylib-Bridging-Header.h"; sourceTree = "<group>"; };
+		D0B6BFAF271288AE00AD795B /* XYPreferenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYPreferenceManager.swift; sourceTree = "<group>"; };
+		D0B6BFB3271290A400AD795B /* iconPersonalSettingArrow_18x18_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconPersonalSettingArrow_18x18_@2x.png"; sourceTree = "<group>"; };
+		D0B6BFB4271290A400AD795B /* icon_discovery_favi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_discovery_favi@2x.png"; sourceTree = "<group>"; };
+		D0B6BFB5271290A400AD795B /* icon_discovery_favi@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_discovery_favi@3x.png"; sourceTree = "<group>"; };
+		D0B6BFB7271290A400AD795B /* countryCode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = countryCode.plist; sourceTree = "<group>"; };
+		D0B6BFBF2712A18200AD795B /* Carrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carrier.swift; sourceTree = "<group>"; };
+		D0B6BFC12712AF7C00AD795B /* TikTokSettingsHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TikTokSettingsHeaders.h; sourceTree = "<group>"; };
 		D0FCBBF32707696100B3129F /* TikTokHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TikTokHeaders.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -244,7 +263,7 @@
 		D07B52872706C871009ABD87 /* TikTokDylib */ = {
 			isa = PBXGroup;
 			children = (
-				D0A2A9B2270F062D0001352D /* Common */,
+				D0B6BF97271286BD00AD795B /* Source */,
 				D0FCBBF22707694D00B3129F /* Headers */,
 				D07B52C02706C871009ABD87 /* TikTokDylib.h */,
 				D07B52C22706C871009ABD87 /* TikTokDylib.m */,
@@ -343,19 +362,52 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D0A2A9B2270F062D0001352D /* Common */ = {
+		D0B6BF97271286BD00AD795B /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				D0A2A9C0270F0DAD0001352D /* MBProgressHUD.h */,
-				D0A2A9C1270F0DAE0001352D /* MBProgressHUD.m */,
-				D0A2A9BE270F0DAD0001352D /* MBProgressHUD+XYHUD.h */,
-				D0A2A9BF270F0DAD0001352D /* MBProgressHUD+XYHUD.m */,
-				D0A2A9B3270F062D0001352D /* UIDebuggingTool.h */,
-				D0A2A9B4270F062D0001352D /* UIDebuggingTool.m */,
-				D0A2A9BB270F0D740001352D /* XYVideoDownloader.h */,
-				D0A2A9BA270F0D740001352D /* XYVideoDownloader.m */,
+				D0B6BFB1271290A400AD795B /* Resource */,
+				D0B6BF98271286BD00AD795B /* Settings */,
+				D0B6BF99271286BD00AD795B /* Common */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		D0B6BF98271286BD00AD795B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D0B6BFAA271287DB00AD795B /* XYConfigSettingsViewController.h */,
+				D0B6BFAB271287DB00AD795B /* XYConfigSettingsViewController.m */,
+				D0B6BFAF271288AE00AD795B /* XYPreferenceManager.swift */,
+				D0B6BFAE271288AE00AD795B /* TikTokDylib-Bridging-Header.h */,
+				D0B6BFBF2712A18200AD795B /* Carrier.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		D0B6BF99271286BD00AD795B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D0B6BF9A271286BD00AD795B /* MBProgressHUD.m */,
+				D0B6BF9B271286BD00AD795B /* MBProgressHUD+XYHUD.h */,
+				D0B6BF9C271286BD00AD795B /* UIDebuggingTool.h */,
+				D0B6BF9D271286BD00AD795B /* XYVideoDownloader.m */,
+				D0B6BF9E271286BD00AD795B /* MBProgressHUD.h */,
+				D0B6BF9F271286BD00AD795B /* UIDebuggingTool.m */,
+				D0B6BFA0271286BD00AD795B /* MBProgressHUD+XYHUD.m */,
+				D0B6BFA1271286BD00AD795B /* XYVideoDownloader.h */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		D0B6BFB1271290A400AD795B /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				D0B6BFB3271290A400AD795B /* iconPersonalSettingArrow_18x18_@2x.png */,
+				D0B6BFB4271290A400AD795B /* icon_discovery_favi@2x.png */,
+				D0B6BFB5271290A400AD795B /* icon_discovery_favi@3x.png */,
+				D0B6BFB7271290A400AD795B /* countryCode.plist */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		D0FCBBF22707694D00B3129F /* Headers */ = {
@@ -363,6 +415,7 @@
 			children = (
 				D0FCBBF32707696100B3129F /* TikTokHeaders.h */,
 				D0A2A9B8270F07F10001352D /* AwemeTTHttpTask.h */,
+				D0B6BFC12712AF7C00AD795B /* TikTokSettingsHeaders.h */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -377,14 +430,15 @@
 				D07B52922706C871009ABD87 /* MDCycriptManager.h in Headers */,
 				D0A2A9B9270F07F10001352D /* AwemeTTHttpTask.h in Headers */,
 				D0FCBBF427076CA200B3129F /* TikTokHeaders.h in Headers */,
+				D0B6BFA6271286BD00AD795B /* MBProgressHUD.h in Headers */,
+				D0B6BFA9271286BD00AD795B /* XYVideoDownloader.h in Headers */,
 				D07B52962706C871009ABD87 /* MDMethodTrace.h in Headers */,
-				D0A2A9BD270F0D740001352D /* XYVideoDownloader.h in Headers */,
-				D0A2A9C2270F0DAE0001352D /* MBProgressHUD+XYHUD.h in Headers */,
-				D0A2A9B5270F062D0001352D /* UIDebuggingTool.h in Headers */,
 				D07B52BF2706C871009ABD87 /* fishhook.h in Headers */,
 				D07B52B32706C871009ABD87 /* LLDBTools.h in Headers */,
 				D07B528E2706C871009ABD87 /* MDConfigManager.h in Headers */,
-				D0A2A9C4270F0DAE0001352D /* MBProgressHUD.h in Headers */,
+				D0B6BFA4271286BD00AD795B /* UIDebuggingTool.h in Headers */,
+				D0B6BFAC271287DB00AD795B /* XYConfigSettingsViewController.h in Headers */,
+				D0B6BFA3271286BD00AD795B /* MBProgressHUD+XYHUD.h in Headers */,
 				D07B52C12706C871009ABD87 /* TikTokDylib.h in Headers */,
 				D07B52AD2706C871009ABD87 /* OCSelectorTrampolines.h in Headers */,
 				D07B52A92706C871009ABD87 /* OCMethodTrace.h in Headers */,
@@ -448,6 +502,7 @@
 					};
 					D07B527B2706C871009ABD87 = {
 						CreatedOnToolsVersion = 13.0;
+						LastSwiftMigration = 1300;
 					};
 				};
 			};
@@ -498,6 +553,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0B6BFBC271290A400AD795B /* countryCode.plist in Resources */,
+				D0B6BFBA271290A400AD795B /* icon_discovery_favi@2x.png in Resources */,
+				D0B6BFB9271290A400AD795B /* iconPersonalSettingArrow_18x18_@2x.png in Resources */,
+				D0B6BFBB271290A400AD795B /* icon_discovery_favi@3x.png in Resources */,
 				D07B52732706C870009ABD87 /* MDConfig.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -570,26 +629,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0B6BFAD271287DB00AD795B /* XYConfigSettingsViewController.m in Sources */,
 				D07B52942706C871009ABD87 /* MDCycriptManager.m in Sources */,
+				D0B6BFB0271288AE00AD795B /* XYPreferenceManager.swift in Sources */,
 				D07B529D2706C871009ABD87 /* a1a2-selectortramps-arm64.s in Sources */,
 				D07B529B2706C871009ABD87 /* a1a2-selectortramps-arm.s in Sources */,
 				D07B52A12706C871009ABD87 /* a1a2-selectortramps-x86_64.s in Sources */,
 				D07B52AB2706C871009ABD87 /* OCMethodTrace.m in Sources */,
 				D07B52902706C871009ABD87 /* MDConfigManager.m in Sources */,
-				D0A2A9BC270F0D740001352D /* XYVideoDownloader.m in Sources */,
+				D0B6BFA5271286BD00AD795B /* XYVideoDownloader.m in Sources */,
 				D07B52BD2706C871009ABD87 /* fishhook.c in Sources */,
+				D0B6BFA7271286BD00AD795B /* UIDebuggingTool.m in Sources */,
 				D07B52BA2706C871009ABD87 /* AntiAntiDebug.m in Sources */,
+				D0B6BFC22712AF7C00AD795B /* TikTokSettingsHeaders.h in Sources */,
+				D0B6BFA8271286BD00AD795B /* MBProgressHUD+XYHUD.m in Sources */,
 				D07B52C32706C871009ABD87 /* TikTokDylib.m in Sources */,
 				D07B52AF2706C871009ABD87 /* OCSelectorTrampolines.mm in Sources */,
 				D07B529F2706C871009ABD87 /* a1a2-selectortramps-i386.s in Sources */,
 				D07B52A52706C871009ABD87 /* a2a3-selectortramps-i386.s in Sources */,
-				D0A2A9C5270F0DAE0001352D /* MBProgressHUD.m in Sources */,
 				D07B52A32706C871009ABD87 /* a2a3-selectortramps-arm.s in Sources */,
+				D0B6BFA2271286BD00AD795B /* MBProgressHUD.m in Sources */,
 				D07B528B2706C871009ABD87 /* TikTokDylib.mm in Sources */,
 				D07B52B52706C871009ABD87 /* LLDBTools.mm in Sources */,
 				D07B52A72706C871009ABD87 /* a2a3-selectortramps-x86_64.s in Sources */,
-				D0A2A9B6270F062D0001352D /* UIDebuggingTool.m in Sources */,
-				D0A2A9C3270F0DAE0001352D /* MBProgressHUD+XYHUD.m in Sources */,
+				D0B6BFC02712A18200AD795B /* Carrier.swift in Sources */,
 				D07B52982706C871009ABD87 /* MDMethodTrace.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -720,6 +783,7 @@
 		D07B52C72706C871009ABD87 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F4N226DG5U;
@@ -775,6 +839,9 @@
 					RevealServer,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TikTokDylib/Source/Settings/TikTokDylib-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = NO;
 			};
@@ -783,6 +850,7 @@
 		D07B52C82706C871009ABD87 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
@@ -835,6 +903,8 @@
 					"$(MonkeyDevPath)/Frameworks/libsubstrate.dylib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TikTokDylib/Source/Settings/TikTokDylib-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -842,6 +912,7 @@
 		D07B52CA2706C871009ABD87 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -870,6 +941,7 @@
 		D07B52CB2706C871009ABD87 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
