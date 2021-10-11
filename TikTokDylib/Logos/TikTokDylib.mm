@@ -33,7 +33,7 @@
 #define _LOGOS_RETURN_RETAINED
 #endif
 
-@class AWEAwemeModel; @class NSFileManager; @class AWEStartupTimingMonitorManager; @class AWEIMDirectTranspondViewController; @class NSString; @class TTAdSplashDeviceHelper; @class TTHttpTask; @class TTKSettingsViewController; @class TTInstallUtil; @class TTNetworkManagerChromium; @class AVMDLDataLoader; @class AWEFeedContainerViewController; @class TTInstallSandBoxHelper; @class PIPOIAPStoreManager; @class _TTVideoEnginePreloadManager; @class AWEFeedTableViewController; @class AppsFlyerUtils; @class AWEPlayVideoPlayerController; @class AWEPlayInteractionViewController; @class UIDevice; 
+@class UIDevice; @class AWEFeedTableViewController; @class AWEFeedContainerViewController; @class TTInstallSandBoxHelper; @class TTNetworkManagerChromium; @class NSString; @class AWEPlayInteractionViewController; @class TTHttpTask; @class AWEPlayVideoPlayerController; @class PIPOIAPStoreManager; @class TTAdSplashDeviceHelper; @class AWEStartupTimingMonitorManager; @class TTInstallUtil; @class AWEAwemeModel; @class AppsFlyerUtils; @class _TTVideoEnginePreloadManager; @class AWEIMDirectTranspondViewController; @class AVMDLDataLoader; @class TTKSettingsViewController; @class NSFileManager; 
 static void (*_logos_meta_orig$_ungrouped$AWEStartupTimingMonitorManager$start)(_LOGOS_SELF_TYPE_NORMAL Class _LOGOS_SELF_CONST, SEL); static void _logos_meta_method$_ungrouped$AWEStartupTimingMonitorManager$start(_LOGOS_SELF_TYPE_NORMAL Class _LOGOS_SELF_CONST, SEL); 
 static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$AWEFeedTableViewController(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("AWEFeedTableViewController"); } return _klass; }
 #line 14 "/Users/xiaoyuan/Desktop/work/tweaks/TikTok/TikTokDylib/Logos/TikTokDylib.xm"
@@ -65,7 +65,7 @@ static void _logos_method$Settings$TTKSettingsViewController$xy_addSettingsBtn(_
     
     if (index != NSNotFound) {
         UIButton *settingsBtn = [UIButton new];
-        [settingsBtn setTitle:@"规则" forState:UIControlStateNormal];
+        [settingsBtn setTitle:@"设置规则" forState:UIControlStateNormal];
         [settingsBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         settingsBtn.titleLabel.font = [UIFont systemFontOfSize:15];
         [settingsBtn addTarget:self action:@selector(xy_goSettings) forControlEvents:UIControlEventTouchUpInside];

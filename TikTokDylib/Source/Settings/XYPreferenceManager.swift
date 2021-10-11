@@ -13,7 +13,7 @@ import Foundation
     
     enum Keys: String, CaseIterable {
         case unlimitedDownload
-        case playAds
+        case skipAds
         case autoPlayNextVideoWhenPlayEnded
         case showProgressBar
         case countryCode
@@ -36,7 +36,7 @@ import Foundation
     /// 是否播放广告，默认true
     @objc var shouldPlayAds: Bool = true {
         didSet {
-            userDefaults.set(shouldPlayAds, forKey: Keys.playAds.rawValue)
+            userDefaults.set(shouldPlayAds, forKey: Keys.skipAds.rawValue)
             userDefaults.synchronize()
         }
     }
@@ -90,7 +90,7 @@ import Foundation
             switch key {
             case .unlimitedDownload:
                 isUnlimitedDownload = (userDefaults.object(forKey: key.rawValue) as? NSNumber)?.boolValue ?? true
-            case .playAds:
+            case .skipAds:
                 shouldPlayAds = (userDefaults.object(forKey: key.rawValue) as? NSNumber)?.boolValue ?? true
             case .autoPlayNextVideoWhenPlayEnded:
                 isAutoPlayNextVideoWhenPlayEnded = (userDefaults.object(forKey: key.rawValue) as? NSNumber)?.boolValue ?? true

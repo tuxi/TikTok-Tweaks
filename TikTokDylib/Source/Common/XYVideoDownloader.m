@@ -50,6 +50,7 @@
     _hud = [MBProgressHUD showHUDAddedTo:window animated:YES];
     _hud.bezelView.backgroundColor = [UIColor.blackColor colorWithAlphaComponent:0.65];
     _hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+    _hud.label.text = @"准备下载";
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:1.0 timeoutInterval:10.0];
 
     [[self.session downloadTaskWithRequest:request] resume];
@@ -114,6 +115,7 @@
     if (error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.hud.label.text = @"视频下载失败！";
+            [self.hud hideAnimated:YES afterDelay:.5];
             if (self.completionHandler) {
                 self.completionHandler(NO);
             }
