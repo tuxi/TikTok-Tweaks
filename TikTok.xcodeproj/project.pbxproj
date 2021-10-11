@@ -387,12 +387,12 @@
 		D0B6BF99271286BD00AD795B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D0B6BF9E271286BD00AD795B /* MBProgressHUD.h */,
 				D0B6BF9A271286BD00AD795B /* MBProgressHUD.m */,
 				D0B6BF9B271286BD00AD795B /* MBProgressHUD+XYHUD.h */,
-				D0B6BF9C271286BD00AD795B /* UIDebuggingTool.h */,
-				D0B6BF9E271286BD00AD795B /* MBProgressHUD.h */,
-				D0B6BF9F271286BD00AD795B /* UIDebuggingTool.m */,
 				D0B6BFA0271286BD00AD795B /* MBProgressHUD+XYHUD.m */,
+				D0B6BF9C271286BD00AD795B /* UIDebuggingTool.h */,
+				D0B6BF9F271286BD00AD795B /* UIDebuggingTool.m */,
 				D073912C2713F4D3009731EB /* VideoDownloader.swift */,
 				D073913127141E01009731EB /* UIApplication+Extensions.swift */,
 			);

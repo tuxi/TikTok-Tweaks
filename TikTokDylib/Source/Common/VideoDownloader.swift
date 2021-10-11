@@ -13,9 +13,11 @@ class VideoDownloader: NSObject {
     typealias Completion = (Bool, Error?) -> Void
     
     @objc static let shared = VideoDownloader()
+    
     private var session: URLSession!
     private var completionHandler: Completion?
     private var hud: MBProgressHUD?
+    private var currentTask: URLSessionDownloadTask?
     
     private override init() {
         
@@ -26,13 +28,19 @@ class VideoDownloader: NSObject {
     ///通过url下载
     @objc func download(withURL url: URL, completion: @escaping Completion) {
         completionHandler = completion
+        if let currentTask = currentTask {
+            currentTask.cancel()
+        }
+        
          let window = UIApplication.shared.delegate!.window!!
         hud = MBProgressHUD.showAdded(to: window, animated: true)
         hud?.bezelView.backgroundColor = .black.withAlphaComponent(0.65)
         hud?.bezelView.style = .solidColor
         hud?.label.text = "准备下载"
+       
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10.0)
-        session.downloadTask(with: request).resume()
+        currentTask = session.downloadTask(with: request)
+        currentTask?.resume()
     }
     
     private func setHUDLabel(_ text: String) {
