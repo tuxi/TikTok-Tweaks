@@ -7,7 +7,6 @@
  */
 
 #include "TikTokHeaders.h"
-#import "XYVideoDownloader.h"
 #import "XYConfigSettingsViewController.h"
 #import "TikTokDylib-Swift.h"
 
@@ -66,9 +65,9 @@
     NSArray *originURLList = playURL.originURLList;
     NSString *url = originURLList.firstObject;
     // 下载这个链接
-    XYVideoDownloader *downloader = [XYVideoDownloader sharedInstance];
+    XYVideoDownloader *downloader = [XYVideoDownloader shared];
     __weak typeof(self) weakSelf = self;
-    [downloader downloadFileWithUrl:[NSURL URLWithString:url] completion:^(BOOL isSuccess){
+    [downloader downloadWithURL:[NSURL URLWithString:url] completion:^(BOOL isSuccess, NSError *error){
         [weakSelf dismissAnimated: YES completion: nil];
     }];
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D073912D2713F4D3009731EB /* VideoDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D073912C2713F4D3009731EB /* VideoDownloader.swift */; };
+		D073913227141E01009731EB /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D073913127141E01009731EB /* UIApplication+Extensions.swift */; };
 		D07B52732706C870009ABD87 /* MDConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = D07B52722706C870009ABD87 /* MDConfig.plist */; };
 		D07B527D2706C871009ABD87 /* libTikTokDylib.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D07B527C2706C871009ABD87 /* libTikTokDylib.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D07B52842706C871009ABD87 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07B52832706C871009ABD87 /* Foundation.framework */; };
@@ -43,11 +45,9 @@
 		D0B6BFA2271286BD00AD795B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B6BF9A271286BD00AD795B /* MBProgressHUD.m */; };
 		D0B6BFA3271286BD00AD795B /* MBProgressHUD+XYHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = D0B6BF9B271286BD00AD795B /* MBProgressHUD+XYHUD.h */; };
 		D0B6BFA4271286BD00AD795B /* UIDebuggingTool.h in Headers */ = {isa = PBXBuildFile; fileRef = D0B6BF9C271286BD00AD795B /* UIDebuggingTool.h */; };
-		D0B6BFA5271286BD00AD795B /* XYVideoDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B6BF9D271286BD00AD795B /* XYVideoDownloader.m */; };
 		D0B6BFA6271286BD00AD795B /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = D0B6BF9E271286BD00AD795B /* MBProgressHUD.h */; };
 		D0B6BFA7271286BD00AD795B /* UIDebuggingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B6BF9F271286BD00AD795B /* UIDebuggingTool.m */; };
 		D0B6BFA8271286BD00AD795B /* MBProgressHUD+XYHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B6BFA0271286BD00AD795B /* MBProgressHUD+XYHUD.m */; };
-		D0B6BFA9271286BD00AD795B /* XYVideoDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = D0B6BFA1271286BD00AD795B /* XYVideoDownloader.h */; };
 		D0B6BFAC271287DB00AD795B /* XYConfigSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0B6BFAA271287DB00AD795B /* XYConfigSettingsViewController.h */; };
 		D0B6BFAD271287DB00AD795B /* XYConfigSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B6BFAB271287DB00AD795B /* XYConfigSettingsViewController.m */; };
 		D0B6BFB0271288AE00AD795B /* XYPreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6BFAF271288AE00AD795B /* XYPreferenceManager.swift */; };
@@ -111,6 +111,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D073912C2713F4D3009731EB /* VideoDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDownloader.swift; sourceTree = "<group>"; };
+		D073913127141E01009731EB /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		D07B526B2706C870009ABD87 /* TikTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D07B526E2706C870009ABD87 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		D07B52702706C870009ABD87 /* quick-resign.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "quick-resign.sh"; sourceTree = "<group>"; };
@@ -154,11 +156,9 @@
 		D0B6BF9A271286BD00AD795B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		D0B6BF9B271286BD00AD795B /* MBProgressHUD+XYHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+XYHUD.h"; sourceTree = "<group>"; };
 		D0B6BF9C271286BD00AD795B /* UIDebuggingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDebuggingTool.h; sourceTree = "<group>"; };
-		D0B6BF9D271286BD00AD795B /* XYVideoDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYVideoDownloader.m; sourceTree = "<group>"; };
 		D0B6BF9E271286BD00AD795B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		D0B6BF9F271286BD00AD795B /* UIDebuggingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDebuggingTool.m; sourceTree = "<group>"; };
 		D0B6BFA0271286BD00AD795B /* MBProgressHUD+XYHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+XYHUD.m"; sourceTree = "<group>"; };
-		D0B6BFA1271286BD00AD795B /* XYVideoDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYVideoDownloader.h; sourceTree = "<group>"; };
 		D0B6BFAA271287DB00AD795B /* XYConfigSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYConfigSettingsViewController.h; sourceTree = "<group>"; };
 		D0B6BFAB271287DB00AD795B /* XYConfigSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYConfigSettingsViewController.m; sourceTree = "<group>"; };
 		D0B6BFAE271288AE00AD795B /* TikTokDylib-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TikTokDylib-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -390,11 +390,11 @@
 				D0B6BF9A271286BD00AD795B /* MBProgressHUD.m */,
 				D0B6BF9B271286BD00AD795B /* MBProgressHUD+XYHUD.h */,
 				D0B6BF9C271286BD00AD795B /* UIDebuggingTool.h */,
-				D0B6BF9D271286BD00AD795B /* XYVideoDownloader.m */,
 				D0B6BF9E271286BD00AD795B /* MBProgressHUD.h */,
 				D0B6BF9F271286BD00AD795B /* UIDebuggingTool.m */,
 				D0B6BFA0271286BD00AD795B /* MBProgressHUD+XYHUD.m */,
-				D0B6BFA1271286BD00AD795B /* XYVideoDownloader.h */,
+				D073912C2713F4D3009731EB /* VideoDownloader.swift */,
+				D073913127141E01009731EB /* UIApplication+Extensions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -431,7 +431,6 @@
 				D0A2A9B9270F07F10001352D /* AwemeTTHttpTask.h in Headers */,
 				D0FCBBF427076CA200B3129F /* TikTokHeaders.h in Headers */,
 				D0B6BFA6271286BD00AD795B /* MBProgressHUD.h in Headers */,
-				D0B6BFA9271286BD00AD795B /* XYVideoDownloader.h in Headers */,
 				D07B52962706C871009ABD87 /* MDMethodTrace.h in Headers */,
 				D07B52BF2706C871009ABD87 /* fishhook.h in Headers */,
 				D07B52B32706C871009ABD87 /* LLDBTools.h in Headers */,
@@ -637,7 +636,7 @@
 				D07B52A12706C871009ABD87 /* a1a2-selectortramps-x86_64.s in Sources */,
 				D07B52AB2706C871009ABD87 /* OCMethodTrace.m in Sources */,
 				D07B52902706C871009ABD87 /* MDConfigManager.m in Sources */,
-				D0B6BFA5271286BD00AD795B /* XYVideoDownloader.m in Sources */,
+				D073912D2713F4D3009731EB /* VideoDownloader.swift in Sources */,
 				D07B52BD2706C871009ABD87 /* fishhook.c in Sources */,
 				D0B6BFA7271286BD00AD795B /* UIDebuggingTool.m in Sources */,
 				D07B52BA2706C871009ABD87 /* AntiAntiDebug.m in Sources */,
@@ -648,6 +647,7 @@
 				D07B529F2706C871009ABD87 /* a1a2-selectortramps-i386.s in Sources */,
 				D07B52A52706C871009ABD87 /* a2a3-selectortramps-i386.s in Sources */,
 				D07B52A32706C871009ABD87 /* a2a3-selectortramps-arm.s in Sources */,
+				D073913227141E01009731EB /* UIApplication+Extensions.swift in Sources */,
 				D0B6BFA2271286BD00AD795B /* MBProgressHUD.m in Sources */,
 				D07B528B2706C871009ABD87 /* TikTokDylib.mm in Sources */,
 				D07B52B52706C871009ABD87 /* LLDBTools.mm in Sources */,

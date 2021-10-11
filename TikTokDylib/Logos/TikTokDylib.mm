@@ -8,7 +8,6 @@
 
 
 #include "TikTokHeaders.h"
-#import "XYVideoDownloader.h"
 #import "XYConfigSettingsViewController.h"
 #import "TikTokDylib-Swift.h"
 
@@ -33,10 +32,10 @@
 #define _LOGOS_RETURN_RETAINED
 #endif
 
-@class UIDevice; @class AWEFeedTableViewController; @class AWEFeedContainerViewController; @class TTInstallSandBoxHelper; @class TTNetworkManagerChromium; @class NSString; @class AWEPlayInteractionViewController; @class TTHttpTask; @class AWEPlayVideoPlayerController; @class PIPOIAPStoreManager; @class TTAdSplashDeviceHelper; @class AWEStartupTimingMonitorManager; @class TTInstallUtil; @class AWEAwemeModel; @class AppsFlyerUtils; @class _TTVideoEnginePreloadManager; @class AWEIMDirectTranspondViewController; @class AVMDLDataLoader; @class TTKSettingsViewController; @class NSFileManager; 
+@class TTNetworkManagerChromium; @class UIDevice; @class AWEPlayVideoPlayerController; @class TTAdSplashDeviceHelper; @class AVMDLDataLoader; @class TTInstallUtil; @class NSString; @class AWEFeedContainerViewController; @class TTInstallSandBoxHelper; @class NSFileManager; @class _TTVideoEnginePreloadManager; @class AWEPlayInteractionViewController; @class TTKSettingsViewController; @class AWEIMDirectTranspondViewController; @class AppsFlyerUtils; @class AWEAwemeModel; @class PIPOIAPStoreManager; @class AWEStartupTimingMonitorManager; @class AWEFeedTableViewController; @class TTHttpTask; 
 static void (*_logos_meta_orig$_ungrouped$AWEStartupTimingMonitorManager$start)(_LOGOS_SELF_TYPE_NORMAL Class _LOGOS_SELF_CONST, SEL); static void _logos_meta_method$_ungrouped$AWEStartupTimingMonitorManager$start(_LOGOS_SELF_TYPE_NORMAL Class _LOGOS_SELF_CONST, SEL); 
 static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$AWEFeedTableViewController(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("AWEFeedTableViewController"); } return _klass; }
-#line 14 "/Users/xiaoyuan/Desktop/work/tweaks/TikTok/TikTokDylib/Logos/TikTokDylib.xm"
+#line 13 "/Users/xiaoyuan/Desktop/work/tweaks/TikTok/TikTokDylib/Logos/TikTokDylib.xm"
 static void (*_logos_orig$Settings$TTKSettingsViewController$viewDidLoad)(_LOGOS_SELF_TYPE_NORMAL TTKSettingsViewController* _LOGOS_SELF_CONST, SEL); static void _logos_method$Settings$TTKSettingsViewController$viewDidLoad(_LOGOS_SELF_TYPE_NORMAL TTKSettingsViewController* _LOGOS_SELF_CONST, SEL); static void _logos_method$Settings$TTKSettingsViewController$xy_goSettings(_LOGOS_SELF_TYPE_NORMAL TTKSettingsViewController* _LOGOS_SELF_CONST, SEL); static void _logos_method$Settings$TTKSettingsViewController$xy_addSettingsBtn(_LOGOS_SELF_TYPE_NORMAL TTKSettingsViewController* _LOGOS_SELF_CONST, SEL); 
 
 
@@ -92,9 +91,9 @@ static void _logos_method$DownloadBypass$AWEIMDirectTranspondViewController$xy_d
     NSArray *originURLList = playURL.originURLList;
     NSString *url = originURLList.firstObject;
     
-    XYVideoDownloader *downloader = [XYVideoDownloader sharedInstance];
+    XYVideoDownloader *downloader = [XYVideoDownloader shared];
     __weak typeof(self) weakSelf = self;
-    [downloader downloadFileWithUrl:[NSURL URLWithString:url] completion:^(BOOL isSuccess){
+    [downloader downloadWithURL:[NSURL URLWithString:url] completion:^(BOOL isSuccess, NSError *error){
         [weakSelf dismissAnimated: YES completion: nil];
     }];
 }
@@ -348,7 +347,7 @@ static void _logos_meta_method$_ungrouped$AWEStartupTimingMonitorManager$start(_
 }
 
 
-static __attribute__((constructor)) void _logosLocalCtor_c8aaf511(int __unused argc, char __unused **argv, char __unused **envp) {
+static __attribute__((constructor)) void _logosLocalCtor_c97e8588(int __unused argc, char __unused **argv, char __unused **envp) {
     {Class _logos_class$Settings$TTKSettingsViewController = objc_getClass("TTKSettingsViewController"); MSHookMessageEx(_logos_class$Settings$TTKSettingsViewController, @selector(viewDidLoad), (IMP)&_logos_method$Settings$TTKSettingsViewController$viewDidLoad, (IMP*)&_logos_orig$Settings$TTKSettingsViewController$viewDidLoad);{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$Settings$TTKSettingsViewController, @selector(xy_goSettings), (IMP)&_logos_method$Settings$TTKSettingsViewController$xy_goSettings, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$Settings$TTKSettingsViewController, @selector(xy_addSettingsBtn), (IMP)&_logos_method$Settings$TTKSettingsViewController$xy_addSettingsBtn, _typeEncoding); }}
     {Class _logos_class$DownloadBypass$AWEIMDirectTranspondViewController = objc_getClass("AWEIMDirectTranspondViewController"); { char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$DownloadBypass$AWEIMDirectTranspondViewController, @selector(xy_downloadAweme), (IMP)&_logos_method$DownloadBypass$AWEIMDirectTranspondViewController$xy_downloadAweme, _typeEncoding); }MSHookMessageEx(_logos_class$DownloadBypass$AWEIMDirectTranspondViewController, @selector(viewDidLoad), (IMP)&_logos_method$DownloadBypass$AWEIMDirectTranspondViewController$viewDidLoad, (IMP*)&_logos_orig$DownloadBypass$AWEIMDirectTranspondViewController$viewDidLoad);Class _logos_class$DownloadBypass$AVMDLDataLoader = objc_getClass("AVMDLDataLoader"); MSHookMessageEx(_logos_class$DownloadBypass$AVMDLDataLoader, @selector(_supportPoxy:), (IMP)&_logos_method$DownloadBypass$AVMDLDataLoader$_supportPoxy$, (IMP*)&_logos_orig$DownloadBypass$AVMDLDataLoader$_supportPoxy$);Class _logos_class$DownloadBypass$_TTVideoEnginePreloadManager = objc_getClass("_TTVideoEnginePreloadManager"); MSHookMessageEx(_logos_class$DownloadBypass$_TTVideoEnginePreloadManager, @selector(_addTask:vid:preSize:urlItem:vidItem:videoModeltem:), (IMP)&_logos_method$DownloadBypass$_TTVideoEnginePreloadManager$_addTask$vid$preSize$urlItem$vidItem$videoModeltem$, (IMP*)&_logos_orig$DownloadBypass$_TTVideoEnginePreloadManager$_addTask$vid$preSize$urlItem$vidItem$videoModeltem$);}
     {Class _logos_class$SSLPinningBypass$TTNetworkManagerChromium = objc_getClass("TTNetworkManagerChromium"); MSHookMessageEx(_logos_class$SSLPinningBypass$TTNetworkManagerChromium, @selector(requestForJSONWithResponse:params:method:needCommonParams:headerField:requestSerializer:responseSerializer:autoResume:verifyRequest:isCustomizedCookie:callback:callbackQueue:), (IMP)&_logos_method$SSLPinningBypass$TTNetworkManagerChromium$requestForJSONWithResponse$params$method$needCommonParams$headerField$requestSerializer$responseSerializer$autoResume$verifyRequest$isCustomizedCookie$callback$callbackQueue$, (IMP*)&_logos_orig$SSLPinningBypass$TTNetworkManagerChromium$requestForJSONWithResponse$params$method$needCommonParams$headerField$requestSerializer$responseSerializer$autoResume$verifyRequest$isCustomizedCookie$callback$callbackQueue$);Class _logos_class$SSLPinningBypass$TTHttpTask = objc_getClass("TTHttpTask"); MSHookMessageEx(_logos_class$SSLPinningBypass$TTHttpTask, @selector(init), (IMP)&_logos_method$SSLPinningBypass$TTHttpTask$init, (IMP*)&_logos_orig$SSLPinningBypass$TTHttpTask$init);MSHookMessageEx(_logos_class$SSLPinningBypass$TTHttpTask, @selector(setSkipSSLCertificateError:), (IMP)&_logos_method$SSLPinningBypass$TTHttpTask$setSkipSSLCertificateError$, (IMP*)&_logos_orig$SSLPinningBypass$TTHttpTask$setSkipSSLCertificateError$);}

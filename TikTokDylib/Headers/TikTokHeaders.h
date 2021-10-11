@@ -97,4 +97,9 @@
 - (void)dismissAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 @end
 
+@interface AWEUIResponder : NSObject
++ (UIViewController *)topViewController;
++ (id)topViewControllerForController:(id)arg1;
+@end
+
 #endif /* TikTokHeaders_h */
