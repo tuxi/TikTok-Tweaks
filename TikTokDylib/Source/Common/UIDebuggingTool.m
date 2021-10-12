@@ -61,13 +61,9 @@ NSString *const UIEventSubtypexy_motionShakeNotification = @"UIEventSubtypexy_mo
         
         if (touch.phase == UITouchPhaseBegan) {
             self.isMoved = NO;
-        }
-        
-        if (touch.phase == UITouchPhaseMoved) {
+        } else if (touch.phase == UITouchPhaseMoved) {
             self.isMoved = YES;
-        }
-        
-        if (touch.phase == UITouchPhaseEnded) {
+        } else if (touch.phase == UITouchPhaseEnded) {
             if (!self.isMoved && event.allTouches.count == 1) {
                 UITouch *touch = [event.allTouches anyObject];
                 if (@available(iOS 9.1, *)) {

@@ -72,9 +72,6 @@
 @property(retain, nonatomic) NSArray *sectionDataArray;
 - (id)sectionDataArray;
 
-// new
-@property (nonatomic, copy) NSString *isHooked;
-
 @end
 
 @class AWESettingItemModel;

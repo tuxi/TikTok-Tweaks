@@ -81,8 +81,6 @@ CHConstructor {
 CHDeclareClass(AWESettingsTableViewController)
 CHDeclareClass(AWESettingsViewModel)
 
-CHPropertyAssign(AWESettingsViewModel, NSString *, isHooked, setIsHooked);
-
 CHMethod0(NSArray *, AWESettingsViewModel, sectionDataArray) {
     NSString *settingsTitle = @"设置规则";
     NSMutableArray *hookSettings = [CHSuper0(AWESettingsViewModel, sectionDataArray) mutableCopy];
@@ -122,6 +120,17 @@ CHConstructor {
     CHLoadLateClass(AWESettingsTableViewController);
     CHLoadLateClass(AWESettingsViewModel);
     CHHook0(AWESettingsViewModel, sectionDataArray);
-    CHHook0(AWESettingsViewModel, isHooked);
-    CHHook1(AWESettingsViewModel, setIsHooked);
+}
+
+// MARK: - Setting界面
+CHDeclareClass(AWEFeedTableViewController)
+
+CHOptimizedMethod(0, self, BOOL, AWEFeedTableViewController, pureMode) {
+    // 是否为纯视频模式，如果设置pureMode == YES  只显示视频，不会显示视频上的AWEAwemePlayInteractionViewController view，即视频上的头像、点赞、音乐等等..
+    return  XYPreferenceManager.shared.isPureMode;
+}
+
+CHConstructor {
+    CHLoadLateClass(AWEFeedTableViewController);
+    CHHook0(AWEFeedTableViewController, pureMode);
 }
