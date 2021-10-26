@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIApplication {
-    var topViewController: UIViewController? {
+    @objc var topViewController: UIViewController? {
         let clas: AnyClass? = NSClassFromString("AWEUIResponder")
         return clas?.topViewController()
     }

@@ -15,7 +15,6 @@
 #import <MDCycriptManager.h>
 #import "TikTokHeaders.h"
 #import "TikTokDylib-Swift.h"
-#import "XYConfigSettingsViewController.h"
 
 CHConstructor{
     printf(INSERT_SUCCESS_WELCOME);
@@ -104,11 +103,8 @@ CHMethod0(NSArray *, AWESettingsViewModel, sectionDataArray) {
     hookItem.cellType = items.firstObject.cellType;
     hookItem.cellTappedBlock = ^(void) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            XYConfigSettingsViewController *settingVc = [[XYConfigSettingsViewController alloc] init];
-        
-            UIViewController *tabbarVc = UIApplication.sharedApplication.keyWindow.rootViewController;
-            UINavigationController *hookNavi = [[UINavigationController alloc] initWithRootViewController:settingVc];
-            [tabbarVc presentViewController:hookNavi animated:YES completion:nil];
+            XYSettingsViewController *settingVc = [[XYSettingsViewController alloc] init];
+            [[UIApplication.sharedApplication topViewController].navigationController pushViewController:settingVc animated:true];
         });
     };
     [items insertObject:hookItem atIndex:0];

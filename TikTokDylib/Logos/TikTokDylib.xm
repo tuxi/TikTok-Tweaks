@@ -7,7 +7,6 @@
  */
 
 #include "TikTokHeaders.h"
-#import "XYConfigSettingsViewController.h"
 #import "TikTokDylib-Swift.h"
 
 %group Settings
@@ -20,10 +19,8 @@
 
 %new
 - (void)xy_goSettings {
-    XYConfigSettingsViewController *settingVc = [[XYConfigSettingsViewController alloc] init];
-    UIViewController *tabbarVc = UIApplication.sharedApplication.keyWindow.rootViewController;
-    UINavigationController *hookNavi = [[UINavigationController alloc] initWithRootViewController:settingVc];
-    [tabbarVc presentViewController:hookNavi animated:YES completion:nil];
+    XYSettingsViewController *settingVc = [[XYSettingsViewController alloc] init];
+    [[UIApplication.sharedApplication topViewController].navigationController pushViewController:settingVc animated:true];
 }
 %new
 - (void)xy_addSettingsBtn {

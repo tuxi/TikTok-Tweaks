@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D00F83692727BB1A00BDE5A1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F83682727BB1A00BDE5A1 /* SettingsViewController.swift */; };
+		D00F836D2727D71500BDE5A1 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F836C2727D71500BDE5A1 /* SettingsSection.swift */; };
+		D00F8373272824DE00BDE5A1 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F8372272824DE00BDE5A1 /* SettingsCell.swift */; };
 		D073912D2713F4D3009731EB /* VideoDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D073912C2713F4D3009731EB /* VideoDownloader.swift */; };
 		D073913227141E01009731EB /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D073913127141E01009731EB /* UIApplication+Extensions.swift */; };
 		D07B52732706C870009ABD87 /* MDConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = D07B52722706C870009ABD87 /* MDConfig.plist */; };
@@ -48,8 +51,6 @@
 		D0B6BFA6271286BD00AD795B /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = D0B6BF9E271286BD00AD795B /* MBProgressHUD.h */; };
 		D0B6BFA7271286BD00AD795B /* UIDebuggingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B6BF9F271286BD00AD795B /* UIDebuggingTool.m */; };
 		D0B6BFA8271286BD00AD795B /* MBProgressHUD+XYHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B6BFA0271286BD00AD795B /* MBProgressHUD+XYHUD.m */; };
-		D0B6BFAC271287DB00AD795B /* XYConfigSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0B6BFAA271287DB00AD795B /* XYConfigSettingsViewController.h */; };
-		D0B6BFAD271287DB00AD795B /* XYConfigSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B6BFAB271287DB00AD795B /* XYConfigSettingsViewController.m */; };
 		D0B6BFB0271288AE00AD795B /* XYPreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6BFAF271288AE00AD795B /* XYPreferenceManager.swift */; };
 		D0B6BFB9271290A400AD795B /* iconPersonalSettingArrow_18x18_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B6BFB3271290A400AD795B /* iconPersonalSettingArrow_18x18_@2x.png */; };
 		D0B6BFBA271290A400AD795B /* icon_discovery_favi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B6BFB4271290A400AD795B /* icon_discovery_favi@2x.png */; };
@@ -111,6 +112,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D00F83682727BB1A00BDE5A1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D00F836C2727D71500BDE5A1 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
+		D00F8372272824DE00BDE5A1 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		D073912C2713F4D3009731EB /* VideoDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDownloader.swift; sourceTree = "<group>"; };
 		D073913127141E01009731EB /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		D07B526B2706C870009ABD87 /* TikTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,8 +163,6 @@
 		D0B6BF9E271286BD00AD795B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		D0B6BF9F271286BD00AD795B /* UIDebuggingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDebuggingTool.m; sourceTree = "<group>"; };
 		D0B6BFA0271286BD00AD795B /* MBProgressHUD+XYHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+XYHUD.m"; sourceTree = "<group>"; };
-		D0B6BFAA271287DB00AD795B /* XYConfigSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYConfigSettingsViewController.h; sourceTree = "<group>"; };
-		D0B6BFAB271287DB00AD795B /* XYConfigSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYConfigSettingsViewController.m; sourceTree = "<group>"; };
 		D0B6BFAE271288AE00AD795B /* TikTokDylib-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TikTokDylib-Bridging-Header.h"; sourceTree = "<group>"; };
 		D0B6BFAF271288AE00AD795B /* XYPreferenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYPreferenceManager.swift; sourceTree = "<group>"; };
 		D0B6BFB3271290A400AD795B /* iconPersonalSettingArrow_18x18_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconPersonalSettingArrow_18x18_@2x.png"; sourceTree = "<group>"; };
@@ -375,11 +377,12 @@
 		D0B6BF98271286BD00AD795B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				D0B6BFAA271287DB00AD795B /* XYConfigSettingsViewController.h */,
-				D0B6BFAB271287DB00AD795B /* XYConfigSettingsViewController.m */,
 				D0B6BFAF271288AE00AD795B /* XYPreferenceManager.swift */,
 				D0B6BFAE271288AE00AD795B /* TikTokDylib-Bridging-Header.h */,
 				D0B6BFBF2712A18200AD795B /* Carrier.swift */,
+				D00F83682727BB1A00BDE5A1 /* SettingsViewController.swift */,
+				D00F836C2727D71500BDE5A1 /* SettingsSection.swift */,
+				D00F8372272824DE00BDE5A1 /* SettingsCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -436,7 +439,6 @@
 				D07B52B32706C871009ABD87 /* LLDBTools.h in Headers */,
 				D07B528E2706C871009ABD87 /* MDConfigManager.h in Headers */,
 				D0B6BFA4271286BD00AD795B /* UIDebuggingTool.h in Headers */,
-				D0B6BFAC271287DB00AD795B /* XYConfigSettingsViewController.h in Headers */,
 				D0B6BFA3271286BD00AD795B /* MBProgressHUD+XYHUD.h in Headers */,
 				D07B52C12706C871009ABD87 /* TikTokDylib.h in Headers */,
 				D07B52AD2706C871009ABD87 /* OCSelectorTrampolines.h in Headers */,
@@ -628,7 +630,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0B6BFAD271287DB00AD795B /* XYConfigSettingsViewController.m in Sources */,
 				D07B52942706C871009ABD87 /* MDCycriptManager.m in Sources */,
 				D0B6BFB0271288AE00AD795B /* XYPreferenceManager.swift in Sources */,
 				D07B529D2706C871009ABD87 /* a1a2-selectortramps-arm64.s in Sources */,
@@ -642,8 +643,10 @@
 				D07B52BA2706C871009ABD87 /* AntiAntiDebug.m in Sources */,
 				D0B6BFC22712AF7C00AD795B /* TikTokSettingsHeaders.h in Sources */,
 				D0B6BFA8271286BD00AD795B /* MBProgressHUD+XYHUD.m in Sources */,
+				D00F836D2727D71500BDE5A1 /* SettingsSection.swift in Sources */,
 				D07B52C32706C871009ABD87 /* TikTokDylib.m in Sources */,
 				D07B52AF2706C871009ABD87 /* OCSelectorTrampolines.mm in Sources */,
+				D00F8373272824DE00BDE5A1 /* SettingsCell.swift in Sources */,
 				D07B529F2706C871009ABD87 /* a1a2-selectortramps-i386.s in Sources */,
 				D07B52A52706C871009ABD87 /* a2a3-selectortramps-i386.s in Sources */,
 				D07B52A32706C871009ABD87 /* a2a3-selectortramps-arm.s in Sources */,
@@ -654,6 +657,7 @@
 				D07B52A72706C871009ABD87 /* a2a3-selectortramps-x86_64.s in Sources */,
 				D0B6BFC02712A18200AD795B /* Carrier.swift in Sources */,
 				D07B52982706C871009ABD87 /* MDMethodTrace.m in Sources */,
+				D00F83692727BB1A00BDE5A1 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
