@@ -7,8 +7,9 @@
 
 import Foundation
 
-@objc final class XYPreferenceManager: NSObject {
-    @objc static let shared = XYPreferenceManager()
+@objc(XYPreferenceManager)
+final class PreferenceManager: NSObject {
+    @objc static let shared = PreferenceManager()
     private lazy var userDefaults = UserDefaults.standard
     
     enum Keys: String, CaseIterable {
@@ -79,7 +80,7 @@ import Foundation
         let carrier = self.carriers.first { obj in
             return obj.code.lowercased() == countryCode.lowercased()
         }
-        return carrier ?? Carrier(area: "日本🇯🇵", code: "JP", mcc: "440", mnc: "01")
+        return carrier ?? Carrier(area: "美国🇺🇸", code: "US", mcc: "310", mnc: "032")
     }
     
     private override init() {
@@ -108,7 +109,7 @@ import Foundation
         guard let path = Bundle.main.path(forResource: "countryCode", ofType: "plist") else {
             return []
         }
-        let dictArray = NSArray(contentsOfFile: path)
+        let dictArray = NSArray(contentsOfFile: path) ?? []
         guard let data = try? JSONSerialization.data(withJSONObject: dictArray, options: .fragmentsAllowed) else {
             return []
         }
