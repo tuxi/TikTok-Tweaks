@@ -98,7 +98,7 @@ final class PreferenceManager: NSObject {
             case .showProgressBar:
                 showProgressBar = (userDefaults.object(forKey: key.rawValue) as? NSNumber)?.boolValue ?? false
             case .countryCode:
-                countryCode = userDefaults.string(forKey: key.rawValue) ?? "JP"
+                countryCode = userDefaults.string(forKey: key.rawValue) ?? "US"
             case .pureMode:
                 isPureMode = userDefaults.bool(forKey: key.rawValue)
             }
