@@ -8,7 +8,7 @@
 import UIKit
 
 @objc(XYSettingsViewController)
-class SettingsViewController: UIViewController {
+final class SettingsViewController: UIViewController {
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)

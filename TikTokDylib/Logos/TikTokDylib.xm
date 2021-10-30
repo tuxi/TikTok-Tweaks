@@ -1,12 +1,10 @@
 // See http://iphonedevwiki.net/index.php/Logos
 
-#import <UIKit/UIKit.h>
-
 /**
  * @author Xiaoyuan
  */
-
-#include "TikTokHeaders.h"
+#import <UIKit/UIKit.h>
+#import "TikTokHeaders.h"
 #import "TikTokDylib-Swift.h"
 
 %group Settings
@@ -72,17 +70,18 @@
 
 - (void)viewDidLoad {
     %orig;
-    
-    UIButton *downloadBtn = [UIButton new];
-    downloadBtn.frame = CGRectMake(10, 3, 65, 35);
-    [downloadBtn setTitle:@"下载" forState:UIControlStateNormal];
-    [downloadBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    downloadBtn.backgroundColor = UIColor.purpleColor;
-    downloadBtn.layer.cornerRadius = 6;
-    downloadBtn.layer.masksToBounds = YES;
-    downloadBtn.titleLabel.font = [UIFont systemFontOfSize:13];
-    [self.topView addSubview:downloadBtn];
-    [downloadBtn addTarget:self action:@selector(xy_downloadAweme) forControlEvents:UIControlEventTouchUpInside];
+    if (XYPreferenceManager.shared.isUnlimitedDownload) {
+        UIButton *downloadBtn = [UIButton new];
+        downloadBtn.frame = CGRectMake(10, 3, 65, 35);
+        [downloadBtn setTitle:@"下载" forState:UIControlStateNormal];
+        [downloadBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        downloadBtn.backgroundColor = UIColor.purpleColor;
+        downloadBtn.layer.cornerRadius = 6;
+        downloadBtn.layer.masksToBounds = YES;
+        downloadBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+        [self.topView addSubview:downloadBtn];
+        [downloadBtn addTarget:self action:@selector(xy_downloadAweme) forControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
 %end

@@ -1,13 +1,11 @@
 #line 1 "/Users/xiaoyuan/Desktop/work/tweaks/TikTok/TikTokDylib/Logos/TikTokDylib.xm"
 
 
+
+
+
 #import <UIKit/UIKit.h>
-
-
-
-
-
-#include "TikTokHeaders.h"
+#import "TikTokHeaders.h"
 #import "TikTokDylib-Swift.h"
 
 
@@ -31,10 +29,10 @@
 #define _LOGOS_RETURN_RETAINED
 #endif
 
-@class AWEPlayInteractionViewController; @class AVMDLDataLoader; @class AWEIMDirectTranspondViewController; @class _TTVideoEnginePreloadManager; @class TTNetworkManagerChromium; @class TTAdSplashDeviceHelper; @class NSFileManager; @class NSString; @class TTInstallSandBoxHelper; @class TTKSettingsViewController; @class AWEFeedTableViewController; @class AppsFlyerUtils; @class UIDevice; @class AWEPlayVideoPlayerController; @class AWEStartupTimingMonitorManager; @class TTInstallUtil; @class AWEFeedContainerViewController; @class PIPOIAPStoreManager; @class TTHttpTask; @class AWEAwemeModel; 
+@class AWEFeedTableViewController; @class AWEStartupTimingMonitorManager; @class AVMDLDataLoader; @class PIPOIAPStoreManager; @class AWEFeedContainerViewController; @class TTAdSplashDeviceHelper; @class NSString; @class TTInstallSandBoxHelper; @class AWEPlayVideoPlayerController; @class TTNetworkManagerChromium; @class TTHttpTask; @class TTInstallUtil; @class AWEPlayInteractionViewController; @class NSFileManager; @class TTKSettingsViewController; @class AWEAwemeModel; @class AWEIMDirectTranspondViewController; @class AppsFlyerUtils; @class UIDevice; @class _TTVideoEnginePreloadManager; 
 static void (*_logos_meta_orig$_ungrouped$AWEStartupTimingMonitorManager$start)(_LOGOS_SELF_TYPE_NORMAL Class _LOGOS_SELF_CONST, SEL); static void _logos_meta_method$_ungrouped$AWEStartupTimingMonitorManager$start(_LOGOS_SELF_TYPE_NORMAL Class _LOGOS_SELF_CONST, SEL); 
 static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$AWEFeedTableViewController(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("AWEFeedTableViewController"); } return _klass; }
-#line 12 "/Users/xiaoyuan/Desktop/work/tweaks/TikTok/TikTokDylib/Logos/TikTokDylib.xm"
+#line 10 "/Users/xiaoyuan/Desktop/work/tweaks/TikTok/TikTokDylib/Logos/TikTokDylib.xm"
 static void (*_logos_orig$Settings$TTKSettingsViewController$viewDidLoad)(_LOGOS_SELF_TYPE_NORMAL TTKSettingsViewController* _LOGOS_SELF_CONST, SEL); static void _logos_method$Settings$TTKSettingsViewController$viewDidLoad(_LOGOS_SELF_TYPE_NORMAL TTKSettingsViewController* _LOGOS_SELF_CONST, SEL); static void _logos_method$Settings$TTKSettingsViewController$xy_goSettings(_LOGOS_SELF_TYPE_NORMAL TTKSettingsViewController* _LOGOS_SELF_CONST, SEL); static void _logos_method$Settings$TTKSettingsViewController$xy_addSettingsBtn(_LOGOS_SELF_TYPE_NORMAL TTKSettingsViewController* _LOGOS_SELF_CONST, SEL); 
 
 
@@ -98,17 +96,18 @@ static void _logos_method$DownloadBypass$AWEIMDirectTranspondViewController$xy_d
 
 static void _logos_method$DownloadBypass$AWEIMDirectTranspondViewController$viewDidLoad(_LOGOS_SELF_TYPE_NORMAL AWEIMDirectTranspondViewController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
     _logos_orig$DownloadBypass$AWEIMDirectTranspondViewController$viewDidLoad(self, _cmd);
-    
-    UIButton *downloadBtn = [UIButton new];
-    downloadBtn.frame = CGRectMake(10, 3, 65, 35);
-    [downloadBtn setTitle:@"下载" forState:UIControlStateNormal];
-    [downloadBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    downloadBtn.backgroundColor = UIColor.purpleColor;
-    downloadBtn.layer.cornerRadius = 6;
-    downloadBtn.layer.masksToBounds = YES;
-    downloadBtn.titleLabel.font = [UIFont systemFontOfSize:13];
-    [self.topView addSubview:downloadBtn];
-    [downloadBtn addTarget:self action:@selector(xy_downloadAweme) forControlEvents:UIControlEventTouchUpInside];
+    if (XYPreferenceManager.shared.isUnlimitedDownload) {
+        UIButton *downloadBtn = [UIButton new];
+        downloadBtn.frame = CGRectMake(10, 3, 65, 35);
+        [downloadBtn setTitle:@"下载" forState:UIControlStateNormal];
+        [downloadBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        downloadBtn.backgroundColor = UIColor.purpleColor;
+        downloadBtn.layer.cornerRadius = 6;
+        downloadBtn.layer.masksToBounds = YES;
+        downloadBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+        [self.topView addSubview:downloadBtn];
+        [downloadBtn addTarget:self action:@selector(xy_downloadAweme) forControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
 
@@ -344,7 +343,7 @@ static void _logos_meta_method$_ungrouped$AWEStartupTimingMonitorManager$start(_
 }
 
 
-static __attribute__((constructor)) void _logosLocalCtor_319290b9(int __unused argc, char __unused **argv, char __unused **envp) {
+static __attribute__((constructor)) void _logosLocalCtor_70a2f89e(int __unused argc, char __unused **argv, char __unused **envp) {
     {Class _logos_class$Settings$TTKSettingsViewController = objc_getClass("TTKSettingsViewController"); MSHookMessageEx(_logos_class$Settings$TTKSettingsViewController, @selector(viewDidLoad), (IMP)&_logos_method$Settings$TTKSettingsViewController$viewDidLoad, (IMP*)&_logos_orig$Settings$TTKSettingsViewController$viewDidLoad);{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$Settings$TTKSettingsViewController, @selector(xy_goSettings), (IMP)&_logos_method$Settings$TTKSettingsViewController$xy_goSettings, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$Settings$TTKSettingsViewController, @selector(xy_addSettingsBtn), (IMP)&_logos_method$Settings$TTKSettingsViewController$xy_addSettingsBtn, _typeEncoding); }}
     {Class _logos_class$DownloadBypass$AWEIMDirectTranspondViewController = objc_getClass("AWEIMDirectTranspondViewController"); { char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$DownloadBypass$AWEIMDirectTranspondViewController, @selector(xy_downloadAweme), (IMP)&_logos_method$DownloadBypass$AWEIMDirectTranspondViewController$xy_downloadAweme, _typeEncoding); }MSHookMessageEx(_logos_class$DownloadBypass$AWEIMDirectTranspondViewController, @selector(viewDidLoad), (IMP)&_logos_method$DownloadBypass$AWEIMDirectTranspondViewController$viewDidLoad, (IMP*)&_logos_orig$DownloadBypass$AWEIMDirectTranspondViewController$viewDidLoad);Class _logos_class$DownloadBypass$AVMDLDataLoader = objc_getClass("AVMDLDataLoader"); MSHookMessageEx(_logos_class$DownloadBypass$AVMDLDataLoader, @selector(_supportPoxy:), (IMP)&_logos_method$DownloadBypass$AVMDLDataLoader$_supportPoxy$, (IMP*)&_logos_orig$DownloadBypass$AVMDLDataLoader$_supportPoxy$);Class _logos_class$DownloadBypass$_TTVideoEnginePreloadManager = objc_getClass("_TTVideoEnginePreloadManager"); MSHookMessageEx(_logos_class$DownloadBypass$_TTVideoEnginePreloadManager, @selector(_addTask:vid:preSize:urlItem:vidItem:videoModeltem:), (IMP)&_logos_method$DownloadBypass$_TTVideoEnginePreloadManager$_addTask$vid$preSize$urlItem$vidItem$videoModeltem$, (IMP*)&_logos_orig$DownloadBypass$_TTVideoEnginePreloadManager$_addTask$vid$preSize$urlItem$vidItem$videoModeltem$);}
     {Class _logos_class$SSLPinningBypass$TTNetworkManagerChromium = objc_getClass("TTNetworkManagerChromium"); MSHookMessageEx(_logos_class$SSLPinningBypass$TTNetworkManagerChromium, @selector(requestForJSONWithResponse:params:method:needCommonParams:headerField:requestSerializer:responseSerializer:autoResume:verifyRequest:isCustomizedCookie:callback:callbackQueue:), (IMP)&_logos_method$SSLPinningBypass$TTNetworkManagerChromium$requestForJSONWithResponse$params$method$needCommonParams$headerField$requestSerializer$responseSerializer$autoResume$verifyRequest$isCustomizedCookie$callback$callbackQueue$, (IMP*)&_logos_orig$SSLPinningBypass$TTNetworkManagerChromium$requestForJSONWithResponse$params$method$needCommonParams$headerField$requestSerializer$responseSerializer$autoResume$verifyRequest$isCustomizedCookie$callback$callbackQueue$);Class _logos_class$SSLPinningBypass$TTHttpTask = objc_getClass("TTHttpTask"); MSHookMessageEx(_logos_class$SSLPinningBypass$TTHttpTask, @selector(init), (IMP)&_logos_method$SSLPinningBypass$TTHttpTask$init, (IMP*)&_logos_orig$SSLPinningBypass$TTHttpTask$init);MSHookMessageEx(_logos_class$SSLPinningBypass$TTHttpTask, @selector(setSkipSSLCertificateError:), (IMP)&_logos_method$SSLPinningBypass$TTHttpTask$setSkipSSLCertificateError$, (IMP*)&_logos_orig$SSLPinningBypass$TTHttpTask$setSkipSSLCertificateError$);}

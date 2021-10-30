@@ -80,7 +80,7 @@ final class PreferenceManager: NSObject {
         let carrier = self.carriers.first { obj in
             return obj.code.lowercased() == countryCode.lowercased()
         }
-        return carrier ?? Carrier(area: "美国🇺🇸", code: "US", mcc: "310", mnc: "032")
+        return carrier ?? Carrier(area: "日本🇯🇵", code: "JP", mcc: "440", mnc: "01")
     }
     
     private override init() {
@@ -98,7 +98,7 @@ final class PreferenceManager: NSObject {
             case .showProgressBar:
                 showProgressBar = (userDefaults.object(forKey: key.rawValue) as? NSNumber)?.boolValue ?? false
             case .countryCode:
-                countryCode = userDefaults.string(forKey: key.rawValue) ?? "US"
+                countryCode = userDefaults.string(forKey: key.rawValue) ?? "JP"
             case .pureMode:
                 isPureMode = userDefaults.bool(forKey: key.rawValue)
             }
