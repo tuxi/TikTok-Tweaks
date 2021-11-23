@@ -7,6 +7,8 @@
 
 import Foundation
 
+private let defaultRegionCode = "US"
+
 @objc(XYPreferenceManager)
 final class PreferenceManager: NSObject {
     @objc static let shared = PreferenceManager()
@@ -59,7 +61,7 @@ final class PreferenceManager: NSObject {
     }
     
     /// 当前的国家code，会按照国家code设置mnc，默认为日本
-    @objc var countryCode: String = "JP" {
+    @objc var countryCode: String = defaultRegionCode {
         didSet {
             userDefaults.set(countryCode, forKey: Keys.countryCode.rawValue)
             userDefaults.synchronize()
@@ -80,7 +82,7 @@ final class PreferenceManager: NSObject {
         let carrier = self.carriers.first { obj in
             return obj.code.lowercased() == countryCode.lowercased()
         }
-        return carrier ?? Carrier(area: "日本🇯🇵", code: "JP", mcc: "440", mnc: "01")
+        return carrier!
     }
     
     private override init() {
@@ -98,7 +100,7 @@ final class PreferenceManager: NSObject {
             case .showProgressBar:
                 showProgressBar = (userDefaults.object(forKey: key.rawValue) as? NSNumber)?.boolValue ?? false
             case .countryCode:
-                countryCode = userDefaults.string(forKey: key.rawValue) ?? "JP"
+                countryCode = userDefaults.string(forKey: key.rawValue) ?? defaultRegionCode
             case .pureMode:
                 isPureMode = userDefaults.bool(forKey: key.rawValue)
             }

@@ -41,6 +41,7 @@
 		D07B52BF2706C871009ABD87 /* fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = D07B52BE2706C871009ABD87 /* fishhook.h */; };
 		D07B52C12706C871009ABD87 /* TikTokDylib.h in Headers */ = {isa = PBXBuildFile; fileRef = D07B52C02706C871009ABD87 /* TikTokDylib.h */; };
 		D07B52C32706C871009ABD87 /* TikTokDylib.m in Sources */ = {isa = PBXBuildFile; fileRef = D07B52C22706C871009ABD87 /* TikTokDylib.m */; };
+		D0959954272D8A30006A6446 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0959953272D8A30006A6446 /* Logger.swift */; };
 		D0A2A9AE270F05F10001352D /* FLEX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A2A9AB270F05DC0001352D /* FLEX.framework */; platformFilter = ios; };
 		D0A2A9AF270F05F10001352D /* FLEX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0A2A9AB270F05DC0001352D /* FLEX.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0A2A9B1270F05FC0001352D /* FLEX.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0A2A9AB270F05DC0001352D /* FLEX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -155,6 +156,7 @@
 		D07B52BE2706C871009ABD87 /* fishhook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
 		D07B52C02706C871009ABD87 /* TikTokDylib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TikTokDylib.h; sourceTree = "<group>"; };
 		D07B52C22706C871009ABD87 /* TikTokDylib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TikTokDylib.m; sourceTree = "<group>"; };
+		D0959953272D8A30006A6446 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		D0A2A9A5270F05DC0001352D /* FLEX.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FLEX.xcodeproj; path = FLEX/FLEX.xcodeproj; sourceTree = "<group>"; };
 		D0A2A9B8270F07F10001352D /* AwemeTTHttpTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwemeTTHttpTask.h; sourceTree = "<group>"; };
 		D0B6BF9A271286BD00AD795B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 				D0B6BF9F271286BD00AD795B /* UIDebuggingTool.m */,
 				D073912C2713F4D3009731EB /* VideoDownloader.swift */,
 				D073913127141E01009731EB /* UIApplication+Extensions.swift */,
+				D0959953272D8A30006A6446 /* Logger.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 				D07B529D2706C871009ABD87 /* a1a2-selectortramps-arm64.s in Sources */,
 				D07B529B2706C871009ABD87 /* a1a2-selectortramps-arm.s in Sources */,
 				D07B52A12706C871009ABD87 /* a1a2-selectortramps-x86_64.s in Sources */,
+				D0959954272D8A30006A6446 /* Logger.swift in Sources */,
 				D07B52AB2706C871009ABD87 /* OCMethodTrace.m in Sources */,
 				D07B52902706C871009ABD87 /* MDConfigManager.m in Sources */,
 				D073912D2713F4D3009731EB /* VideoDownloader.swift in Sources */,

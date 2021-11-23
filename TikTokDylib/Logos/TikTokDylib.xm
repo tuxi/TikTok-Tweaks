@@ -114,10 +114,44 @@
 /// 网络请求是通过 TTNetworkManagerChromium，继承自 TTNetworkManager
 %hook TTNetworkManagerChromium
 
-- (id)requestForJSONWithResponse:(id)arg1 params:(id)arg2 method:(id)arg3 needCommonParams:(_Bool)arg4 headerField:(id)arg5 requestSerializer:(Class)arg6 responseSerializer:(Class)arg7 autoResume:(_Bool)arg8 verifyRequest:(_Bool)arg9 isCustomizedCookie:(_Bool)arg10 callback:(CDUnknownBlockType)arg11 callbackQueue:(id)arg12 {
-    TTHttpTaskChromium *obj = %orig; // 返回TTHttpTaskChromium
+- (id)requestForJSONWithURL_:(id)arg1 params:(id)arg2 method:(id)arg3 needCommonParams:(_Bool)arg4 headerField:(id)arg5 requestSerializer:(Class)arg6 responseSerializer:(Class)arg7 autoResume:(_Bool)arg8 verifyRequest:(_Bool)arg9 isCustomizedCookie:(_Bool)arg10 callback:(void (^)(NSError *error, id responeDict, long long arg))arg11 callbackWithResponse:(CDUnknownBlockType)arg12 dispatch_queue:(id)arg13 {
+    // 除直播间以外点击关注用户，无法正常关注，直播间内可以，我发觉直播间内走的是webcast，暂时还未解决
+    /*
+     GET
+     https://api-va.tiktokv.com/aweme/v1/commit/follow/user/
+     {
+         "channel_id" = 3;
+         from = 19;
+         "from_pre" = 13;
+         "previous_page" = "homepage_hot";
+         "sec_user_id" = "MS4wLjABAAAAS2624esnn7gm-UXv5PU7qri0YvwvNuldMUSUMYzBMw-FnxGEa77G0xrE5AHYHeuj";
+         type = 1;
+         "user_id" = 7021688606235591685;
+     }
+     */
+    
+    void (^completion)(NSError *, id, long long) = ^(NSError *error, id responeDict, long long arg){
+        if (responeDict) {
+            NSLog(@"responeDict: %@", responeDict);
+        } else {
+            NSLog(@"请求失败: %@", error);
+        }
+        if (arg11) {
+            arg11(error, responeDict, arg);
+        }
+    };
+    
+    // 返回TTHttpTaskChromium
+    TTHttpTaskChromium *obj = %orig(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, completion, arg12, arg13);
     obj.skipSSLCertificateError = YES;
     return obj;
+}
+
+// 用户的区域 我的手机显示cn
+- (NSString *)userRegion {
+    id region = %orig;
+    NSLog(@"userRegion: %@", region);
+    return [XYPreferenceManager.shared.countryCode lowercaseString] ?: @"us";
 }
 %end
 
@@ -133,9 +167,37 @@
 - (void)setSkipSSLCertificateError:(BOOL)value {
     %orig(YES);
 }
-
 %end
 
+%hook TTHttpRequestChromium
+- (id)initWithURL:(id)arg1 method:(id)arg2 multipartForm:(id)arg3 {
+    TTHttpRequestChromium *obj = %orig;
+    return obj;
+}
+%end
+
+%hook TTConcurrentHttpTask // 继承自 TTHttpTask
++ (id)buildBinaryConcurrentTask:(id)arg1 params:(id)arg2 method:(id)arg3 needCommonParams:(_Bool)arg4 headerField:(id)arg5 enableHttpCache:(_Bool)arg6 requestSerializer:(Class)arg7 responseSerializer:(Class)arg8 autoResume:(_Bool)arg9 isCustomizedCookie:(_Bool)arg10 headerCallback:(CDUnknownBlockType)arg11 dataCallback:(CDUnknownBlockType)arg12 callback:(CDUnknownBlockType)arg13 callbackWithResponse:(CDUnknownBlockType)arg14 redirectCallback:(CDUnknownBlockType)arg15 progress:(id *)arg16 dispatch_queue:(id)arg17 redirectHeaderDataCallbackQueue:(id)arg18 concurrentRequestConfig:(id)arg19 {
+    TTConcurrentHttpTask *task = %orig;
+    return task;
+}
++ (id)buildJSONConcurrentTask:(id)arg1 params:(id)arg2 method:(id)arg3 needCommonParams:(_Bool)arg4 headerField:(id)arg5 requestSerializer:(Class)arg6 responseSerializer:(Class)arg7 autoResume:(_Bool)arg8 verifyRequest:(_Bool)arg9 isCustomizedCookie:(_Bool)arg10 callback:(CDUnknownBlockType)arg11 callbackWithResponse:(CDUnknownBlockType)arg12 dispatch_queue:(id)arg13 concurrentRequestConfig:(id)arg14 {
+    TTConcurrentHttpTask *task = %orig;
+    return task;
+}
+%end
+
+%hook TTNetworkUtil
++ (_Bool)parseIfConcurrentRequestSwitchEnabled:(id)arg1 switchName:(id)arg2 {
+    BOOL ret = %orig;
+    return ret;
+}
+
++ (id)URLString:(id)arg1 appendCommonParams:(id)arg2 {
+    id url = %orig;
+    return url;
+}
+%end
 
 %end
 
