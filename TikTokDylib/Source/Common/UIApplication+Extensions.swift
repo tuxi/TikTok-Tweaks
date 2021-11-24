@@ -23,6 +23,8 @@ extension UIApplication {
             topViewController?.navigationController?.popViewController(animated: true)
             return
         }
-        topViewController?.navigationController?.pushViewController(SettingsViewController(), animated: true)
+        let settingsVC = SettingsViewController()
+        settingsVC.hidesBottomBarWhenPushed = true
+        topViewController?.navigationController?.pushViewController(settingsVC, animated: true)
     }
 }
