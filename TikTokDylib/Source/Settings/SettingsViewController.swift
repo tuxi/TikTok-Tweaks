@@ -81,30 +81,41 @@ final class SettingsViewController: UIViewController {
             return SettingsSection.Item.area(carrier: carrier, isSelected: currentCountryCode == code)
         }
         
-        sections = [
-            .basic(title: "基础配置", items: [
-                .switch(title: "无限制下载", isOn: PreferenceManager.shared.isUnlimitedDownload, onChanged: { isOn in
-                    PreferenceManager.shared.isUnlimitedDownload = isOn
-                }),
-                .switch(title: "自动播放下一个", isOn: PreferenceManager.shared.isAutoPlayNextVideoWhenPlayEnded, onChanged: { isOn in
-                    PreferenceManager.shared.isAutoPlayNextVideoWhenPlayEnded = isOn
-                }),
-                .switch(title: "开启首页纯视频模式", isOn: PreferenceManager.shared.isPureMode, onChanged: { isOn in
-                    PreferenceManager.shared.isPureMode = isOn
-                }),
-                .switch(title: "是否播放广告", isOn: PreferenceManager.shared.shouldPlayAds, onChanged: { isOn in
-                    PreferenceManager.shared.shouldPlayAds = isOn
-                }),
-                .switch(title: "一直显示进度条", isOn: PreferenceManager.shared.showProgressBar, onChanged: { isOn in
-                    PreferenceManager.shared.showProgressBar = isOn
-                })
-            ]),
-            .area(title: "切换 运营商国家/地区", items: areaItems)
-        ]
+        func resetSestions() {
+            sections = [
+                .basic(title: "基础配置", items: [
+                    .switch(title: "无限制下载", isOn: PreferenceManager.shared.isUnlimitedDownload, onChanged: { isOn in
+                        PreferenceManager.shared.isUnlimitedDownload = isOn
+                    }),
+                    .switch(title: "自动播放下一个（首页推荐列表）", isOn: PreferenceManager.shared.isAutoPlayNextVideoWhenPlayEnded, onChanged: { isOn in
+                        PreferenceManager.shared.isAutoPlayNextVideoWhenPlayEnded = isOn
+                        PreferenceManager.shared.isAutoPlayNextVideoWhenPlayLiveRoom = isOn
+                        resetSestions()
+                    }),
+                    .switch(title: "开启首页纯视频模式", isOn: PreferenceManager.shared.isPureMode, onChanged: { isOn in
+                        PreferenceManager.shared.isPureMode = isOn
+                    }),
+                    .switch(title: "是否播放广告", isOn: PreferenceManager.shared.shouldPlayAds, onChanged: { isOn in
+                        PreferenceManager.shared.shouldPlayAds = isOn
+                    }),
+                    .switch(title: "一直显示进度条", isOn: PreferenceManager.shared.showProgressBar, onChanged: { isOn in
+                        PreferenceManager.shared.showProgressBar = isOn
+                    }),
+                    .switch(title: "跳过5秒钟未查看直播（首页推荐列表）", isOn: PreferenceManager.shared.isAutoPlayNextVideoWhenPlayLiveRoom, isEnabled: PreferenceManager.shared.isAutoPlayNextVideoWhenPlayEnded, onChanged: { isOn in
+                        PreferenceManager.shared.isAutoPlayNextVideoWhenPlayLiveRoom = isOn
+                    })
+                ]),
+                .area(title: "切换 运营商国家/地区", items: areaItems)
+            ]
+            
+            tableView.reloadData()
+        }
+        
+        resetSestions()
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .default
+        return .lightContent
     }
 }
 
@@ -155,13 +166,17 @@ extension SettingsViewController: UITableViewDelegate {
         headerView.backgroundView = UIView()
         headerView.backgroundView?.backgroundColor = view.backgroundColor?.withAlphaComponent(0.8)
         headerView.backgroundColor = UIColor(red: 22/255.0, green: 35/255.0, blue: 35/255.0, alpha: 1.0)
-        let titleLabel = UILabel(frame: CGRect(x: 16, y: 0, width: 200, height: 40))
-        titleLabel.numberOfLines = 0
-        headerView.addSubview(titleLabel)
-        titleLabel.font = UIFont(name: "ProximaNova-Bold", size: 18)
-        titleLabel.textColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.85)
+        var titleLabel = headerView.viewWithTag(1000) as? UILabel
+        if titleLabel == nil {
+            titleLabel = UILabel(frame: CGRect(x: 16, y: 0, width: 200, height: 40))
+            titleLabel!.numberOfLines = 0
+            headerView.addSubview(titleLabel!)
+            titleLabel!.font = UIFont(name: "ProximaNova-Bold", size: 18)
+            titleLabel!.textColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.85)
+            titleLabel!.tag = 1000
+        }
         let item = sections[section]
-        titleLabel.text = item.title
+        titleLabel?.text = item.title
         return headerView
     }
     

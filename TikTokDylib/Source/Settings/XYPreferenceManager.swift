@@ -21,6 +21,7 @@ final class PreferenceManager: NSObject {
         case showProgressBar
         case countryCode
         case pureMode
+        case autoPlayNextVideoWhenPlayLiveRoom
         
         var key: String {
             return "com.aweme.objc." + self.rawValue
@@ -48,6 +49,14 @@ final class PreferenceManager: NSObject {
     @objc var isAutoPlayNextVideoWhenPlayEnded: Bool = true {
         didSet {
             userDefaults.set(isAutoPlayNextVideoWhenPlayEnded, forKey: Keys.autoPlayNextVideoWhenPlayEnded.rawValue)
+            userDefaults.synchronize()
+        }
+    }
+    
+    /// 播放直播时自动播放下一个，默认为true
+    @objc var isAutoPlayNextVideoWhenPlayLiveRoom: Bool = true {
+        didSet {
+            userDefaults.set(isAutoPlayNextVideoWhenPlayLiveRoom, forKey: Keys.autoPlayNextVideoWhenPlayLiveRoom.rawValue)
             userDefaults.synchronize()
         }
     }
@@ -103,6 +112,8 @@ final class PreferenceManager: NSObject {
                 countryCode = userDefaults.string(forKey: key.rawValue) ?? defaultRegionCode
             case .pureMode:
                 isPureMode = userDefaults.bool(forKey: key.rawValue)
+            case .autoPlayNextVideoWhenPlayLiveRoom:
+                isAutoPlayNextVideoWhenPlayLiveRoom = userDefaults.bool(forKey: key.rawValue)
             }
         }
     }

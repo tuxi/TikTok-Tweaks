@@ -13,7 +13,7 @@ enum SettingsSection {
     
     enum Item {
         case normal(title: String, onNext: (() -> Void)?)
-        case `switch`(title: String, isOn: Bool, onChanged: ((Bool) -> Void)?)
+        case `switch`(title: String, isOn: Bool, isEnabled: Bool = true, onChanged: ((Bool) -> Void)?)
         case area(carrier: Carrier, isSelected: Bool)
     }
 }

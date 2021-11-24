@@ -19,9 +19,10 @@ class SettingsSwitchCell: UITableViewCell {
     
     var item: SettingsSection.Item? {
         didSet {
-            if case let .switch(title, isOn, _) = item {
+            if case let .switch(title, isOn, isEnabled, _) = item {
                 titleLabel.text = title
                 sw.isOn = isOn
+                sw.isEnabled = isEnabled
             }
         }
     }
@@ -56,7 +57,7 @@ class SettingsSwitchCell: UITableViewCell {
     }
     
     @objc private func switchAction(sender: UISwitch) {
-        if case let .switch(_, _, onChanged) = item {
+        if case let .switch(_, _, _, onChanged) = item {
             onChanged?(sender.isOn)
         }
     }

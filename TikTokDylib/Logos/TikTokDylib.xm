@@ -379,6 +379,28 @@ static AWEFeedContainerViewController *__weak sharedInstance;
 }
 %end
 
+%group SkipLiving
+%hook AWEFeedTableViewController
+
+- (void)viewDidLoad {
+    %orig;
+    
+}
+- (void)playVideo:(id)arg1 {
+    %orig;
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(scrollToNextVideo) object:nil];
+    AWEAwemeModel *model = [self currentAweme];
+    if (model.liveStreamURL && model.room) {
+        if (XYPreferenceManager.shared.isAutoPlayNextVideoWhenPlayLiveRoom) {        
+            [self performSelector:@selector(scrollToNextVideo) withObject:nil afterDelay:5.0];
+        }
+    }
+    NSLog(@"AWEAwemeModel");
+}
+%end
+%end
+
+
 %ctor {
     %init(Settings);
     %init(DownloadBypass);
@@ -386,6 +408,7 @@ static AWEFeedContainerViewController *__weak sharedInstance;
     %init(CoreLogic);
     %init(JailbreakBypass);
     %init(BundleIdByPass);
+    %init(SkipLiving);
     %init(_ungrouped);
 }
 

@@ -25,9 +25,24 @@
 @property(readonly, nonatomic) NSNumber *duration;
 @end
 
+@interface AWELiveStreamURL : NSObject
+@property(retain, nonatomic) NSString *rtmpURL;
+@property(retain, nonatomic) NSString *identifier;
+@property(nonatomic) NSString *liveRawData;
+@end
+
+@interface AWELiveRoom : NSObject
+@property (nonatomic) BOOL isAudioLive;
+@property (nonatomic) NSNumber * roomID;
+/// 直播间用户数量
+@property (nonatomic) NSInteger userCount;
+@end
 @interface AWEAwemeModel : NSObject
 @property(nonatomic) BOOL isAds;
 @property(retain, nonatomic) AWEVideoModel* video;
+/// 直播时才会有liveStreamURL和room
+@property(retain, nonatomic) AWELiveStreamURL *liveStreamURL;
+@property(retain, nonatomic) AWELiveRoom *room;
 @end
 
 @interface AWEPlayVideoPlayerController : NSObject
@@ -63,7 +78,11 @@
 @end
 
 @interface AWEFeedTableViewController : UIViewController
+
+@property(readonly, nonatomic) AWEAwemeModel *currentAweme;
+
 - (void)scrollToNextVideo;
+- (void)scrollToPreviousVideo;
 @end
 
 @interface AWEAwemePlayInteractionViewController: UIViewController
@@ -82,6 +101,11 @@
 
 @interface AWEFeedCellViewController : UIViewController
 @property (nonatomic, strong) AWEAwemePlayInteractionViewController *interactionController;
+@property (nonatomic, strong) AWEAwemePlayVideoPlayerController *videoController;
+@end
+
+@interface AWEFeedViewCell : UITableViewCell
+@property (nonatomic) AWEFeedCellViewController *viewController;
 @end
 
 @interface AWEIMDirectTranspondTopView : UIView
