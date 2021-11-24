@@ -47,4 +47,4 @@ response
 
 ```
 
-21.7.0 ipa 链接:https://pan.baidu.com/s/1enERuvBkb39ljEGqMFoHcw  密码:g4up
+TikTok-21.7.0.ipa 链接:https://pan.baidu.com/s/1enERuvBkb39ljEGqMFoHcw  密码:g4up
