@@ -35,6 +35,8 @@ CHConstructor{
         }
 #endif
         
+        [UIApplication.sharedApplication _applicationDidFinishLaunching];
+        
     }];
     
 }

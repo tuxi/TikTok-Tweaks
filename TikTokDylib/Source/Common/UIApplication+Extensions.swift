@@ -12,4 +12,17 @@ extension UIApplication {
         let clas: AnyClass? = NSClassFromString("AWEUIResponder")
         return clas?.topViewController()
     }
+    
+     @objc func _applicationDidFinishLaunching() {
+        
+         NotificationCenter.default.addObserver(self, selector: #selector(beganMotionShakeEvent), name: .init(rawValue: "UIEventSubtypexy_motionShakeNotification"), object: nil)
+    }
+    
+    @objc func beganMotionShakeEvent() {
+        if topViewController is SettingsViewController {
+            topViewController?.navigationController?.popViewController(animated: true)
+            return
+        }
+        topViewController?.navigationController?.pushViewController(SettingsViewController(), animated: true)
+    }
 }
