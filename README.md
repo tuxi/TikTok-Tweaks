@@ -1,5 +1,5 @@
 # TikTok Tweaks
-基于MonkeyDev，支持TikTok 版本21.7.0，以及iOS 15
+基于MonkeyDev，支持TikTok 版本22.0.0，以及iOS 15
 
 ## 功能
 - 下载无水印视频
@@ -47,4 +47,4 @@ response
 
 ```
 
-TikTok-21.7.0.ipa 链接:https://pan.baidu.com/s/1enERuvBkb39ljEGqMFoHcw  密码:g4up
+TikTok-22.0.0.ipa 链接:https://pan.baidu.com/s/1wWQ_oHvEZcttiYegBQ_Gtw  密码:izhs
