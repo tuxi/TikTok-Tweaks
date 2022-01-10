@@ -37,6 +37,12 @@ class VideoDownloader: NSObject {
         hud?.bezelView.backgroundColor = .black.withAlphaComponent(0.65)
         hud?.bezelView.style = .solidColor
         hud?.label.text = "准备下载"
+        hud?.label.font = UIFont.systemFont(ofSize: 12)
+        hud?.button.setTitle("取消", for: .normal)
+        hud?.button.heightAnchor.constraint(equalToConstant: 15.0).isActive = true
+        hud?.button.widthAnchor.constraint(equalToConstant: 45.0).isActive = true
+        hud?.button.addTarget(self, action: #selector(cancelAction), for: .touchUpInside)
+        hud?.button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
        
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10.0)
         currentTask = session.downloadTask(with: request)
@@ -45,6 +51,12 @@ class VideoDownloader: NSObject {
     
     private func setHUDLabel(_ text: String) {
         self.hud?.label.text = text
+    }
+    
+    @objc private func cancelAction() {
+        if currentTask?.state == .running {
+            currentTask?.cancel()
+        }
     }
 }
 
@@ -76,12 +88,8 @@ extension VideoDownloader {
 extension VideoDownloader: URLSessionDownloadDelegate {
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         let fileManeger = FileManager.default
-        /// 沙盒Documents路径
         let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        // 拼接文件绝对路径
         let path = documents + "/" + (downloadTask.response?.suggestedFilename ?? "\(Date().timeIntervalSince1970)")
-                                              
-        // 视频存放到这个位置
         do {
             try fileManeger.moveItem(at: location, to: URL(fileURLWithPath: path))
             // 保存到相册
@@ -101,7 +109,11 @@ extension VideoDownloader: URLSessionDownloadDelegate {
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         if let error = error {
-            self.setHUDLabel("视频下载失败: \(error.localizedDescription)")
+            if (error as NSError).code == NSURLErrorCancelled {
+                self.setHUDLabel("已取消")
+            } else {
+                self.setHUDLabel("视频下载失败: \(error.localizedDescription)")
+            }
             self.hud?.hide(animated: true, afterDelay: 0.5)
             completionHandler?(false, error)
         }

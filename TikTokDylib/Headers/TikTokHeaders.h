@@ -126,4 +126,27 @@
 + (id)topViewControllerForController:(id)arg1;
 @end
 
+@interface AWESharePanelViewModel : NSObject
+@property(retain, nonatomic) AWEAwemeModel *awemeModel;
+@end
+
+// 分享面板
+@interface AWESharePanelController: UIViewController
+@property(retain, nonatomic) AWESharePanelViewModel *viewModel;
+
+@end
+
+@interface AWEIMTranspondListViewController : UIViewController
+@property(retain, nonatomic) AWEShareContext *shareContext;
+@end
+
+@interface TIKTOKAwemeLongPressListViewController : UIViewController
+@property(retain, nonatomic) AWEAwemeModel *awemeModel;
+@property(retain, nonatomic) NSMutableArray *mainSectionsViewModels;
+
+@property(nonatomic, strong) UIButton *xy_downloadBtn;
+- (void)xy_setupDownloadBtn;
+- (void)xy_downloadAweme;
+@end
+
 #endif /* TikTokHeaders_h */

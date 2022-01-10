@@ -49,43 +49,66 @@
 %end
 
 %group DownloadBypass
-/// 分享面板
-%hook AWEIMDirectTranspondViewController
 
+%hook TIKTOKAwemeLongPressListViewController
+%property (nonatomic, retain) UIButton *xy_downloadBtn;
 %new
 - (void)xy_downloadAweme {
-    AWEAwemeModel *aweme = self.shareContext.target;
+    AWEAwemeModel *aweme = self.awemeModel;
     AWEVideoModel *video = aweme.video;
     AWEURLModel *playURL = video.playURL;
     NSArray *originURLList = playURL.originURLList;
-    NSString *url = originURLList.firstObject;
-    // 下载这个链接
+    NSURL *url = [NSURL URLWithString: originURLList.firstObject];
+    if (url == nil) {
+        return;
+    }
     XYVideoDownloader *downloader = [XYVideoDownloader shared];
     __weak typeof(self) weakSelf = self;
-    [downloader downloadWithURL:[NSURL URLWithString:url] completion:^(BOOL isSuccess, NSError *error){
-        [weakSelf dismissAnimated: YES completion: nil];
+    [downloader downloadWithURL:url completion:^(BOOL isSuccess, NSError *error){
+        [weakSelf dismissViewControllerAnimated: YES completion: nil];
     }];
 }
 
+%new
+- (void)xy_setupDownloadBtn {
+    UIButton *downloadBtn = [UIButton new];
+    downloadBtn.frame = CGRectMake(10, 3, 65, 35);
+    [downloadBtn setTitle:@"下载" forState:UIControlStateNormal];
+    [downloadBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    downloadBtn.backgroundColor = UIColor.purpleColor;
+    downloadBtn.layer.cornerRadius = 6;
+    downloadBtn.layer.masksToBounds = YES;
+    downloadBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+    [self.view addSubview:downloadBtn];
+    [downloadBtn addTarget:self action:@selector(xy_downloadAweme) forControlEvents:UIControlEventTouchUpInside];
+    self.xy_downloadBtn = downloadBtn;
+}
 
 - (void)viewDidLoad {
     %orig;
-    if (XYPreferenceManager.shared.isUnlimitedDownload) {
-        UIButton *downloadBtn = [UIButton new];
-        downloadBtn.frame = CGRectMake(10, 3, 65, 35);
-        [downloadBtn setTitle:@"下载" forState:UIControlStateNormal];
-        [downloadBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        downloadBtn.backgroundColor = UIColor.purpleColor;
-        downloadBtn.layer.cornerRadius = 6;
-        downloadBtn.layer.masksToBounds = YES;
-        downloadBtn.titleLabel.font = [UIFont systemFontOfSize:13];
-        [self.topView addSubview:downloadBtn];
-        [downloadBtn addTarget:self action:@selector(xy_downloadAweme) forControlEvents:UIControlEventTouchUpInside];
+    [self xy_setupDownloadBtn];
+}
+
+- (void)viewDidLayoutSubviews {
+    %orig;
+    if (self.xy_downloadBtn) {
+        self.xy_downloadBtn.hidden = !XYPreferenceManager.shared.isUnlimitedDownload || !self.awemeModel.video;
+        if (!self.xy_downloadBtn.superview) {
+            [self.view addSubview:self.xy_downloadBtn];
+        }
+        [self.view bringSubviewToFront:self.xy_downloadBtn];
+        self.xy_downloadBtn.frame = CGRectMake(self.view.frame.size.width - 60, 15, 51, 28);
+    }
+}
+
+- (void)setAwemeModel:(AWEAwemeModel *)model {
+    %orig;
+    if (self.xy_downloadBtn) {
+        self.xy_downloadBtn.hidden = !XYPreferenceManager.shared.isUnlimitedDownload || !self.awemeModel.video;
     }
 }
 
 %end
-
 
 %hook AVMDLDataLoader
 - (_Bool)_supportPoxy:(NSString *)url {
@@ -390,7 +413,7 @@ static AWEFeedContainerViewController *__weak sharedInstance;
     %orig;
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(scrollToNextVideo) object:nil];
     AWEAwemeModel *model = [self currentAweme];
-    if (model.liveStreamURL && model.room) {
+    if (model.liveStreamURL && model.room) { // 当是直播预览时，5秒后跳过
         if (XYPreferenceManager.shared.isAutoPlayNextVideoWhenPlayLiveRoom) {        
             [self performSelector:@selector(scrollToNextVideo) withObject:nil afterDelay:5.0];
         }
