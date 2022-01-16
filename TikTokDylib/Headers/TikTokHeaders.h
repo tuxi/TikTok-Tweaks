@@ -149,4 +149,9 @@
 - (void)xy_downloadAweme;
 @end
 
+@interface AWENewFeedTableViewController : UIViewController
+@property(readonly, nonatomic) AWEAwemeModel *currentAweme;
+- (void)scrollToNextVideo;
+@end
+
 #endif /* TikTokHeaders_h */

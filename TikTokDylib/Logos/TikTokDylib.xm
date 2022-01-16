@@ -247,9 +247,11 @@
 %hook AWEPlayVideoPlayerController
 - (void)playerWillLoopPlaying:(id)arg1 {
     if (XYPreferenceManager.shared.isAutoPlayNextVideoWhenPlayEnded) {
-        if ([self.container.parentViewController isKindOfClass:%c(AWEFeedTableViewController)]) {
+        if ([self.container.parentViewController isKindOfClass:%c(AWEFeedTableViewController)] ||
+            [self.container.parentViewController isKindOfClass:%c(AWENewFeedTableViewController)]) {
+            // Fixed bug: 22.8.0 AWENewFeedTableViewController
             // 播放完成后 自动滚动到下一个视频
-            [((AWEFeedTableViewController *)self.container.parentViewController) scrollToNextVideo];
+            [((id)self.container.parentViewController) scrollToNextVideo];
             return;
         }
     }
@@ -415,6 +417,25 @@ static AWEFeedContainerViewController *__weak sharedInstance;
     AWEAwemeModel *model = [self currentAweme];
     if (model.liveStreamURL && model.room) { // 当是直播预览时，5秒后跳过
         if (XYPreferenceManager.shared.isAutoPlayNextVideoWhenPlayLiveRoom) {        
+            [self performSelector:@selector(scrollToNextVideo) withObject:nil afterDelay:5.0];
+        }
+    }
+    NSLog(@"AWEAwemeModel");
+}
+%end
+
+%hook AWENewFeedTableViewController
+
+- (void)viewDidLoad {
+    %orig;
+    
+}
+- (void)playVideo:(id)arg1 {
+    %orig;
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(scrollToNextVideo) object:nil];
+    AWEAwemeModel *model = [self currentAweme];
+    if (model.liveStreamURL && model.room) { // 当是直播预览时，5秒后跳过
+        if (XYPreferenceManager.shared.isAutoPlayNextVideoWhenPlayLiveRoom) {
             [self performSelector:@selector(scrollToNextVideo) withObject:nil afterDelay:5.0];
         }
     }
