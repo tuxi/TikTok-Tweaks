@@ -20,6 +20,8 @@
 	<string>_jsb_auth.webcast</string>
 	<key>BuildMachineOSBuild</key>
 	<string>20G165</string>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -71,7 +73,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>22.8.0</string>
+	<string>23.1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
@@ -233,7 +235,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>228006</string>
+	<string>231016</string>
 	<key>CHANNEL_NAME</key>
 	<string>App Store</string>
 	<key>CodePushDeploymentKey</key>
@@ -363,6 +365,8 @@
 	<string>You'll be able to record video.</string>
 	<key>NSContactsUsageDescription</key>
 	<string>Sync your contacts to easily find people you know on TikTok. Your contacts will only be used to help you connect with friends.</string>
+	<key>NSLocationDefaultAccuracyReduced</key>
+	<true/>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>To record audio, allow us to access your Microphone.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
