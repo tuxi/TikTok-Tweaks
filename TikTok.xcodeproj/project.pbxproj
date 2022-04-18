@@ -173,6 +173,7 @@
 		D0B6BFB7271290A400AD795B /* countryCode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = countryCode.plist; sourceTree = "<group>"; };
 		D0B6BFBF2712A18200AD795B /* Carrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carrier.swift; sourceTree = "<group>"; };
 		D0B6BFC12712AF7C00AD795B /* TikTokSettingsHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TikTokSettingsHeaders.h; sourceTree = "<group>"; };
+		D0C2DD06280519C20003A62A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D0FCBBF32707696100B3129F /* TikTokHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TikTokHeaders.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -201,6 +202,7 @@
 		D07B525F2706C870009ABD87 = {
 			isa = PBXGroup;
 			children = (
+				D0C2DD06280519C20003A62A /* README.md */,
 				D0A2A9A5270F05DC0001352D /* FLEX.xcodeproj */,
 				D07B526D2706C870009ABD87 /* TikTok */,
 				D07B52872706C871009ABD87 /* TikTokDylib */,

@@ -14,6 +14,8 @@
 	<string>ebfae9eb68a9c9f224395c1947f60a35</string>
 	<key>AccountKitFacebookAppEventsEnabled</key>
 	<integer>1</integer>
+	<key>AppIdentifierPrefix</key>
+	<string>MJ797D8U6F.</string>
 	<key>AppName</key>
 	<string>musical_ly</string>
 	<key>BDJSBGeckoExtraChannels</key>
@@ -73,7 +75,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>23.1.0</string>
+	<string>24.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
@@ -235,13 +237,13 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>231016</string>
+	<string>240005</string>
 	<key>CHANNEL_NAME</key>
 	<string>App Store</string>
 	<key>CodePushDeploymentKey</key>
 	<string>uByLHmAcarJ10xB6sX2d5sQ2CWopaf01fe8e-4e69-45c9-a3f5-0bfdf3747ea8</string>
 	<key>DTAppStoreToolsBuild</key>
-	<string>13C90b</string>
+	<string>13E500</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
@@ -300,8 +302,6 @@
 		<string>gojek</string>
 		<string>ovo</string>
 		<string>tg</string>
-		<string>capcut</string>
-		<string>lark</string>
 		<string>viber</string>
 		<string>fbapi</string>
 		<string>fb-messenger-api</string>
@@ -324,10 +324,10 @@
 		<string>fb-messenger-platform-20150218</string>
 		<string>fb-messenger-platform-20150128</string>
 		<string>zalo</string>
-		<string>snapchat</string>
 		<string>twitter</string>
 		<string>twitterauth</string>
 		<string>bandapp</string>
+		<string>snapchat</string>
 		<string>kakaostory</string>
 		<string>navercafe</string>
 		<string>naverblog</string>
@@ -337,10 +337,15 @@
 		<string>fb-messenger-share-api</string>
 		<string>fb-messenger</string>
 		<string>itms-beta</string>
-		<string>heloiossso</string>
 		<string>comgooglemaps</string>
 		<string>resso</string>
+		<string>mobilelegends</string>
 		<string>snssdk1233</string>
+		<string>ascendmoney</string>
+		<string>boostapp</string>
+		<string>lark</string>
+		<string>reddit</string>
+		<string>capcut</string>
 		<string>snssdkgms3402</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
@@ -352,6 +357,8 @@
 	</dict>
 	<key>MinimumOSVersion</key>
 	<string>12.2</string>
+	<key>NSAdvertisingAttributionReportEndpoint</key>
+	<string>https://byteintl-ugpaidads.com</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -415,7 +422,7 @@
 	<string>Launch Screen I18N</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
-		<string>armv7</string>
+		<string>arm64</string>
 	</array>
 	<key>UIRequiresFullScreen</key>
 	<true/>
