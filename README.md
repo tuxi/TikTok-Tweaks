@@ -1,8 +1,8 @@
 # TikTok Tweaks
-基于MonkeyDev，支持TikTok 版本24.0.0，以及iOS 15
+基于MonkeyDev，支持TikTok 版本24.4.3，以及iOS 15
 
 ## 功能
-- 下载无水印视频: 长按弹出的视图，点击右侧可下载
+- 下载无水印视频: 长按弹出的视图，点击保存视频可下载无水印视频
 - 跳过广告
 - 视频播放完成自动播放下一条
 - 解锁sim 地区限制，国家默认为日本，可在设置-规则中切换国家
@@ -47,4 +47,4 @@ response
 
 ```
 
-TikTok-24.0.0.ipa 链接:https://pan.baidu.com/s/10ayDG3eiAxFxhHbq-KieEg  密码:gi57
+TikTok-24.4.3.ipa 链接:https://pan.baidu.com/s/1xJ8qAUY1VZK7s4n5bqBStQ  密码:dc0m

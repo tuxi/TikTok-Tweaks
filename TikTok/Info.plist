@@ -20,6 +20,10 @@
 	<string>musical_ly</string>
 	<key>BDJSBGeckoExtraChannels</key>
 	<string>_jsb_auth.webcast</string>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>com.TikTok.TTNetworkDownloader_clear_cache</string>
+	</array>
 	<key>BuildMachineOSBuild</key>
 	<string>20G165</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
@@ -75,7 +79,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>24.0.0</string>
+	<string>24.4.3</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
@@ -237,13 +241,13 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>240005</string>
+	<string>244302</string>
 	<key>CHANNEL_NAME</key>
 	<string>App Store</string>
 	<key>CodePushDeploymentKey</key>
 	<string>uByLHmAcarJ10xB6sX2d5sQ2CWopaf01fe8e-4e69-45c9-a3f5-0bfdf3747ea8</string>
 	<key>DTAppStoreToolsBuild</key>
-	<string>13E500</string>
+	<string>13F15</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
@@ -298,9 +302,9 @@
 	<string>61f447fe9723aa9c0b67a52eeb998e77</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>shopeeid</string>
+		<string>akulaku</string>
 		<string>gojek</string>
-		<string>ovo</string>
+		<string>tngdwallet</string>
 		<string>tg</string>
 		<string>viber</string>
 		<string>fbapi</string>
@@ -343,6 +347,7 @@
 		<string>snssdk1233</string>
 		<string>ascendmoney</string>
 		<string>boostapp</string>
+		<string>momo</string>
 		<string>lark</string>
 		<string>reddit</string>
 		<string>capcut</string>
@@ -395,6 +400,8 @@
 	</array>
 	<key>SSAppID</key>
 	<string>1233</string>
+	<key>TiktokABReversalImp</key>
+	<string>TiktokABReversalManager</string>
 	<key>TwitterInfo</key>
 	<dict>
 		<key>consumerKey</key>
@@ -410,6 +417,7 @@
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>processing</string>
 		<string>audio</string>
 		<string>remote-notification</string>
 	</array>

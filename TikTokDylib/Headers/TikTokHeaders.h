@@ -154,4 +154,19 @@
 - (void)scrollToNextVideo;
 @end
 
+@interface AWEIMLongPressControlCellViewModel : NSObject
+@property (copy, nonatomic) NSString* title; // (@synthesize title = _title;)
+@property (copy, nonatomic) NSURL* imageURL; // (@synthesize imageURL = _imageURL;)
+@property (retain, nonatomic) UIImage* icon;  // (@synthesize icon = _icon;)
+@end
+
+// 新的
+@interface AWEIMLongPressViewController : UIViewController
+@property (nonatomic) AWEShareContext *shareContext;
+@property (nonatomic) NSArray<AWEIMLongPressControlCellViewModel *> *viewModelSections;
+
+// 自定义
+- (void)xy_downloadAweme;
+@end
+
 #endif /* TikTokHeaders_h */

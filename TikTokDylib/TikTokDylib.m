@@ -34,9 +34,22 @@ CHConstructor{
             NSLog(@"error: %@", error.localizedDescription);
         }
 #endif
-        
+      
         [UIApplication.sharedApplication _applicationDidFinishLaunching];
         
+//        UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"请选择" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+//        [vc addAction:[UIAlertAction actionWithTitle:@"无水印" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//            [self xy_downloadAweme];
+//        }]];
+//        [vc addAction:[UIAlertAction actionWithTitle:@"有水印" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//            [self dismissViewControllerAnimated:YES completion:^{
+//                %orig;
+//            }];
+//        }]];
+//        [vc addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//            
+//        }]];
+//        [self presentViewController:vc animated:YES completion:nil];
     }];
     
 }

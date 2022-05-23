@@ -50,6 +50,49 @@
 
 %group DownloadBypass
 
+%hook AWEIMLongPressViewController
+- (void) tableView:(id)arg1 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSArray *viewModelSections = self.viewModelSections;
+    NSArray *currentSection = viewModelSections[indexPath.section];
+    AWEIMLongPressControlCellViewModel *model = currentSection[indexPath.row];
+    if ([model.title isEqualToString:@"保存视频"] || [model.title isEqualToString:@"不感兴趣"]) {
+        if (!XYPreferenceManager.shared.isUnlimitedDownload || !self.shareContext.target.video) {
+            %orig;
+        } else {
+            [self xy_downloadAweme];
+        }
+    } else {
+        %orig;
+    }
+}
+
+%property (nonatomic, retain) UIButton *xy_downloadBtn;
+%new
+- (void)xy_downloadAweme {
+    AWEAwemeModel *aweme = self.shareContext.target;
+    AWEVideoModel *video = aweme.video;
+    AWEURLModel *playURL = video.playURL;
+    NSArray *originURLList = playURL.originURLList;
+    NSURL *url = [NSURL URLWithString: originURLList.firstObject];
+    if (url == nil) {
+        return;
+    }
+    XYVideoDownloader *downloader = [XYVideoDownloader shared];
+    __weak typeof(self) weakSelf = self;
+    [downloader downloadWithURL:url completion:^(BOOL isSuccess, NSError *error){
+        [weakSelf dismissViewControllerAnimated: YES completion: nil];
+    }];
+}
+
+//- (void)setAwemeModel:(AWEAwemeModel *)model {
+//    %orig;
+//    if (self.xy_downloadBtn) {
+//        self.xy_downloadBtn.hidden = !XYPreferenceManager.shared.isUnlimitedDownload || !self.awemeModel.video;
+//    }
+//}
+
+%end
+
 %hook TIKTOKAwemeLongPressListViewController
 %property (nonatomic, retain) UIButton *xy_downloadBtn;
 %new
