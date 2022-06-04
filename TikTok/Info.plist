@@ -79,7 +79,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>24.4.3</string>
+	<string>24.5.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
@@ -241,7 +241,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>244302</string>
+	<string>245013</string>
 	<key>CHANNEL_NAME</key>
 	<string>App Store</string>
 	<key>CodePushDeploymentKey</key>
@@ -348,9 +348,9 @@
 		<string>ascendmoney</string>
 		<string>boostapp</string>
 		<string>momo</string>
-		<string>lark</string>
-		<string>reddit</string>
 		<string>capcut</string>
+		<string>reddit</string>
+		<string>lark</string>
 		<string>snssdkgms3402</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>

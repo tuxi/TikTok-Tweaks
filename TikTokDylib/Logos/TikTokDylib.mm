@@ -29,7 +29,7 @@
 #define _LOGOS_RETURN_RETAINED
 #endif
 
-@class AWEPlayInteractionViewController; @class TTAdSplashDeviceHelper; @class TTInstallSandBoxHelper; @class AppsFlyerUtils; @class TTKSettingsViewController; @class AWENewFeedTableViewController; @class TTInstallUtil; @class UIDevice; @class AVMDLDataLoader; @class AWEPlayVideoPlayerController; @class TTConcurrentHttpTask; @class TTHttpTask; @class PIPOIAPStoreManager; @class TIKTOKAwemeLongPressListViewController; @class AWEFeedTableViewController; @class TTNetworkManagerChromium; @class AWEFeedContainerViewController; @class NSFileManager; @class NSString; @class _TTVideoEnginePreloadManager; @class AWEStartupTimingMonitorManager; @class AWEIMLongPressViewController; @class TTHttpRequestChromium; @class TTNetworkUtil; @class AWEAwemeModel; 
+@class AppsFlyerUtils; @class TTInstallSandBoxHelper; @class NSFileManager; @class AWEFeedContainerViewController; @class AWEPlayVideoPlayerController; @class TTAdSplashDeviceHelper; @class TTNetworkUtil; @class NSString; @class TTConcurrentHttpTask; @class AWENewFeedTableViewController; @class AWEFeedTableViewController; @class _TTVideoEnginePreloadManager; @class AWEPlayInteractionViewController; @class AWEAwemeModel; @class TTNetworkManagerChromium; @class TTKSettingsViewController; @class TTInstallUtil; @class TTHttpRequestChromium; @class AVMDLDataLoader; @class PIPOIAPStoreManager; @class AWEStartupTimingMonitorManager; @class AWEIMLongPressViewController; @class TTHttpTask; @class TIKTOKAwemeLongPressListViewController; @class UIDevice; 
 static void (*_logos_meta_orig$_ungrouped$AWEStartupTimingMonitorManager$start)(_LOGOS_SELF_TYPE_NORMAL Class _LOGOS_SELF_CONST, SEL); static void _logos_meta_method$_ungrouped$AWEStartupTimingMonitorManager$start(_LOGOS_SELF_TYPE_NORMAL Class _LOGOS_SELF_CONST, SEL); 
 static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$AWEFeedTableViewController(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("AWEFeedTableViewController"); } return _klass; }static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$AWENewFeedTableViewController(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("AWENewFeedTableViewController"); } return _klass; }
 #line 10 "/Users/xiaoyuan/Desktop/work/tweaks/TikTok/TikTokDylib/Logos/TikTokDylib.xm"
@@ -81,7 +81,7 @@ static void _logos_method$DownloadBypass$AWEIMLongPressViewController$tableView$
     NSArray *viewModelSections = self.viewModelSections;
     NSArray *currentSection = viewModelSections[indexPath.section];
     AWEIMLongPressControlCellViewModel *model = currentSection[indexPath.row];
-    if ([model.title isEqualToString:@"保存视频"] || [model.title isEqualToString:@"不感兴趣"]) {
+    if ([model.title isEqualToString:@"保存视频"] || [model.title isEqualToString:@"举报"]) {
         if (!XYPreferenceManager.shared.isUnlimitedDownload || !self.shareContext.target.video) {
             _logos_orig$DownloadBypass$AWEIMLongPressViewController$tableView$didSelectRowAtIndexPath$(self, _cmd, arg1, indexPath);
         } else {

@@ -55,7 +55,7 @@
     NSArray *viewModelSections = self.viewModelSections;
     NSArray *currentSection = viewModelSections[indexPath.section];
     AWEIMLongPressControlCellViewModel *model = currentSection[indexPath.row];
-    if ([model.title isEqualToString:@"保存视频"] || [model.title isEqualToString:@"不感兴趣"]) {
+    if ([model.title isEqualToString:@"保存视频"] || [model.title isEqualToString:@"举报"]) {
         if (!XYPreferenceManager.shared.isUnlimitedDownload || !self.shareContext.target.video) {
             %orig;
         } else {
