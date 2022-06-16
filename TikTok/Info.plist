@@ -2,18 +2,57 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSAdvertisingAttributionReportEndpoint</key>
-	<string>https://byteintl-ugpaidads.com</string>
-	<key>CFBundlePackageType</key>
-	<string>APPL</string>
-	<key>UILaunchStoryboardName</key>
-	<string>Launch Screen I18N</string>
-	<key>DTPlatformVersion</key>
-	<string>15.0</string>
-	<key>DTSDKBuild</key>
-	<string>19A339</string>
+	<key>AAWEBootChecker</key>
+	<string>TikTokKidsBootChecker</string>
+	<key>API_HOST</key>
+	<string>api-va.tiktokv.com</string>
+	<key>APP_GROUP_NAME</key>
+	<string>group.com.zhiliaoapp.shared</string>
+	<key>APP_STORE_APP_ID</key>
+	<string>835599320</string>
+	<key>AccountKitClientToken</key>
+	<string>ebfae9eb68a9c9f224395c1947f60a35</string>
+	<key>AccountKitFacebookAppEventsEnabled</key>
+	<integer>1</integer>
 	<key>AppIdentifierPrefix</key>
 	<string>MJ797D8U6F.</string>
+	<key>AppName</key>
+	<string>musical_ly</string>
+	<key>BDJSBGeckoExtraChannels</key>
+	<string>_jsb_auth.webcast</string>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>com.TikTok.TTNetworkDownloader_clear_cache</string>
+	</array>
+	<key>BuildMachineOSBuild</key>
+	<string>20G165</string>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>TikTok</string>
+	<key>CFBundleExecutable</key>
+	<string>TikTok</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>TikTok/icon.png</string>
+	</array>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>AppIcon_TikTok20x20</string>
+				<string>AppIcon_TikTok29x29</string>
+				<string>AppIcon_TikTok40x40</string>
+				<string>AppIcon_TikTok60x60</string>
+			</array>
+			<key>CFBundleIconName</key>
+			<string>AppIcon_TikTok</string>
+		</dict>
+	</dict>
 	<key>CFBundleIcons~ipad</key>
 	<dict>
 		<key>CFBundlePrimaryIcon</key>
@@ -31,225 +70,22 @@
 			<string>AppIcon_TikTok</string>
 		</dict>
 	</dict>
-	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-1436854326312437~6210612644</string>
-	<key>TiktokABReversalImp</key>
-	<string>TiktokABReversalManager</string>
-	<key>NSLocationDefaultAccuracyReduced</key>
-	<true/>
-	<key>AAWEBootChecker</key>
-	<string>TikTokKidsBootChecker</string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
-	<key>HTSAppModeProvider</key>
-	<string>TikTokKidsAppModeProvide</string>
-	<key>NSCameraUsageDescription</key>
-	<string>You&apos;ll be able to record video.</string>
-	<key>CHANNEL_NAME</key>
-	<string>App Store</string>
-	<key>HTSServiceInterceptor</key>
-	<string>TikTokKidsServiceInterceptor</string>
-	<key>CFBundleDisplayName</key>
-	<string>TikTok</string>
-	<key>CodePushDeploymentKey</key>
-	<string>uByLHmAcarJ10xB6sX2d5sQ2CWopaf01fe8e-4e69-45c9-a3f5-0bfdf3747ea8</string>
-	<key>DTXcodeBuild</key>
-	<string>13A233</string>
-	<key>API_HOST</key>
-	<string>api-va.tiktokv.com</string>
-	<key>LineSDKConfig</key>
-	<dict>
-		<key>ChannelID</key>
-		<string>1653759053</string>
-	</dict>
-	<key>SCSDKRedirectUrl</key>
-	<string>snssdk1233://snapchat</string>
-	<key>CADisableMinimumFrameDurationOnPhone</key>
-	<true/>
 	<key>CFBundleIdentifier</key>
 	<string>com.zhiliaoapp.musically</string>
-	<key>NSUserActivityTypes</key>
-	<array>
-		<string>INSendMessageIntent</string>
-	</array>
-	<key>UIDeviceFamily</key>
-	<array>
-		<integer>1</integer>
-		<integer>2</integer>
-	</array>
-	<key>FacebookDisplayName</key>
-	<string>TikTok</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>akulaku</string>
-		<string>gojek</string>
-		<string>tngdwallet</string>
-		<string>tg</string>
-		<string>viber</string>
-		<string>fbapi</string>
-		<string>fb-messenger-api</string>
-		<string>fbauth2</string>
-		<string>fbshareextension</string>
-		<string>kakao61f447fe9723aa9c0b67a52eeb998e77</string>
-		<string>kakaokompassauth</string>
-		<string>storykompassauth</string>
-		<string>kakaolink</string>
-		<string>kakaotalk-5.9.7</string>
-		<string>storylink</string>
-		<string>line</string>
-		<string>instagram</string>
-		<string>instagram-stories</string>
-		<string>lineauth</string>
-		<string>line3rdp.com.zhiliaoapp.musically</string>
-		<string>whatsapp</string>
-		<string>fb-messenger-platform-20150714</string>
-		<string>fb-messenger-platform-20150305</string>
-		<string>fb-messenger-platform-20150218</string>
-		<string>fb-messenger-platform-20150128</string>
-		<string>zalo</string>
-		<string>twitter</string>
-		<string>twitterauth</string>
-		<string>bandapp</string>
-		<string>snapchat</string>
-		<string>kakaostory</string>
-		<string>navercafe</string>
-		<string>naverblog</string>
-		<string>vkauthorize</string>
-		<string>vk</string>
-		<string>vk-share</string>
-		<string>fb-messenger-share-api</string>
-		<string>fb-messenger</string>
-		<string>itms-beta</string>
-		<string>comgooglemaps</string>
-		<string>resso</string>
-		<string>mobilelegends</string>
-		<string>snssdk1233</string>
-		<string>ascendmoney</string>
-		<string>boostapp</string>
-		<string>momo</string>
-		<string>capcut</string>
-		<string>reddit</string>
-		<string>lark</string>
-		<string>snssdkgms3402</string>
-	</array>
-	<key>CFBundleSignature</key>
-	<string>????</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
-	<key>CFBundleIcons</key>
-	<dict>
-		<key>CFBundlePrimaryIcon</key>
-		<dict>
-			<key>CFBundleIconFiles</key>
-			<array>
-				<string>AppIcon_TikTok20x20</string>
-				<string>AppIcon_TikTok29x29</string>
-				<string>AppIcon_TikTok40x40</string>
-				<string>AppIcon_TikTok60x60</string>
-			</array>
-			<key>CFBundleIconName</key>
-			<string>AppIcon_TikTok</string>
-		</dict>
-	</dict>
+	<key>CFBundleName</key>
+	<string>TikTok</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>24.8.0</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>iPhoneOS</string>
 	</array>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>This allows TikTok to provide you with a better ads experience.</string>
-	<key>UIRequiresFullScreen</key>
-	<true/>
-	<key>APP_STORE_APP_ID</key>
-	<string>835599320</string>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
-	<key>FacebookAutoLogAppEventsEnabled</key>
-	<false/>
-	<key>MinimumOSVersion</key>
-	<string>12.2</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>To upload from or download to your device, allow access to your photos in your phone settings.</string>
-	<key>CFBundleName</key>
-	<string>TikTok</string>
-	<key>SKAdNetworkItems</key>
-	<array>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>mj797d8u6f.skadnetwork</string>
-		</dict>
-	</array>
-	<key>CFBundleShortVersionString</key>
-	<string>24.8.0</string>
-	<key>UIStatusBarHidden</key>
-	<true/>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>processing</string>
-		<string>audio</string>
-		<string>remote-notification</string>
-	</array>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>arm64</string>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Proxima-Nova-Bold.otf</string>
-		<string>Proxima-Nova-Semibold.otf</string>
-		<string>Proxima-Nova-Regular.otf</string>
-	</array>
-	<key>CFBundleExecutable</key>
-	<string>TikTok</string>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<true/>
-	<key>APP_GROUP_NAME</key>
-	<string>group.com.zhiliaoapp.shared</string>
-	<key>UISupportedInterfaceOrientations~ipad</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>NSAppleMusicUsageDescription</key>
-	<string>To select sound from your library, allow us to access your Apple Music.</string>
-	<key>TwitterInfo</key>
-	<dict>
-		<key>consumerKey</key>
-		<string>YYWjeT5eJGnfiErKfxYxYAXHq</string>
-		<key>consumerSecret</key>
-		<string>w981H5bEdxghiDenDVAu2dTutdsQsh71LU0w4sLmVO8UMdbe6Q</string>
-	</dict>
-	<key>FacebookAppID</key>
-	<string>597615686992125</string>
-	<key>DTAppStoreToolsBuild</key>
-	<string>13F15</string>
-	<key>AccountKitClientToken</key>
-	<string>ebfae9eb68a9c9f224395c1947f60a35</string>
-	<key>BuildMachineOSBuild</key>
-	<string>20G165</string>
-	<key>GoogleMapAPIKey</key>
-	<string>AIzaSyBsTSs9GSyJnCE9o3lDVvMT50ao07i8Cfk</string>
-	<key>DTPlatformName</key>
-	<string>iphoneos</string>
-	<key>NSCalendarsUsageDescription</key>
-	<string>Add events to your device calendar to get reminders when events start.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>To record audio, allow us to access your Microphone.</string>
-	<key>AccountKitFacebookAppEventsEnabled</key>
-	<integer>1</integer>
-	<key>InstagramNewRedirectURL</key>
-	<string>https://api.tiktokv.com/passport/auth/wap_login_success/</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>If location services are enabled, TikTok will collect, store and use your device&apos;s approximate location to improve your experience.</string>
-	<key>AppName</key>
-	<string>musical_ly</string>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
-	<key>CFBundleVersion</key>
-	<string>248010</string>
-	<key>DTCompiler</key>
-	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -404,20 +240,34 @@
 			</array>
 		</dict>
 	</array>
-	<key>BGTaskSchedulerPermittedIdentifiers</key>
-	<array>
-		<string>com.TikTok.TTNetworkDownloader_clear_cache</string>
-	</array>
-	<key>SSAppID</key>
-	<string>1233</string>
-	<key>InstagramNewClientKey</key>
-	<string>1075382489491723</string>
+	<key>CFBundleVersion</key>
+	<string>248010</string>
+	<key>CHANNEL_NAME</key>
+	<string>App Store</string>
+	<key>CodePushDeploymentKey</key>
+	<string>uByLHmAcarJ10xB6sX2d5sQ2CWopaf01fe8e-4e69-45c9-a3f5-0bfdf3747ea8</string>
+	<key>DTAppStoreToolsBuild</key>
+	<string>13F15</string>
+	<key>DTCompiler</key>
+	<string>com.apple.compilers.llvm.clang.1_0</string>
+	<key>DTPlatformBuild</key>
+	<string>19A339</string>
+	<key>DTPlatformName</key>
+	<string>iphoneos</string>
+	<key>DTPlatformVersion</key>
+	<string>15.0</string>
+	<key>DTSDKBuild</key>
+	<string>19A339</string>
 	<key>DTSDKName</key>
 	<string>iphoneos15.0</string>
-	<key>SCSDKClientId</key>
-	<string>be57ee08-231d-4622-9cad-4e0792363934</string>
+	<key>DTXcode</key>
+	<string>1300</string>
+	<key>DTXcodeBuild</key>
+	<string>13A233</string>
 	<key>Fabric</key>
 	<dict>
+		<key>APIKey</key>
+		<string>7f595b8ca860a9ebabf8fc1a60eeecc3df22376e</string>
 		<key>Kits</key>
 		<array>
 			<dict>
@@ -427,29 +277,183 @@
 				<string>Crashlytics</string>
 			</dict>
 		</array>
-		<key>APIKey</key>
-		<string>7f595b8ca860a9ebabf8fc1a60eeecc3df22376e</string>
 	</dict>
+	<key>FacebookAppID</key>
+	<string>597615686992125</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<false/>
+	<key>FacebookDisplayName</key>
+	<string>TikTok</string>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-1436854326312437~6210612644</string>
+	<key>GoogleMapAPIKey</key>
+	<string>AIzaSyBsTSs9GSyJnCE9o3lDVvMT50ao07i8Cfk</string>
+	<key>HTSAppModeProvider</key>
+	<string>TikTokKidsAppModeProvide</string>
+	<key>HTSServiceInterceptor</key>
+	<string>TikTokKidsServiceInterceptor</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>InstagramNewClientKey</key>
+	<string>1075382489491723</string>
+	<key>InstagramNewRedirectURL</key>
+	<string>https://api.tiktokv.com/passport/auth/wap_login_success/</string>
 	<key>KAKAO_APP_KEY</key>
 	<string>61f447fe9723aa9c0b67a52eeb998e77</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>akulaku</string>
+		<string>gojek</string>
+		<string>tngdwallet</string>
+		<string>tg</string>
+		<string>viber</string>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+		<string>kakao61f447fe9723aa9c0b67a52eeb998e77</string>
+		<string>kakaokompassauth</string>
+		<string>storykompassauth</string>
+		<string>kakaolink</string>
+		<string>kakaotalk-5.9.7</string>
+		<string>storylink</string>
+		<string>line</string>
+		<string>instagram</string>
+		<string>instagram-stories</string>
+		<string>lineauth</string>
+		<string>line3rdp.com.zhiliaoapp.musically</string>
+		<string>whatsapp</string>
+		<string>fb-messenger-platform-20150714</string>
+		<string>fb-messenger-platform-20150305</string>
+		<string>fb-messenger-platform-20150218</string>
+		<string>fb-messenger-platform-20150128</string>
+		<string>zalo</string>
+		<string>twitter</string>
+		<string>twitterauth</string>
+		<string>bandapp</string>
+		<string>snapchat</string>
+		<string>kakaostory</string>
+		<string>navercafe</string>
+		<string>naverblog</string>
+		<string>vkauthorize</string>
+		<string>vk</string>
+		<string>vk-share</string>
+		<string>fb-messenger-share-api</string>
+		<string>fb-messenger</string>
+		<string>itms-beta</string>
+		<string>comgooglemaps</string>
+		<string>resso</string>
+		<string>mobilelegends</string>
+		<string>snssdk1233</string>
+		<string>ascendmoney</string>
+		<string>boostapp</string>
+		<string>momo</string>
+		<string>capcut</string>
+		<string>reddit</string>
+		<string>lark</string>
+		<string>snssdkgms3402</string>
+	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>LineSDKConfig</key>
+	<dict>
+		<key>ChannelID</key>
+		<string>1653759053</string>
+	</dict>
+	<key>MinimumOSVersion</key>
+	<string>12.2</string>
+	<key>NSAdvertisingAttributionReportEndpoint</key>
+	<string>https://byteintl-ugpaidads.com</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>DTPlatformBuild</key>
-	<string>19A339</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>To select sound from your library, allow us to access your Apple Music.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Add events to your device calendar to get reminders when events start.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>You'll be able to record video.</string>
 	<key>NSContactsUsageDescription</key>
 	<string>Sync your contacts to easily find people you know on TikTok. Your contacts will only be used to help you connect with friends.</string>
-	<key>DTXcode</key>
-	<string>1300</string>
+	<key>NSLocationDefaultAccuracyReduced</key>
+	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>If location services are enabled, TikTok will collect, store and use your device's approximate location to improve your experience.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>To record audio, allow us to access your Microphone.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>To upload from or download to your device, allow access to your photos in your phone settings.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>To upload from or download to your device, allow access to your photos in your phone settings.</string>
-	<key>BDJSBGeckoExtraChannels</key>
-	<string>_jsb_auth.webcast</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>INSendMessageIntent</string>
+	</array>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>This allows TikTok to provide you with a better ads experience.</string>
+	<key>SCSDKClientId</key>
+	<string>be57ee08-231d-4622-9cad-4e0792363934</string>
+	<key>SCSDKRedirectUrl</key>
+	<string>snssdk1233://snapchat</string>
+	<key>SKAdNetworkItems</key>
+	<array>
+		<dict>
+			<key>SKAdNetworkIdentifier</key>
+			<string>mj797d8u6f.skadnetwork</string>
+		</dict>
+	</array>
+	<key>SSAppID</key>
+	<string>1233</string>
+	<key>TiktokABReversalImp</key>
+	<string>TiktokABReversalManager</string>
+	<key>TwitterInfo</key>
+	<dict>
+		<key>consumerKey</key>
+		<string>YYWjeT5eJGnfiErKfxYxYAXHq</string>
+		<key>consumerSecret</key>
+		<string>w981H5bEdxghiDenDVAu2dTutdsQsh71LU0w4sLmVO8UMdbe6Q</string>
+	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Proxima-Nova-Bold.otf</string>
+		<string>Proxima-Nova-Semibold.otf</string>
+		<string>Proxima-Nova-Regular.otf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>processing</string>
+		<string>audio</string>
+		<string>remote-notification</string>
+	</array>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>Launch Screen I18N</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>arm64</string>
+	</array>
+	<key>UIRequiresFullScreen</key>
+	<true/>
+	<key>UIStatusBarHidden</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 </dict>
 </plist>
