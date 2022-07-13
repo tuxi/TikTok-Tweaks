@@ -79,7 +79,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>24.8.0</string>
+	<string>25.1.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
@@ -241,13 +241,13 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>248010</string>
+	<string>251102</string>
 	<key>CHANNEL_NAME</key>
 	<string>App Store</string>
 	<key>CodePushDeploymentKey</key>
 	<string>uByLHmAcarJ10xB6sX2d5sQ2CWopaf01fe8e-4e69-45c9-a3f5-0bfdf3747ea8</string>
 	<key>DTAppStoreToolsBuild</key>
-	<string>13F15</string>
+	<string>13F100</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
@@ -284,6 +284,8 @@
 	<false/>
 	<key>FacebookDisplayName</key>
 	<string>TikTok</string>
+	<key>FirebaseAutomaticScreenReportingEnabled</key>
+	<false/>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-1436854326312437~6210612644</string>
 	<key>GoogleMapAPIKey</key>
@@ -324,9 +326,6 @@
 		<string>line3rdp.com.zhiliaoapp.musically</string>
 		<string>whatsapp</string>
 		<string>fb-messenger-platform-20150714</string>
-		<string>fb-messenger-platform-20150305</string>
-		<string>fb-messenger-platform-20150218</string>
-		<string>fb-messenger-platform-20150128</string>
 		<string>zalo</string>
 		<string>twitter</string>
 		<string>twitterauth</string>
@@ -423,6 +422,7 @@
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>fetch</string>
 		<string>processing</string>
 		<string>audio</string>
 		<string>remote-notification</string>

@@ -156,6 +156,7 @@
 		D07B52BE2706C871009ABD87 /* fishhook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
 		D07B52C02706C871009ABD87 /* TikTokDylib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TikTokDylib.h; sourceTree = "<group>"; };
 		D07B52C22706C871009ABD87 /* TikTokDylib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TikTokDylib.m; sourceTree = "<group>"; };
+		D087D85A286BF08C007A78D9 /* manifest.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = manifest.plist; sourceTree = "<group>"; };
 		D0959953272D8A30006A6446 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		D0A2A9A5270F05DC0001352D /* FLEX.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FLEX.xcodeproj; path = FLEX/FLEX.xcodeproj; sourceTree = "<group>"; };
 		D0A2A9B8270F07F10001352D /* AwemeTTHttpTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwemeTTHttpTask.h; sourceTree = "<group>"; };
@@ -202,6 +203,7 @@
 		D07B525F2706C870009ABD87 = {
 			isa = PBXGroup;
 			children = (
+				D087D85A286BF08C007A78D9 /* manifest.plist */,
 				D0C2DD06280519C20003A62A /* README.md */,
 				D0A2A9A5270F05DC0001352D /* FLEX.xcodeproj */,
 				D07B526D2706C870009ABD87 /* TikTok */,

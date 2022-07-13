@@ -1,5 +1,5 @@
 # TikTok Tweaks
-基于MonkeyDev，支持TikTok 版本24.8.0，以及iOS 15
+基于MonkeyDev，支持TikTok 版本25.1.1，以及iOS 15
 
 ## 功能
 - 下载无水印视频: 长按弹出的视图，点击保存视频可下载无水印视频
@@ -47,4 +47,5 @@ response
 
 ```
 
-TikTok-24.8.0.ipa 链接:https://pan.baidu.com/s/1gEXuyZanWy4Acbw93M8oLw  密码:yn2e
+TikTok-25.1.1.ipa 链接:https://pan.baidu.com/s/1uIwjHb28FJxrqtpEFE0QpQ  密码:by8p
+- 本项目的ipa[点我安装](itms-services://?action=download-manifest&url=https://oss.objc.com/ipa/TikTok/manifest.plist)
