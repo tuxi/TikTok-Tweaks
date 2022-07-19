@@ -454,7 +454,7 @@ static AWEFeedContainerViewController *__weak sharedInstance;
 - (void)viewDidLoad {
     %orig;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(xy_updatePureMode) name:@"xyNeedsSetPureModeNotification" object:nil];
-    [self xy_updatePureMode];
+    [self performSelector:@selector(xy_updatePureMode)];
 }
 
 %new
@@ -472,6 +472,11 @@ static AWEFeedContainerViewController *__weak sharedInstance;
     }
     NSLog(@"AWEAwemeModel");
 }
+
+- (void)setPureMode:(BOOL)pureMode {
+    %orig;
+}
+
 %end
 
 %end
