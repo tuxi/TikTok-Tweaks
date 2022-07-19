@@ -448,11 +448,18 @@ static AWEFeedContainerViewController *__weak sharedInstance;
 %end
 
 %group SkipLiving
-%hook AWEFeedTableViewController
+%hook AWENewFeedTableViewController
+
 
 - (void)viewDidLoad {
     %orig;
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(xy_updatePureMode) name:@"xyNeedsSetPureModeNotification" object:nil];
+    [self xy_updatePureMode];
+}
+
+%new
+- (void)xy_updatePureMode {
+    self.pureMode = XYPreferenceManager.shared.isPureMode;
 }
 - (void)playVideo:(id)arg1 {
     %orig;
@@ -467,24 +474,6 @@ static AWEFeedContainerViewController *__weak sharedInstance;
 }
 %end
 
-%hook AWENewFeedTableViewController
-
-- (void)viewDidLoad {
-    %orig;
-    
-}
-- (void)playVideo:(id)arg1 {
-    %orig;
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(scrollToNextVideo) object:nil];
-    AWEAwemeModel *model = [self currentAweme];
-    if (model.liveStreamURL && model.room) { // 当是直播预览时，5秒后跳过
-        if (XYPreferenceManager.shared.isAutoPlayNextVideoWhenPlayLiveRoom) {
-            [self performSelector:@selector(scrollToNextVideo) withObject:nil afterDelay:5.0];
-        }
-    }
-    NSLog(@"AWEAwemeModel");
-}
-%end
 %end
 
 

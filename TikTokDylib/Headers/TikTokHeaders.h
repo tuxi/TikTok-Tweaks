@@ -151,7 +151,9 @@
 
 @interface AWENewFeedTableViewController : UIViewController
 @property(readonly, nonatomic) AWEAwemeModel *currentAweme;
+@property(nonatomic) _Bool pureMode;
 - (void)scrollToNextVideo;
+- (void)setNeedsSetPureMode:(_Bool)arg1;
 @end
 
 @interface AWEIMLongPressControlCellViewModel : NSObject

@@ -82,6 +82,9 @@ final class PreferenceManager: NSObject {
         didSet {
             userDefaults.set(isPureMode, forKey: Keys.pureMode.rawValue)
             userDefaults.synchronize()
+            if isPureMode != oldValue {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "xyNeedsSetPureModeNotification"), object: nil)
+            }
         }
     }
     

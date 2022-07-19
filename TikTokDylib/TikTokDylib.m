@@ -134,14 +134,14 @@ CHConstructor {
 }
 
 // MARK: - Setting界面
-CHDeclareClass(AWEFeedTableViewController)
-
-CHOptimizedMethod(0, self, BOOL, AWEFeedTableViewController, pureMode) {
-    // 是否为纯视频模式，如果设置pureMode == YES  只显示视频，不会显示视频上的AWEAwemePlayInteractionViewController view，即视频上的头像、点赞、音乐等等..
-    return  XYPreferenceManager.shared.isPureMode;
-}
-
-CHConstructor {
-    CHLoadLateClass(AWEFeedTableViewController);
-    CHHook0(AWEFeedTableViewController, pureMode);
-}
+//CHDeclareClass(AWENewFeedTableViewController)
+//
+//CHOptimizedMethod(0, self, BOOL, AWENewFeedTableViewController, pureMode) {
+//    // 是否为纯视频模式，如果设置pureMode == YES  只显示视频，不会显示视频上的AWEAwemePlayInteractionViewController view，即视频上的头像、点赞、音乐等等..
+//    return  XYPreferenceManager.shared.isPureMode;
+//}
+//
+//CHConstructor {
+//    CHLoadLateClass(AWENewFeedTableViewController);
+//    CHHook0(AWENewFeedTableViewController, pureMode);
+//}
