@@ -461,6 +461,11 @@ static AWEFeedContainerViewController *__weak sharedInstance;
 - (void)xy_updatePureMode {
     self.pureMode = XYPreferenceManager.shared.isPureMode;
 }
+
+- (void) play {
+    %orig;
+}
+
 - (void)playVideo:(id)arg1 {
     %orig;
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(scrollToNextVideo) object:nil];
