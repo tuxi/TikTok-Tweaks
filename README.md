@@ -47,5 +47,5 @@ response
 
 ```
 
-TikTok-25.3.1.ipa 链接:https://pan.baidu.com/s/1laOetCe-KRaWxDzh4s439Q  密码:74ym
+TikTok-25.4.0 ipa 链接:https://pan.baidu.com/s/1jbE4js4hb-Hh2vRGclQWAg  密码:pn9p
 - 本项目的ipa[点我安装](itms-services://?action=download-manifest&url=https://oss.objc.com/ipa/TikTok/manifest.plist)
