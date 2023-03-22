@@ -20,12 +20,8 @@
 	<string>musical_ly</string>
 	<key>BDJSBGeckoExtraChannels</key>
 	<string>_jsb_auth.webcast</string>
-	<key>BGTaskSchedulerPermittedIdentifiers</key>
-	<array>
-		<string>com.TikTok.TTNetworkDownloader_clear_cache</string>
-	</array>
 	<key>BuildMachineOSBuild</key>
-	<string>20G165</string>
+	<string>21G115</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
@@ -44,9 +40,6 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>AppIcon_TikTok20x20</string>
-				<string>AppIcon_TikTok29x29</string>
-				<string>AppIcon_TikTok40x40</string>
 				<string>AppIcon_TikTok60x60</string>
 			</array>
 			<key>CFBundleIconName</key>
@@ -59,12 +52,8 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>AppIcon_TikTok20x20</string>
-				<string>AppIcon_TikTok29x29</string>
-				<string>AppIcon_TikTok40x40</string>
 				<string>AppIcon_TikTok60x60</string>
 				<string>AppIcon_TikTok76x76</string>
-				<string>AppIcon_TikTok83.5x83.5</string>
 			</array>
 			<key>CFBundleIconName</key>
 			<string>AppIcon_TikTok</string>
@@ -79,7 +68,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>25.4.0</string>
+	<string>28.4.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
@@ -239,31 +228,41 @@
 				<string>snssdk1180</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>lemon8opensdk</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>lemon8opensdk4tt</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>254012</string>
+	<string>284022</string>
 	<key>CHANNEL_NAME</key>
 	<string>App Store</string>
 	<key>CodePushDeploymentKey</key>
 	<string>uByLHmAcarJ10xB6sX2d5sQ2CWopaf01fe8e-4e69-45c9-a3f5-0bfdf3747ea8</string>
 	<key>DTAppStoreToolsBuild</key>
-	<string>13F100</string>
+	<string>14C17</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>19A339</string>
+	<string>20B71</string>
 	<key>DTPlatformName</key>
 	<string>iphoneos</string>
 	<key>DTPlatformVersion</key>
-	<string>15.0</string>
+	<string>16.1</string>
 	<key>DTSDKBuild</key>
-	<string>19A339</string>
+	<string>20B71</string>
 	<key>DTSDKName</key>
-	<string>iphoneos15.0</string>
+	<string>iphoneos16.1</string>
 	<key>DTXcode</key>
-	<string>1300</string>
+	<string>1410</string>
 	<key>DTXcodeBuild</key>
-	<string>13A233</string>
+	<string>14B47b</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -288,6 +287,8 @@
 	<false/>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-1436854326312437~6210612644</string>
+	<key>GOOGLE_ANALYTICS_REGISTRATION_WITH_AD_NETWORK_ENABLED</key>
+	<false/>
 	<key>GoogleMapAPIKey</key>
 	<string>AIzaSyBsTSs9GSyJnCE9o3lDVvMT50ao07i8Cfk</string>
 	<key>HTSAppModeProvider</key>
@@ -342,6 +343,7 @@
 		<string>itms-beta</string>
 		<string>comgooglemaps</string>
 		<string>resso</string>
+		<string>ttmusic</string>
 		<string>mobilelegends</string>
 		<string>snssdk1233</string>
 		<string>ascendmoney</string>
@@ -350,8 +352,12 @@
 		<string>capcut</string>
 		<string>capcut840</string>
 		<string>reddit</string>
+		<string>scbeasy</string>
+		<string>lemon8opensdk</string>
+		<string>tiktoknow</string>
 		<string>lark</string>
-		<string>snssdkgms3402</string>
+		<string>https</string>
+		<string>http</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -387,6 +393,8 @@
 	<string>To upload from or download to your device, allow access to your photos in your phone settings.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>To upload from or download to your device, allow access to your photos in your phone settings.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Speech Recognition will be used to help with your voice searches.</string>
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>INSendMessageIntent</string>
@@ -424,7 +432,6 @@
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
-		<string>processing</string>
 		<string>audio</string>
 		<string>remote-notification</string>
 	</array>

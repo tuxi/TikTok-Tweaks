@@ -587,7 +587,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = /opt/MonkeyDev/Tools/pack.sh;
+			shellScript = "/opt/MonkeyDev/Tools/pack.sh\n";
 		};
 		D07B52692706C870009ABD87 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -604,7 +604,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/opt/MonkeyDev/Tools/pack.sh codesign";
+			shellScript = "/opt/MonkeyDev/Tools/pack.sh codesign\n";
 		};
 		D07B52772706C871009ABD87 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -621,7 +621,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/opt/MonkeyDev/bin/md --xcbp-logos";
+			shellScript = "/opt/MonkeyDev/bin/md --xcbp-logos\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -843,8 +843,6 @@
 					"-weak_library",
 					"/usr/lib/libc++.dylib",
 					"-weak_library",
-					"/usr/lib/libstdc++.dylib",
-					"-weak_library",
 					"$(MonkeyDevPath)/Frameworks/libsubstrate.dylib",
 					"-lcycript",
 					"-framework",
@@ -928,7 +926,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = F4N226DG5U;
+				DEVELOPMENT_TEAM = NKW67GFDHM;
 				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = TikTok/Info.plist;
