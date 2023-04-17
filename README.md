@@ -1,5 +1,5 @@
 # TikTok Tweaks
-基于MonkeyDev、TikTok 版本29.2.2、 iOS 16、Xcode14
+基于MonkeyDev、TikTok 版本29.0.0、 iOS 16、Xcode14
 
 ## 功能
 - 下载无水印视频: 长按弹出的视图，点击保存原版视频可下载无水印视频，新版本下载的是h264的视频更清晰！
