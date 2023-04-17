@@ -11,6 +11,7 @@
 #import "UIDebuggingTool.h"
 #import <objc/runtime.h>
 #import <FLEX/FLEX.h>
+#import "TikTokDylib-Swift.h"
 
 static void SwapInstanceMethods(Class cls, SEL original, SEL replacement) {
     Method originalMethod = class_getInstanceMethod(cls, original);
@@ -147,6 +148,9 @@ NSString *const UIEventSubtypexy_motionShakeNotification = @"UIEventSubtypexy_mo
 }
 
 + (void)toggleVisibility {
+    if (!XYPreferenceManager.shared.isDebugFLEXEnabled) {
+        return;
+    }
     [[FLEXManager sharedManager] toggleExplorer];
 }
 

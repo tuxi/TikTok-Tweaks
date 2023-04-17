@@ -7,7 +7,7 @@
 //
 
 #import "FLEXColor.h"
-#import "FLEXNetworkTransactionDetailController.h"
+#import "FLEXHTTPTransactionDetailController.h"
 #import "FLEXNetworkCurlLogger.h"
 #import "FLEXNetworkRecorder.h"
 #import "FLEXNetworkTransaction.h"
@@ -18,68 +18,68 @@
 #import "FLEXManager+Private.h"
 #import "FLEXTableView.h"
 #import "UIBarButtonItem+FLEX.h"
+#import "NSDateFormatter+FLEX.h"
 
 typedef UIViewController *(^FLEXNetworkDetailRowSelectionFuture)(void);
 
 @interface FLEXNetworkDetailRow : NSObject
-
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *detailText;
 @property (nonatomic, copy) FLEXNetworkDetailRowSelectionFuture selectionFuture;
-
 @end
 
 @implementation FLEXNetworkDetailRow
-
 @end
 
 @interface FLEXNetworkDetailSection : NSObject
-
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSArray<FLEXNetworkDetailRow *> *rows;
-
 @end
 
 @implementation FLEXNetworkDetailSection
-
 @end
 
-@interface FLEXNetworkTransactionDetailController ()
+@interface FLEXHTTPTransactionDetailController ()
 
+@property (nonatomic, readonly) FLEXHTTPTransaction *transaction;
 @property (nonatomic, copy) NSArray<FLEXNetworkDetailSection *> *sections;
 
 @end
 
-@implementation FLEXNetworkTransactionDetailController
+@implementation FLEXHTTPTransactionDetailController
+
++ (instancetype)withTransaction:(FLEXHTTPTransaction *)transaction {
+    FLEXHTTPTransactionDetailController *controller = [self new];
+    controller.transaction = transaction;
+    return controller;
+}
 
 - (instancetype)initWithStyle:(UITableViewStyle)style {
     // Force grouped style
-    self = [super initWithStyle:UITableViewStyleGrouped];
-    if (self) {
-        [NSNotificationCenter.defaultCenter addObserver:self
-            selector:@selector(handleTransactionUpdatedNotification:)
-            name:kFLEXNetworkRecorderTransactionUpdatedNotification
-            object:nil
-        ];
-        self.toolbarItems = @[
-            UIBarButtonItem.flex_flexibleSpace,
-            [UIBarButtonItem
-                flex_itemWithTitle:@"Copy curl"
-                target:self
-                action:@selector(copyButtonPressed:)
-            ]
-        ];
-    }
-    return self;
+    return [super initWithStyle:UITableViewStyleGrouped];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [NSNotificationCenter.defaultCenter addObserver:self
+        selector:@selector(handleTransactionUpdatedNotification:)
+        name:kFLEXNetworkRecorderTransactionUpdatedNotification
+        object:nil
+    ];
+    self.toolbarItems = @[
+        UIBarButtonItem.flex_flexibleSpace,
+        [UIBarButtonItem
+            flex_itemWithTitle:@"Copy curl"
+            target:self
+            action:@selector(copyButtonPressed:)
+        ]
+    ];
+    
     [self.tableView registerClass:[FLEXMultilineTableViewCell class] forCellReuseIdentifier:kFLEXMultilineCell];
 }
 
-- (void)setTransaction:(FLEXNetworkTransaction *)transaction {
+- (void)setTransaction:(FLEXHTTPTransaction *)transaction {
     if (![_transaction isEqual:transaction]) {
         _transaction = transaction;
         self.title = [transaction.request.URL lastPathComponent];
@@ -189,6 +189,12 @@ typedef UIViewController *(^FLEXNetworkDetailRowSelectionFuture)(void);
     ];
 }
 
+- (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return [NSArray flex_forEachUpTo:self.sections.count map:^id(NSUInteger i) {
+        return @"⦁";
+    }];
+}
+
 - (FLEXNetworkDetailRow *)rowModelAtIndexPath:(NSIndexPath *)indexPath {
     FLEXNetworkDetailSection *sectionModel = self.sections[indexPath.section];
     return sectionModel.rows[indexPath.row];
@@ -253,7 +259,7 @@ typedef UIViewController *(^FLEXNetworkDetailRowSelectionFuture)(void);
 
 #pragma mark - Table Data Generation
 
-+ (FLEXNetworkDetailSection *)generalSectionForTransaction:(FLEXNetworkTransaction *)transaction {
++ (FLEXNetworkDetailSection *)generalSectionForTransaction:(FLEXHTTPTransaction *)transaction {
     NSMutableArray<FLEXNetworkDetailRow *> *rows = [NSMutableArray new];
 
     FLEXNetworkDetailRow *requestURLRow = [FLEXNetworkDetailRow new];
@@ -370,19 +376,14 @@ typedef UIViewController *(^FLEXNetworkDetailRowSelectionFuture)(void);
     mechanismRow.detailText = transaction.requestMechanism;
     [rows addObject:mechanismRow];
 
-    NSDateFormatter *startTimeFormatter = [NSDateFormatter new];
-    startTimeFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss.SSS";
-
     FLEXNetworkDetailRow *localStartTimeRow = [FLEXNetworkDetailRow new];
     localStartTimeRow.title = [NSString stringWithFormat:@"Start Time (%@)", [NSTimeZone.localTimeZone abbreviationForDate:transaction.startTime]];
-    localStartTimeRow.detailText = [startTimeFormatter stringFromDate:transaction.startTime];
+    localStartTimeRow.detailText = [NSDateFormatter flex_stringFrom:transaction.startTime format:FLEXDateFormatVerbose];
     [rows addObject:localStartTimeRow];
-
-    startTimeFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
 
     FLEXNetworkDetailRow *utcStartTimeRow = [FLEXNetworkDetailRow new];
     utcStartTimeRow.title = @"Start Time (UTC)";
-    utcStartTimeRow.detailText = [startTimeFormatter stringFromDate:transaction.startTime];
+    utcStartTimeRow.detailText = [NSDateFormatter flex_stringFrom:transaction.startTime format:FLEXDateFormatVerbose];
     [rows addObject:utcStartTimeRow];
 
     FLEXNetworkDetailRow *unixStartTime = [FLEXNetworkDetailRow new];
@@ -407,7 +408,7 @@ typedef UIViewController *(^FLEXNetworkDetailRowSelectionFuture)(void);
     return generalSection;
 }
 
-+ (FLEXNetworkDetailSection *)requestHeadersSectionForTransaction:(FLEXNetworkTransaction *)transaction {
++ (FLEXNetworkDetailSection *)requestHeadersSectionForTransaction:(FLEXHTTPTransaction *)transaction {
     FLEXNetworkDetailSection *requestHeadersSection = [FLEXNetworkDetailSection new];
     requestHeadersSection.title = @"Request Headers";
     requestHeadersSection.rows = [self networkDetailRowsFromDictionary:transaction.request.allHTTPHeaderFields];
@@ -415,7 +416,7 @@ typedef UIViewController *(^FLEXNetworkDetailRowSelectionFuture)(void);
     return requestHeadersSection;
 }
 
-+ (FLEXNetworkDetailSection *)postBodySectionForTransaction:(FLEXNetworkTransaction *)transaction {
++ (FLEXNetworkDetailSection *)postBodySectionForTransaction:(FLEXHTTPTransaction *)transaction {
     FLEXNetworkDetailSection *postBodySection = [FLEXNetworkDetailSection new];
     postBodySection.title = @"Request Body Parameters";
     if (transaction.cachedRequestBody.length > 0) {
@@ -429,7 +430,7 @@ typedef UIViewController *(^FLEXNetworkDetailRowSelectionFuture)(void);
     return postBodySection;
 }
 
-+ (FLEXNetworkDetailSection *)queryParametersSectionForTransaction:(FLEXNetworkTransaction *)transaction {
++ (FLEXNetworkDetailSection *)queryParametersSectionForTransaction:(FLEXHTTPTransaction *)transaction {
     NSArray<NSURLQueryItem *> *queries = [FLEXUtility itemsFromQueryString:transaction.request.URL.query];
     FLEXNetworkDetailSection *querySection = [FLEXNetworkDetailSection new];
     querySection.title = @"Query Parameters";
@@ -438,7 +439,7 @@ typedef UIViewController *(^FLEXNetworkDetailRowSelectionFuture)(void);
     return querySection;
 }
 
-+ (FLEXNetworkDetailSection *)responseHeadersSectionForTransaction:(FLEXNetworkTransaction *)transaction {
++ (FLEXNetworkDetailSection *)responseHeadersSectionForTransaction:(FLEXHTTPTransaction *)transaction {
     FLEXNetworkDetailSection *responseHeadersSection = [FLEXNetworkDetailSection new];
     responseHeadersSection.title = @"Response Headers";
     if ([transaction.response isKindOfClass:[NSHTTPURLResponse class]]) {
@@ -516,7 +517,7 @@ typedef UIViewController *(^FLEXNetworkDetailRowSelectionFuture)(void);
     return detailViewController;
 }
 
-+ (NSData *)postBodyDataForTransaction:(FLEXNetworkTransaction *)transaction {
++ (NSData *)postBodyDataForTransaction:(FLEXHTTPTransaction *)transaction {
     NSData *bodyData = transaction.cachedRequestBody;
     if (bodyData.length > 0) {
         NSString *contentEncoding = [transaction.request valueForHTTPHeaderField:@"Content-Encoding"];

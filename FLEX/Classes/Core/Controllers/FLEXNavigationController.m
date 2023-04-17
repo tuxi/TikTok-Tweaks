@@ -8,6 +8,7 @@
 
 #import "FLEXNavigationController.h"
 #import "FLEXExplorerViewController.h"
+#import "FLEXObjectExplorerFactory.h"
 #import "FLEXTabList.h"
 
 @interface UINavigationController (Private) <UIGestureRecognizerDelegate>
@@ -28,7 +29,8 @@
 @implementation FLEXNavigationController
 
 + (instancetype)withRootViewController:(UIViewController *)rootVC {
-    return [[self alloc] initWithRootViewController:rootVC];
+    FLEXNavigationController *nav = [[self alloc] initWithRootViewController:rootVC];
+    return nav;
 }
 
 - (void)viewDidLoad {
@@ -65,6 +67,17 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    if (@available(iOS 15.0, *)) {
+        UISheetPresentationController *presenter = self.sheetPresentationController;
+        presenter.detents = @[
+            UISheetPresentationControllerDetent.mediumDetent,
+            UISheetPresentationControllerDetent.largeDetent,
+        ];
+        presenter.prefersScrollingExpandsWhenScrolledToEdge = NO;
+        presenter.selectedDetentIdentifier = UISheetPresentationControllerDetentIdentifierLarge;
+        presenter.largestUndimmedDetentIdentifier = UISheetPresentationControllerDetentIdentifierLarge;
+    }
+    
     if (self.beingPresented && !self.didSetupPendingDismissButtons) {
         for (UIViewController *vc in self.viewControllers) {
             [self addNavigationBarItemsToViewController:vc.navigationItem];
@@ -93,15 +106,25 @@
     [self addNavigationBarItemsToViewController:viewController.navigationItem];
 }
 
+- (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
+    // Workaround for UIActivityViewController trying to dismiss us for some reason
+    if (![self.viewControllers.lastObject.presentedViewController isKindOfClass:UIActivityViewController.self]) {
+        [super dismissViewControllerAnimated:flag completion:completion];
+    }
+}
+
 - (void)dismissAnimated {
     // Tabs are only closed if the done button is pressed; this
     // allows you to leave a tab open by dragging down to dismiss
-    [FLEXTabList.sharedList closeTab:self];
+    if ([self.presentingViewController isKindOfClass:[FLEXExplorerViewController class]]) {
+        [FLEXTabList.sharedList closeTab:self];        
+    }
+    
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (BOOL)canShowToolbar {
-    return self.topViewController.toolbarItems.count;
+    return self.topViewController.toolbarItems.count > 0;
 }
 
 - (void)addNavigationBarItemsToViewController:(UINavigationItem *)navigationItem {
@@ -187,6 +210,21 @@
         } else if (yTranslation < -20) {
             [self setToolbarHidden:YES animated:YES];
         }
+    }
+}
+
+@end
+
+@implementation UINavigationController (FLEXObjectExploring)
+
+- (void)pushExplorerForObject:(id)object {
+    [self pushExplorerForObject:object animated:YES];
+}
+
+- (void)pushExplorerForObject:(id)object animated:(BOOL)animated {
+    UIViewController *explorer = [FLEXObjectExplorerFactory explorerViewControllerForObject:object];
+    if (explorer) {
+        [self pushViewController:explorer animated:animated];
     }
 }
 

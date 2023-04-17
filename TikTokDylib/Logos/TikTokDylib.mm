@@ -7,6 +7,8 @@
 #import <UIKit/UIKit.h>
 #import "TikTokHeaders.h"
 #import "TikTokDylib-Swift.h"
+#import "MBProgressHUD.h"
+#import <Photos/Photos.h>
 
 
 #include <substrate.h>
@@ -29,10 +31,10 @@
 #define _LOGOS_RETURN_RETAINED
 #endif
 
-@class NSString; @class TTInstallSandBoxHelper; @class AWEPlayInteractionViewController; @class TTInstallUtil; @class TTNetworkUtil; @class TTHttpTask; @class TTKSettingsViewController; @class AVMDLDataLoader; @class AWENewFeedTableViewController; @class NSFileManager; @class TTAdSplashDeviceHelper; @class TIKTOKAwemeLongPressListViewController; @class UIDevice; @class TTHttpRequestChromium; @class AppsFlyerUtils; @class PIPOIAPStoreManager; @class AWEStartupTimingMonitorManager; @class TTConcurrentHttpTask; @class AWEAwemeModel; @class AWEFeedContainerViewController; @class AWEIMLongPressViewController; @class TTNetworkManagerChromium; @class AWEFeedTableViewController; @class _TTVideoEnginePreloadManager; @class AWEPlayVideoPlayerController; 
+@class AppsFlyerUtils; @class AWENewFeedTableViewController; @class UIDevice; @class TIKTOKAwemeLongPressListViewController; @class AWEStartupTimingMonitorManager; @class TTInstallUtil; @class AWEIMLongPressViewController; @class NSFileManager; @class AVMDLDataLoader; @class TTAdSplashDeviceHelper; @class TTNetworkUtil; @class TTHttpTask; @class AWEPlayInteractionViewController; @class AWEFeedTableViewController; @class TTNetworkManagerChromium; @class AWEFeedContainerViewController; @class TTConcurrentHttpTask; @class _TTVideoEnginePreloadManager; @class TTHttpRequestChromium; @class PIPOIAPStoreManager; @class AWEPlayVideoPlayerController; @class TTInstallSandBoxHelper; @class TTKSettingsViewController; @class NSString; @class AWESharePanelController; @class AWEAwemeModel; @class TTKSharePanelViewController; 
 static void (*_logos_meta_orig$_ungrouped$AWEStartupTimingMonitorManager$start)(_LOGOS_SELF_TYPE_NORMAL Class _LOGOS_SELF_CONST, SEL); static void _logos_meta_method$_ungrouped$AWEStartupTimingMonitorManager$start(_LOGOS_SELF_TYPE_NORMAL Class _LOGOS_SELF_CONST, SEL); 
-static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$AWENewFeedTableViewController(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("AWENewFeedTableViewController"); } return _klass; }static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$AWEFeedTableViewController(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("AWEFeedTableViewController"); } return _klass; }
-#line 10 "/Users/xiaoyuan/Desktop/work/tweaks/TikTok/TikTokDylib/Logos/TikTokDylib.xm"
+static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$AWEFeedTableViewController(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("AWEFeedTableViewController"); } return _klass; }static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$AWENewFeedTableViewController(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("AWENewFeedTableViewController"); } return _klass; }
+#line 12 "/Users/xiaoyuan/Desktop/work/tweaks/TikTok/TikTokDylib/Logos/TikTokDylib.xm"
 static void (*_logos_orig$Settings$TTKSettingsViewController$viewDidLoad)(_LOGOS_SELF_TYPE_NORMAL TTKSettingsViewController* _LOGOS_SELF_CONST, SEL); static void _logos_method$Settings$TTKSettingsViewController$viewDidLoad(_LOGOS_SELF_TYPE_NORMAL TTKSettingsViewController* _LOGOS_SELF_CONST, SEL); static void _logos_method$Settings$TTKSettingsViewController$xy_goSettings(_LOGOS_SELF_TYPE_NORMAL TTKSettingsViewController* _LOGOS_SELF_CONST, SEL); static void _logos_method$Settings$TTKSettingsViewController$xy_addSettingsBtn(_LOGOS_SELF_TYPE_NORMAL TTKSettingsViewController* _LOGOS_SELF_CONST, SEL); 
 
 
@@ -74,7 +76,7 @@ static void _logos_method$Settings$TTKSettingsViewController$xy_addSettingsBtn(_
 
 
 
-static void (*_logos_orig$DownloadBypass$AWEIMLongPressViewController$tableView$didSelectRowAtIndexPath$)(_LOGOS_SELF_TYPE_NORMAL AWEIMLongPressViewController* _LOGOS_SELF_CONST, SEL, id, NSIndexPath *); static void _logos_method$DownloadBypass$AWEIMLongPressViewController$tableView$didSelectRowAtIndexPath$(_LOGOS_SELF_TYPE_NORMAL AWEIMLongPressViewController* _LOGOS_SELF_CONST, SEL, id, NSIndexPath *); static void _logos_method$DownloadBypass$AWEIMLongPressViewController$xy_downloadAweme(_LOGOS_SELF_TYPE_NORMAL AWEIMLongPressViewController* _LOGOS_SELF_CONST, SEL); static void _logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$xy_downloadAweme(_LOGOS_SELF_TYPE_NORMAL TIKTOKAwemeLongPressListViewController* _LOGOS_SELF_CONST, SEL); static void _logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$xy_setupDownloadBtn(_LOGOS_SELF_TYPE_NORMAL TIKTOKAwemeLongPressListViewController* _LOGOS_SELF_CONST, SEL); static void (*_logos_orig$DownloadBypass$TIKTOKAwemeLongPressListViewController$viewDidLoad)(_LOGOS_SELF_TYPE_NORMAL TIKTOKAwemeLongPressListViewController* _LOGOS_SELF_CONST, SEL); static void _logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$viewDidLoad(_LOGOS_SELF_TYPE_NORMAL TIKTOKAwemeLongPressListViewController* _LOGOS_SELF_CONST, SEL); static void (*_logos_orig$DownloadBypass$TIKTOKAwemeLongPressListViewController$viewDidLayoutSubviews)(_LOGOS_SELF_TYPE_NORMAL TIKTOKAwemeLongPressListViewController* _LOGOS_SELF_CONST, SEL); static void _logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$viewDidLayoutSubviews(_LOGOS_SELF_TYPE_NORMAL TIKTOKAwemeLongPressListViewController* _LOGOS_SELF_CONST, SEL); static void (*_logos_orig$DownloadBypass$TIKTOKAwemeLongPressListViewController$setAwemeModel$)(_LOGOS_SELF_TYPE_NORMAL TIKTOKAwemeLongPressListViewController* _LOGOS_SELF_CONST, SEL, AWEAwemeModel *); static void _logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$setAwemeModel$(_LOGOS_SELF_TYPE_NORMAL TIKTOKAwemeLongPressListViewController* _LOGOS_SELF_CONST, SEL, AWEAwemeModel *); static _Bool (*_logos_orig$DownloadBypass$AVMDLDataLoader$_supportPoxy$)(_LOGOS_SELF_TYPE_NORMAL AVMDLDataLoader* _LOGOS_SELF_CONST, SEL, NSString *); static _Bool _logos_method$DownloadBypass$AVMDLDataLoader$_supportPoxy$(_LOGOS_SELF_TYPE_NORMAL AVMDLDataLoader* _LOGOS_SELF_CONST, SEL, NSString *); static void (*_logos_orig$DownloadBypass$_TTVideoEnginePreloadManager$_addTask$vid$preSize$urlItem$vidItem$videoModeltem$)(_LOGOS_SELF_TYPE_NORMAL _TTVideoEnginePreloadManager* _LOGOS_SELF_CONST, SEL, id, id, long long, id, id, id); static void _logos_method$DownloadBypass$_TTVideoEnginePreloadManager$_addTask$vid$preSize$urlItem$vidItem$videoModeltem$(_LOGOS_SELF_TYPE_NORMAL _TTVideoEnginePreloadManager* _LOGOS_SELF_CONST, SEL, id, id, long long, id, id, id); 
+static void (*_logos_orig$DownloadBypass$AWEIMLongPressViewController$tableView$didSelectRowAtIndexPath$)(_LOGOS_SELF_TYPE_NORMAL AWEIMLongPressViewController* _LOGOS_SELF_CONST, SEL, id, NSIndexPath *); static void _logos_method$DownloadBypass$AWEIMLongPressViewController$tableView$didSelectRowAtIndexPath$(_LOGOS_SELF_TYPE_NORMAL AWEIMLongPressViewController* _LOGOS_SELF_CONST, SEL, id, NSIndexPath *); static void _logos_method$DownloadBypass$AWEIMLongPressViewController$xy_downloadAweme(_LOGOS_SELF_TYPE_NORMAL AWEIMLongPressViewController* _LOGOS_SELF_CONST, SEL); static void _logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$xy_downloadAweme(_LOGOS_SELF_TYPE_NORMAL TIKTOKAwemeLongPressListViewController* _LOGOS_SELF_CONST, SEL); static void _logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$xy_setupDownloadBtn(_LOGOS_SELF_TYPE_NORMAL TIKTOKAwemeLongPressListViewController* _LOGOS_SELF_CONST, SEL); static void (*_logos_orig$DownloadBypass$TIKTOKAwemeLongPressListViewController$viewDidLoad)(_LOGOS_SELF_TYPE_NORMAL TIKTOKAwemeLongPressListViewController* _LOGOS_SELF_CONST, SEL); static void _logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$viewDidLoad(_LOGOS_SELF_TYPE_NORMAL TIKTOKAwemeLongPressListViewController* _LOGOS_SELF_CONST, SEL); static void (*_logos_orig$DownloadBypass$TIKTOKAwemeLongPressListViewController$viewDidLayoutSubviews)(_LOGOS_SELF_TYPE_NORMAL TIKTOKAwemeLongPressListViewController* _LOGOS_SELF_CONST, SEL); static void _logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$viewDidLayoutSubviews(_LOGOS_SELF_TYPE_NORMAL TIKTOKAwemeLongPressListViewController* _LOGOS_SELF_CONST, SEL); static void (*_logos_orig$DownloadBypass$TIKTOKAwemeLongPressListViewController$setAwemeModel$)(_LOGOS_SELF_TYPE_NORMAL TIKTOKAwemeLongPressListViewController* _LOGOS_SELF_CONST, SEL, AWEAwemeModel *); static void _logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$setAwemeModel$(_LOGOS_SELF_TYPE_NORMAL TIKTOKAwemeLongPressListViewController* _LOGOS_SELF_CONST, SEL, AWEAwemeModel *); static _Bool (*_logos_orig$DownloadBypass$AVMDLDataLoader$_supportPoxy$)(_LOGOS_SELF_TYPE_NORMAL AVMDLDataLoader* _LOGOS_SELF_CONST, SEL, NSString *); static _Bool _logos_method$DownloadBypass$AVMDLDataLoader$_supportPoxy$(_LOGOS_SELF_TYPE_NORMAL AVMDLDataLoader* _LOGOS_SELF_CONST, SEL, NSString *); static void (*_logos_orig$DownloadBypass$_TTVideoEnginePreloadManager$_addTask$vid$preSize$urlItem$vidItem$videoModeltem$)(_LOGOS_SELF_TYPE_NORMAL _TTVideoEnginePreloadManager* _LOGOS_SELF_CONST, SEL, id, id, long long, id, id, id); static void _logos_method$DownloadBypass$_TTVideoEnginePreloadManager$_addTask$vid$preSize$urlItem$vidItem$videoModeltem$(_LOGOS_SELF_TYPE_NORMAL _TTVideoEnginePreloadManager* _LOGOS_SELF_CONST, SEL, id, id, long long, id, id, id); static void _logos_method$DownloadBypass$AWESharePanelController$xy_downloadWithAweme$(_LOGOS_SELF_TYPE_NORMAL AWESharePanelController* _LOGOS_SELF_CONST, SEL, AWEAwemeModel *); static void (*_logos_orig$DownloadBypass$AWESharePanelController$viewDidLoad)(_LOGOS_SELF_TYPE_NORMAL AWESharePanelController* _LOGOS_SELF_CONST, SEL); static void _logos_method$DownloadBypass$AWESharePanelController$viewDidLoad(_LOGOS_SELF_TYPE_NORMAL AWESharePanelController* _LOGOS_SELF_CONST, SEL); static void (*_logos_orig$DownloadBypass$TTKSharePanelViewController$viewDidAppear$)(_LOGOS_SELF_TYPE_NORMAL TTKSharePanelViewController* _LOGOS_SELF_CONST, SEL, BOOL); static void _logos_method$DownloadBypass$TTKSharePanelViewController$viewDidAppear$(_LOGOS_SELF_TYPE_NORMAL TTKSharePanelViewController* _LOGOS_SELF_CONST, SEL, BOOL); static void _logos_method$DownloadBypass$TTKSharePanelViewController$xy_downloadWithAweme$(_LOGOS_SELF_TYPE_NORMAL TTKSharePanelViewController* _LOGOS_SELF_CONST, SEL, AWEAwemeModel *); static void (*_logos_orig$DownloadBypass$TTKSharePanelViewController$viewDidLoad)(_LOGOS_SELF_TYPE_NORMAL TTKSharePanelViewController* _LOGOS_SELF_CONST, SEL); static void _logos_method$DownloadBypass$TTKSharePanelViewController$viewDidLoad(_LOGOS_SELF_TYPE_NORMAL TTKSharePanelViewController* _LOGOS_SELF_CONST, SEL); static void (*_logos_orig$DownloadBypass$TTKSharePanelViewController$setViewModel$)(_LOGOS_SELF_TYPE_NORMAL TTKSharePanelViewController* _LOGOS_SELF_CONST, SEL, TTKSharePanelViewModel *); static void _logos_method$DownloadBypass$TTKSharePanelViewController$setViewModel$(_LOGOS_SELF_TYPE_NORMAL TTKSharePanelViewController* _LOGOS_SELF_CONST, SEL, TTKSharePanelViewModel *); 
 
 
 static void _logos_method$DownloadBypass$AWEIMLongPressViewController$tableView$didSelectRowAtIndexPath$(_LOGOS_SELF_TYPE_NORMAL AWEIMLongPressViewController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd, id arg1, NSIndexPath * indexPath) {
@@ -197,6 +199,231 @@ static void _logos_method$DownloadBypass$_TTVideoEnginePreloadManager$_addTask$v
     _logos_orig$DownloadBypass$_TTVideoEnginePreloadManager$_addTask$vid$preSize$urlItem$vidItem$videoModeltem$(self, _cmd, arg1, arg2, arg3, arg4, arg5, arg6);
 }
 
+
+
+
+
+
+static void _logos_method$DownloadBypass$AWESharePanelController$xy_downloadWithAweme$(_LOGOS_SELF_TYPE_NORMAL AWESharePanelController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd, AWEAwemeModel * aweme) {
+    if (aweme == nil) {
+        return;
+    }
+    if (aweme.awemeType == 68) {
+        
+        
+
+
+
+
+
+        
+        UIWindow *window = [UIApplication sharedApplication].delegate.window;
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:window animated:true];
+        hud.bezelView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.65];
+        hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+        hud.label.text = @"准备下载";
+        hud.label.font = [UIFont systemFontOfSize:12];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            dispatch_group_t group = dispatch_group_create();
+            NSArray<AWEImageAlbumImageModel *> *albumImages = aweme.albumImages;
+            __block NSError *_error = nil;
+            int index = 0;
+            for (AWEImageAlbumImageModel *model in albumImages) {
+                NSURL *url = [NSURL URLWithString: model.urlList.firstObject];
+                if (url == nil) {
+                    continue;
+                }
+                dispatch_group_enter(group);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    hud.label.text = [NSString stringWithFormat:@"%d/%ld", index+1, albumImages.count];
+                });
+                NSData *data = [NSData dataWithContentsOfURL:url];
+                [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+                    [[PHAssetCreationRequest creationRequestForAsset] addResourceWithType:PHAssetResourceTypePhoto data:data options:nil];
+                } completionHandler:^(BOOL success, NSError * _Nullable error) {
+                    dispatch_group_leave(group);
+                    _error = error;
+                }];
+                index += 1;
+            }
+            dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self dismissViewControllerAnimated: YES completion: nil];
+                if (_error) {
+                    hud.label.text = [NSString stringWithFormat:@"下载有错误%@", _error.localizedDescription];
+                } else {
+                    hud.label.text = @"下载图片成功";
+                }
+                [hud hideAnimated:true afterDelay:0.5];
+            });
+        });
+        
+    }
+    else {
+        
+        AWEVideoModel *video = aweme.video;
+        
+
+        AWEURLModel *h264URL = video.h264URL;
+        NSArray *originURLList = h264URL.originURLList;
+        NSURL *url = [NSURL URLWithString: originURLList.firstObject];
+        if (url == nil) {
+            return;
+        }
+        XYVideoDownloader *downloader = [XYVideoDownloader shared];
+        __weak typeof(self) weakSelf = self;
+        [downloader downloadWithURL:url completion:^(BOOL isSuccess, NSError *error){
+            [weakSelf dismissViewControllerAnimated: YES completion: nil];
+        }];
+    }
+}
+
+static void _logos_method$DownloadBypass$AWESharePanelController$viewDidLoad(_LOGOS_SELF_TYPE_NORMAL AWESharePanelController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
+    _logos_orig$DownloadBypass$AWESharePanelController$viewDidLoad(self, _cmd);
+    NSMutableArray *array = [self.viewModel.secondRowItems mutableCopy];
+    AWEShareBaseChannel *itemDelegate = nil;
+    for (AWEShareItem *item in array) {
+        if (item.delegate != nil) {
+            itemDelegate = item.delegate;
+            break;
+        }
+    }
+    if (!itemDelegate) {
+        return;
+    }
+    AWEAwemeModel *aweme = itemDelegate.context.target;
+    __weak typeof(self) weakSelf = self;
+    
+    AWEShareItem *action = [[NSClassFromString(@"AWEShareItem") alloc] initWithType:@"custom_download"];
+
+    action.title = @"保存原版视频";
+    action.image = (UIImage *)[[array firstObject] image];
+    [action registerHandler: ^{ 
+        [weakSelf xy_downloadWithAweme: aweme];
+    } forEvents: 1];
+    [array addObject:action];
+   
+    self.viewModel.secondRowItems = array;
+    [self.secondRowView setValue:array forKey:@"items"];
+    [self.secondRowView reloadData];
+}
+
+
+
+
+
+
+
+static void _logos_method$DownloadBypass$TTKSharePanelViewController$viewDidAppear$(_LOGOS_SELF_TYPE_NORMAL TTKSharePanelViewController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd, BOOL arg1) {
+    _logos_orig$DownloadBypass$TTKSharePanelViewController$viewDidAppear$(self, _cmd, arg1);
+}
+
+
+static void _logos_method$DownloadBypass$TTKSharePanelViewController$xy_downloadWithAweme$(_LOGOS_SELF_TYPE_NORMAL TTKSharePanelViewController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd, AWEAwemeModel * aweme) {
+    if (aweme == nil) {
+        return;
+    }
+    if (aweme.awemeType == 68) {
+        UIWindow *window = [UIApplication sharedApplication].delegate.window;
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:window animated:true];
+        hud.bezelView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.65];
+        hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+        hud.label.text = @"准备下载";
+        hud.label.font = [UIFont systemFontOfSize:12];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            dispatch_group_t group = dispatch_group_create();
+            NSArray<AWEImageAlbumImageModel *> *albumImages = aweme.albumImages;
+            __block NSError *_error = nil;
+            int index = 0;
+            for (AWEImageAlbumImageModel *model in albumImages) {
+                NSURL *url = [NSURL URLWithString: model.urlList.firstObject];
+                if (url == nil) {
+                    continue;
+                }
+                dispatch_group_enter(group);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    hud.label.text = [NSString stringWithFormat:@"%d/%ld", index+1, albumImages.count];
+                });
+                NSData *data = [NSData dataWithContentsOfURL:url];
+                [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+                    [[PHAssetCreationRequest creationRequestForAsset] addResourceWithType:PHAssetResourceTypePhoto data:data options:nil];
+                } completionHandler:^(BOOL success, NSError * _Nullable error) {
+                    dispatch_group_leave(group);
+                    _error = error;
+                }];
+                index += 1;
+            }
+            dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self dismissViewControllerAnimated: YES completion: nil];
+                if (_error) {
+                    hud.label.text = [NSString stringWithFormat:@"下载有错误%@", _error.localizedDescription];
+                } else {
+                    hud.label.text = @"下载图片成功";
+                }
+                [hud hideAnimated:true afterDelay:0.5];
+            });
+        });
+    } else {
+        
+        AWEVideoModel *video = aweme.video;
+        
+
+        AWEURLModel *h264URL = video.h264URL;
+        NSArray *originURLList = h264URL.originURLList;
+        NSURL *url = [NSURL URLWithString: originURLList.firstObject];
+        if (url == nil) {
+            return;
+        }
+        XYVideoDownloader *downloader = [XYVideoDownloader shared];
+        __weak typeof(self) weakSelf = self;
+        [downloader downloadWithURL:url completion:^(BOOL isSuccess, NSError *error){
+            [weakSelf dismissViewControllerAnimated: YES completion: nil];
+        }];
+    }
+}
+
+static void _logos_method$DownloadBypass$TTKSharePanelViewController$viewDidLoad(_LOGOS_SELF_TYPE_NORMAL TTKSharePanelViewController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
+    _logos_orig$DownloadBypass$TTKSharePanelViewController$viewDidLoad(self, _cmd);
+    
+
+
+
+
+
+
+
+}
+
+static void _logos_method$DownloadBypass$TTKSharePanelViewController$setViewModel$(_LOGOS_SELF_TYPE_NORMAL TTKSharePanelViewController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd, TTKSharePanelViewModel * viewModel) {
+    NSMutableArray *array = [viewModel.secondRowItems mutableCopy];
+    AWEShareBaseChannel *itemDelegate = nil;
+    for (AWEShareItem *item in array) {
+        if (item.delegate != nil) {
+            itemDelegate = item.delegate;
+            break;
+        }
+    }
+    if (itemDelegate) {
+        AWEAwemeModel *aweme = itemDelegate.context.target;
+        __weak typeof(self) weakSelf = self;
+        
+        AWEShareItem *action = [[NSClassFromString(@"AWEShareItem") alloc] initWithType:@"custom_download"];
+    
+        action.title = @"保存原版视频";
+        action.image = (UIImage *)[[array firstObject] image];
+        [action registerHandler: ^{ 
+            [weakSelf xy_downloadWithAweme: aweme];
+        } forEvents: 1];
+        [array addObject:action];
+       
+        viewModel.secondRowItems = array;
+    
+    
+        [self.tableView reloadData];
+    }
+    _logos_orig$DownloadBypass$TTKSharePanelViewController$setViewModel$(self, _cmd, viewModel);
+}
 
 
 
@@ -513,9 +740,9 @@ static void _logos_method$SkipLiving$AWENewFeedTableViewController$setPureMode$(
 
 
 
-static __attribute__((constructor)) void _logosLocalCtor_98ed0f1b(int __unused argc, char __unused **argv, char __unused **envp) {
+static __attribute__((constructor)) void _logosLocalCtor_b6384da3(int __unused argc, char __unused **argv, char __unused **envp) {
     {Class _logos_class$Settings$TTKSettingsViewController = objc_getClass("TTKSettingsViewController"); MSHookMessageEx(_logos_class$Settings$TTKSettingsViewController, @selector(viewDidLoad), (IMP)&_logos_method$Settings$TTKSettingsViewController$viewDidLoad, (IMP*)&_logos_orig$Settings$TTKSettingsViewController$viewDidLoad);{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$Settings$TTKSettingsViewController, @selector(xy_goSettings), (IMP)&_logos_method$Settings$TTKSettingsViewController$xy_goSettings, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$Settings$TTKSettingsViewController, @selector(xy_addSettingsBtn), (IMP)&_logos_method$Settings$TTKSettingsViewController$xy_addSettingsBtn, _typeEncoding); }}
-    {Class _logos_class$DownloadBypass$AWEIMLongPressViewController = objc_getClass("AWEIMLongPressViewController"); MSHookMessageEx(_logos_class$DownloadBypass$AWEIMLongPressViewController, @selector(tableView:didSelectRowAtIndexPath:), (IMP)&_logos_method$DownloadBypass$AWEIMLongPressViewController$tableView$didSelectRowAtIndexPath$, (IMP*)&_logos_orig$DownloadBypass$AWEIMLongPressViewController$tableView$didSelectRowAtIndexPath$);{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$DownloadBypass$AWEIMLongPressViewController, @selector(xy_downloadAweme), (IMP)&_logos_method$DownloadBypass$AWEIMLongPressViewController$xy_downloadAweme, _typeEncoding); }{ char _typeEncoding[1024]; sprintf(_typeEncoding, "%s@:", @encode(UIButton *)); class_addMethod(_logos_class$DownloadBypass$AWEIMLongPressViewController, @selector(xy_downloadBtn), (IMP)&_logos_method$DownloadBypass$AWEIMLongPressViewController$xy_downloadBtn, _typeEncoding); sprintf(_typeEncoding, "v@:%s", @encode(UIButton *)); class_addMethod(_logos_class$DownloadBypass$AWEIMLongPressViewController, @selector(setXy_downloadBtn:), (IMP)&_logos_method$DownloadBypass$AWEIMLongPressViewController$setXy_downloadBtn, _typeEncoding); } Class _logos_class$DownloadBypass$TIKTOKAwemeLongPressListViewController = objc_getClass("TIKTOKAwemeLongPressListViewController"); { char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$DownloadBypass$TIKTOKAwemeLongPressListViewController, @selector(xy_downloadAweme), (IMP)&_logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$xy_downloadAweme, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$DownloadBypass$TIKTOKAwemeLongPressListViewController, @selector(xy_setupDownloadBtn), (IMP)&_logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$xy_setupDownloadBtn, _typeEncoding); }MSHookMessageEx(_logos_class$DownloadBypass$TIKTOKAwemeLongPressListViewController, @selector(viewDidLoad), (IMP)&_logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$viewDidLoad, (IMP*)&_logos_orig$DownloadBypass$TIKTOKAwemeLongPressListViewController$viewDidLoad);MSHookMessageEx(_logos_class$DownloadBypass$TIKTOKAwemeLongPressListViewController, @selector(viewDidLayoutSubviews), (IMP)&_logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$viewDidLayoutSubviews, (IMP*)&_logos_orig$DownloadBypass$TIKTOKAwemeLongPressListViewController$viewDidLayoutSubviews);MSHookMessageEx(_logos_class$DownloadBypass$TIKTOKAwemeLongPressListViewController, @selector(setAwemeModel:), (IMP)&_logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$setAwemeModel$, (IMP*)&_logos_orig$DownloadBypass$TIKTOKAwemeLongPressListViewController$setAwemeModel$);{ char _typeEncoding[1024]; sprintf(_typeEncoding, "%s@:", @encode(UIButton *)); class_addMethod(_logos_class$DownloadBypass$TIKTOKAwemeLongPressListViewController, @selector(xy_downloadBtn), (IMP)&_logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$xy_downloadBtn, _typeEncoding); sprintf(_typeEncoding, "v@:%s", @encode(UIButton *)); class_addMethod(_logos_class$DownloadBypass$TIKTOKAwemeLongPressListViewController, @selector(setXy_downloadBtn:), (IMP)&_logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$setXy_downloadBtn, _typeEncoding); } Class _logos_class$DownloadBypass$AVMDLDataLoader = objc_getClass("AVMDLDataLoader"); MSHookMessageEx(_logos_class$DownloadBypass$AVMDLDataLoader, @selector(_supportPoxy:), (IMP)&_logos_method$DownloadBypass$AVMDLDataLoader$_supportPoxy$, (IMP*)&_logos_orig$DownloadBypass$AVMDLDataLoader$_supportPoxy$);Class _logos_class$DownloadBypass$_TTVideoEnginePreloadManager = objc_getClass("_TTVideoEnginePreloadManager"); MSHookMessageEx(_logos_class$DownloadBypass$_TTVideoEnginePreloadManager, @selector(_addTask:vid:preSize:urlItem:vidItem:videoModeltem:), (IMP)&_logos_method$DownloadBypass$_TTVideoEnginePreloadManager$_addTask$vid$preSize$urlItem$vidItem$videoModeltem$, (IMP*)&_logos_orig$DownloadBypass$_TTVideoEnginePreloadManager$_addTask$vid$preSize$urlItem$vidItem$videoModeltem$);}
+    {Class _logos_class$DownloadBypass$AWEIMLongPressViewController = objc_getClass("AWEIMLongPressViewController"); MSHookMessageEx(_logos_class$DownloadBypass$AWEIMLongPressViewController, @selector(tableView:didSelectRowAtIndexPath:), (IMP)&_logos_method$DownloadBypass$AWEIMLongPressViewController$tableView$didSelectRowAtIndexPath$, (IMP*)&_logos_orig$DownloadBypass$AWEIMLongPressViewController$tableView$didSelectRowAtIndexPath$);{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$DownloadBypass$AWEIMLongPressViewController, @selector(xy_downloadAweme), (IMP)&_logos_method$DownloadBypass$AWEIMLongPressViewController$xy_downloadAweme, _typeEncoding); }{ char _typeEncoding[1024]; sprintf(_typeEncoding, "%s@:", @encode(UIButton *)); class_addMethod(_logos_class$DownloadBypass$AWEIMLongPressViewController, @selector(xy_downloadBtn), (IMP)&_logos_method$DownloadBypass$AWEIMLongPressViewController$xy_downloadBtn, _typeEncoding); sprintf(_typeEncoding, "v@:%s", @encode(UIButton *)); class_addMethod(_logos_class$DownloadBypass$AWEIMLongPressViewController, @selector(setXy_downloadBtn:), (IMP)&_logos_method$DownloadBypass$AWEIMLongPressViewController$setXy_downloadBtn, _typeEncoding); } Class _logos_class$DownloadBypass$TIKTOKAwemeLongPressListViewController = objc_getClass("TIKTOKAwemeLongPressListViewController"); { char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$DownloadBypass$TIKTOKAwemeLongPressListViewController, @selector(xy_downloadAweme), (IMP)&_logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$xy_downloadAweme, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$DownloadBypass$TIKTOKAwemeLongPressListViewController, @selector(xy_setupDownloadBtn), (IMP)&_logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$xy_setupDownloadBtn, _typeEncoding); }MSHookMessageEx(_logos_class$DownloadBypass$TIKTOKAwemeLongPressListViewController, @selector(viewDidLoad), (IMP)&_logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$viewDidLoad, (IMP*)&_logos_orig$DownloadBypass$TIKTOKAwemeLongPressListViewController$viewDidLoad);MSHookMessageEx(_logos_class$DownloadBypass$TIKTOKAwemeLongPressListViewController, @selector(viewDidLayoutSubviews), (IMP)&_logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$viewDidLayoutSubviews, (IMP*)&_logos_orig$DownloadBypass$TIKTOKAwemeLongPressListViewController$viewDidLayoutSubviews);MSHookMessageEx(_logos_class$DownloadBypass$TIKTOKAwemeLongPressListViewController, @selector(setAwemeModel:), (IMP)&_logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$setAwemeModel$, (IMP*)&_logos_orig$DownloadBypass$TIKTOKAwemeLongPressListViewController$setAwemeModel$);{ char _typeEncoding[1024]; sprintf(_typeEncoding, "%s@:", @encode(UIButton *)); class_addMethod(_logos_class$DownloadBypass$TIKTOKAwemeLongPressListViewController, @selector(xy_downloadBtn), (IMP)&_logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$xy_downloadBtn, _typeEncoding); sprintf(_typeEncoding, "v@:%s", @encode(UIButton *)); class_addMethod(_logos_class$DownloadBypass$TIKTOKAwemeLongPressListViewController, @selector(setXy_downloadBtn:), (IMP)&_logos_method$DownloadBypass$TIKTOKAwemeLongPressListViewController$setXy_downloadBtn, _typeEncoding); } Class _logos_class$DownloadBypass$AVMDLDataLoader = objc_getClass("AVMDLDataLoader"); MSHookMessageEx(_logos_class$DownloadBypass$AVMDLDataLoader, @selector(_supportPoxy:), (IMP)&_logos_method$DownloadBypass$AVMDLDataLoader$_supportPoxy$, (IMP*)&_logos_orig$DownloadBypass$AVMDLDataLoader$_supportPoxy$);Class _logos_class$DownloadBypass$_TTVideoEnginePreloadManager = objc_getClass("_TTVideoEnginePreloadManager"); MSHookMessageEx(_logos_class$DownloadBypass$_TTVideoEnginePreloadManager, @selector(_addTask:vid:preSize:urlItem:vidItem:videoModeltem:), (IMP)&_logos_method$DownloadBypass$_TTVideoEnginePreloadManager$_addTask$vid$preSize$urlItem$vidItem$videoModeltem$, (IMP*)&_logos_orig$DownloadBypass$_TTVideoEnginePreloadManager$_addTask$vid$preSize$urlItem$vidItem$videoModeltem$);Class _logos_class$DownloadBypass$AWESharePanelController = objc_getClass("AWESharePanelController"); { char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; memcpy(_typeEncoding + i, @encode(AWEAwemeModel *), strlen(@encode(AWEAwemeModel *))); i += strlen(@encode(AWEAwemeModel *)); _typeEncoding[i] = '\0'; class_addMethod(_logos_class$DownloadBypass$AWESharePanelController, @selector(xy_downloadWithAweme:), (IMP)&_logos_method$DownloadBypass$AWESharePanelController$xy_downloadWithAweme$, _typeEncoding); }MSHookMessageEx(_logos_class$DownloadBypass$AWESharePanelController, @selector(viewDidLoad), (IMP)&_logos_method$DownloadBypass$AWESharePanelController$viewDidLoad, (IMP*)&_logos_orig$DownloadBypass$AWESharePanelController$viewDidLoad);Class _logos_class$DownloadBypass$TTKSharePanelViewController = objc_getClass("TTKSharePanelViewController"); MSHookMessageEx(_logos_class$DownloadBypass$TTKSharePanelViewController, @selector(viewDidAppear:), (IMP)&_logos_method$DownloadBypass$TTKSharePanelViewController$viewDidAppear$, (IMP*)&_logos_orig$DownloadBypass$TTKSharePanelViewController$viewDidAppear$);{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; memcpy(_typeEncoding + i, @encode(AWEAwemeModel *), strlen(@encode(AWEAwemeModel *))); i += strlen(@encode(AWEAwemeModel *)); _typeEncoding[i] = '\0'; class_addMethod(_logos_class$DownloadBypass$TTKSharePanelViewController, @selector(xy_downloadWithAweme:), (IMP)&_logos_method$DownloadBypass$TTKSharePanelViewController$xy_downloadWithAweme$, _typeEncoding); }MSHookMessageEx(_logos_class$DownloadBypass$TTKSharePanelViewController, @selector(viewDidLoad), (IMP)&_logos_method$DownloadBypass$TTKSharePanelViewController$viewDidLoad, (IMP*)&_logos_orig$DownloadBypass$TTKSharePanelViewController$viewDidLoad);MSHookMessageEx(_logos_class$DownloadBypass$TTKSharePanelViewController, @selector(setViewModel:), (IMP)&_logos_method$DownloadBypass$TTKSharePanelViewController$setViewModel$, (IMP*)&_logos_orig$DownloadBypass$TTKSharePanelViewController$setViewModel$);}
     {Class _logos_class$SSLPinningBypass$TTNetworkManagerChromium = objc_getClass("TTNetworkManagerChromium"); MSHookMessageEx(_logos_class$SSLPinningBypass$TTNetworkManagerChromium, @selector(requestForJSONWithURL_:params:method:needCommonParams:headerField:requestSerializer:responseSerializer:autoResume:verifyRequest:isCustomizedCookie:callback:callbackWithResponse:dispatch_queue:), (IMP)&_logos_method$SSLPinningBypass$TTNetworkManagerChromium$requestForJSONWithURL_$params$method$needCommonParams$headerField$requestSerializer$responseSerializer$autoResume$verifyRequest$isCustomizedCookie$callback$callbackWithResponse$dispatch_queue$, (IMP*)&_logos_orig$SSLPinningBypass$TTNetworkManagerChromium$requestForJSONWithURL_$params$method$needCommonParams$headerField$requestSerializer$responseSerializer$autoResume$verifyRequest$isCustomizedCookie$callback$callbackWithResponse$dispatch_queue$);MSHookMessageEx(_logos_class$SSLPinningBypass$TTNetworkManagerChromium, @selector(userRegion), (IMP)&_logos_method$SSLPinningBypass$TTNetworkManagerChromium$userRegion, (IMP*)&_logos_orig$SSLPinningBypass$TTNetworkManagerChromium$userRegion);Class _logos_class$SSLPinningBypass$TTHttpTask = objc_getClass("TTHttpTask"); MSHookMessageEx(_logos_class$SSLPinningBypass$TTHttpTask, @selector(init), (IMP)&_logos_method$SSLPinningBypass$TTHttpTask$init, (IMP*)&_logos_orig$SSLPinningBypass$TTHttpTask$init);MSHookMessageEx(_logos_class$SSLPinningBypass$TTHttpTask, @selector(setSkipSSLCertificateError:), (IMP)&_logos_method$SSLPinningBypass$TTHttpTask$setSkipSSLCertificateError$, (IMP*)&_logos_orig$SSLPinningBypass$TTHttpTask$setSkipSSLCertificateError$);Class _logos_class$SSLPinningBypass$TTHttpRequestChromium = objc_getClass("TTHttpRequestChromium"); MSHookMessageEx(_logos_class$SSLPinningBypass$TTHttpRequestChromium, @selector(initWithURL:method:multipartForm:), (IMP)&_logos_method$SSLPinningBypass$TTHttpRequestChromium$initWithURL$method$multipartForm$, (IMP*)&_logos_orig$SSLPinningBypass$TTHttpRequestChromium$initWithURL$method$multipartForm$);Class _logos_class$SSLPinningBypass$TTConcurrentHttpTask = objc_getClass("TTConcurrentHttpTask"); Class _logos_metaclass$SSLPinningBypass$TTConcurrentHttpTask = object_getClass(_logos_class$SSLPinningBypass$TTConcurrentHttpTask); MSHookMessageEx(_logos_metaclass$SSLPinningBypass$TTConcurrentHttpTask, @selector(buildBinaryConcurrentTask:params:method:needCommonParams:headerField:enableHttpCache:requestSerializer:responseSerializer:autoResume:isCustomizedCookie:headerCallback:dataCallback:callback:callbackWithResponse:redirectCallback:progress:dispatch_queue:redirectHeaderDataCallbackQueue:concurrentRequestConfig:), (IMP)&_logos_meta_method$SSLPinningBypass$TTConcurrentHttpTask$buildBinaryConcurrentTask$params$method$needCommonParams$headerField$enableHttpCache$requestSerializer$responseSerializer$autoResume$isCustomizedCookie$headerCallback$dataCallback$callback$callbackWithResponse$redirectCallback$progress$dispatch_queue$redirectHeaderDataCallbackQueue$concurrentRequestConfig$, (IMP*)&_logos_meta_orig$SSLPinningBypass$TTConcurrentHttpTask$buildBinaryConcurrentTask$params$method$needCommonParams$headerField$enableHttpCache$requestSerializer$responseSerializer$autoResume$isCustomizedCookie$headerCallback$dataCallback$callback$callbackWithResponse$redirectCallback$progress$dispatch_queue$redirectHeaderDataCallbackQueue$concurrentRequestConfig$);MSHookMessageEx(_logos_metaclass$SSLPinningBypass$TTConcurrentHttpTask, @selector(buildJSONConcurrentTask:params:method:needCommonParams:headerField:requestSerializer:responseSerializer:autoResume:verifyRequest:isCustomizedCookie:callback:callbackWithResponse:dispatch_queue:concurrentRequestConfig:), (IMP)&_logos_meta_method$SSLPinningBypass$TTConcurrentHttpTask$buildJSONConcurrentTask$params$method$needCommonParams$headerField$requestSerializer$responseSerializer$autoResume$verifyRequest$isCustomizedCookie$callback$callbackWithResponse$dispatch_queue$concurrentRequestConfig$, (IMP*)&_logos_meta_orig$SSLPinningBypass$TTConcurrentHttpTask$buildJSONConcurrentTask$params$method$needCommonParams$headerField$requestSerializer$responseSerializer$autoResume$verifyRequest$isCustomizedCookie$callback$callbackWithResponse$dispatch_queue$concurrentRequestConfig$);Class _logos_class$SSLPinningBypass$TTNetworkUtil = objc_getClass("TTNetworkUtil"); Class _logos_metaclass$SSLPinningBypass$TTNetworkUtil = object_getClass(_logos_class$SSLPinningBypass$TTNetworkUtil); MSHookMessageEx(_logos_metaclass$SSLPinningBypass$TTNetworkUtil, @selector(parseIfConcurrentRequestSwitchEnabled:switchName:), (IMP)&_logos_meta_method$SSLPinningBypass$TTNetworkUtil$parseIfConcurrentRequestSwitchEnabled$switchName$, (IMP*)&_logos_meta_orig$SSLPinningBypass$TTNetworkUtil$parseIfConcurrentRequestSwitchEnabled$switchName$);MSHookMessageEx(_logos_metaclass$SSLPinningBypass$TTNetworkUtil, @selector(URLString:appendCommonParams:), (IMP)&_logos_meta_method$SSLPinningBypass$TTNetworkUtil$URLString$appendCommonParams$, (IMP*)&_logos_meta_orig$SSLPinningBypass$TTNetworkUtil$URLString$appendCommonParams$);}
     {Class _logos_class$CoreLogic$AWEAwemeModel = objc_getClass("AWEAwemeModel"); MSHookMessageEx(_logos_class$CoreLogic$AWEAwemeModel, @selector(initWithDictionary:error:), (IMP)&_logos_method$CoreLogic$AWEAwemeModel$initWithDictionary$error$, (IMP*)&_logos_orig$CoreLogic$AWEAwemeModel$initWithDictionary$error$);MSHookMessageEx(_logos_class$CoreLogic$AWEAwemeModel, @selector(init), (IMP)&_logos_method$CoreLogic$AWEAwemeModel$init, (IMP*)&_logos_orig$CoreLogic$AWEAwemeModel$init);MSHookMessageEx(_logos_class$CoreLogic$AWEAwemeModel, @selector(progressBarDraggable), (IMP)&_logos_method$CoreLogic$AWEAwemeModel$progressBarDraggable, (IMP*)&_logos_orig$CoreLogic$AWEAwemeModel$progressBarDraggable);MSHookMessageEx(_logos_class$CoreLogic$AWEAwemeModel, @selector(progressBarVisible), (IMP)&_logos_method$CoreLogic$AWEAwemeModel$progressBarVisible, (IMP*)&_logos_orig$CoreLogic$AWEAwemeModel$progressBarVisible);Class _logos_class$CoreLogic$AWEPlayVideoPlayerController = objc_getClass("AWEPlayVideoPlayerController"); MSHookMessageEx(_logos_class$CoreLogic$AWEPlayVideoPlayerController, @selector(playerWillLoopPlaying:), (IMP)&_logos_method$CoreLogic$AWEPlayVideoPlayerController$playerWillLoopPlaying$, (IMP*)&_logos_orig$CoreLogic$AWEPlayVideoPlayerController$playerWillLoopPlaying$);Class _logos_class$CoreLogic$AWEFeedContainerViewController = objc_getClass("AWEFeedContainerViewController"); Class _logos_metaclass$CoreLogic$AWEFeedContainerViewController = object_getClass(_logos_class$CoreLogic$AWEFeedContainerViewController); MSHookMessageEx(_logos_class$CoreLogic$AWEFeedContainerViewController, @selector(init), (IMP)&_logos_method$CoreLogic$AWEFeedContainerViewController$init, (IMP*)&_logos_orig$CoreLogic$AWEFeedContainerViewController$init);{ char _typeEncoding[1024]; unsigned int i = 0; memcpy(_typeEncoding + i, @encode(AWEFeedContainerViewController *), strlen(@encode(AWEFeedContainerViewController *))); i += strlen(@encode(AWEFeedContainerViewController *)); _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_metaclass$CoreLogic$AWEFeedContainerViewController, @selector(sharedInstance), (IMP)&_logos_meta_method$CoreLogic$AWEFeedContainerViewController$sharedInstance, _typeEncoding); }{ char _typeEncoding[1024]; sprintf(_typeEncoding, "%s@:", @encode(BOOL)); class_addMethod(_logos_class$CoreLogic$AWEFeedContainerViewController, @selector(isUIHidden), (IMP)&_logos_method$CoreLogic$AWEFeedContainerViewController$isUIHidden, _typeEncoding); sprintf(_typeEncoding, "v@:%s", @encode(BOOL)); class_addMethod(_logos_class$CoreLogic$AWEFeedContainerViewController, @selector(setIsUIHidden:), (IMP)&_logos_method$CoreLogic$AWEFeedContainerViewController$setIsUIHidden, _typeEncoding); } Class _logos_class$CoreLogic$AWEPlayInteractionViewController = objc_getClass("AWEPlayInteractionViewController"); MSHookMessageEx(_logos_class$CoreLogic$AWEPlayInteractionViewController, @selector(viewDidLoad), (IMP)&_logos_method$CoreLogic$AWEPlayInteractionViewController$viewDidLoad, (IMP*)&_logos_orig$CoreLogic$AWEPlayInteractionViewController$viewDidLoad);MSHookMessageEx(_logos_class$CoreLogic$AWEPlayInteractionViewController, @selector(stopLoadingAnimation), (IMP)&_logos_method$CoreLogic$AWEPlayInteractionViewController$stopLoadingAnimation, (IMP*)&_logos_orig$CoreLogic$AWEPlayInteractionViewController$stopLoadingAnimation);}
     {Class _logos_class$JailbreakBypass$AppsFlyerUtils = objc_getClass("AppsFlyerUtils"); Class _logos_metaclass$JailbreakBypass$AppsFlyerUtils = object_getClass(_logos_class$JailbreakBypass$AppsFlyerUtils); MSHookMessageEx(_logos_metaclass$JailbreakBypass$AppsFlyerUtils, @selector(isJailbrokenWithSkipAdvancedJailbreakValidation:), (IMP)&_logos_meta_method$JailbreakBypass$AppsFlyerUtils$isJailbrokenWithSkipAdvancedJailbreakValidation$, (IMP*)&_logos_meta_orig$JailbreakBypass$AppsFlyerUtils$isJailbrokenWithSkipAdvancedJailbreakValidation$);Class _logos_class$JailbreakBypass$TTAdSplashDeviceHelper = objc_getClass("TTAdSplashDeviceHelper"); Class _logos_metaclass$JailbreakBypass$TTAdSplashDeviceHelper = object_getClass(_logos_class$JailbreakBypass$TTAdSplashDeviceHelper); MSHookMessageEx(_logos_metaclass$JailbreakBypass$TTAdSplashDeviceHelper, @selector(isJailBroken), (IMP)&_logos_meta_method$JailbreakBypass$TTAdSplashDeviceHelper$isJailBroken, (IMP*)&_logos_meta_orig$JailbreakBypass$TTAdSplashDeviceHelper$isJailBroken);Class _logos_class$JailbreakBypass$TTInstallUtil = objc_getClass("TTInstallUtil"); Class _logos_metaclass$JailbreakBypass$TTInstallUtil = object_getClass(_logos_class$JailbreakBypass$TTInstallUtil); MSHookMessageEx(_logos_metaclass$JailbreakBypass$TTInstallUtil, @selector(isJailBroken), (IMP)&_logos_meta_method$JailbreakBypass$TTInstallUtil$isJailBroken, (IMP*)&_logos_meta_orig$JailbreakBypass$TTInstallUtil$isJailBroken);Class _logos_class$JailbreakBypass$PIPOIAPStoreManager = objc_getClass("PIPOIAPStoreManager"); MSHookMessageEx(_logos_class$JailbreakBypass$PIPOIAPStoreManager, @selector(_pipo_isJailBrokenDeviceWithProductID:orderID:), (IMP)&_logos_method$JailbreakBypass$PIPOIAPStoreManager$_pipo_isJailBrokenDeviceWithProductID$orderID$, (IMP*)&_logos_orig$JailbreakBypass$PIPOIAPStoreManager$_pipo_isJailBrokenDeviceWithProductID$orderID$);Class _logos_class$JailbreakBypass$UIDevice = objc_getClass("UIDevice"); Class _logos_metaclass$JailbreakBypass$UIDevice = object_getClass(_logos_class$JailbreakBypass$UIDevice); MSHookMessageEx(_logos_metaclass$JailbreakBypass$UIDevice, @selector(btd_isJailBroken), (IMP)&_logos_meta_method$JailbreakBypass$UIDevice$btd_isJailBroken, (IMP*)&_logos_meta_orig$JailbreakBypass$UIDevice$btd_isJailBroken);Class _logos_class$JailbreakBypass$NSString = objc_getClass("NSString"); MSHookMessageEx(_logos_class$JailbreakBypass$NSString, @selector(containsString:), (IMP)&_logos_method$JailbreakBypass$NSString$containsString$, (IMP*)&_logos_orig$JailbreakBypass$NSString$containsString$);Class _logos_class$JailbreakBypass$NSFileManager = objc_getClass("NSFileManager"); MSHookMessageEx(_logos_class$JailbreakBypass$NSFileManager, @selector(fileExistsAtPath:), (IMP)&_logos_method$JailbreakBypass$NSFileManager$fileExistsAtPath$, (IMP*)&_logos_orig$JailbreakBypass$NSFileManager$fileExistsAtPath$);}

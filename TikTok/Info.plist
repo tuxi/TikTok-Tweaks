@@ -21,7 +21,7 @@
 	<key>BDJSBGeckoExtraChannels</key>
 	<string>_jsb_auth.webcast</string>
 	<key>BuildMachineOSBuild</key>
-	<string>21G115</string>
+	<string>21G83</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
@@ -68,7 +68,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>28.4.0</string>
+	<string>29.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
@@ -240,13 +240,13 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>284022</string>
+	<string>290014</string>
 	<key>CHANNEL_NAME</key>
 	<string>App Store</string>
 	<key>CodePushDeploymentKey</key>
 	<string>uByLHmAcarJ10xB6sX2d5sQ2CWopaf01fe8e-4e69-45c9-a3f5-0bfdf3747ea8</string>
 	<key>DTAppStoreToolsBuild</key>
-	<string>14C17</string>
+	<string>14E221</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
@@ -393,8 +393,8 @@
 	<string>To upload from or download to your device, allow access to your photos in your phone settings.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>To upload from or download to your device, allow access to your photos in your phone settings.</string>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>Speech Recognition will be used to help with your voice searches.</string>
+	<key>NSSupportsLiveActivities</key>
+	<true/>
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>INSendMessageIntent</string>
@@ -425,9 +425,15 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>TikTok-Display-Bold.otf</string>
+		<string>TikTok-Display-Medium.otf</string>
+		<string>TikTok-Display-Regular.otf</string>
 		<string>Proxima-Nova-Bold.otf</string>
 		<string>Proxima-Nova-Semibold.otf</string>
 		<string>Proxima-Nova-Regular.otf</string>
+		<string>TikTok-Text-Bold.otf</string>
+		<string>TikTok-Text-Medium.otf</string>
+		<string>TikTok-Text-Regular.otf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

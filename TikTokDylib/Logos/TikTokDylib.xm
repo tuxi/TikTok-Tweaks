@@ -6,6 +6,8 @@
 #import <UIKit/UIKit.h>
 #import "TikTokHeaders.h"
 #import "TikTokDylib-Swift.h"
+#import "MBProgressHUD.h"
+#import <Photos/Photos.h>
 
 %group Settings
 %hook TTKSettingsViewController
@@ -171,9 +173,226 @@
     %orig;
 }
 %end
+
+/// 抖音的通用分享面板，初始情况下会使用这个，后面可能会使用TTKSharePanelViewController
+%hook AWESharePanelController
+
+%new
+- (void)xy_downloadWithAweme:(AWEAwemeModel *)aweme {
+    if (aweme == nil) {
+        return;
+    }
+    if (aweme.awemeType == 68) {
+        // 是图片列表
+        /*
+         iOS相册支持GIF 和APNG 的保存 目测iOS11.0在相册中也可以播放GIF 的动态图.而iOS8.3不能.
+         writeImageDataToSavedPhotosAlbum 可以直接将其写入相册
+         UIImageWriteToSavedPhotosAlbum() 图像强制转码为PNG
+         博客地址：https://daimajiaoliu.com/daima/485c1eb0e100405
+         */
+        
+        UIWindow *window = [UIApplication sharedApplication].delegate.window;
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:window animated:true];
+        hud.bezelView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.65];
+        hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+        hud.label.text = @"准备下载";
+        hud.label.font = [UIFont systemFontOfSize:12];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            dispatch_group_t group = dispatch_group_create();
+            NSArray<AWEImageAlbumImageModel *> *albumImages = aweme.albumImages;
+            __block NSError *_error = nil;
+            int index = 0;
+            for (AWEImageAlbumImageModel *model in albumImages) {
+                NSURL *url = [NSURL URLWithString: model.urlList.firstObject];
+                if (url == nil) {
+                    continue;
+                }
+                dispatch_group_enter(group);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    hud.label.text = [NSString stringWithFormat:@"%d/%ld", index+1, albumImages.count];
+                });
+                NSData *data = [NSData dataWithContentsOfURL:url];
+                [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+                    [[PHAssetCreationRequest creationRequestForAsset] addResourceWithType:PHAssetResourceTypePhoto data:data options:nil];
+                } completionHandler:^(BOOL success, NSError * _Nullable error) {
+                    dispatch_group_leave(group);
+                    _error = error;
+                }];
+                index += 1;
+            }
+            dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self dismissViewControllerAnimated: YES completion: nil];
+                if (_error) {
+                    hud.label.text = [NSString stringWithFormat:@"下载有错误%@", _error.localizedDescription];
+                } else {
+                    hud.label.text = @"下载图片成功";
+                }
+                [hud hideAnimated:true afterDelay:0.5];
+            });
+        });
+        
+    }
+    else {
+        // 是视频
+        AWEVideoModel *video = aweme.video;
+        // h264URL 比 playURL的链接视频质量更高，更清晰
+//        AWEURLModel *url = video.playURL;
+        AWEURLModel *h264URL = video.h264URL;
+        NSArray *originURLList = h264URL.originURLList;
+        NSURL *url = [NSURL URLWithString: originURLList.firstObject];
+        if (url == nil) {
+            return;
+        }
+        XYVideoDownloader *downloader = [XYVideoDownloader shared];
+        __weak typeof(self) weakSelf = self;
+        [downloader downloadWithURL:url completion:^(BOOL isSuccess, NSError *error){
+            [weakSelf dismissViewControllerAnimated: YES completion: nil];
+        }];
+    }
+}
+
+- (void)viewDidLoad {
+    %orig;
+    NSMutableArray *array = [self.viewModel.secondRowItems mutableCopy];
+    AWEShareBaseChannel *itemDelegate = nil;
+    for (AWEShareItem *item in array) {
+        if (item.delegate != nil) {
+            itemDelegate = item.delegate;
+            break;
+        }
+    }
+    if (!itemDelegate) {
+        return;
+    }
+    AWEAwemeModel *aweme = itemDelegate.context.target;
+    __weak typeof(self) weakSelf = self;
+    // 21000是自保存
+    AWEShareItem *action = [[NSClassFromString(@"AWEShareItem") alloc] initWithType:@"custom_download"];
+//    action.delegate = self;
+    action.title = @"保存原版视频";
+    action.image = (UIImage *)[[array firstObject] image];
+    [action registerHandler: ^{ // 点击保存原版的事件
+        [weakSelf xy_downloadWithAweme: aweme];
+    } forEvents: 1];
+    [array addObject:action];
+   
+    self.viewModel.secondRowItems = array;
+    [self.secondRowView setValue:array forKey:@"items"];
+    [self.secondRowView reloadData];
+}
+
 %end
 
 
+// 29.0.0 的分享面板
+%hook TTKSharePanelViewController
+
+- (void) viewDidAppear:(BOOL)arg1 {
+    %orig;
+}
+
+%new
+- (void)xy_downloadWithAweme:(AWEAwemeModel *)aweme {
+    if (aweme == nil) {
+        return;
+    }
+    if (aweme.awemeType == 68) {
+        UIWindow *window = [UIApplication sharedApplication].delegate.window;
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:window animated:true];
+        hud.bezelView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.65];
+        hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+        hud.label.text = @"准备下载";
+        hud.label.font = [UIFont systemFontOfSize:12];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            dispatch_group_t group = dispatch_group_create();
+            NSArray<AWEImageAlbumImageModel *> *albumImages = aweme.albumImages;
+            __block NSError *_error = nil;
+            int index = 0;
+            for (AWEImageAlbumImageModel *model in albumImages) {
+                NSURL *url = [NSURL URLWithString: model.urlList.firstObject];
+                if (url == nil) {
+                    continue;
+                }
+                dispatch_group_enter(group);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    hud.label.text = [NSString stringWithFormat:@"%d/%ld", index+1, albumImages.count];
+                });
+                NSData *data = [NSData dataWithContentsOfURL:url];
+                [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+                    [[PHAssetCreationRequest creationRequestForAsset] addResourceWithType:PHAssetResourceTypePhoto data:data options:nil];
+                } completionHandler:^(BOOL success, NSError * _Nullable error) {
+                    dispatch_group_leave(group);
+                    _error = error;
+                }];
+                index += 1;
+            }
+            dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self dismissViewControllerAnimated: YES completion: nil];
+                if (_error) {
+                    hud.label.text = [NSString stringWithFormat:@"下载有错误%@", _error.localizedDescription];
+                } else {
+                    hud.label.text = @"下载图片成功";
+                }
+                [hud hideAnimated:true afterDelay:0.5];
+            });
+        });
+    } else {
+        // 是视频
+        AWEVideoModel *video = aweme.video;
+        // h264URL 比 playURL的链接视频质量更高，更清晰
+//        AWEURLModel *url = video.playURL;
+        AWEURLModel *h264URL = video.h264URL;
+        NSArray *originURLList = h264URL.originURLList;
+        NSURL *url = [NSURL URLWithString: originURLList.firstObject];
+        if (url == nil) {
+            return;
+        }
+        XYVideoDownloader *downloader = [XYVideoDownloader shared];
+        __weak typeof(self) weakSelf = self;
+        [downloader downloadWithURL:url completion:^(BOOL isSuccess, NSError *error){
+            [weakSelf dismissViewControllerAnimated: YES completion: nil];
+        }];
+    }
+}
+
+- (void)viewDidLoad {
+    %orig;
+}
+
+- (void) setViewModel:(TTKSharePanelViewModel *)viewModel {
+    NSMutableArray *array = [viewModel.secondRowItems mutableCopy];
+    AWEShareBaseChannel *itemDelegate = nil;
+    for (AWEShareItem *item in array) {
+        if (item.delegate != nil) {
+            itemDelegate = item.delegate;
+            break;
+        }
+    }
+    if (itemDelegate) {
+        AWEAwemeModel *aweme = itemDelegate.context.target;
+        __weak typeof(self) weakSelf = self;
+        // 21000是自保存
+        AWEShareItem *action = [[NSClassFromString(@"AWEShareItem") alloc] initWithType:@"custom_download"];
+    //    action.delegate = self;
+        action.title = @"保存原版视频";
+        action.image = (UIImage *)[[array firstObject] image];
+        [action registerHandler: ^{ // 点击保存原版的事件
+            [weakSelf xy_downloadWithAweme: aweme];
+        } forEvents: 1];
+        [array addObject:action];
+       
+        viewModel.secondRowItems = array;
+    //    [self.secondRowView setValue:array forKey:@"items"];
+    //    [self.secondRowView reloadData];
+        [self.tableView reloadData];
+    }
+    %orig(viewModel);
+}
+
+%end
+%end
 
 %group SSLPinningBypass
 

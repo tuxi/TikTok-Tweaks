@@ -8,6 +8,9 @@
 
 #import "FLEXHeapEnumerator.h"
 #import "FLEXObjcInternal.h"
+#import "FLEXObjectRef.h"
+#import "NSObject+FLEX_Reflection.h"
+#import "NSString+FLEX.h"
 #import <malloc/malloc.h>
 #import <mach/mach.h>
 #import <objc/runtime.h>
@@ -18,6 +21,18 @@ static CFMutableSetRef registeredClasses;
 typedef struct {
     Class isa;
 } flex_maybe_object_t;
+
+@implementation FLEXHeapSnapshot
++ (instancetype)snapshotWithCounts:(NSDictionary<NSString *, NSNumber *> *)counts
+                             sizes:(NSDictionary<NSString *, NSNumber *> *)sizes {
+    FLEXHeapSnapshot *snapshot = [FLEXHeapSnapshot new];
+    snapshot->_classNames = counts.allKeys;
+    snapshot->_instanceCountsForClassNames = counts;
+    snapshot->_instanceSizesForClassNames = sizes;
+    
+    return snapshot;
+}
+@end
 
 @implementation FLEXHeapEnumerator
 
@@ -114,6 +129,110 @@ static kern_return_t reader(__unused task_t remote_task, vm_address_t remote_add
         CFSetAddValue(registeredClasses, (__bridge const void *)(classes[i]));
     }
     free(classes);
+}
+
++ (NSArray<FLEXObjectRef *> *)instancesOfClassWithName:(NSString *)className retained:(BOOL)retain {
+    const char *classNameCString = className.UTF8String;
+    NSMutableArray *instances = [NSMutableArray new];
+    [FLEXHeapEnumerator enumerateLiveObjectsUsingBlock:^(__unsafe_unretained id object, __unsafe_unretained Class actualClass) {
+        if (strcmp(classNameCString, class_getName(actualClass)) == 0) {
+            // Note: objects of certain classes crash when retain is called.
+            // It is up to the user to avoid tapping into instance lists for these classes.
+            // Ex. OS_dispatch_queue_specific_queue
+            // In the future, we could provide some kind of warning for classes that are known to be problematic.
+            if (malloc_size((__bridge const void *)(object)) > 0) {
+                [instances addObject:object];
+            }
+        }
+    }];
+
+    NSArray<FLEXObjectRef *> *references = [FLEXObjectRef referencingAll:instances retained:retain];
+    return references;
+}
+
++ (NSArray<FLEXObjectRef *> *)objectsWithReferencesToObject:(id)object retained:(BOOL)retain {
+    NSMutableArray<FLEXObjectRef *> *instances = [NSMutableArray new];
+    [FLEXHeapEnumerator enumerateLiveObjectsUsingBlock:^(__unsafe_unretained id tryObject, __unsafe_unretained Class actualClass) {
+        // Skip known-invalid objects
+        if (!FLEXPointerIsValidObjcObject((__bridge void *)tryObject)) {
+            return;
+        }
+        
+        // Get all the ivars on the object. Start with the class and and travel up the
+        // inheritance chain. Once we find a match, record it and move on to the next object.
+        // There's no reason to find multiple matches within the same object.
+        Class tryClass = actualClass;
+        while (tryClass) {
+            unsigned int ivarCount = 0;
+            Ivar *ivars = class_copyIvarList(tryClass, &ivarCount);
+
+            for (unsigned int ivarIndex = 0; ivarIndex < ivarCount; ivarIndex++) {
+                Ivar ivar = ivars[ivarIndex];
+                NSString *typeEncoding = @(ivar_getTypeEncoding(ivar) ?: "");
+
+                if (typeEncoding.flex_typeIsObjectOrClass) {
+                    ptrdiff_t offset = ivar_getOffset(ivar);
+                    uintptr_t *fieldPointer = (__bridge void *)tryObject + offset;
+
+                    if (*fieldPointer == (uintptr_t)(__bridge void *)object) {
+                        NSString *ivarName = @(ivar_getName(ivar) ?: "???");
+                        id ref = [FLEXObjectRef referencing:tryObject ivar:ivarName retained:retain];
+                        [instances addObject:ref];
+                        return;
+                    }
+                }
+            }
+
+            free(ivars);
+            tryClass = class_getSuperclass(tryClass);
+        }
+    }];
+
+    return instances;
+}
+
++ (FLEXHeapSnapshot *)generateHeapSnapshot {
+    // Set up a CFMutableDictionary with class pointer keys and NSUInteger values.
+    // We abuse CFMutableDictionary a little to have primitive keys through judicious casting, but it gets the job done.
+    // The dictionary is intialized with a 0 count for each class so that it doesn't have to expand during enumeration.
+    // While it might be a little cleaner to populate an NSMutableDictionary with class name string keys to NSNumber
+    // counts, we choose the CF/primitives approach because it lets us enumerate the objects in the heap without
+    // allocating any memory during enumeration. The alternative of creating one NSString/NSNumber per object
+    // on the heap ends up polluting the count of live objects quite a bit.
+    unsigned int classCount = 0;
+    Class *classes = objc_copyClassList(&classCount);
+    CFMutableDictionaryRef mutableCountsForClasses = CFDictionaryCreateMutable(NULL, classCount, NULL, NULL);
+    for (unsigned int i = 0; i < classCount; i++) {
+        CFDictionarySetValue(mutableCountsForClasses, (__bridge const void *)classes[i], (const void *)0);
+    }
+    
+    // Enumerate all objects on the heap to build the counts of instances for each class
+    [FLEXHeapEnumerator enumerateLiveObjectsUsingBlock:^(__unsafe_unretained id object, __unsafe_unretained Class cls) {
+        NSUInteger instanceCount = (NSUInteger)CFDictionaryGetValue(
+            mutableCountsForClasses, (__bridge const void *)cls
+        );
+        instanceCount++;
+        CFDictionarySetValue(
+            mutableCountsForClasses, (__bridge const void *)cls, (const void *)instanceCount
+        );
+    }];
+    
+    // Convert our CF primitive dictionary into a nicer mapping of class name strings to instance counts
+    NSMutableDictionary<NSString *, NSNumber *> *countsForClassNames = [NSMutableDictionary new];
+    NSMutableDictionary<NSString *, NSNumber *> *sizesForClassNames = [NSMutableDictionary new];
+    for (unsigned int i = 0; i < classCount; i++) {
+        Class class = classes[i];
+        NSUInteger instanceCount = (NSUInteger)CFDictionaryGetValue(mutableCountsForClasses, (__bridge const void *)(class));
+        NSString *className = @(class_getName(class));
+        
+        if (instanceCount > 0) {
+            countsForClassNames[className] = @(instanceCount);
+            sizesForClassNames[className] = @(class_getInstanceSize(class));
+        }
+    }
+    free(classes);
+    
+    return [FLEXHeapSnapshot snapshotWithCounts:countsForClassNames sizes:sizesForClassNames];
 }
 
 @end

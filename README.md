@@ -1,8 +1,8 @@
 # TikTok Tweaks
-基于MonkeyDev，支持TikTok 版本25.1.1，以及iOS 15
+基于MonkeyDev、TikTok 版本29.2.2、 iOS 16、Xcode14
 
 ## 功能
-- 下载无水印视频: 长按弹出的视图，点击保存视频可下载无水印视频
+- 下载无水印视频: 长按弹出的视图，点击保存原版视频可下载无水印视频，新版本下载的是h264的视频更清晰！
 - 跳过广告
 - 视频播放完成自动播放下一条
 - 解锁sim 地区限制，国家默认为日本，可在设置-规则中切换国家
@@ -12,8 +12,6 @@
 
 经调试，大部分功能的代码适用抖音，观看视频还需要挂梯子，我记得去年的版本不需要的。本仓库仅仅是用来学习TikTok中的技术栈，TK中的反调试机制可能会对账号进行限制， 如果喜欢刷TK的建议去美区下载正版，拔卡挂梯子使用。
 
-## 问题
-- 关注用户：接口回调成功，但是关注列表中不显示
 
 request
 ```
@@ -47,4 +45,4 @@ response
 
 ```
 
-TikTok-28.4.0 ipa 链接:https://pan.baidu.com/s/1VL9UNJCBjV3nDFLIg331Kg  密码:iew8
+TikTok-29.0.0 ipa 链接:https://pan.baidu.com/s/1ncEVKPK8KPISyTbAzh-96g  密码:gxuq

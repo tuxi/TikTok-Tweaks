@@ -22,6 +22,7 @@ final class PreferenceManager: NSObject {
         case countryCode
         case pureMode
         case autoPlayNextVideoWhenPlayLiveRoom
+        case debugFLEX
         
         var key: String {
             return "com.aweme.objc." + self.rawValue
@@ -88,6 +89,15 @@ final class PreferenceManager: NSObject {
         }
     }
     
+    /// debug flex
+    @objc var isDebugFLEXEnabled: Bool = false {
+        didSet {
+            let value = isDebugFLEXEnabled == true ? 2 : 1
+            userDefaults.set(value, forKey: Keys.debugFLEX.rawValue)
+            userDefaults.synchronize()
+        }
+    }
+    
     @objc var carriers: [Carrier] = []
     
     @objc var currentCarrier: Carrier {
@@ -117,6 +127,15 @@ final class PreferenceManager: NSObject {
                 isPureMode = userDefaults.bool(forKey: key.rawValue)
             case .autoPlayNextVideoWhenPlayLiveRoom:
                 isAutoPlayNextVideoWhenPlayLiveRoom = userDefaults.bool(forKey: key.rawValue)
+            case .debugFLEX:
+                let value = userDefaults.integer(forKey: key.rawValue)
+                if value == 2 {
+                    isDebugFLEXEnabled = true
+                } else if value == 1 {
+                    isDebugFLEXEnabled = false
+                } else {
+                    isDebugFLEXEnabled = true
+                }
             }
         }
     }

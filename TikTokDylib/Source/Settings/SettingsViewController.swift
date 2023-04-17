@@ -103,7 +103,10 @@ final class SettingsViewController: UIViewController {
                     }),
                     .switch(title: "跳过5秒钟未查看直播（首页推荐列表）", isOn: PreferenceManager.shared.isAutoPlayNextVideoWhenPlayLiveRoom, isEnabled: PreferenceManager.shared.isAutoPlayNextVideoWhenPlayEnded, onChanged: { isOn in
                         PreferenceManager.shared.isAutoPlayNextVideoWhenPlayLiveRoom = isOn
-                    })
+                    }),
+                    .switch(title: "开启摇一摇打开调试工具", isOn: PreferenceManager.shared.isDebugFLEXEnabled, onChanged: { isOn in
+                        PreferenceManager.shared.isDebugFLEXEnabled = isOn
+                    }),
                 ]),
                 .area(title: "切换 运营商国家/地区", items: areaItems)
             ]
