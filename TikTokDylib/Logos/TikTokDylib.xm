@@ -51,110 +51,6 @@
 %end
 
 %group DownloadBypass
-
-%hook AWEIMLongPressViewController
-- (void) tableView:(id)arg1 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSArray *viewModelSections = self.viewModelSections;
-    NSArray *currentSection = viewModelSections[indexPath.section];
-    AWEIMLongPressControlCellViewModel *model = currentSection[indexPath.row];
-    if ([model.title isEqualToString:@"保存视频"] || [model.title isEqualToString:@"举报"]) {
-        if (!XYPreferenceManager.shared.isUnlimitedDownload || !self.shareContext.target.video) {
-            %orig;
-        } else {
-            [self xy_downloadAweme];
-        }
-    } else {
-        %orig;
-    }
-}
-
-%property (nonatomic, retain) UIButton *xy_downloadBtn;
-%new
-- (void)xy_downloadAweme {
-    AWEAwemeModel *aweme = self.shareContext.target;
-    AWEVideoModel *video = aweme.video;
-    AWEURLModel *playURL = video.playURL;
-    NSArray *originURLList = playURL.originURLList;
-    NSURL *url = [NSURL URLWithString: originURLList.firstObject];
-    if (url == nil) {
-        return;
-    }
-    XYVideoDownloader *downloader = [XYVideoDownloader shared];
-    __weak typeof(self) weakSelf = self;
-    [downloader downloadWithURL:url completion:^(BOOL isSuccess, NSError *error){
-        [weakSelf dismissViewControllerAnimated: YES completion: nil];
-    }];
-}
-
-//- (void)setAwemeModel:(AWEAwemeModel *)model {
-//    %orig;
-//    if (self.xy_downloadBtn) {
-//        self.xy_downloadBtn.hidden = !XYPreferenceManager.shared.isUnlimitedDownload || !self.awemeModel.video;
-//    }
-//}
-
-%end
-
-%hook TIKTOKAwemeLongPressListViewController
-%property (nonatomic, retain) UIButton *xy_downloadBtn;
-%new
-- (void)xy_downloadAweme {
-    AWEAwemeModel *aweme = self.awemeModel;
-    AWEVideoModel *video = aweme.video;
-    AWEURLModel *playURL = video.playURL;
-    NSArray *originURLList = playURL.originURLList;
-    NSURL *url = [NSURL URLWithString: originURLList.firstObject];
-    if (url == nil) {
-        return;
-    }
-    XYVideoDownloader *downloader = [XYVideoDownloader shared];
-    __weak typeof(self) weakSelf = self;
-    [downloader downloadWithURL:url completion:^(BOOL isSuccess, NSError *error){
-        [weakSelf dismissViewControllerAnimated: YES completion: nil];
-    }];
-}
-
-%new
-- (void)xy_setupDownloadBtn {
-    UIButton *downloadBtn = [UIButton new];
-    downloadBtn.frame = CGRectMake(10, 3, 65, 35);
-    [downloadBtn setTitle:@"下载" forState:UIControlStateNormal];
-    [downloadBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    downloadBtn.backgroundColor = UIColor.purpleColor;
-    downloadBtn.layer.cornerRadius = 6;
-    downloadBtn.layer.masksToBounds = YES;
-    downloadBtn.titleLabel.font = [UIFont systemFontOfSize:13];
-    [self.view addSubview:downloadBtn];
-    [downloadBtn addTarget:self action:@selector(xy_downloadAweme) forControlEvents:UIControlEventTouchUpInside];
-    self.xy_downloadBtn = downloadBtn;
-}
-
-- (void)viewDidLoad {
-    %orig;
-    [self xy_setupDownloadBtn];
-}
-
-- (void)viewDidLayoutSubviews {
-    %orig;
-    if (self.xy_downloadBtn) {
-        self.xy_downloadBtn.hidden = !XYPreferenceManager.shared.isUnlimitedDownload || !self.awemeModel.video;
-        if (!self.xy_downloadBtn.superview) {
-            [self.view addSubview:self.xy_downloadBtn];
-        }
-        [self.view bringSubviewToFront:self.xy_downloadBtn];
-        self.xy_downloadBtn.frame = CGRectMake(self.view.frame.size.width - 60, 15, 51, 28);
-    }
-}
-
-- (void)setAwemeModel:(AWEAwemeModel *)model {
-    %orig;
-    if (self.xy_downloadBtn) {
-        self.xy_downloadBtn.hidden = !XYPreferenceManager.shared.isUnlimitedDownload || !self.awemeModel.video;
-    }
-}
-
-%end
-
 %hook AVMDLDataLoader
 - (_Bool)_supportPoxy:(NSString *)url {
     // 此url 的视频可以直接下载
@@ -236,11 +132,7 @@
     else {
         // 是视频
         AWEVideoModel *video = aweme.video;
-        // h264URL 比 playURL的链接视频质量更高，更清晰
-//        AWEURLModel *url = video.playURL;
-        AWEURLModel *h264URL = video.h264URL;
-        NSArray *originURLList = h264URL.originURLList;
-        NSURL *url = [NSURL URLWithString: originURLList.firstObject];
+        NSURL *url = [video xy_videoURL];
         if (url == nil) {
             return;
         }
@@ -341,11 +233,7 @@
     } else {
         // 是视频
         AWEVideoModel *video = aweme.video;
-        // h264URL 比 playURL的链接视频质量更高，更清晰
-//        AWEURLModel *url = video.playURL;
-        AWEURLModel *h264URL = video.h264URL;
-        NSArray *originURLList = h264URL.originURLList;
-        NSURL *url = [NSURL URLWithString: originURLList.firstObject];
+        NSURL *url = [video xy_videoURL];
         if (url == nil) {
             return;
         }
@@ -391,6 +279,20 @@
     %orig(viewModel);
 }
 
+%end
+
+%hook AWEVideoModel
+%new
+- (NSURL *)xy_videoURL {
+    // h264URL 比 playURL的链接视频质量更高，更清晰, 但h264URL可能是nil
+    AWEURLModel *videoURL = self.h264URL;
+    if (!videoURL) {
+        videoURL = self.playURL;
+    }
+    NSArray *originURLList = videoURL.originURLList;
+    NSURL *url = [NSURL URLWithString: originURLList.firstObject];
+    return url;
+}
 %end
 %end
 

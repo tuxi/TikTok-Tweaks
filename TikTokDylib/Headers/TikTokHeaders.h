@@ -24,6 +24,9 @@
 @property(readonly, nonatomic) AWEURLModel* downloadURL;
 @property(readonly, nonatomic) AWEURLModel* h264URL;
 @property(readonly, nonatomic) NSNumber *duration;
+
+- (NSURL *)xy_videoURL;
+
 @end
 
 @interface AWELiveStreamURL : NSObject
@@ -243,15 +246,6 @@
 
 @interface AWEIMTranspondListViewController : UIViewController
 @property(retain, nonatomic) AWEShareContext *shareContext;
-@end
-
-@interface TIKTOKAwemeLongPressListViewController : UIViewController
-@property(retain, nonatomic) AWEAwemeModel *awemeModel;
-@property(retain, nonatomic) NSMutableArray *mainSectionsViewModels;
-
-@property(nonatomic, strong) UIButton *xy_downloadBtn;
-- (void)xy_setupDownloadBtn;
-- (void)xy_downloadAweme;
 @end
 
 @interface AWENewFeedTableViewController : UIViewController

@@ -44,13 +44,8 @@ extension UIApplication {
             return
         }
         
-        let vc = UIAlertController(title: "请选择", message: nil, preferredStyle: .actionSheet)
-        #if DEBUG
-        vc.addAction(.init(title: "打开或关闭调试器FLEX", style: .default, handler: { action in
-            UIDebuggingTool.toggleVisibility()
-        }))
-        #endif
-        vc.addAction(.init(title: "打开设置", style: .default, handler: { [unowned self] action in
+        let vc = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        vc.addAction(.init(title: "Custom settings", style: .default, handler: { [unowned self] action in
             if topViewController is SettingsViewController {
                 topViewController?.navigationController?.popViewController(animated: true)
                 return
@@ -59,7 +54,7 @@ extension UIApplication {
             settingsVC.hidesBottomBarWhenPushed = true
             topViewController?.navigationController?.pushViewController(settingsVC, animated: true)
         }))
-        vc.addAction(.init(title: "取消", style: .cancel, handler: nil))
+        vc.addAction(.init(title: "Cancel", style: .cancel, handler: nil))
         topViewController?.present(vc, animated: true, completion: nil)
         Self.weakContainer = WeakContainer(alertController: vc)
     }

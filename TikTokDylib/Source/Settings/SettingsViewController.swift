@@ -84,9 +84,6 @@ final class SettingsViewController: UIViewController {
         func resetSestions() {
             sections = [
                 .basic(title: "基础配置", items: [
-                    .switch(title: "无限制下载", isOn: PreferenceManager.shared.isUnlimitedDownload, onChanged: { isOn in
-                        PreferenceManager.shared.isUnlimitedDownload = isOn
-                    }),
                     .switch(title: "自动播放下一个（首页推荐列表）", isOn: PreferenceManager.shared.isAutoPlayNextVideoWhenPlayEnded, onChanged: { isOn in
                         PreferenceManager.shared.isAutoPlayNextVideoWhenPlayEnded = isOn
                         PreferenceManager.shared.isAutoPlayNextVideoWhenPlayLiveRoom = isOn

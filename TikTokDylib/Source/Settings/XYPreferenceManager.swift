@@ -15,7 +15,6 @@ final class PreferenceManager: NSObject {
     private lazy var userDefaults = UserDefaults.standard
     
     enum Keys: String, CaseIterable {
-        case unlimitedDownload
         case skipAds
         case autoPlayNextVideoWhenPlayEnded
         case showProgressBar
@@ -28,14 +27,6 @@ final class PreferenceManager: NSObject {
             return "com.aweme.objc." + self.rawValue
         }
         
-    }
-    
-    /// 是否开启无限制下载原版视频, 默认为 false 不移除
-    @objc var isUnlimitedDownload: Bool = true {
-        didSet {
-            userDefaults.set(isUnlimitedDownload, forKey: Keys.unlimitedDownload.rawValue)
-            userDefaults.synchronize()
-        }
     }
     
     /// 是否播放广告，默认true
@@ -113,8 +104,6 @@ final class PreferenceManager: NSObject {
         
         Keys.allCases.forEach { key in
             switch key {
-            case .unlimitedDownload:
-                isUnlimitedDownload = (userDefaults.object(forKey: key.rawValue) as? NSNumber)?.boolValue ?? true
             case .skipAds:
                 shouldPlayAds = (userDefaults.object(forKey: key.rawValue) as? NSNumber)?.boolValue ?? true
             case .autoPlayNextVideoWhenPlayEnded:
