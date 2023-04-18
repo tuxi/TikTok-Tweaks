@@ -74,68 +74,73 @@
 %hook AWESharePanelController
 
 %new
-- (void)xy_downloadWithAweme:(AWEAwemeModel *)aweme {
-    if (aweme == nil) {
+- (void)xy_downloadWithAweme:(id)target {
+    if (target == nil) {
         return;
     }
-    if (aweme.awemeType == 68) {
-        // 是图片列表
-        /*
-         iOS相册支持GIF 和APNG 的保存 目测iOS11.0在相册中也可以播放GIF 的动态图.而iOS8.3不能.
-         writeImageDataToSavedPhotosAlbum 可以直接将其写入相册
-         UIImageWriteToSavedPhotosAlbum() 图像强制转码为PNG
-         博客地址：https://daimajiaoliu.com/daima/485c1eb0e100405
-         */
-        
-        UIWindow *window = [UIApplication sharedApplication].delegate.window;
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:window animated:true];
-        hud.bezelView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.65];
-        hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
-        hud.label.text = @"准备下载";
-        hud.label.font = [UIFont systemFontOfSize:12];
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            dispatch_group_t group = dispatch_group_create();
-            NSArray<AWEImageAlbumImageModel *> *albumImages = aweme.albumImages;
-            __block NSError *_error = nil;
-            int index = 0;
-            for (AWEImageAlbumImageModel *model in albumImages) {
-                NSURL *url = [NSURL URLWithString: model.urlList.firstObject];
-                if (url == nil) {
-                    continue;
+    if ([target isKindOfClass:%c(AWEAwemeModel)]) {
+        AWEAwemeModel *model = target;
+        if (model.awemeType == 68) {
+            // 是图片列表
+            UIWindow *window = [UIApplication sharedApplication].delegate.window;
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:window animated:true];
+            hud.bezelView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.65];
+            hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+            hud.label.text = @"准备下载";
+            hud.label.font = [UIFont systemFontOfSize:12];
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                dispatch_group_t group = dispatch_group_create();
+                NSArray<AWEImageAlbumImageModel *> *albumImages = model.albumImages;
+                __block NSError *_error = nil;
+                int index = 0;
+                for (AWEImageAlbumImageModel *model in albumImages) {
+                    NSURL *url = [NSURL URLWithString: model.urlList.firstObject];
+                    if (url == nil) {
+                        continue;
+                    }
+                    dispatch_group_enter(group);
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        hud.label.text = [NSString stringWithFormat:@"%d/%ld", index+1, albumImages.count];
+                    });
+                    NSData *data = [NSData dataWithContentsOfURL:url];
+                    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+                        [[PHAssetCreationRequest creationRequestForAsset] addResourceWithType:PHAssetResourceTypePhoto data:data options:nil];
+                    } completionHandler:^(BOOL success, NSError * _Nullable error) {
+                        dispatch_group_leave(group);
+                        _error = error;
+                    }];
+                    index += 1;
                 }
-                dispatch_group_enter(group);
+                dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    hud.label.text = [NSString stringWithFormat:@"%d/%ld", index+1, albumImages.count];
+                    [self dismissViewControllerAnimated: YES completion: nil];
+                    if (_error) {
+                        hud.label.text = [NSString stringWithFormat:@"下载有错误%@", _error.localizedDescription];
+                    } else {
+                        hud.label.text = @"下载图片成功";
+                    }
+                    [hud hideAnimated:true afterDelay:0.5];
                 });
-                NSData *data = [NSData dataWithContentsOfURL:url];
-                [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-                    [[PHAssetCreationRequest creationRequestForAsset] addResourceWithType:PHAssetResourceTypePhoto data:data options:nil];
-                } completionHandler:^(BOOL success, NSError * _Nullable error) {
-                    dispatch_group_leave(group);
-                    _error = error;
-                }];
-                index += 1;
-            }
-            dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self dismissViewControllerAnimated: YES completion: nil];
-                if (_error) {
-                    hud.label.text = [NSString stringWithFormat:@"下载有错误%@", _error.localizedDescription];
-                } else {
-                    hud.label.text = @"下载图片成功";
-                }
-                [hud hideAnimated:true afterDelay:0.5];
             });
-        });
-        
-    }
-    else {
-        // 是视频
-        AWEVideoModel *video = aweme.video;
-        NSURL *url = [video xy_videoURL];
-        if (url == nil) {
-            return;
+            
         }
+        else {
+            // 是视频
+            AWEVideoModel *video = model.video;
+            NSURL *url = [video xy_url];
+            if (url == nil) {
+                return;
+            }
+            XYVideoDownloader *downloader = [XYVideoDownloader shared];
+            __weak typeof(self) weakSelf = self;
+            [downloader downloadWithURL:url completion:^(BOOL isSuccess, NSError *error){
+                [weakSelf dismissViewControllerAnimated: YES completion: nil];
+            }];
+        }
+    } else if ([target isKindOfClass:%c(AWEMusicModel)]) {
+        // 是音乐
+        AWEMusicModel *model = target;
+        NSURL *url = [model xy_url];
         XYVideoDownloader *downloader = [XYVideoDownloader shared];
         __weak typeof(self) weakSelf = self;
         [downloader downloadWithURL:url completion:^(BOOL isSuccess, NSError *error){
@@ -146,9 +151,11 @@
 
 - (void)viewDidLoad {
     %orig;
-    NSMutableArray *array = [self.viewModel.secondRowItems mutableCopy];
+    NSMutableArray *allItems = [self.viewModel.firstRowItems mutableCopy];
+    [allItems addObjectsFromArray: self.viewModel.secondRowItems];
+    NSMutableArray *secondRowItems = [self.viewModel.secondRowItems mutableCopy];
     AWEShareBaseChannel *itemDelegate = nil;
-    for (AWEShareItem *item in array) {
+    for (AWEShareItem *item in allItems) {
         if (item.delegate != nil) {
             itemDelegate = item.delegate;
             break;
@@ -157,20 +164,21 @@
     if (!itemDelegate) {
         return;
     }
-    AWEAwemeModel *aweme = itemDelegate.context.target;
+    AWEShareContext *context = itemDelegate.context;
+    id target = context.target;
     __weak typeof(self) weakSelf = self;
     // 21000是自保存
     AWEShareItem *action = [[NSClassFromString(@"AWEShareItem") alloc] initWithType:@"custom_download"];
-//    action.delegate = self;
-    action.title = @"保存原版视频";
-    action.image = (UIImage *)[[array firstObject] image];
+    action.title = context.targetType == 3 ? @"保存音乐" : @"保存原视频";
+    action.image = (UIImage *)[[secondRowItems firstObject] image];
+    action.iconName = [[secondRowItems firstObject] iconName];
     [action registerHandler: ^{ // 点击保存原版的事件
-        [weakSelf xy_downloadWithAweme: aweme];
+        [weakSelf xy_downloadWithAweme: target];
     } forEvents: 1];
-    [array addObject:action];
+    [secondRowItems addObject:action];
    
-    self.viewModel.secondRowItems = array;
-    [self.secondRowView setValue:array forKey:@"items"];
+    self.viewModel.secondRowItems = secondRowItems;
+    [self.secondRowView setValue:secondRowItems forKey:@"items"];
     [self.secondRowView reloadData];
 }
 
@@ -185,58 +193,67 @@
 }
 
 %new
-- (void)xy_downloadWithAweme:(AWEAwemeModel *)aweme {
-    if (aweme == nil) {
-        return;
-    }
-    if (aweme.awemeType == 68) {
-        UIWindow *window = [UIApplication sharedApplication].delegate.window;
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:window animated:true];
-        hud.bezelView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.65];
-        hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
-        hud.label.text = @"准备下载";
-        hud.label.font = [UIFont systemFontOfSize:12];
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            dispatch_group_t group = dispatch_group_create();
-            NSArray<AWEImageAlbumImageModel *> *albumImages = aweme.albumImages;
-            __block NSError *_error = nil;
-            int index = 0;
-            for (AWEImageAlbumImageModel *model in albumImages) {
-                NSURL *url = [NSURL URLWithString: model.urlList.firstObject];
-                if (url == nil) {
-                    continue;
+- (void)xy_downloadWithAweme:(id)target {
+    if ([target isKindOfClass:%c(AWEAwemeModel)]) {
+        AWEAwemeModel *model = target;
+        if (model.awemeType == 68) {
+            UIWindow *window = [UIApplication sharedApplication].delegate.window;
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:window animated:true];
+            hud.bezelView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.65];
+            hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+            hud.label.text = @"准备下载";
+            hud.label.font = [UIFont systemFontOfSize:12];
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                dispatch_group_t group = dispatch_group_create();
+                NSArray<AWEImageAlbumImageModel *> *albumImages = model.albumImages;
+                __block NSError *_error = nil;
+                int index = 0;
+                for (AWEImageAlbumImageModel *model in albumImages) {
+                    NSURL *url = [NSURL URLWithString: model.urlList.firstObject];
+                    if (url == nil) {
+                        continue;
+                    }
+                    dispatch_group_enter(group);
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        hud.label.text = [NSString stringWithFormat:@"%d/%ld", index+1, albumImages.count];
+                    });
+                    NSData *data = [NSData dataWithContentsOfURL:url];
+                    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+                        [[PHAssetCreationRequest creationRequestForAsset] addResourceWithType:PHAssetResourceTypePhoto data:data options:nil];
+                    } completionHandler:^(BOOL success, NSError * _Nullable error) {
+                        dispatch_group_leave(group);
+                        _error = error;
+                    }];
+                    index += 1;
                 }
-                dispatch_group_enter(group);
+                dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    hud.label.text = [NSString stringWithFormat:@"%d/%ld", index+1, albumImages.count];
+                    [self dismissViewControllerAnimated: YES completion: nil];
+                    if (_error) {
+                        hud.label.text = [NSString stringWithFormat:@"下载有错误%@", _error.localizedDescription];
+                    } else {
+                        hud.label.text = @"下载图片成功";
+                    }
+                    [hud hideAnimated:true afterDelay:0.5];
                 });
-                NSData *data = [NSData dataWithContentsOfURL:url];
-                [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-                    [[PHAssetCreationRequest creationRequestForAsset] addResourceWithType:PHAssetResourceTypePhoto data:data options:nil];
-                } completionHandler:^(BOOL success, NSError * _Nullable error) {
-                    dispatch_group_leave(group);
-                    _error = error;
-                }];
-                index += 1;
-            }
-            dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self dismissViewControllerAnimated: YES completion: nil];
-                if (_error) {
-                    hud.label.text = [NSString stringWithFormat:@"下载有错误%@", _error.localizedDescription];
-                } else {
-                    hud.label.text = @"下载图片成功";
-                }
-                [hud hideAnimated:true afterDelay:0.5];
             });
-        });
-    } else {
-        // 是视频
-        AWEVideoModel *video = aweme.video;
-        NSURL *url = [video xy_videoURL];
-        if (url == nil) {
-            return;
+        } else {
+            // 是视频
+            AWEVideoModel *video = model.video;
+            NSURL *url = [video xy_url];
+            if (url == nil) {
+                return;
+            }
+            XYVideoDownloader *downloader = [XYVideoDownloader shared];
+            __weak typeof(self) weakSelf = self;
+            [downloader downloadWithURL:url completion:^(BOOL isSuccess, NSError *error){
+                [weakSelf dismissViewControllerAnimated: YES completion: nil];
+            }];
         }
+    } else if ([target isKindOfClass:%c(AWEMusicModel)]) {
+        // 是音乐
+        AWEMusicModel *model = target;
+        NSURL *url = [model xy_url];
         XYVideoDownloader *downloader = [XYVideoDownloader shared];
         __weak typeof(self) weakSelf = self;
         [downloader downloadWithURL:url completion:^(BOOL isSuccess, NSError *error){
@@ -250,30 +267,31 @@
 }
 
 - (void) setViewModel:(TTKSharePanelViewModel *)viewModel {
-    NSMutableArray *array = [viewModel.secondRowItems mutableCopy];
+    NSMutableArray *allItems = [viewModel.firstRowItems mutableCopy];
+    [allItems addObjectsFromArray: viewModel.secondRowItems];
+    NSMutableArray *secondRowItems = [viewModel.secondRowItems mutableCopy];
     AWEShareBaseChannel *itemDelegate = nil;
-    for (AWEShareItem *item in array) {
+    for (AWEShareItem *item in allItems) {
         if (item.delegate != nil) {
             itemDelegate = item.delegate;
             break;
         }
     }
     if (itemDelegate) {
-        AWEAwemeModel *aweme = itemDelegate.context.target;
+        AWEShareContext *context = itemDelegate.context;
+        id target = context.target;
         __weak typeof(self) weakSelf = self;
         // 21000是自保存
         AWEShareItem *action = [[NSClassFromString(@"AWEShareItem") alloc] initWithType:@"custom_download"];
-    //    action.delegate = self;
-        action.title = @"保存原版视频";
-        action.image = (UIImage *)[[array firstObject] image];
+        action.title = context.targetType == 3 ? @"保存音乐" : @"保存原视频";
+        action.image = (UIImage *)[[secondRowItems firstObject] image];
+        action.iconName = [[secondRowItems firstObject] iconName];
         [action registerHandler: ^{ // 点击保存原版的事件
-            [weakSelf xy_downloadWithAweme: aweme];
+            [weakSelf xy_downloadWithAweme: target];
         } forEvents: 1];
-        [array addObject:action];
+        [secondRowItems addObject:action];
        
-        viewModel.secondRowItems = array;
-    //    [self.secondRowView setValue:array forKey:@"items"];
-    //    [self.secondRowView reloadData];
+        viewModel.secondRowItems = secondRowItems;
         [self.tableView reloadData];
     }
     %orig(viewModel);
@@ -281,9 +299,17 @@
 
 %end
 
+%hook AWEShareItem
+- (id)initWithType:(id)arg1 {
+    id obj = %orig;
+    return obj;
+}
+%end
+
+
 %hook AWEVideoModel
 %new
-- (NSURL *)xy_videoURL {
+- (NSURL *)xy_url {
     // h264URL 比 playURL的链接视频质量更高，更清晰, 但h264URL可能是nil
     AWEURLModel *videoURL = self.h264URL;
     if (!videoURL) {
@@ -293,6 +319,17 @@
     NSURL *url = [NSURL URLWithString: originURLList.firstObject];
     return url;
 }
+%end
+
+%hook AWEMusicModel
+%new
+- (NSURL *)xy_url {
+    AWEURLModel *musicURL = self.playURL;
+    NSArray *originURLList = musicURL.originURLList;
+    NSURL *url = [NSURL URLWithString: originURLList.firstObject];
+    return url;
+}
+
 %end
 %end
 
@@ -550,6 +587,85 @@ static AWEFeedContainerViewController *__weak sharedInstance;
     return  %orig;
 }
 %end
+%hook AWESecurityConfig
+- (NSString *)secret {
+    id secret = %orig; // a3668f0afac72ca3f6c1697d29e0e1bb1fef4ab0285319b95ac39fa42c38d05f
+    return secret;
+}
+- (id)init {
+    id instance = %orig;
+    return instance;
+}
++ (id) licenseForAppId:(id)arg1 {
+    id obj = %orig;
+    return obj;
+}
+- (id)sgm_installChannel {
+    id obj = %orig;
+    return @"App Store";
+}
+%end
+%hook NSKeyedUnarchiver
++ (id)unarchiveObjectWithData:(NSData *)data{
+    
+    
+    id result =%orig;
+    if(![result isKindOfClass:[NSData class]]){
+//        XYDebugLog(@"unarchiveObjectWithData = %@ %@ class = %@ ", @"NSKeyedUnarchiver",[result  class] ,result);
+        if([result isKindOfClass:[NSDictionary class]]){
+            NSMutableDictionary *dic =   [[NSMutableDictionary alloc] initWithDictionary:result];
+            if([dic objectForKey:@"SignInfo"]){
+                if (![dic[@"SignInfo"] containsString:@"AppStore"]) {
+                    dic[@"SignInfo"]= @"AppStore";
+                }
+            }
+            return dic;
+        }
+    }
+//    else{
+//        XYDebugLog(@"archivedDataWithRootObject = %@ %@ class = %@",@"NSKeyedUnarchiver",[result  class] ,@"NSKeyedUnarchiver");
+//    }
+    return result;
+}
+
+%end
+%hook AWEAPMManager
++ (void) attachInfo:(id)arg1 forKey:(id)arg2 {
+    %log;
+    %orig;
+}
++ (void) enableInternalNetworkRequest:(BOOL)arg1 {
+    %log;
+    %orig;
+}
+
++ (id) signInfo {
+    %log;
+   id obj = %orig; // SelfSign(NKW67GFDHM)(å­è¿ æ¨)
+//    return obj;
+    return @"AppStore";
+    //obj    __NSCFString *    "SelfSign(NKW67GFDHM)(å­\U0000009dè¿\U0000009c æ\U0000009d¨)"    0x0000000282d99140
+}
+%end
+
+%hook GULAppEnvironmentUtil
++(bool)isFromAppStore {
+    %log;
+    BOOL res = %orig;
+    return YES;
+}
++(bool)isAppStoreReceiptSandbox {
+    %log;
+    BOOL res = %orig;
+    return NO;
+}
++(bool)isAppExtension {
+    %log;
+    BOOL res = %orig;
+    return YES;
+}
+%end
+
 %end
 %group BundleIdByPass
 %hook TTInstallSandBoxHelper

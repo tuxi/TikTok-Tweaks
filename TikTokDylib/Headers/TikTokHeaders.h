@@ -19,13 +19,22 @@
 @property(retain, nonatomic) NSArray* originURLList;
 @end
 
+// 音乐
+@interface AWEMusicModel : NSObject
+@property (readonly, nonatomic) AWEURLModel* thumbURL;
+@property (readonly, nonatomic) AWEURLModel* playURL;
+@property (readonly, nonatomic) AWEURLModel* mediumURL; 
+- (NSURL *)xy_url;
+@end
+
+// 视频
 @interface AWEVideoModel : NSObject
 @property(readonly, nonatomic) AWEURLModel* playURL;
 @property(readonly, nonatomic) AWEURLModel* downloadURL;
 @property(readonly, nonatomic) AWEURLModel* h264URL;
 @property(readonly, nonatomic) NSNumber *duration;
 
-- (NSURL *)xy_videoURL;
+- (NSURL *)xy_url;
 
 @end
 
@@ -132,7 +141,11 @@
 @end
 
 @interface AWEShareContext : NSObject
-@property(retain, nonatomic) AWEAwemeModel *target; 
+// 在视频详情页分享是视频或者图文 AWEAwemeModel、在音乐详情页分享是音乐 AWEMusicModel
+@property (retain, nonatomic) id target; // (@synthesize target = _target;)
+// 视频或者图文 targetType == 1 ｜ 音乐 targetType == 3
+@property (nonatomic) unsigned long targetType; // (@synthesize targetType = _targetType;)
+@property (readonly, nonatomic) AWEAwemeModel* aweme;
 @end
 
 @interface AWEIMDirectTranspondViewController : UIViewController
@@ -282,21 +295,6 @@
 @end
 
 @interface AWEShareItem : NSObject
-{
-    _Bool _enabled;
-    _Bool _showsBadgeOnImage;
-    _Bool _shouldBubbleAnimate;
-    _Bool _hasAppeared;
-    _Bool _hasDisappeared;
-    NSString *_shareType;
-    unsigned long long _style;
-    NSString *_title;
-    UIImage *_image;
-    CDUnknownBlockType _bubbleAnimations;
-    UIView *_customView;
-    id <AWEShareItemDelegate> _delegate;
-    NSMutableArray *_eventsWithHandlers;
-}
 
 @property(retain, nonatomic) NSMutableArray *eventsWithHandlers; // @synthesize eventsWithHandlers=_eventsWithHandlers;
 @property(nonatomic) _Bool hasDisappeared; // @synthesize hasDisappeared=_hasDisappeared;
@@ -307,6 +305,7 @@
 @property(nonatomic) _Bool shouldBubbleAnimate; // @synthesize shouldBubbleAnimate=_shouldBubbleAnimate;
 @property(nonatomic) _Bool showsBadgeOnImage; // @synthesize showsBadgeOnImage=_showsBadgeOnImage;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
+@property(retain, nonatomic) NSString *iconName; // @synthesize image=_image;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(nonatomic) unsigned long long style; // @synthesize style=_style;

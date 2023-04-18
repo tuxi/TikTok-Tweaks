@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D00EB2E529EE90B8007BA6AA /* MediaExportSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00EB2E229EE90B8007BA6AA /* MediaExportSession.swift */; };
 		D00F83692727BB1A00BDE5A1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F83682727BB1A00BDE5A1 /* SettingsViewController.swift */; };
 		D00F836D2727D71500BDE5A1 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F836C2727D71500BDE5A1 /* SettingsSection.swift */; };
 		D00F8373272824DE00BDE5A1 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F8372272824DE00BDE5A1 /* SettingsCell.swift */; };
@@ -104,6 +105,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D00EB2E229EE90B8007BA6AA /* MediaExportSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaExportSession.swift; sourceTree = "<group>"; };
 		D00F83682727BB1A00BDE5A1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D00F836C2727D71500BDE5A1 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		D00F8372272824DE00BDE5A1 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 				D073912C2713F4D3009731EB /* VideoDownloader.swift */,
 				D073913127141E01009731EB /* UIApplication+Extensions.swift */,
 				D0959953272D8A30006A6446 /* Logger.swift */,
+				D00EB2E229EE90B8007BA6AA /* MediaExportSession.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D07B52942706C871009ABD87 /* MDCycriptManager.m in Sources */,
+				D00EB2E529EE90B8007BA6AA /* MediaExportSession.swift in Sources */,
 				D0B6BFB0271288AE00AD795B /* XYPreferenceManager.swift in Sources */,
 				D07B529D2706C871009ABD87 /* a1a2-selectortramps-arm64.s in Sources */,
 				D07B529B2706C871009ABD87 /* a1a2-selectortramps-arm.s in Sources */,
