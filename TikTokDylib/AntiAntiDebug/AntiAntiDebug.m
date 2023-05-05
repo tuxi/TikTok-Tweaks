@@ -93,7 +93,7 @@ int my_syscall(int code, va_list args){
     return orig_syscall(code, newArgs);
 }
 
-__attribute__((constructor)) static void entry(){
+__attribute__((constructor)) static void entry(void){
     NSLog(@"[AntiAntiDebug Init]");
     
     rebind_symbols((struct rebinding[1]){{"ptrace", my_ptrace, (void*)&orig_ptrace}},1);

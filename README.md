@@ -1,5 +1,5 @@
 # TikTok Tweaks
-基于MonkeyDev、TikTok 版本29.0.0、 iOS 16、Xcode14
+基于MonkeyDev、TikTok 版本29.2.0、 iOS 16、Xcode14.3
 
 ## 功能
 - 下载无水印视频: 长按弹出的视图，点击保存原版视频可下载无水印视频，新版本下载的是h264的视频更清晰！
@@ -13,36 +13,4 @@
 经调试，大部分功能的代码适用抖音，观看视频还需要挂梯子，我记得去年的版本不需要的。本仓库仅仅是用来学习TikTok中的技术栈，TK中的反调试机制可能会对账号进行限制， 如果喜欢刷TK的建议去美区下载正版，拔卡挂梯子使用。
 
 
-request
-```
-https://api-va.tiktokv.com/aweme/v1/commit/item/digg/
-Printing description of arg2:
-{
-    "aweme_id" = 7024970988962057474;
-    "channel_id" = 0;
-    "enter_from" = "homepage_hot";
-    type = 1;
-}
-```
-
-response
-```
-2021-10-31 12:39:56.411244+0800 TikTok[46755:9112937] responeDict: {
-    "_AME_APICommonParam_Timestamp" = 1635655196000;
-    "_AME_Header_RequestID" = 202110310439560102452431641482C289;
-    extra =     {
-        "fatal_item_ids" =         (
-        );
-        logid = 202110310439560102452431641482C289;
-        now = 1635655196000;
-    };
-    "is_digg" = 1;
-    "log_pb" =     {
-        "impr_id" = 202110310439560102452431641482C289;
-    };
-    "status_code" = 0;
-}
-
-```
-
-TikTok-29.0.0 ipa 链接:https://pan.baidu.com/s/1ncEVKPK8KPISyTbAzh-96g  密码:gxuq
+TikTok-29.2.0 ipa 链接:https://pan.baidu.com/s/172kUwm5CUtK74Ls_WN0-FQ  密码:n3i5

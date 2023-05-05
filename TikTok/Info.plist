@@ -21,7 +21,7 @@
 	<key>BDJSBGeckoExtraChannels</key>
 	<string>_jsb_auth.webcast</string>
 	<key>BuildMachineOSBuild</key>
-	<string>21G83</string>
+	<string>21G115</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
@@ -68,7 +68,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>29.0.0</string>
+	<string>29.2.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
@@ -240,7 +240,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>290014</string>
+	<string>292020</string>
 	<key>CHANNEL_NAME</key>
 	<string>App Store</string>
 	<key>CodePushDeploymentKey</key>
@@ -446,6 +446,8 @@
 		<integer>1</integer>
 		<integer>2</integer>
 	</array>
+	<key>UIFileSharingEnabled</key>
+	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>Launch Screen I18N</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -467,7 +469,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<true/>
 </dict>
 </plist>
