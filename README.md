@@ -1,5 +1,5 @@
 # TikTok Tweaks
-基于MonkeyDev、TikTok 版本29.5.0、 iOS 16、Xcode14.3
+基于MonkeyDev、TikTok 版本29.6.0、 iOS 16、Xcode14.3
 
 ## 功能
 - 下载无水印视频: 长按弹出的视图，点击保存原版视频可下载无水印视频，新版本下载的是h264的视频更清晰！
@@ -13,4 +13,4 @@
 经调试，大部分功能的代码适用抖音，观看视频还需要挂梯子，我记得去年的版本不需要的。本仓库仅仅是用来学习TikTok中的技术栈，TK中的反调试机制可能会对账号进行限制， 如果喜欢刷TK的建议去美区下载正版，拔卡挂梯子使用。
 
 
-TikTok-29.5.0 ipa 链接:https://pan.baidu.com/s/1FghZ50_NXBkERh5Gsed6jw  密码:uq4b
+TikTok-29.6.0 ipa 链接:https://pan.baidu.com/s/1OkukhSGm78yobdv71WoGeg  密码:b6kp
