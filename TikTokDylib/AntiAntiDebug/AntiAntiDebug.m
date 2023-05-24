@@ -16,6 +16,7 @@
 #import <Foundation/Foundation.h>
 #import <sys/sysctl.h>
 
+
 typedef int (*ptrace_ptr_t)(int _request,pid_t _pid, caddr_t _addr,int _data);
 typedef void* (*dlsym_ptr_t)(void * __handle, const char* __symbol);
 typedef int (*syscall_ptr_t)(int, ...);
@@ -101,8 +102,7 @@ __attribute__((constructor)) static void entry(void){
     rebind_symbols((struct rebinding[1]){{"dlsym", my_dlsym, (void*)&orig_dlsym}},1);
     
     //some app will crash with _dyld_debugger_notification
-    rebind_symbols((struct rebinding[1]){{"sysctl", my_sysctl, (void*)&orig_sysctl}},1);
+//    rebind_symbols((struct rebinding[1]){{"sysctl", my_sysctl, (void*)&orig_sysctl}},1);
     
     rebind_symbols((struct rebinding[1]){{"syscall", my_syscall, (void*)&orig_syscall}},1);
 }
-

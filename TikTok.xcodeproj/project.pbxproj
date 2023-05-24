@@ -11,7 +11,7 @@
 		D00F83692727BB1A00BDE5A1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F83682727BB1A00BDE5A1 /* SettingsViewController.swift */; };
 		D00F836D2727D71500BDE5A1 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F836C2727D71500BDE5A1 /* SettingsSection.swift */; };
 		D00F8373272824DE00BDE5A1 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F8372272824DE00BDE5A1 /* SettingsCell.swift */; };
-		D061D07929ED124D007FB927 /* libTikTokDylib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D07B527C2706C871009ABD87 /* libTikTokDylib.dylib */; };
+		D061D07929ED124D007FB927 /* libTikTokDylib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D07B527C2706C871009ABD87 /* libTikTokDylib.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D061D07A29ED124D007FB927 /* libTikTokDylib.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D07B527C2706C871009ABD87 /* libTikTokDylib.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D061D07D29ED125C007FB927 /* FLEX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A2A9AB270F05DC0001352D /* FLEX.framework */; };
 		D061D08329ED1AB8007FB927 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D061D08229ED1AB8007FB927 /* Photos.framework */; };
@@ -271,6 +271,7 @@
 		D07B52872706C871009ABD87 /* TikTokDylib */ = {
 			isa = PBXGroup;
 			children = (
+				D0A2A9402A0B861300C0A57B /* build */,
 				D0B6BF97271286BD00AD795B /* Source */,
 				D0FCBBF22707694D00B3129F /* Headers */,
 				D07B52C02706C871009ABD87 /* TikTokDylib.h */,
@@ -359,6 +360,13 @@
 				D07B52BE2706C871009ABD87 /* fishhook.h */,
 			);
 			path = fishhook;
+			sourceTree = "<group>";
+		};
+		D0A2A9402A0B861300C0A57B /* build */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = build;
 			sourceTree = "<group>";
 		};
 		D0A2A9A6270F05DC0001352D /* Products */ = {
@@ -832,6 +840,11 @@
 					"$(inherited)",
 					"$(MonkeyDevPath)/Frameworks",
 					"$(MonkeyDevTheosPath)/vendor/lib/**",
+					"$(PROJECT_DIR)/TikTokDylib/build/iphoneos/universal",
+					"$(PROJECT_DIR)/TikTokDylib/build/iphoneos/arm64e",
+					"$(PROJECT_DIR)/TikTokDylib/build/iphoneos/arm64",
+					"$(PROJECT_DIR)/TikTokDylib/Dobby",
+					"$(PROJECT_DIR)/TikTokDylib/HookZz",
 				);
 				MonkeyDevPath = /opt/MonkeyDev;
 				MonkeyDevTheosPath = /opt/theos;
@@ -897,6 +910,11 @@
 					"$(inherited)",
 					"$(MonkeyDevPath)/Frameworks",
 					"$(MonkeyDevTheosPath)/vendor/lib/**",
+					"$(PROJECT_DIR)/TikTokDylib/build/iphoneos/universal",
+					"$(PROJECT_DIR)/TikTokDylib/build/iphoneos/arm64e",
+					"$(PROJECT_DIR)/TikTokDylib/build/iphoneos/arm64",
+					"$(PROJECT_DIR)/TikTokDylib/Dobby",
+					"$(PROJECT_DIR)/TikTokDylib/HookZz",
 				);
 				MonkeyDevPath = /opt/MonkeyDev;
 				MonkeyDevTheosPath = /opt/theos;
@@ -939,6 +957,7 @@
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "To record audio, allow us to access your Microphone.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "To upload from or download to your device, allow access to your photos in your phone settings.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "To upload from or download to your device, allow access to your photos in your phone settings.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech Recognition will be used to help with your voice searches.";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This allows TikTok to provide you with a better ads experience.";
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen I18N";
@@ -949,6 +968,10 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_PREPROCESS = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TikTokDylib/HookZz",
+				);
 				MARKETING_VERSION = 1.0;
 				MONKEYDEV_ADD_SUBSTRATE = YES;
 				MONKEYDEV_CLASS_DUMP = YES;
@@ -958,7 +981,7 @@
 				MONKEYDEV_TARGET_APP = Optional;
 				PODS_CONFIGURATION_BUILD_DIR = "$BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				PODS_ROOT = "${SRCROOT}/Pods";
-				PRODUCT_BUNDLE_IDENTIFIER = com.objc.TikTok;
+				PRODUCT_BUNDLE_IDENTIFIER = com.objc.TikTok1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -984,6 +1007,7 @@
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "To record audio, allow us to access your Microphone.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "To upload from or download to your device, allow access to your photos in your phone settings.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "To upload from or download to your device, allow access to your photos in your phone settings.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech Recognition will be used to help with your voice searches.";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This allows TikTok to provide you with a better ads experience.";
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen I18N";
@@ -994,6 +1018,10 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_PREPROCESS = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TikTokDylib/HookZz",
+				);
 				MARKETING_VERSION = 1.0;
 				MONKEYDEV_ADD_SUBSTRATE = YES;
 				MONKEYDEV_CLASS_DUMP = YES;
@@ -1003,7 +1031,7 @@
 				MONKEYDEV_TARGET_APP = Optional;
 				PODS_CONFIGURATION_BUILD_DIR = "$BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				PODS_ROOT = "${SRCROOT}/Pods";
-				PRODUCT_BUNDLE_IDENTIFIER = com.objc.TikTok;
+				PRODUCT_BUNDLE_IDENTIFIER = com.objc.TikTok1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -604,6 +604,10 @@ static AWEFeedContainerViewController *__weak sharedInstance;
     id obj = %orig;
     return @"App Store";
 }
+
+- (void)resetCollectMode {
+    
+}
 %end
 %hook NSKeyedUnarchiver
 + (id)unarchiveObjectWithData:(NSData *)data{
@@ -642,8 +646,8 @@ static AWEFeedContainerViewController *__weak sharedInstance;
 + (id) signInfo {
     %log;
    id obj = %orig; // SelfSign(NKW67GFDHM)(å­è¿ æ¨)
-//    return obj;
-    return @"AppStore";
+    return obj;
+//    return @"AppStore";
     //obj    __NSCFString *    "SelfSign(NKW67GFDHM)(å­\U0000009dè¿\U0000009c æ\U0000009d¨)"    0x0000000282d99140
 }
 %end
@@ -661,10 +665,12 @@ static AWEFeedContainerViewController *__weak sharedInstance;
 }
 +(bool)isAppExtension {
     %log;
-    BOOL res = %orig;
+//    BOOL res = %orig;
+//    return res;
     return YES;
 }
 %end
+
 
 %end
 %group BundleIdByPass
@@ -675,6 +681,30 @@ static AWEFeedContainerViewController *__weak sharedInstance;
     return @"com.zhiliaoapp.musically";
 }
 %end
+
+%hook MSManagerOV
+- (id)setMode {
+    return (id (^)(id)) ^{
+        NSLog(@"%s", __func__);
+    };
+}
+%end
+
+%hook MSConfigOV
+- (id)setMode {
+    return (id (^)(id)) ^{
+        NSLog(@"%s", __func__);
+    };
+}
+%end
+
+%hook AAWEBootChecker
++ (BOOL)shouldCheckTargetPath:(NSString *)path {
+    BOOL result = %orig;
+    return result;
+}
+%end
+
 %end
 
 

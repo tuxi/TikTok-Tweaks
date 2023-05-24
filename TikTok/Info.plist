@@ -68,7 +68,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>29.2.0</string>
+	<string>29.5.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
@@ -240,7 +240,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>292020</string>
+	<string>295012</string>
 	<key>CHANNEL_NAME</key>
 	<string>App Store</string>
 	<key>CodePushDeploymentKey</key>
@@ -425,6 +425,7 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>TikTok-Text-Dark-Medium.otf</string>
 		<string>TikTok-Display-Bold.otf</string>
 		<string>TikTok-Display-Medium.otf</string>
 		<string>TikTok-Display-Regular.otf</string>
@@ -446,8 +447,6 @@
 		<integer>1</integer>
 		<integer>2</integer>
 	</array>
-	<key>UIFileSharingEnabled</key>
-	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>Launch Screen I18N</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -469,5 +468,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 </dict>
 </plist>
